@@ -14,12 +14,6 @@
     localize(); document.dispatchEvent(new CustomEvent('languagechange'));
   }
   $('ui-language').addEventListener('change',e=>language(e.target.value)); language(ui);
-  let theme=readPref('theme','light');
-  function setTheme(){document.documentElement.dataset.theme=theme;$('theme').setAttribute('aria-pressed',String(theme==='dark'));}
-  setTheme(); $('theme').onclick=()=>{theme=theme==='dark'?'light':'dark';save('theme',theme);setTheme();};
-  let size=Math.min(24,Math.max(16,Number(readPref('font','18'))||18));
-  function font(){document.documentElement.style.setProperty('--base-font',size+'px');save('font',size);}
-  font(); $('font-up').onclick=()=>{size=Math.min(24,size+1);font();};$('font-down').onclick=()=>{size=Math.max(16,size-1);font();};
 
   async function post(path,data){
     const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':document.querySelector('meta[name="csrf-token"]').content},body:JSON.stringify(data)});

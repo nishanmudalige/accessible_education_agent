@@ -8,6 +8,10 @@
  const evidenceByPage=new Map([[initialPage,(params.get('ids')||'').split(',').filter(x=>/^p\d+$/.test(x))]]);
  const initialEvidence=[...(evidenceByPage.get(initialPage)||[])];
  let currentPage=initialPage,zoom=null,width=612,generation=0,pageData=null,activeQuery=params.get('q')||'',highlightEnabled=true,controller=null;
+ function applyReaderMode(p=window.AccessDisplayPrefs?.get()||{readerMode:'page'}){
+  const useText=p.readerMode==='text';frame.hidden=useText;$('reader-page-text').hidden=!useText;scroller.classList.toggle('text-first',useText);$('reader-text-toggle').setAttribute('aria-pressed',String(useText));setLabel($('reader-text-toggle'),useText?'Show original page':'Show page text',useText?'Afficher la page originale':'Afficher le texte');requestAnimationFrame(resize);
+ }
+ document.addEventListener('accessedu:displaychange',event=>applyReaderMode(event.detail));
  const saved=(key,fallback)=>{try{return localStorage.getItem('accessedu-'+key)||fallback;}catch{return fallback;}};
  const save=(key,val)=>{try{localStorage.setItem('accessedu-'+key,val);}catch{}};
  highlightEnabled=saved('reader-highlights','on')!=='off';
@@ -31,10 +35,10 @@
   const count=pageData?.boxes?.length||0;
   $('reader-read-highlights').disabled=!pageData?.passage_texts?.length;
   $('reader-highlight-note').hidden=!count;
-  if(count)$('reader-highlight-note').textContent=A.tr('Orange highlights mark the source passages or search matches on this original page.','Le surlignage orange indique les passages sources ou les résultats de recherche sur cette page originale.');
+  if(count)$('reader-highlight-note').textContent=A.tr('Outlined highlights mark source passages or search matches on this original page.','Les contours indiquent les passages sources ou les résultats de recherche sur cette page originale.');
  }
  function fillText(blocks){text.replaceChildren();for(const b of blocks){const p=document.createElement('p');p.className='source-block';if(pageData.selected_ids.includes(b.id))p.classList.add('evidence');p.id=b.id;p.dataset.passage=b.id;p.textContent=b.text;text.append(p,document.createTextNode('\n\n'));}}
- function scrollToEvidence(){if(!highlightEnabled||!pageData?.boxes?.length)return;requestAnimationFrame(()=>{const first=pageData.boxes[0];scroller.scrollTop=Math.max(0,frame.offsetTop+first.y/100*frame.clientHeight-90);});}
+ function scrollToEvidence(){if(!highlightEnabled||!pageData?.boxes?.length)return;if(window.AccessDisplayPrefs?.get().readerMode==='text'){text.querySelector('.evidence')?.scrollIntoView({block:'center'});return;}requestAnimationFrame(()=>{const first=pageData.boxes[0];scroller.scrollTop=Math.max(0,frame.offsetTop+first.y/100*frame.clientHeight-90);});}
  async function go(page,push=true){
   currentPage=bounded(page);const token=++generation;
   window.AccessSpeech?.clear();$('reader-speech-highlights').replaceChildren();controller?.abort();controller=new AbortController();
@@ -47,14 +51,14 @@
   if(push)history.pushState({page:currentPage},'',pageUrl(currentPage));
   document.querySelectorAll('.reader-chapter').forEach(link=>{const chosen=Number(link.dataset.page)===currentPage;link.classList.toggle('active',chosen);if(chosen)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
   try{
-   const picture=new Image();const ready=new Promise((resolve,reject)=>{picture.onload=resolve;picture.onerror=()=>reject(Error(A.tr('Could not load the page image.','Impossible de charger l’image de la page.')));});picture.src=imageUrl;
+   const picture=new Image(),textMode=window.AccessDisplayPrefs?.get().readerMode==='text';const ready=textMode?Promise.resolve():new Promise((resolve,reject)=>{picture.onload=resolve;picture.onerror=()=>reject(Error(A.tr('Could not load the page image.','Impossible de charger l’image de la page.')));picture.src=imageUrl;});
    const dataPromise=fetch('/api/reader/'+encodeURIComponent(doc)+'/'+currentPage+'?'+query,{signal:controller.signal}).then(async r=>{if(!r.ok)throw Error(A.tr('Could not load this PDF page.','Impossible de charger cette page PDF.'));return r.json();});
    const [data]=await Promise.all([dataPromise,ready]);if(token!==generation)return;
    pageData=data;width=data.width;text.lang=data.language;text.dataset.speechLang=data.language;
    image.src=imageUrl;image.alt=A.tr('Original textbook PDF page '+currentPage+' of '+total,'Page PDF originale '+currentPage+' sur '+total);image.width=picture.naturalWidth;image.height=picture.naturalHeight;image.style.aspectRatio=data.width+' / '+data.height;
    // CSS height:auto keeps the page and percentage overlay in the same coordinate system at every zoom.
    image.removeAttribute('height');image.removeAttribute('width');
-   fillText(data.blocks);drawBoxes(overlay,data.boxes,'reader-highlight');resize();updateHighlights();
+   fillText(data.blocks);drawBoxes(overlay,data.boxes,'reader-highlight');resize();updateHighlights();applyReaderMode();
    frame.classList.remove('loading');frame.setAttribute('aria-busy','false');status('Page '+currentPage+' of '+total,'Page '+currentPage+' sur '+total);
    scroller.scrollTop=0;scroller.scrollLeft=0;scrollToEvidence();
   }catch(error){if(token!==generation||error.name==='AbortError')return;frame.classList.remove('loading');frame.setAttribute('aria-busy','false');$('reader-status').textContent=error.message;$('reader-status').classList.add('reader-error');}
@@ -69,7 +73,7 @@
  document.addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||/input|textarea|select|button/i.test(document.activeElement?.tagName||'')||document.querySelector('dialog[open]')||window.getSelection()?.toString())return;if(e.key==='ArrowRight'){e.preventDefault();go(currentPage+1);}if(e.key==='ArrowLeft'){e.preventDefault();go(currentPage-1);}});
  $('reader-document')?.addEventListener('change',e=>{location.href='/reader?'+new URLSearchParams({doc:e.target.value,page:1});});
  $('reader-highlight-toggle').onclick=()=>{highlightEnabled=!highlightEnabled;save('reader-highlights',highlightEnabled?'on':'off');updateHighlights();};
- $('reader-text-toggle').onclick=()=>{const show=$('reader-page-text').hidden;$('reader-page-text').hidden=!show;$('reader-text-toggle').setAttribute('aria-pressed',String(show));setLabel($('reader-text-toggle'),show?'Hide page text':'Show page text',show?'Masquer le texte':'Afficher le texte');if(show)$('reader-page-text').scrollIntoView({block:'nearest',behavior:'smooth'});};
+ $('reader-text-toggle').onclick=()=>{const mode=frame.hidden?'page':'text';if(window.AccessDisplayPrefs)window.AccessDisplayPrefs.set({readerMode:mode});else applyReaderMode({readerMode:mode});};
  $('read-page').onclick=()=>{if(pageData)A.speak(text.textContent,sourceLang,text);};
  $('reader-read-highlights').onclick=()=>{if(pageData?.passage_texts?.length)A.speak(pageData.passage_texts.join('\n\n'),sourceLang,text);};
  $('translate-page').onclick=()=>{if(pageData)A.translate(pageData.text,sourceLang.startsWith('fr')?'en-CA':'fr-CA');};
@@ -97,6 +101,7 @@
  };
  $('reader-results-close').onclick=()=>{searchGeneration++;activeQuery='';evidenceByPage.clear();evidenceByPage.set(initialPage,initialEvidence);$('reader-results').hidden=true;$('reader-chapters').hidden=false;go(currentPage);};
  document.addEventListener('accessedu:speech',event=>{if(!pageData)return;const ids=event.detail?.root===text?event.detail.ids||[]:[];drawBoxes($('reader-speech-highlights'),pageData.blocks.filter(b=>ids.includes(b.id)).flatMap(b=>b.rects),'reader-speaking');});
+ applyReaderMode();
  const hash=location.hash.match(/page=(\d+)/);if(hash)currentPage=bounded(hash[1]);history.replaceState({page:currentPage},'',pageUrl(currentPage));go(currentPage,false);
  window.AccessReader={goToPage:go,currentPage:()=>currentPage,fit:()=>setZoom(null)};
 })();

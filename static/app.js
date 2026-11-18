@@ -98,7 +98,7 @@
       const copy=el('div','thinking-copy');copy.append(label(el('strong'),'Searching & thinking','Recherche et réflexion'),label(el('p'),'Finding relevant passages and preparing your response…','Recherche des passages pertinents et préparation de votre réponse…'));
       const dots=el('span','thinking-dots');dots.setAttribute('aria-hidden','true');for(let i=0;i<3;i++)dots.append(el('i'));
       bubble.append(icon,copy,dots);$('conversation').lastElementChild?.append(bubble);
-      bubble.scrollIntoView({block:'nearest',behavior:'smooth'});
+      bubble.scrollIntoView({block:'nearest',behavior:window.AccessDisplayPrefs?.get().reduceMotion?'auto':'smooth'});
     }
     $('status').textContent=value?A.tr('Searching sources and preparing a response…','Recherche des sources et préparation d’une réponse…'):'';
   }
@@ -110,13 +110,13 @@
       history.push({role:'user',content:q},{role:'assistant',content:r.book_answer||r.notice||''});if(history.length>6)history.splice(0,history.length-6);$('question').value='';
       $('status').textContent=A.tr('Response ready.','Réponse prête.');
     }catch(err){const p=el('p','error',err.message);p.setAttribute('role','alert');block.append(p);}
-    finally{setBusy(false);$('status').textContent=A.tr('Request finished. Check the response above.','Demande terminée. Consultez la réponse ci-dessus.');block.scrollIntoView({block:'start',behavior:'smooth'});}
+    finally{setBusy(false);$('status').textContent=A.tr('Request finished. Check the response above.','Demande terminée. Consultez la réponse ci-dessus.');block.scrollIntoView({block:'start',behavior:window.AccessDisplayPrefs?.get().reduceMotion?'auto':'smooth'});}
   };
   $('local-search').onclick=async()=>{
     const q=$('question').value.trim();if(!q||busy)return;const block=message(q);setBusy(true);
     try{const response=await fetch('/api/search?'+new URLSearchParams({q,doc:$('doc').value}));const data=await response.json();if(!response.ok)throw Error(data.error||'Search failed');
       const panel=el('article','panel answer');panel.append(label(el('span','badge neutral'),'Local search · relevance not yet verified','Recherche locale · pertinence non encore vérifiée'));
       if(data.results.length){const cards=resultCards(data.results,q);cards.open=true;panel.append(cards);}else panel.append(label(el('p'),'No matching passages. Try different terms or use Ask for bilingual query expansion.','Aucun passage trouvé. Essayez d’autres termes ou utilisez Questionner pour une recherche bilingue enrichie.'));block.append(panel);
-    }catch(err){block.append(el('p','error',err.message));}finally{setBusy(false);block.scrollIntoView({block:'start',behavior:'smooth'});}
+    }catch(err){block.append(el('p','error',err.message));}finally{setBusy(false);block.scrollIntoView({block:'start',behavior:window.AccessDisplayPrefs?.get().reduceMotion?'auto':'smooth'});}
   };
 })();

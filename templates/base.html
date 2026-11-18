@@ -5,12 +5,15 @@
   <meta name="csrf-token" content="{{ csrf_token }}">
   <meta name="description" content="AccessÉdu: an English and Canadian French education accessibility demo with source search, translation and read-aloud.">
   <title>{% block title %}AccessÉdu · Learn in your language{% endblock %}</title>
+  <script src="{{ url_for('static',filename='display-init.js',v='accessibility-3') }}"></script>
   <link rel="icon" href="{{ url_for('static',filename='icon.svg') }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ url_for('static',filename='style.css',v='reader-player-2') }}">
-  <script src="{{ url_for('static',filename='common.js',v='reader-player-2') }}" defer></script>
-  <link rel="stylesheet" href="{{ url_for('static',filename='speech.css',v='reader-player-2') }}">
-  <script src="{{ url_for('static',filename='speech.js',v='reader-player-2') }}" defer></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style.css',v='accessibility-3') }}">
+  <script src="{{ url_for('static',filename='common.js',v='accessibility-3') }}" defer></script>
+  <script src="{{ url_for('static',filename='accessibility.js',v='accessibility-3') }}" defer></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='speech.css',v='accessibility-3') }}">
+  <script src="{{ url_for('static',filename='speech.js',v='accessibility-3') }}" defer></script>
   {% block scripts %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='accessibility.css',v='accessibility-3') }}">
 </head>
 <body class="{% block body_class %}{% endblock %}">
 <a class="skip" href="#main">Skip to content / Aller au contenu</a>
@@ -18,10 +21,12 @@
 <nav aria-label="Display and language" class="display-tools">
 <label class="sr-only" for="ui-language">Interface language / Langue de l’interface</label>
 <select id="ui-language"><option value="en-CA">English</option><option value="fr-CA">Français canadien</option></select>
-<button id="font-down" type="button" aria-label="Decrease font size">A−</button><button id="font-up" type="button" aria-label="Increase font size">A+</button>
+<div class="type-shortcuts" role="group" aria-label="Text size"><button id="font-down" type="button" aria-label="Decrease font size">A−</button><button id="font-up" type="button" aria-label="Increase font size">A+</button></div>
 <button id="theme" type="button" aria-label="Toggle dark mode" aria-pressed="false">◐ <span data-en="Theme" data-fr="Thème">Theme</span></button>
 
+<button id="accessibility-open" class="accessibility-trigger" type="button" aria-haspopup="dialog" aria-controls="accessibility-dialog"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="4" r="2"/><path d="M3 8h18M12 8v7m0 0-5 6m5-6 5 6M8 9l1 5m7-5-1 5"/></svg><span data-en="Accessibility" data-fr="Accessibilité">Accessibility</span></button>
 </nav></header>
+{% include '_accessibility.html' %}
 {% block content %}{% endblock %}
 <footer><strong>AccessÉdu</strong> · <span data-en="Independent accessibility demo · English ↔ Canadian French" data-fr="Démo indépendante d’accessibilité · Anglais ↔ Français canadien">Independent accessibility demo · English ↔ Canadian French</span><br>
 <span data-en="AI can make mistakes. Check the cited passages. Translations are unofficial." data-fr="L’IA peut faire des erreurs. Vérifiez les passages cités. Les traductions sont non officielles.">AI can make mistakes. Check the cited passages. Translations are unofficial.</span>
