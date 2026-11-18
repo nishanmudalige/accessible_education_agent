@@ -19,6 +19,7 @@ BASE = Path(__file__).resolve().parent
 load_dotenv(BASE / '.env', override=os.getenv('RENDER','').lower()!='true')
 import ai_service as ai  # Load model overrides after .env.
 from retrieval import LibraryIndex
+from reader_backend import page_png, page_data, resolution
 
 @lru_cache(maxsize=1)
 def library():
@@ -30,14 +31,12 @@ def reader_url(p):
 def create_app(config=None):
     app = Flask(__name__)
     app.config.update(SECRET_KEY=os.getenv('SECRET_KEY') or secrets.token_hex(32),
-        APP_PASSWORD=os.getenv('APP_PASSWORD',''), MAX_CONTENT_LENGTH=48000,
+        MAX_CONTENT_LENGTH=48000,
         SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE='Lax',
         SESSION_COOKIE_SECURE=os.getenv('RENDER','').lower()=='true',
         AI_ENABLED=True, RATE_LIMIT=int(os.getenv('REQUESTS_PER_MINUTE','8')))
     if config:
         app.config.update(config)
-    if app.config['APP_PASSWORD'] and not os.getenv('SECRET_KEY') and not app.testing:
-        logging.warning('Set SECRET_KEY for stable sessions across restarts.')
     rate = defaultdict(deque)
     rate_lock = threading.Lock()
 
@@ -48,23 +47,17 @@ def create_app(config=None):
 
     @app.context_processor
     def common():
-        return {'csrf_token':csrf(), 'password_set':bool(app.config['APP_PASSWORD'])}
+        return {'csrf_token':csrf()}
 
     @app.before_request
     def access_control():
         if request.path == '/health' or request.path.startswith('/static/'):
             return
-        if app.config['APP_PASSWORD'] and not session.get('authenticated') and request.endpoint != 'login':
-            if request.path.startswith('/api/'):
-                return jsonify(error='Sign in to use this demo.'),401
-            return redirect(url_for('login'))
         if request.method == 'POST':
             sent = request.headers.get('X-CSRF-Token') or request.form.get('csrf','')
             if not session.get('csrf') or not hmac.compare_digest(sent.encode(),session['csrf'].encode()):
                 return jsonify(error='Session expired. Reload the page and try again.'),403
         if request.path.startswith('/api/') and request.method == 'POST':
-            if not app.config['APP_PASSWORD']:
-                return jsonify(error='Set APP_PASSWORD to enable paid AI requests. The local reader and local search remain available.'),503
             if not app.config['AI_ENABLED']:
                 return jsonify(error='AI requests are disabled.'),503
             # Direct peer address: do not trust arbitrary client-supplied X-Forwarded-For.
@@ -92,29 +85,12 @@ def create_app(config=None):
 
     @app.route('/login',methods=['GET','POST'])
     def login():
-        error = ''
-        if request.method=='POST':
-            # A small shared in-process login limit for a single-worker demo.
-            now=time.monotonic()
-            with rate_lock:
-                attempts=rate['login']
-                while attempts and now-attempts[0]>60: attempts.popleft()
-                if len(attempts)>=15:
-                    return render_template('login.html',error='Too many attempts. Wait one minute.'),429
-                attempts.append(now)
-            entered=request.form.get('password','')
-            if app.config['APP_PASSWORD'] and hmac.compare_digest(entered.encode(),app.config['APP_PASSWORD'].encode()):
-                session.clear()
-                session['authenticated']=True
-                csrf()
-                return redirect('/')
-            error='Incorrect password / Mot de passe incorrect.'
-        return render_template('login.html',error=error)
+        return redirect('/')
 
     @app.post('/logout')
     def logout():
         session.clear()
-        return redirect('/login')
+        return redirect('/')
 
     @app.get('/health')
     def health():
@@ -136,7 +112,7 @@ def create_app(config=None):
         except KeyError: abort(404)
         ids=set(request.args.get('ids','').split(','))
         return render_template('reader.html',doc=index.docs[doc_id],doc_id=doc_id,
-            page=number,passages=passages,selected=ids,
+            docs=index.public_docs(),page=number,passages=passages,selected=ids,
             rects=[r for p in passages if p['id'] in ids for r in p['rects']])
 
     @app.get('/pdf/<doc_id>')
@@ -149,9 +125,17 @@ def create_app(config=None):
     def image(doc_id,number):
         index=library()
         if (doc_id,number) not in index.pages: abort(404)
-        with fitz.open(index.docs[doc_id]['path']) as pdf:
-            data=pdf[number-1].get_pixmap(matrix=fitz.Matrix(1.4,1.4),alpha=False).tobytes('png')
+        try:scale=resolution(request.args.get('scale','2.5'))
+        except ValueError:abort(400)
+        data=page_png(str(index.docs[doc_id]['path']),number,scale)
         return send_file(io.BytesIO(data),mimetype='image/png')
+
+    @app.get('/api/reader/<doc_id>/<int:number>')
+    def reader_page(doc_id,number):
+        index=library()
+        if (doc_id,number) not in index.pages:abort(404)
+        ids=request.args.get('ids','').split(',')[:20]
+        return jsonify(page_data(index,doc_id,number,ids,request.args.get('q','')[:200]))
 
     @app.get('/api/search')
     def local_search():

@@ -88,7 +88,20 @@
     if(data.results?.length)answer.append(resultCards(data.results,data.question||'',new Set(data.evidence.map(e=>e.key))));block.append(answer);A.localize(block);
   }
   let busy=false;
-  function setBusy(value){busy=value;$('ask').disabled=value;$('local-search').disabled=value;$('status').textContent=value?A.tr('Searching sources and preparing a response… this may take a minute or two.','Recherche des sources et préparation d’une réponse… cela peut prendre une minute ou deux.'):'';$('conversation').setAttribute('aria-busy',String(value));}
+  function setBusy(value){
+    busy=value;$('ask').disabled=value;$('local-search').disabled=value;
+    $('ask').setAttribute('aria-busy',String(value));$('conversation').setAttribute('aria-busy',String(value));
+    document.querySelectorAll('.thinking-bubble').forEach(node=>node.remove());
+    if(value){
+      const bubble=el('article','thinking-bubble panel');bubble.setAttribute('role','status');bubble.setAttribute('aria-live','polite');
+      const icon=el('span','thinking-orbit');icon.setAttribute('aria-hidden','true');icon.append(el('span','thinking-lens'));
+      const copy=el('div','thinking-copy');copy.append(label(el('strong'),'Searching & thinking','Recherche et réflexion'),label(el('p'),'Finding relevant passages and preparing your response…','Recherche des passages pertinents et préparation de votre réponse…'));
+      const dots=el('span','thinking-dots');dots.setAttribute('aria-hidden','true');for(let i=0;i<3;i++)dots.append(el('i'));
+      bubble.append(icon,copy,dots);$('conversation').lastElementChild?.append(bubble);
+      bubble.scrollIntoView({block:'nearest',behavior:'smooth'});
+    }
+    $('status').textContent=value?A.tr('Searching sources and preparing a response…','Recherche des sources et préparation d’une réponse…'):'';
+  }
   $('ask-form').onsubmit=async e=>{
     e.preventDefault();if(busy)return;const q=$('question').value.trim();if(!q)return;
     const block=message(q);setBusy(true);
@@ -100,7 +113,7 @@
     finally{setBusy(false);$('status').textContent=A.tr('Request finished. Check the response above.','Demande terminée. Consultez la réponse ci-dessus.');block.scrollIntoView({block:'start',behavior:'smooth'});}
   };
   $('local-search').onclick=async()=>{
-    const q=$('question').value.trim();if(!q||busy)return;setBusy(true);const block=message(q);
+    const q=$('question').value.trim();if(!q||busy)return;const block=message(q);setBusy(true);
     try{const response=await fetch('/api/search?'+new URLSearchParams({q,doc:$('doc').value}));const data=await response.json();if(!response.ok)throw Error(data.error||'Search failed');
       const panel=el('article','panel answer');panel.append(label(el('span','badge neutral'),'Local search · relevance not yet verified','Recherche locale · pertinence non encore vérifiée'));
       if(data.results.length){const cards=resultCards(data.results,q);cards.open=true;panel.append(cards);}else panel.append(label(el('p'),'No matching passages. Try different terms or use Ask for bilingual query expansion.','Aucun passage trouvé. Essayez d’autres termes ou utilisez Questionner pour une recherche bilingue enrichie.'));block.append(panel);

@@ -11,8 +11,6 @@ services:
         value: 3.12.14
       - key: OPENAI_API_KEY
         sync: false
-      - key: APP_PASSWORD
-        sync: false
       - key: SECRET_KEY
         generateValue: true
       - key: OPENAI_ANSWER_MODEL

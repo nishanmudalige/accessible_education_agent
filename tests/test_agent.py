@@ -39,8 +39,11 @@ def test_full_pdf_and_french_retrieval():
 def test_reader_citation_and_image_share_exact_block(client):
     p=module.library().search('confidence interval',limit=1)[0]
     html=client.get(module.reader_url(p)).get_data(as_text=True)
-    assert f'id="{p["id"]}" class="source-block evidence"' in html
-    assert 'overlay-mark' in html
+    assert f'data-passage="{p["id"]}" class="source-block evidence"' in html
+    assert 'reader-highlight' in html
+    data=client.get(f'/api/reader/{p["doc"]}/{p["page"]}?ids={p["id"]}').json
+    assert data['selected_ids']==[p['id']] and data['boxes']==p['rects']
+    assert data['width']>0 and data['height']>0
     image=client.get(f'/page-image/{p["doc"]}/{p["page"]}')
     assert image.status_code==200 and image.mimetype=='image/png'
 
@@ -50,18 +53,16 @@ def test_invalid_pages_and_paths(client):
     assert client.get('/page-image/unknown/1').status_code==404
     assert client.get('/api/search?q=mean&doc=unknown').status_code==404
 
-def test_login_protects_pdf_and_api():
-    a=module.create_app({'TESTING':True,'SECRET_KEY':'x','APP_PASSWORD':'secret'})
+def test_demo_opens_without_password_even_with_old_render_setting():
+    a=module.create_app({'TESTING':True,'SECRET_KEY':'x','APP_PASSWORD':'old-deployed-password'})
     c=a.test_client()
-    assert c.get('/').status_code==302
-    assert c.get('/pdf/openintro-statistics-4e').status_code==302
-    assert c.get('/api/search?q=mean').status_code==401
-    assert c.get('/health').json['pages']>=422
-    html=c.get('/login').get_data(as_text=True)
-    csrf=re.search(r'name="csrf" value="([^"]+)"',html).group(1)
-    assert c.post('/login',data={'csrf':csrf,'password':'wrong'}).status_code==200
-    assert c.post('/login',data={'csrf':csrf,'password':'secret'}).status_code==302
     assert c.get('/').status_code==200
+    assert c.get('/pdf/openintro-statistics-4e').status_code==200
+    assert c.get('/api/search?q=mean').status_code==200
+    assert c.get('/reader?page=181').status_code==200
+    assert c.get('/login').status_code==302 and c.get('/login').headers['Location']=='/'
+    assert 'name="password"' not in c.get('/').get_data(as_text=True)
+
 
 def test_csrf_and_validation(client):
     assert client.post('/api/ask',json={'question':'hello'}).status_code==403
@@ -69,12 +70,13 @@ def test_csrf_and_validation(client):
     assert post(client,'/api/translate',{'text':'abc','target':'fi'}).status_code==400
     assert post(client,'/api/translate',{'text':'x'*14001}).status_code==400
 
-def test_no_password_blocks_spend_but_not_local_reading():
-    a=module.create_app({'TESTING':True,'SECRET_KEY':'x','APP_PASSWORD':''})
+def test_ai_works_without_a_demo_password(monkeypatch):
+    a=module.create_app({'TESTING':True,'SECRET_KEY':'x'})
     c=a.test_client();c.get('/')
     with c.session_transaction() as s:token=s['csrf']
-    assert c.get('/api/search?q=normal').status_code==200
-    assert c.post('/api/ask',json={'question':'normal'},headers={'X-CSRF-Token':token}).status_code==503
+    fake_ai(monkeypatch,related=False)
+    assert c.post('/api/ask',json={'question':'vacation'},headers={'X-CSRF-Token':token}).status_code==200
+
 
 def test_out_of_scope_does_not_answer_or_search_web(client,monkeypatch):
     calls=fake_ai(monkeypatch,related=False)
@@ -197,3 +199,27 @@ def test_local_diagnostic_prefers_dotenv_without_printing_key(tmp_path,monkeypat
     text=capsys.readouterr().out
     assert 'differs from .env' in text and 'No API request made' in text
     assert 'sk-old' not in text and 'sk-local' not in text
+
+
+def test_reader_search_highlights_and_resolution_validation(client):
+    p=module.library().search('confidence interval',limit=1)[0]
+    data=client.get(f'/api/reader/{p["doc"]}/{p["page"]}?q=confidence').json
+    assert data['boxes'] and data['selected_ids']
+    assert all(0<=r['x']<=100 and 0<=r['y']<=100 for r in data['boxes'])
+    assert client.get(f'/page-image/{p["doc"]}/{p["page"]}?scale=nan').status_code==400
+    assert client.get(f'/page-image/{p["doc"]}/{p["page"]}?scale=100').status_code==400
+    assert client.get('/api/reader/unknown/1').status_code==404
+
+
+def test_reader_does_not_highlight_invented_ids(client):
+    data=client.get('/api/reader/openintro-statistics-4e/181?ids=p99999').json
+    assert not data['boxes'] and not data['selected_ids']
+
+
+def test_reader_page_image_resolution_is_high_enough(client):
+    import fitz
+    image=client.get('/page-image/openintro-statistics-4e/181?scale=2.5')
+    pix=fitz.Pixmap(image.data)
+    data=client.get('/api/reader/openintro-statistics-4e/181').json
+    assert abs(pix.width-data['width']*2.5)<=1
+    assert abs(pix.height-data['height']*2.5)<=1

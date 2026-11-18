@@ -8,9 +8,14 @@
       "subject": "Introductory statistics, probability, data analysis, inference, linear and logistic regression",
       "language": "en-CA",
       "source_url": "https://www.openintro.org/book/os/",
-      "license": "CC BY-SA 3.0; see THIRD_PARTY_NOTICES.md for exceptions",
+      "license": "CC BY-SA 3.0; see THIRD_PARTY_NOTICES.txt for exceptions",
       "license_url": "https://www.openintro.org/license/",
-      "exclude_search_pages": [1, 2, 3, 4]
+      "exclude_search_pages": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   ]
 }
