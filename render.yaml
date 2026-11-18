@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: access-edu-agent
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 1 --threads 4 --timeout 300 --bind 0.0.0.0:$PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.14
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: OPENAI_ANSWER_MODEL
+        value: gpt-6.2-astra
+      - key: OPENAI_SEARCH_MODEL
+        value: gpt-6.1-sol
+      - key: OPENAI_TRANSLATE_MODEL
+        value: gpt-6.1-sol
