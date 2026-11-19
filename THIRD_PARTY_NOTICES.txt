@@ -1,5 +1,10 @@
 # Source attribution and licenses
 
+
+
+
+
+
 ## OpenIntro Statistics, Fourth Edition
 
 Authors: **David Diez, Mine Çetinkaya-Rundel and Christopher D Barr**. Copyright © 2019. The supplied PDF states that it was updated December 30, 2024.
