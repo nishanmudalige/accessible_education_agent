@@ -64,3 +64,11 @@ python benchmark/run.py --offline-only --book active-calculus-html --index-book 
 ```
 
 `--index-book` isolates measured index rebuilds to that book. Initial `/health` warm-up still loads the full collection and is reported separately. Without `--index-book`, per-book logs still show each book's time. HTML page measurements time serving a saved chapter, not browser MathJax layout. An HTML `page` value is a chapter ordinal, not a printed page. Existing PDF reading is unchanged.
+
+For a Pressbooks site that blocks automated requests, use its **Download this book → XHTML** export in your browser, then import the complete official HTML export locally. This uses the publisher's full table of contents and reconstructs canonical chapter URLs from its chapter/front-matter/back-matter slugs; it does not substitute another edition. Example:
+
+```sh
+python scripts/import_html.py --id writing-for-success-html --kind pressbooks --url https://opentextbc.ca/writingforsuccess/ --export-file /path/to/official-export.html
+```
+
+The original export is retained as `source.xhtml` alongside sanitized chapters. Only chapter files named by `book.json` are served by the local book route. Remote downloads use pacing; processing an already-downloaded export makes no further network requests.

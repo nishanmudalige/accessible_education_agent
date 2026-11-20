@@ -97,6 +97,34 @@ def clean_chapter(raw,url,kind):
     output=re.sub(r'\[latex\](.*?)\[/latex\]',lambda m:'\\('+m[1]+'\\)',output,flags=re.S)
     return title,output,records
 
+def export_chapters(raw,base):
+    """Split the publisher's complete Pressbooks XHTML export in TOC order."""
+    soup=BeautifulSoup(raw,'html.parser')
+    if not soup.select_one('#toc'): raise ValueError('Not a complete Pressbooks XHTML export')
+    nodes=[]
+    for a in soup.select('#toc a[href^="#"]'):
+        node=soup.find(id=a['href'][1:])
+        if node and node.name=='div' and node not in nodes: nodes.append(node)
+    mapping={}
+    for node in nodes:
+        ident=node['id']
+        for prefix in ('front-matter-','back-matter-','chapter-','part-'):
+            if ident.startswith(prefix):
+                url=urljoin(base,prefix[:-1]+'/'+ident[len(prefix):]+'/');break
+        else: raise ValueError('Unrecognized exported chapter identifier')
+        mapping[ident]=url
+    anchors={child['id']:mapping[node['id']] for node in nodes for child in node.select('[id]')}
+    for node in nodes:
+        for a in node.select('a[href^="#"]'):
+            ident=a['href'][1:]
+            if ident in mapping: a['href']=mapping[ident]
+            elif ident in anchors: a['href']=anchors[ident]+'#'+ident
+        title=node.get('title') or normalized(node.select_one('h1,h2,h3').get_text(' ',strip=True))
+        wrapper=BeautifulSoup('<main><h1 class="entry-title"></h1><div class="entry-content"></div></main>','html.parser')
+        wrapper.h1.string=title
+        wrapper.select_one('.entry-content').append(node)
+        yield mapping[node['id']],str(wrapper)
+
 class Fetcher:
     def __init__(self,cache,interval): self.cache=cache;self.interval=interval;self.last=None
     def get(self,url):
@@ -115,17 +143,26 @@ def main():
     p.add_argument('--id',required=True);p.add_argument('--url',required=True)
     p.add_argument('--kind',choices=['pretext','pressbooks'],required=True)
     p.add_argument('--interval',type=float,default=1.5)
+    p.add_argument('--export-file',type=Path,help='Official Pressbooks XHTML export saved through a browser; avoids refetching blocked chapter pages')
     args=p.parse_args()
     if not re.fullmatch('[a-z0-9-]+',args.id) or args.interval<1:p.error('Use a slug ID and an interval of at least one second')
     folder=ROOT/'content'/args.id;folder.mkdir(parents=True,exist_ok=True)
     cache=folder/'raw';cache.mkdir(exist_ok=True)
     fetch=Fetcher(cache,args.interval)
-    raw=fetch.get(args.url);soup=BeautifulSoup(raw,'html.parser')
-    links=chapter_links(soup,args.url,args.kind)
+    if args.export_file:
+        if args.kind!='pressbooks':p.error('--export-file is only for Pressbooks')
+        raw=args.export_file.read_text(encoding='utf-8')
+        (folder/'source.xhtml').write_text(raw,encoding='utf-8')
+        exported=dict(export_chapters(raw,args.url))
+        links={url:'' for url in exported}
+    else:
+        raw=fetch.get(args.url);soup=BeautifulSoup(raw,'html.parser')
+        links=chapter_links(soup,args.url,args.kind)
+        exported={}
     if not links:raise ValueError('No chapter directory found; use the full PreTeXt frontmatter URL or Pressbooks book home')
     chapters=[]
     for url,label in links.items():
-        raw=raw if url==args.url else fetch.get(url)
+        raw=exported[url] if args.export_file else (raw if url==args.url else fetch.get(url))
         title,html,records=clean_chapter(raw,url,args.kind)
         slug=re.sub(r'[^a-zA-Z0-9_-]','-',urlsplit(url).path.rstrip('/').split('/')[-1].removesuffix('.html'))
         filename=slug+'.html';(folder/filename).write_text(html,encoding='utf-8')
@@ -140,7 +177,7 @@ def main():
             if url in local:a['href']=local[url]+('#'+anchor if anchor else '')
         path.write_text(str(soup),encoding='utf-8')
     index=folder/'book.json'
-    index.write_text(json.dumps({'source_url':args.url,'kind':args.kind,'chapters':chapters},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    index.write_text(json.dumps({'source_url':args.url,'kind':args.kind,'import_method':'official_xhtml_export' if args.export_file else 'chapter_crawl','chapters':chapters},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'Saved {len(chapters)} chapters to {index}',flush=True)
 
 if __name__=='__main__':main()

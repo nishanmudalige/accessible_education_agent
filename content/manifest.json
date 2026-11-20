@@ -41,6 +41,18 @@
       "source_url": "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/",
       "license": "CC BY-SA 4.0, except where otherwise noted",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "id": "writing-for-success-html",
+      "format": "html",
+      "file": "writing-for-success-html/book.json",
+      "title": "Writing for Success – 1st Canadian Edition (HTML)",
+      "authors": "Tara Horkoff and an author removed at the request of the original publisher",
+      "subject": "Academic writing, reading strategies, grammar, sentence fragments, paragraphs, thesis statements, drafting, revision, research and citations",
+      "language": "en-CA",
+      "source_url": "https://opentextbc.ca/writingforsuccess/",
+      "license": "CC BY-NC-SA 4.0, except where otherwise noted",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     }
   ]
 }

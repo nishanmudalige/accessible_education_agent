@@ -33,3 +33,9 @@ Local adaptation removes site navigation and scripts, adds paragraph anchors, an
 ## MathJax 3.2.2
 
 Local formula rendering bundle and fonts from the official MathJax npm package, under Apache License 2.0. License: `static/vendor/mathjax/LICENSE`. https://www.mathjax.org/
+
+## Writing for Success — 1st Canadian Edition (HTML)
+
+Tara Horkoff and an author removed at the request of the original publisher. © 2015.
+Source: https://opentextbc.ca/writingforsuccess/ . CC BY-NC-SA 4.0, except where otherwise noted: https://creativecommons.org/licenses/by-nc-sa/4.0/ .
+Imported from the complete official XHTML download (publisher export filename dated December 2021), obtained through the browser on 2026-11-19 because automated chapter requests were blocked. The unmodified export is retained as `content/writing-for-success-html/source.xhtml`. All 12 main chapters, preface and appendix are included. Local adaptation removes navigation/scripts and adds local paragraph IDs. Images link to original URLs. Original notices and third-party exceptions remain applicable. Download the original for free from BCcampus: https://open.bccampus.ca/ .

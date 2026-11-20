@@ -63,3 +63,29 @@ def test_html_only_index_does_not_load_pdf():
     index=LibraryIndex(ROOT/'content/manifest.json',doc_id='active-calculus-html')
     assert list(index.docs)==['active-calculus-html']
     assert index.search('derivative')[0]['format']=='html'
+
+
+def test_official_pressbooks_export_preserves_toc_and_canonical_links():
+    source='''<div id="toc"><a href="#chapter-first">First</a><a href="#chapter-second">Second</a></div><div class="chapter" id="chapter-first" title="First"><h2>First</h2><p id="existing">A thesis statement is an argument.</p><a href="#chapter-second">Next</a></div><div class="chapter" id="chapter-second" title="Second"><h2>Second</h2><p>Supporting evidence.</p></div>'''
+    chapters=list(importer.export_chapters(source,'https://example.org/book/'))
+    assert [url for url,_ in chapters]==['https://example.org/book/chapter/first/','https://example.org/book/chapter/second/']
+    assert 'https://example.org/book/chapter/second/' in chapters[0][1]
+    assert importer.clean_chapter(chapters[0][1],chapters[0][0],'pressbooks')[2][0]['id']=='existing'
+
+
+def test_writing_snapshot_search_and_local_citation(monkeypatch):
+    index=module.library()
+    assert len(index.docs['writing-for-success-html']['chapters'])==14
+    hit=index.search('thesis statement','writing-for-success-html',1)[0]
+    assert 'thesis' in hit['text'].lower()
+    client=module.create_app({'TESTING':True,'SECRET_KEY':'writing'}).test_client()
+    response=client.get(module.reader_url(hit))
+    assert response.status_code==200
+    html=response.get_data(as_text=True)
+    assert hit['id'] in html and 'Tara Horkoff' in html and 'CC BY-NC-SA 4.0' in html
+    assert 'https://opentextbc.ca/writingforsuccess/' in html
+    with client.session_transaction() as session: session['csrf']='writing-csrf'
+    monkeypatch.setattr(ai,'plan',lambda *a: {'related':True,'language':'en-CA','query_en':'thesis statement','query_fr':'énoncé de thèse'})
+    monkeypatch.setattr(ai,'answer',lambda *a: {'related':True,'supported':True,'answer':'A thesis statement. [S1]','evidence':['S1']})
+    answer=client.post('/api/ask',json={'question':'What is a thesis statement?','doc':'writing-for-success-html','web':False},headers={'X-CSRF-Token':'writing-csrf'}).json
+    assert answer['category']=='book' and answer['evidence'][0]['url'].startswith('/book/writing-for-success-html/')

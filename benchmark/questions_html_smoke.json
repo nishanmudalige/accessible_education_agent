@@ -14,5 +14,21 @@
     "reply_language": "en",
     "web": false,
     "repeats": 1
+  },
+  {
+    "book": "writing-for-success-html",
+    "question": "What is a thesis statement?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 1
+  },
+  {
+    "book": "writing-for-success-html",
+    "question": "How can I avoid sentence fragments?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 1
   }
 ]
