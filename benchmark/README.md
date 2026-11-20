@@ -72,3 +72,11 @@ python scripts/import_html.py --id writing-for-success-html --kind pressbooks --
 ```
 
 The original export is retained as `source.xhtml` alongside sanitized chapters. Only chapter files named by `book.json` are served by the local book route. Remote downloads use pacing; processing an already-downloaded export makes no further network requests.
+
+Three HTML book IDs are available: `active-calculus-html` (69 TOC pages), `writing-for-success-html` (14 pages from the official 2021 XHTML export) and `liberte1-html` (30 TOC entries from the official 2025 XHTML export). `benchmark/questions_html_smoke.json` contains two questions per book with explicit book IDs and no web search. To run the six paid smoke questions, omit `--book` so each entry selects its own book:
+
+```sh
+python benchmark/run.py --questions benchmark/questions_html_smoke.json --plan-quality --skip-plan off --cold-runs 0 --page-runs 0
+```
+
+Use `--limit 1 --dry-run` to preview a single request. The provided calculus questions test calculus; Writing for Success tests writing/grammar; Liberté tests beginner French. No live model calls were made during import validation; automated tests mock model outputs and verify retrieval and local evidence links.

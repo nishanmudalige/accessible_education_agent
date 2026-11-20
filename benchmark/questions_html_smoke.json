@@ -30,5 +30,21 @@
     "reply_language": "en",
     "web": false,
     "repeats": 1
+  },
+  {
+    "book": "liberte1-html",
+    "question": "Comment conjuguer le verbe être au présent ?",
+    "question_language": "fr",
+    "reply_language": "fr",
+    "web": false,
+    "repeats": 1
+  },
+  {
+    "book": "liberte1-html",
+    "question": "Comment choisir entre les articles définis le, la et les ?",
+    "question_language": "fr",
+    "reply_language": "fr",
+    "web": false,
+    "repeats": 1
   }
 ]

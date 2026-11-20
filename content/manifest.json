@@ -53,6 +53,18 @@
       "source_url": "https://opentextbc.ca/writingforsuccess/",
       "license": "CC BY-NC-SA 4.0, except where otherwise noted",
       "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    {
+      "id": "liberte1-html",
+      "format": "html",
+      "file": "liberte1-html/book.json",
+      "title": "Liberté, Volume 1 : Première édition canadienne (HTML)",
+      "authors": "Larry Steele; Julia Hines; Olivia Bazot; Alexandra Tsedryk; Juliette Valcke; Gretchen V. Angelo; Emmanuelle Remy",
+      "subject": "Beginner French language, greetings, articles, nouns, gender, adjectives, subject pronouns, present tense être and avoir, regular -er verbs, vocabulary and pronunciation; French examples with English grammar explanations",
+      "language": "fr-CA",
+      "source_url": "https://pressbooks.atlanticoer-relatlantique.ca/liberte1/",
+      "license": "Canadian adaptation: CC BY-NC-SA 4.0; underlying Liberté: CC BY-NC-SA 3.0; except where otherwise noted",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
     }
   ]
 }

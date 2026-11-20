@@ -9,6 +9,9 @@
     if(!target||!target.closest('.chapter-content')){
       status.textContent=french?'Le passage cité est introuvable sur cette page.':'The cited passage could not be found on this page.';return;
     }
+    for(let ancestor=target.parentElement;ancestor;ancestor=ancestor.parentElement){
+      if(ancestor.tagName==='DETAILS')ancestor.open=true;
+    }
     target.classList.add('cited-passage');target.setAttribute('tabindex','-1');
     target.setAttribute('aria-describedby','citation-status');
     status.textContent=french?'Passage cité mis en évidence.':'Cited passage highlighted.';

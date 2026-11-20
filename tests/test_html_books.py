@@ -89,3 +89,39 @@ def test_writing_snapshot_search_and_local_citation(monkeypatch):
     monkeypatch.setattr(ai,'answer',lambda *a: {'related':True,'supported':True,'answer':'A thesis statement. [S1]','evidence':['S1']})
     answer=client.post('/api/ask',json={'question':'What is a thesis statement?','doc':'writing-for-success-html','web':False},headers={'X-CSRF-Token':'writing-csrf'}).json
     assert answer['category']=='book' and answer['evidence'][0]['url'].startswith('/book/writing-for-success-html/')
+
+
+def test_liberte_french_search_answer_and_citation(monkeypatch):
+    index=module.library()
+    assert len(index.docs['liberte1-html']['chapters'])==30
+    hits=index.search('être present tense conjugation','liberte1-html',5)
+    assert hits and any('être' in h['text'] or 'present' in h['text'].lower() for h in hits)
+    client=module.create_app({'TESTING':True,'SECRET_KEY':'liberte','SKIP_PLAN':False}).test_client()
+    with client.session_transaction() as session:session['csrf']='liberte-csrf'
+    monkeypatch.setattr(ai,'plan',lambda *a:{'related':True,'language':'fr-CA','query_en':'être present tense conjugation','query_fr':'être présent'})
+    monkeypatch.setattr(ai,'answer',lambda *a:{'related':True,'supported':True,'answer':'Je suis. [S1]','evidence':['S1']})
+    result=client.post('/api/ask',json={'question':'Comment conjuguer le verbe être au présent ?','doc':'liberte1-html','language':'fr-CA','web':False},headers={'X-CSRF-Token':'liberte-csrf'}).json
+    assert result['category']=='book' and result['language']=='fr-CA'
+    page=client.get(result['evidence'][0]['url'])
+    assert page.status_code==200
+    text=page.get_data(as_text=True)
+    assert 'lang="fr-CA"' in text and 'CC BY-NC-SA 4.0' in text and 'Alexandra Tsedryk' in text
+    assert result['evidence'][0]['id'] in text
+
+
+def test_all_smoke_questions_have_local_evidence():
+    index=module.library()
+    questions=json.loads((ROOT/'benchmark/questions_html_smoke.json').read_text())
+    assert len(questions)==6
+    for q in questions:
+        hits=index.search(q['question'],q['book'],3)
+        assert hits, q
+        assert module.reader_url(hits[0]).startswith('/book/')
+
+
+def test_html_citation_focus_and_disclosure_script():
+    import shutil
+    import subprocess
+    node=shutil.which('node')
+    if not node: pytest.skip('Node.js needed for citation UI fixture')
+    subprocess.run([node,'tests/book_ui.cjs'],cwd=ROOT,check=True)
