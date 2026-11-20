@@ -29,6 +29,8 @@ def library():
     return LibraryIndex(BASE / 'content' / 'manifest.json')
 
 def reader_url(p):
+    if p.get('format')=='html':
+        return f"/book/{p['doc']}/{p['chapter']}?"+urlencode({'hl':p['id']})
     return '/reader?' + urlencode({'doc':p['doc'],'page':p['page'],'ids':p['id']})
 
 def create_app(config=None):
@@ -89,7 +91,7 @@ def create_app(config=None):
         response.headers['X-Content-Type-Options']='nosniff'
         response.headers['Referrer-Policy']='strict-origin-when-cross-origin'
         response.headers['X-Frame-Options']='SAMEORIGIN'
-        response.headers['Content-Security-Policy']="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+        response.headers.setdefault('Content-Security-Policy',"default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'")
         if not request.path.startswith('/static/'):
             response.headers['Cache-Control']='no-store'
         return response
@@ -114,11 +116,24 @@ def create_app(config=None):
             answer_model=ai.ASTRA, search_model=ai.SOL,
             web_search_default=app.config['WEB_SEARCH_DEFAULT'])
 
+    @app.get('/book/<doc_id>/<chapter_id>')
+    def html_chapter(doc_id,chapter_id):
+        doc=library().docs.get(doc_id)
+        if not doc or doc.get('format')!='html': abort(404)
+        chapter=next((c for c in doc['chapters'] if c['id']==chapter_id),None)
+        if chapter is None: abort(404)
+        content=(doc['path'].parent/chapter['file']).read_text(encoding='utf-8')
+        response=app.make_response(render_template('book.html',doc=doc,chapter=chapter,content=content))
+        response.headers['Content-Security-Policy']="default-src 'self'; img-src 'self' data: https:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+        return response
+
     @app.get('/reader')
     def reader():
         index=library()
         doc_id=request.args.get('doc',next(iter(index.docs)))
         if doc_id not in index.docs: abort(404)
+        if index.docs[doc_id].get('format')=='html':
+            return redirect(index.docs[doc_id]['toc'][0]['url'])
         number=request.args.get('page',1,type=int)
         try: passages=index.page(doc_id,number)
         except KeyError: abort(404)
@@ -130,13 +145,13 @@ def create_app(config=None):
     @app.get('/pdf/<doc_id>')
     def pdf(doc_id):
         doc=library().docs.get(doc_id)
-        if not doc: abort(404)
+        if not doc or doc.get('format','pdf')!='pdf': abort(404)
         return send_file(doc['path'],mimetype='application/pdf',conditional=True)
 
     @app.get('/page-image/<doc_id>/<int:number>')
     def image(doc_id,number):
         index=library()
-        if (doc_id,number) not in index.pages: abort(404)
+        if (doc_id,number) not in index.pages or index.docs[doc_id].get('format','pdf')!='pdf': abort(404)
         try:scale=resolution(request.args.get('scale','2.5'))
         except ValueError:abort(400)
         data=page_png(str(index.docs[doc_id]['path']),number,scale,doc_id)
@@ -211,7 +226,7 @@ def create_app(config=None):
             top_score=hits[0]['score'] if hits else 0.0
             explicit_page=False
             match=re.search(r'\b(?:pdf\s*)?(?:page|p\.)\s*(\d{1,4})\b',question,re.I)
-            if match and len(docs)==1:
+            if match and len(docs)==1 and docs[0].get('format','pdf')=='pdf':
                 page=int(match.group(1))
                 if (docs[0]['id'],page) in library().pages:
                     hits=library().page(docs[0]['id'],page)

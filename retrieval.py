@@ -12,6 +12,7 @@ import re
 import unicodedata
 import time
 from timing import emit
+from html_books import load_html_book
 import fitz
 
 STOP = set('the a an and or of to in is are it this that how what why explain please book page le la les un une des de du et ou est sont en dans que qui comment pourquoi expliquer livre je me vous mon my for with from on au aux pour avec ce ces il elle'.split())
@@ -41,45 +42,54 @@ def expand(query):
     return ' '.join(v for k, v in GLOSSARY.items() if k in query.lower())
 
 class LibraryIndex:
-    def __init__(self, manifest: Path):
+    def __init__(self, manifest: Path, doc_id=None):
         self.root = manifest.parent.resolve()
         self.docs, self.pages, self.passages = {}, {}, []
         self.bags = []
         self.postings = defaultdict(list)
         entries = json.loads(manifest.read_text(encoding='utf-8'))['documents']
+        if doc_id:
+            entries=[entry for entry in entries if entry['id']==doc_id]
+            if not entries: raise ValueError('Unknown document for indexing')
         for entry in entries:
             book_started = time.perf_counter()
             first_passage = len(self.passages)
             doc_id = entry['id']
             if not re.fullmatch(r'[a-z0-9-]+', doc_id) or doc_id in self.docs:
                 raise ValueError('Each document needs a unique lowercase slug ID')
-            path = (self.root / entry['file']).resolve()
-            if not path.is_relative_to(self.root) or not path.is_file():
-                raise ValueError(f'Missing or unsafe document path for {doc_id}')
-            with fitz.open(path) as pdf:
-                toc = [{'level': level, 'title': title, 'page': page} for level, title, page in pdf.get_toc() if 1 <= page <= len(pdf)]
-                self.docs[doc_id] = {**entry, 'path': path, 'page_count': len(pdf), 'toc': toc}
-                excluded = set(entry.get('exclude_search_pages', []))
-                for number, page in enumerate(pdf, 1):
-                    blocks = []
-                    for block in page.get_text('dict', sort=True)['blocks']:
-                        if block['type'] != 0:
-                            continue
-                        lines = block.get('lines', [])
-                        text = normalize('\n'.join(''.join(s['text'] for s in line['spans']) for line in lines))
-                        if not text:
-                            continue
-                        # Preserve every textual block in the reader; tiny blocks stay out of ranking.
-                        rects = [{'x': l['bbox'][0]/page.rect.width*100,
-                                  'y': l['bbox'][1]/page.rect.height*100,
-                                  'w': (l['bbox'][2]-l['bbox'][0])/page.rect.width*100,
-                                  'h': (l['bbox'][3]-l['bbox'][1])/page.rect.height*100} for l in lines]
-                        record = {'id': f'p{len(blocks)}', 'doc': doc_id, 'page': number,
-                                  'text': text, 'rects': rects, 'label': page.get_label() or str(number)}
-                        blocks.append(record)
-                        if number not in excluded and len(text) >= 55:
-                            self.passages.append(record)
-                    self.pages[(doc_id, number)] = blocks
+            if entry.get('format','pdf')=='html':
+                doc,pages,passages=load_html_book(self.root,entry)
+                self.docs[doc_id]=doc
+                self.pages.update(pages)
+                self.passages.extend(passages)
+            else:
+                path = (self.root / entry['file']).resolve()
+                if not path.is_relative_to(self.root) or not path.is_file():
+                    raise ValueError(f'Missing or unsafe document path for {doc_id}')
+                with fitz.open(path) as pdf:
+                    toc = [{'level': level, 'title': title, 'page': page} for level, title, page in pdf.get_toc() if 1 <= page <= len(pdf)]
+                    self.docs[doc_id] = {**entry, 'path': path, 'page_count': len(pdf), 'toc': toc}
+                    excluded = set(entry.get('exclude_search_pages', []))
+                    for number, page in enumerate(pdf, 1):
+                        blocks = []
+                        for block in page.get_text('dict', sort=True)['blocks']:
+                            if block['type'] != 0:
+                                continue
+                            lines = block.get('lines', [])
+                            text = normalize('\n'.join(''.join(s['text'] for s in line['spans']) for line in lines))
+                            if not text:
+                                continue
+                            # Preserve every textual block in the reader; tiny blocks stay out of ranking.
+                            rects = [{'x': l['bbox'][0]/page.rect.width*100,
+                                      'y': l['bbox'][1]/page.rect.height*100,
+                                      'w': (l['bbox'][2]-l['bbox'][0])/page.rect.width*100,
+                                      'h': (l['bbox'][3]-l['bbox'][1])/page.rect.height*100} for l in lines]
+                            record = {'id': f'p{len(blocks)}', 'doc': doc_id, 'page': number,
+                                      'text': text, 'rects': rects, 'label': page.get_label() or str(number)}
+                            blocks.append(record)
+                            if number not in excluded and len(text) >= 55:
+                                self.passages.append(record)
+                        self.pages[(doc_id, number)] = blocks
             for passage in self.passages[first_passage:]:
                 bag = Counter(tokens(passage['text']))
                 i = len(self.bags)
@@ -91,7 +101,7 @@ class LibraryIndex:
         self.avg = sum(self.lengths)/max(1,len(self.lengths))
 
     def public_docs(self):
-        return [{k:v for k,v in d.items() if k != 'path'} for d in self.docs.values()]
+        return [{k:v for k,v in d.items() if k not in ('path','chapters')} for d in self.docs.values()]
 
     def search(self, query, doc_id=None, limit=10):
         scores = defaultdict(float)

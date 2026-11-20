@@ -1,0 +1,815 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-5-6-num-int">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Numerical integration</span>
+</h1>
+<article class="objectives goal-like" id="sec-5-6-num-int-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-5-6-num-int-2-1">
+<li id="sec-5-6-num-int-2-1-1">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-2-1-1-1">How do we accurately evaluate a definite integral such as <span class="process-math">\(\int_0^1 e^{-x^2} \, dx\)</span> when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative? Are there ways to generate accurate estimates without using extremely large values of <span class="process-math">\(n\)</span> in Riemann sums?
+</div>
+</li>
+<li id="sec-5-6-num-int-2-1-2">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-2-1-2-1">What is the Trapezoid Rule, and how is it related to left, right, and middle Riemann sums?
+</div>
+</li>
+<li id="sec-5-6-num-int-2-1-3">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-2-1-3-1">How are the errors in the Trapezoid Rule and Midpoint Rule related, and how can they be used to develop an even more accurate rule?
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-5-6-num-int-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para logical" id="sec-5-6-num-int-3-2">
+<div class="para" data-evidence="true" id="paragraph-f8d5f46f50b9f260-1">When we first explored finding the net signed area bounded by a curve, we developed the concept of a Riemann sum as a helpful estimation tool and a key step in the definition of the definite integral. Recall that the left, right, and middle Riemann sums of a function <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\)</span> are given by</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-3-2-3">
+\begin{align}
+L_n = f(x_0) \Delta x + f(x_1) \Delta x + \cdots + f(x_{n-1}) \Delta x \amp= \sum_{i = 0}^{n-1} f(x_i) \Delta x,\tag{5.6.1}\\
+R_n = f(x_1) \Delta x + f(x_2) \Delta x + \cdots + f(x_{n}) \Delta x \amp= \sum_{i = 1}^{n} f(x_i) \Delta x,\tag{5.6.2}\\
+M_n = f(\overline{x}_1) \Delta x + f(\overline{x}_2) \Delta x + \cdots + f(\overline{x}_{n}) \Delta x \amp= \sum_{i = 1}^{n} f(\overline{x}_i) \Delta x\text{,}\tag{5.6.3}
+\end{align}
+</div>
+<div class="para" data-evidence="true" id="paragraph-591a6844815259d8-1">where <span class="process-math">\(x_0 = a\text{,}\)</span> <span class="process-math">\(x_i = a + i\Delta x\text{,}\)</span> <span class="process-math">\(x_n = b\text{,}\)</span> and <span class="process-math">\(\Delta x = \frac{b-a}{n}\text{.}\)</span> For the middle sum, we defined <span class="process-math">\(\overline{x}_{i} = (x_{i-1} + x_i)/2\text{.}\)</span>
+</div>
+</div>
+<figure class="figure figure-like" id="F-5-6-LRMsum"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_LRMsum.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-6-LRMsum-2-description">
+<div class="para" data-evidence="true" id="F-5-6-LRMsum-2-1-1">There are three adjacent graphs: each shows a cubic polynomial function that’s always decreasing on the interval <span class="process-math">\(1 \lt x \lt 8\text{,}\)</span> except at <span class="process-math">\(x = 4\)</span> where the function has a horizontal tangent line.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-LRMsum-2-1-2">The leftmost graph shows a left Riemann sum with <span class="process-math">\(5\)</span> subintervals; all of the rectangles fall slightly above the curve.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-LRMsum-2-1-3">The middle graph shows a right Riemann sum with <span class="process-math">\(5\)</span> subintervals; all of the rectangles fall slightly below the curve.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-LRMsum-2-1-4">The rightmost graph shows a midpoint Riemann sum with <span class="process-math">\(5\)</span> subintervals; all of the rectangles have a portion that lies slightly above and a portion that lies slightly below the curve.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Left, right, and middle Riemann sums for <span class="process-math">\(y = f(x)\)</span> on <span class="process-math">\([1,8]\)</span> with 5 subintervals.</figcaption>
+</figure>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-3-4">A Riemann sum is a sum of (possibly signed) areas of rectangles. The value of <span class="process-math">\(n\)</span> determines the number of rectangles, and our choice of left endpoints, right endpoints, or midpoints determines the heights of the rectangles. We can see the similarities and differences among these three options in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-LRMsum" title="Figure 5.6.1">Figure 5.6.1</a>, where we consider the function <span class="process-math">\(f(x) = \frac{1}{20}(x-4)^3 + 7\)</span> on the interval <span class="process-math">\([1,8]\text{,}\)</span> and use 5 rectangles for each of the Riemann sums.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-3-5">While it is a good exercise to compute a few Riemann sums by hand, just to ensure that we understand how they work and how varying the function, the number of subintervals, and the choice of endpoints or midpoints affects the result, using computing technology is the best way to determine <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> and <span class="process-math">\(M_n\text{.}\)</span> Any computer algebra system will offer this capability; as we saw in <a class="xref" href="/book/active-calculus-html/sec-4-3-definite-integral#PA-4-3" title="Preview Activity 4.3.1">Preview Activity 4.3.1</a>, a straightforward option that is freely available online is <a class="external" href="https://gvsu.edu/s/a9">this interactive</a>. Note that we can adjust the formula for <span class="process-math">\(f(x)\text{,}\)</span> the window of <span class="process-math">\(x\)</span>- and <span class="process-math">\(y\)</span>-values of interest, the number of subintervals, and the type of Riemann sum. (See <a class="xref" href="/book/active-calculus-html/sec-4-3-definite-integral#PA-4-3" title="Preview Activity 4.3.1">Preview Activity 4.3.1</a> for any needed reminders on how the interactive works.)
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-3-6">In this section we explore several different alternatives for estimating definite integrals. Our main goal is to develop formulas to estimate definite integrals accurately without using a large numbers of rectangles.
+</div>
+<section class="worksheet" id="ws-PA-5-6">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-5-6"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-5-6-1">
+<div class="para" data-evidence="true" id="PA-5-6-1-1">As we begin to investigate ways to approximate definite integrals, it will be insightful to compare results to integrals whose exact values we know. To that end, the following sequence of questions centers on <span class="process-math">\(\int_0^3 x^2 \, dx\text{.}\)</span>
+</div>
+</div>
+<article class="task exercise-like" id="PA-5-6-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-0-1-1">Use <a class="external" href="https://gvsu.edu/s/a9">the interactive</a> with the function <span class="process-math">\(f(x) = x^2\)</span> on the window of <span class="process-math">\(x\)</span> values from <span class="process-math">\(0\)</span> to <span class="process-math">\(3\)</span> to compute <span class="process-math">\(L_3\text{,}\)</span> the left Riemann sum with three subintervals.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-5-6-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-1-1-1">Likewise, use the interactive to compute <span class="process-math">\(R_3\)</span> and <span class="process-math">\(M_3\text{,}\)</span> the right and middle Riemann sums with three subintervals, respectively.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-5-6-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-2-1-1">Use the Fundamental Theorem of Calculus to compute the exact value of <span class="process-math">\(I = \int_0^3 x^2 \, dx\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-5-6-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-3-1-1">We define the <em class="emphasis">error</em> that results from  an approximation of a definite integral to be the approximation’s value minus the integral’s exact value. What is the error that results from using <span class="process-math">\(L_3\text{?}\)</span> From <span class="process-math">\(R_3\text{?}\)</span> From <span class="process-math">\(M_3\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-5-6-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-4-1-1">In what follows in this section, we will learn a new approach to estimating the value of a definite integral known as the Trapezoid Rule. The basic idea is to use trapezoids, rather than rectangles, to estimate the area under a curve. What is the formula for the area of a trapezoid with bases of length <span class="process-math">\(b_1\)</span> and <span class="process-math">\(b_2\)</span> and height <span class="process-math">\(h\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-5-6-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="PA-5-6-task-5-1-1">Working by hand, estimate the area under <span class="process-math">\(f(x) = x^2\)</span> on <span class="process-math">\([0,3]\)</span> using three subintervals and three corresponding trapezoids. What is the error in this approximation? How does it compare to the errors you calculated in (d)?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-5-6-num-int-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Trapezoid Rule</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-4-3">So far, we have used the simplest possible quadrilaterals (that is, rectangles) to estimate areas. It is natural, however, to wonder if other familiar shapes might serve us even better.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-4-4">An alternative to <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> and <span class="process-math">\(M_n\)</span> is called the <em class="emphasis">Trapezoid Rule</em>. Rather than using a rectangle to estimate the (signed) area bounded by <span class="process-math">\(y = f(x)\)</span> on a small interval, we use a trapezoid. For example, in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-TRAP" title="Figure 5.6.2">Figure 5.6.2</a>, we estimate the area under the curve using three subintervals and the trapezoids that result from connecting the corresponding points on the curve with straight lines.
+</div>
+<figure class="figure figure-like" id="F-5-6-TRAP"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_TRAP.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-6-TRAP-2-description">
+<div class="para" data-evidence="true" id="F-5-6-TRAP-2-1-1">This figure shows shows a cubic polynomial function <span class="process-math">\(y = f(x)\)</span> that’s always decreasing on the interval from <span class="process-math">\(x = x_0\)</span> to <span class="process-math">\(x = x_3\)</span> in the first quadrant (along with two other equally spaced points <span class="process-math">\(x = x_1\)</span> and <span class="process-math">\(x = x_2\)</span> that satisfy <span class="process-math">\(x_0 \lt x_1 \lt x_2 \lt x_3\)</span>), except at a point near <span class="process-math">\(x_1\)</span> where the function has a horizontal tangent line.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-TRAP-2-1-2">In addition, at each of <span class="process-math">\(x_0\text{,}\)</span> <span class="process-math">\(x_1\text{,}\)</span> <span class="process-math">\(x_2\text{,}\)</span> and <span class="process-math">\(x_3\text{,}\)</span> a vertical line segments is plotted from the <span class="process-math">\(x\)</span>-axis up to the curve, and then top points on adjacent vertical line segments are connected to generate three trapezoids that subdivide and approximate the area bounded by <span class="process-math">\(y = f(x)\)</span> and the <span class="process-math">\(x\)</span>-axis.  The areas of the three respective trapezoids from left to right are labeled <span class="process-math">\(D_1\text{,}\)</span> <span class="process-math">\(D_2\text{,}\)</span> and <span class="process-math">\(D_3\text{.}\)</span>  The first trapezoid falls slightly above the curve, while the other two trapezoids each fall slightly below the curve.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Estimating <span class="process-math">\(\int_a^b f(x) \  dx\)</span> using three subintervals and trapezoids, rather than rectangles, where <span class="process-math">\(a = x_0\)</span> and <span class="process-math">\(b = x_3\text{.}\)</span></figcaption>
+</figure>
+<div class="para logical" id="sec-5-6-num-int-4-6">
+<div class="para" data-evidence="true" id="paragraph-c1cfefb9f3dea3a0-1">The biggest difference between the Trapezoid Rule and a Riemann sum is that on each subinterval, the Trapezoid Rule uses two function values, rather than one, to estimate the (signed) area bounded by the curve. For instance, to compute <span class="process-math">\(D_1\text{,}\)</span> the area of the trapezoid on <span class="process-math">\([x_0, x_1]\text{,}\)</span> we observe that the left base has length <span class="process-math">\(f(x_0)\text{,}\)</span> while the right base has length <span class="process-math">\(f(x_1)\text{.}\)</span> The height of the trapezoid is <span class="process-math">\(x_1 - x_0 = \Delta x = \frac{b-a}{3}\text{.}\)</span> The area of a trapezoid is the average of the bases times the height, so we have</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-4-6-6">
+\begin{equation*}
+D_1 = \frac{1}{2}(f(x_0) + f(x_1)) \cdot \Delta x\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-5-6-num-int-4-7">
+<div class="para" data-evidence="true" id="paragraph-d27007339dd88727-1">Using similar computations for <span class="process-math">\(D_2\)</span> and <span class="process-math">\(D_3\text{,}\)</span> we find that <span class="process-math">\(T_3\text{,}\)</span> the trapezoidal approximation to <span class="process-math">\(\int_a^b f(x) \, dx\)</span> is given by</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-4-7-5">
+\begin{align*}
+T_3 \amp=  D_1 + D_2 + D_3\\
+\amp= \frac{1}{2}(f(x_0) + f(x_1)) \cdot \Delta x + \frac{1}{2}(f(x_1) + f(x_2)) \cdot \Delta x + \frac{1}{2}(f(x_2) + f(x_3)) \cdot \Delta x\text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="sec-5-6-num-int-4-8">
+<div class="para" data-evidence="true" id="paragraph-3ea4de3d73f23f12-1">Because both left and right endpoints are being used, we recognize within the trapezoidal approximation the use of both left and right Riemann sums. Rearranging the expression for <span class="process-math">\(T_3\)</span> by removing factors of <span class="process-math">\(\frac{1}{2}\)</span> and <span class="process-math">\(\Delta x \text{,}\)</span> grouping the left endpoint and right endpoint evaluations of <span class="process-math">\(f\text{,}\)</span> we see that</div>
+<div class="displaymath process-math" data-evidence="true" id="E-Trap3">
+\begin{equation}
+T_3 =  \frac{1}{2} \left[ f(x_0) + f(x_1) + f(x_2) \right] \Delta x   +  \frac{1}{2} \left[ f(x_1) + f(x_2) + f(x_3) \right] \Delta x\text{.}\tag{5.6.4}
+\end{equation}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-4-9">We now observe that two familiar sums have arisen. The left Riemann sum <span class="process-math">\(L_3\)</span> is <span class="process-math">\(L_3 = f(x_0) \Delta x + f(x_1) \Delta x + f(x_2) \Delta x\text{,}\)</span> and the right Riemann sum is <span class="process-math">\(R_3 = f(x_1) \Delta x + f(x_2) \Delta x + f(x_3) \Delta x\text{.}\)</span> Substituting <span class="process-math">\(L_3\)</span> and <span class="process-math">\(R_3\)</span> for the corresponding expressions in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#E-Trap3" title="Equation 5.6.4">Equation (5.6.4)</a>, it follows that <span class="process-math">\(T_3 = \frac{1}{2} \left[ L_3 + R_3 \right]\text{.}\)</span> We have thus seen a very important result: using trapezoids to estimate the (signed) area bounded by a curve is the same as averaging the estimates generated by using left and right endpoints.
+</div>
+<article class="assemblage assemblage-like" id="sec-5-6-num-int-4-10"><h3 class="heading"><span class="title">The Trapezoid Rule.</span></h3>
+<div class="para logical" id="sec-5-6-num-int-4-10-2">
+<div class="para" data-evidence="true" id="paragraph-159ab97fca6e0bd3-1">The trapezoidal approximation, <span class="process-math">\(T_n\text{,}\)</span> of the definite integral <span class="process-math">\(\int_a^b f(x) \, dx\)</span> using <span class="process-math">\(n\)</span> subintervals is given by the rule</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-4-10-2-4">
+\begin{align*}
+T_n \amp=  \left[\frac{f(x_0) + f(x_1)}{2} + \frac{f(x_1) + f(x_2)}{2}  + \cdots + \frac{f(x_{n-1}) + f(x_n)}{2} \right] \Delta x.\\
+\amp=  \sum_{i=0}^{n-1} \frac{1}{2}(f(x_i) + f(x_{i+1}))  \Delta x\text{.}
+\end{align*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-e34d733b899cfcfd-1">Moreover, <span class="process-math">\(T_n = \frac{1}{2} \left[ L_n + R_n \right]\text{.}\)</span>
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-5-6-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-5-6-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-5-6-1-1">
+<div class="para" data-evidence="true" id="act-5-6-1-1-1">In this activity, we explore the relationships among the errors generated by left, right, midpoint, and trapezoid approximations to the definite integral <span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx\text{.}\)</span>
+</div>
+</div>
+<article class="task exercise-like" id="act-5-6-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-1-task-0-1-1">Use the First FTC to evaluate <span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx\)</span> exactly.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-1-task-1-1-1">Use appropriate computing technology to compute the following approximations for <span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx\text{:}\)</span> <span class="process-math">\(T_4\text{,}\)</span> <span class="process-math">\(M_4\text{,}\)</span> <span class="process-math">\(T_8\text{,}\)</span> and <span class="process-math">\(M_8\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para logical" id="act-5-6-1-task-2-1-1">
+<div class="para" data-evidence="true" id="paragraph-d4f4495388e1153d-1">Let the <em class="emphasis">error</em> that results from an approximation be the approximation’s value minus the exact value of the definite integral. For instance, if we let <span class="process-math">\(E_{T,4}\)</span> represent the error that results from using the trapezoid rule with 4 subintervals to estimate the integral, we have</div>
+<div class="displaymath process-math" data-evidence="true" id="act-5-6-1-task-2-1-1-6">
+\begin{equation*}
+E_{T,4} = T_4 - \int_1^2 \frac{1}{x^2} \, dx \text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-711695b86bba64e3-1">Similarly, we compute the error of the midpoint rule approximation with 8 subintervals by the formula</div>
+<div class="displaymath process-math" data-evidence="true" id="act-5-6-1-task-2-1-1-7">
+\begin{equation*}
+E_{M,8} = M_8 - \int_1^2 \frac{1}{x^2} \, dx\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-6a4d43c055da9705-1">Based on your work in (a) and (b) above, compute <span class="process-math">\(E_{T,4}\text{,}\)</span> <span class="process-math">\(E_{T,8}\text{,}\)</span> <span class="process-math">\(E_{M,4}\text{,}\)</span> <span class="process-math">\(E_{M,8}\text{.}\)</span>
+</div>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-1-task-3-1-1">Which rule consistently over-estimates the exact value of the definite integral? Which rule consistently under-estimates the definite integral?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-1-task-4-1-1">What behavior(s) of the function <span class="process-math">\(f(x) = \frac{1}{x^2}\)</span> lead to your observations in (d)?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-5-6-num-int-5">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Comparing the Midpoint and Trapezoid Rules</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-2">We know from the definition of the definite integral that if we let <span class="process-math">\(n\)</span> be large enough, we can make any of the approximations <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> and <span class="process-math">\(M_n\)</span> as close as we’d like (in theory) to the exact value of <span class="process-math">\(\int_a^b f(x) \, dx\text{.}\)</span> Thus, it may be natural to wonder why we ever use any rule other than <span class="process-math">\(L_n\)</span> or <span class="process-math">\(R_n\)</span> (with a sufficiently large <span class="process-math">\(n\)</span> value) to estimate a definite integral. One of the primary reasons is that as <span class="process-math">\(n \to \infty\text{,}\)</span> <span class="process-math">\(\Delta x = \frac{b-a}{n} \to 0\text{,}\)</span> and thus in a Riemann sum calculation with a large <span class="process-math">\(n\)</span> value, we end up multiplying by a number that is very close to zero. Doing so often generates roundoff error, because representing numbers close to zero accurately is a persistent challenge for computers.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-3">Hence, we explore ways to estimate definite integrals to high levels of precision, but without using extremely large values of <span class="process-math">\(n\text{.}\)</span> Paying close attention to patterns in errors, such as those observed in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#act-5-6-1" title="Activity 5.6.2">Activity 5.6.2</a>, is one way to begin to see some alternate approaches.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-4">To begin, we compare the errors in the Midpoint and Trapezoid rules. First, consider a function that is concave up on a given interval, and picture approximating the area bounded on that interval by both the Midpoint and Trapezoid rules using a single subinterval, as shown in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-MidVTrap" title="Figure 5.6.3">Figure 5.6.3</a>.
+</div>
+<figure class="figure figure-like" id="F-5-6-MidVTrap"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_MidVTrap.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-6-MidVTrap-2-description">
+<div class="para" data-evidence="true" id="F-5-6-MidVTrap-2-1-1">There are three adjacent images shown of the same function in the first quadrant:  the function is positve, continuous, decreasing, and concave up on the interval of interest.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-MidVTrap-2-1-2">In the leftmost image, a single trapezoid approximates the area under the curve.  Because the function is concave up, the trapezoid lies slightly above the curve, so the trapezoid rule over-estimates the value of the corresponding definite integral.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-MidVTrap-2-1-3">In the middle image, a single rectangle whose height is the function value at the midpoint of the interval is shown.  Part of the rectangle falls below the curve, and part lies above.  In this image, it’s unclear whether the midpoint rectangle over- or under-estimates the total area bounded by the function.
+</div>
+<div class="para" data-evidence="true" id="F-5-6-MidVTrap-2-1-4">In the third and final image, the horizontal line that forms the top of the midpoint rectangle is still shown, but that line is also rotated about the point where it intersects the graph of the function until the line segment is tangent to <span class="process-math">\(y=f(x)\text{.}\)</span>  The resulting trapezoid has the same area as the original midpoint rectangle, by symmetry.  In addition, since the function <span class="process-math">\(f\)</span> is concave up, the tangent line lies below the curve, and this shows that the trapezoid whose area is equal to the midpoint rule rectangle’s area is an under-estimate of the corresponding definite integral.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Estimating <span class="process-math">\(\int_a^b f(x) \  dx\)</span> using a single subinterval: at left, the trapezoid rule; in the middle, the midpoint rule; at right, a modified way to think about the midpoint rule.</figcaption>
+</figure>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-6">As seen at left in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-MidVTrap" title="Figure 5.6.3">Figure 5.6.3</a>, it is evident that whenever the function is concave up on an interval, the Trapezoid Rule with one subinterval, <span class="process-math">\(T_1\text{,}\)</span> will overestimate the exact value of the definite integral on that interval. From a careful analysis of the line that bounds the top of the rectangle for the Midpoint Rule (shown in magenta), we see that if we rotate this line segment until it is tangent to the curve at the midpoint of the interval (as shown at right in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-MidVTrap" title="Figure 5.6.3">Figure 5.6.3</a>), the resulting trapezoid has the same area as <span class="process-math">\(M_1\text{,}\)</span> and this value is less than the exact value of the definite integral. Thus, when the function is concave up on the interval, <span class="process-math">\(M_1\)</span> underestimates the integral’s true value.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-7">These observations extend easily to the situation where the function’s concavity remains consistent but we use larger values of <span class="process-math">\(n\)</span> in the Midpoint and Trapezoid Rules. Hence, whenever <span class="process-math">\(f\)</span> is concave up on <span class="process-math">\([a,b]\text{,}\)</span> <span class="process-math">\(T_n\)</span> will overestimate the value of <span class="process-math">\(\int_a^b f(x) \, dx\text{,}\)</span> while <span class="process-math">\(M_n\)</span> will underestimate <span class="process-math">\(\int_a^b f(x) \, dx\text{.}\)</span> The reverse observations are true in the situation where <span class="process-math">\(f\)</span> is concave down.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-8">Next, we compare the size of the errors between <span class="process-math">\(M_n\)</span> and <span class="process-math">\(T_n\text{.}\)</span> Again, we focus on <span class="process-math">\(M_1\)</span> and <span class="process-math">\(T_1\)</span> on an interval where the concavity of <span class="process-math">\(f\)</span> is consistent. In <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#F-5-6-MidTrapError" title="Figure 5.6.4">Figure 5.6.4</a>, where the error of the Trapezoid Rule is shaded in red, while the error of the Midpoint Rule is shaded lighter red, it is visually apparent that the error in the Trapezoid Rule is more significant.
+</div>
+<figure class="figure figure-like" id="F-5-6-MidTrapError"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_MidTrapError.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-6-MidTrapError-2-description">
+<div class="para" data-evidence="true" id="F-5-6-MidTrapError-2-1-1">This image juxtaposes the trapezoids from the first and third images in the preceding figure: the trapezoid with the same area as the midpoint rule rectangle lies below the concave up curve, while the trapezoid from the Trapezoid Rule lies above the curve.  Moreover, the figure shows that there is more error in the Trapezoid Rule overestimate than there is error in the Midpoint Rule underestimate.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Comparing the error in estimating <span class="process-math">\(\int_a^b f(x) \  dx\)</span> using a single subinterval: in red, the error from the Trapezoid rule; in light red, the error from the Midpoint rule.</figcaption>
+</figure>
+<div class="para logical" id="sec-5-6-num-int-5-10">
+<div class="para" data-evidence="true" id="paragraph-8882f62c29f34b20-1">To see how much more significant the error from the Trapezoid Rule is, let’s consider two examples and some particular computations. If we let <span class="process-math">\(f(x) = 1-x^2\)</span> and consider <span class="process-math">\(\int_0^1 f(x) \,dx\text{,}\)</span> we know by the First FTC that the exact value of the integral is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-5-10-3">
+\begin{equation*}
+\int_0^1 (1-x^2) \, dx = x - \frac{x^3}{3} \bigg\vert_0^1 = \frac{2}{3}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-11">Using appropriate technology to compute <span class="process-math">\(M_4\text{,}\)</span> <span class="process-math">\(M_8\text{,}\)</span> <span class="process-math">\(T_4\text{,}\)</span> and <span class="process-math">\(T_8\text{,}\)</span> as well as the corresponding errors <span class="process-math">\(E_{M,4}\text{,}\)</span> <span class="process-math">\(E_{M,8}\text{,}\)</span> <span class="process-math">\(E_{T,4}\text{,}\)</span> and <span class="process-math">\(E_{T,8}\text{,}\)</span> as we did in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#act-5-6-1" title="Activity 5.6.2">Activity 5.6.2</a>, we find the results summarized in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex2" title="Table 5.6.5: Calculations of T_4 M_4 T_8 and M_8 along with corresponding errors, for the definite integrals \int_0^1 (1-x^2) \  dx and \int_1^2 \frac{1}{x^2} \  dx">Table 5.6.5</a>. We also include the approximations and their errors for the example <span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx\)</span> from <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#act-5-6-1" title="Activity 5.6.2">Activity 5.6.2</a>.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-12">For a given function <span class="process-math">\(f\)</span> and interval <span class="process-math">\([a,b]\text{,}\)</span> <span class="process-math">\(E_{T,4} = T_4 - \int_a^b f(x) \,dx\)</span> calculates the difference between the approximation generated by the Trapezoid Rule with <span class="process-math">\(n = 4\)</span> and the exact value of the definite integral. If we look at not only <span class="process-math">\(E_{T,4}\text{,}\)</span> but also the other errors generated by using <span class="process-math">\(T_n\)</span> and <span class="process-math">\(M_n\)</span> with <span class="process-math">\(n = 4\)</span> and <span class="process-math">\(n = 8\)</span> in the two examples noted in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex2" title="Table 5.6.5: Calculations of T_4 M_4 T_8 and M_8 along with corresponding errors, for the definite integrals \int_0^1 (1-x^2) \  dx and \int_1^2 \frac{1}{x^2} \  dx">Table 5.6.5</a>, we see an evident pattern. Not only is the sign of the error (which measures whether the rule generates an over- or under-estimate) tied to the rule used and the function’s concavity, but the magnitude of the errors generated by <span class="process-math">\(T_n\)</span> and <span class="process-math">\(M_n\)</span> seems closely connected. In particular, the errors generated by the Midpoint Rule seem to be about half the size (in absolute value) of those generated by the Trapezoid Rule.
+</div>
+<figure class="table table-like" id="T-5-6-Ex2"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Calculations of <span class="process-math">\(T_4\text{,}\)</span> <span class="process-math">\(M_4\text{,}\)</span> <span class="process-math">\(T_8\text{,}\)</span> and <span class="process-math">\(M_8\text{,}\)</span> along with corresponding errors, for the definite integrals <span class="process-math">\(\int_0^1 (1-x^2) \  dx\)</span> and <span class="process-math">\(\int_1^2 \frac{1}{x^2} \  dx\text{.}\)</span></figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr data-evidence="true" id="paragraph-d0c591b34090786f-1">
+<td class="l m b1 r0 l0 t1 lines">Rule</td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(\int_0^1 (1-x^2) \,dx = 0.\overline{6}\)</span></td>
+<td class="l m b1 r0 l0 t1 lines">error</td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx = 0.5\)</span></td>
+<td class="l m b1 r0 l0 t1 lines">error</td>
+</tr>
+<tr data-evidence="true" id="paragraph-a36a6986d6ec8584-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(T_4\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.65625\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0104166667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5089937642\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0089937642\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-b67ab95122988be3-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(M_4\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.671875\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0052083333\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.4955479365\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0044520635\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-6fbaafe76f2dba6d-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(T_8\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.6640625\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0026041667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5022708502\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0022708502\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-f1d3798fa7aaa181-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(M_8\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.66796875\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0013020833\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.4988674899\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0011325101\)</span></td>
+</tr>
+</table></div>
+</figure>
+<div class="para logical" id="sec-5-6-num-int-5-14">
+<div class="para" data-evidence="true" id="paragraph-a1dcca648f8f4b9a-1">That is, we can observe in both examples that <span class="process-math">\(E_{M,4} \approx -\frac{1}{2} E_{T,4}\)</span> and <span class="process-math">\(E_{M,8} \approx -\frac{1}{2}E_{T,8}\text{.}\)</span> This property of the Midpoint and Trapezoid Rules turns out to hold in general: for a function of consistent concavity, the error in the Midpoint Rule has the opposite sign and approximately half the magnitude of the error of the Trapezoid Rule. Written symbolically,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-5-14-3">
+\begin{equation*}
+E_{M,n} \approx -\frac{1}{2} E_{T,n}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-5-15">This important relationship suggests a way to combine the Midpoint and Trapezoid Rules to create an even more accurate approximation to a definite integral.
+</div>
+</section>
+<section class="subsection" id="sec-5-6-num-int-6">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Simpson’s Rule</span>
+</h2>
+<div class="para logical" id="sec-5-6-num-int-6-3">
+<div class="para" data-evidence="true" id="paragraph-ad17d3fc89e1c001-1">When we first developed the Trapezoid Rule, we observed that it is an average of the Left and Right Riemann sums:</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-5-6-num-int-6-3-1">
+\begin{equation*}
+T_n = \frac{1}{2}(L_n + R_n)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-6-4">If a function is always increasing or always decreasing on the interval <span class="process-math">\([a,b]\text{,}\)</span> one of <span class="process-math">\(L_n\)</span> and <span class="process-math">\(R_n\)</span> will over-estimate the true value of <span class="process-math">\(\int_a^b f(x) \, dx\text{,}\)</span> while the other will under-estimate the integral. Thus, the errors that result from <span class="process-math">\(L_n\)</span> and <span class="process-math">\(R_n\)</span> will have opposite signs; so averaging <span class="process-math">\(L_n\)</span> and <span class="process-math">\(R_n\)</span> eliminates a considerable amount of the error present in the respective approximations. In a similar way, it makes sense to think about averaging <span class="process-math">\(M_n\)</span> and <span class="process-math">\(T_n\)</span> in order to generate a still more accurate approximation.
+</div>
+<div class="para logical" id="sec-5-6-num-int-6-5">
+<div class="para" data-evidence="true" id="paragraph-72ee239a79118931-1">We’ve just observed that <span class="process-math">\(M_n\)</span> is typically about twice as accurate as <span class="process-math">\(T_n\text{.}\)</span> So we use the weighted average </div>
+<div class="displaymath process-math" data-evidence="true" id="E-Simpson">
+\begin{equation}
+S_{2n} = \frac{2M_n + T_n}{3}\text{.}\tag{5.6.5}
+\end{equation}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-6-6">The rule for <span class="process-math">\(S_{2n}\)</span> giving by <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#E-Simpson" title="Equation 5.6.5">Equation (5.6.5)</a> is usually known as <em class="emphasis">Simpson’s Rule</em>.<details class="ptx-footnote" id="sec-5-6-num-int-6-6-4"><summary class="ptx-footnote__number" title="Footnote 5.6.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents">Thomas Simpson was an 18th century mathematician; his idea was to extend the Trapezoid rule, but rather than using straight lines to build trapezoids, to use quadratic functions to build regions whose area was bounded by parabolas (whose areas he could find exactly). Simpson’s Rule is often developed from the more sophisticated perspective of using interpolation by quadratic functions.
+</div></details> Note that we use “<span class="process-math">\(S_{2n}\)</span>” rather that “<span class="process-math">\(S_n\)</span>” since the <span class="process-math">\(n\)</span> points the Midpoint Rule uses are different from the <span class="process-math">\(n\)</span> points the Trapezoid Rule uses, and thus Simpson’s Rule is using <span class="process-math">\(2n\)</span> points at which to evaluate the function. We build upon the results in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex2" title="Table 5.6.5: Calculations of T_4 M_4 T_8 and M_8 along with corresponding errors, for the definite integrals \int_0^1 (1-x^2) \  dx and \int_1^2 \frac{1}{x^2} \  dx">Table 5.6.5</a> to see the approximations generated by Simpson’s Rule. In particular, in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex3" title="Table 5.6.6: Table 5.6.5 updated to include S_8 S_{16} and the corresponding errors.">Table 5.6.6</a>, we include all of the results in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex2" title="Table 5.6.5: Calculations of T_4 M_4 T_8 and M_8 along with corresponding errors, for the definite integrals \int_0^1 (1-x^2) \  dx and \int_1^2 \frac{1}{x^2} \  dx">Table 5.6.5</a>, but include additional results for <span class="process-math">\(S_8 = \frac{2M_4 + T_4}{3}\)</span> and <span class="process-math">\(S_{16} = \frac{2M_8 + T_8}{3}\text{.}\)</span>
+</div>
+<figure class="table table-like" id="T-5-6-Ex3"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Table 5.6.5 updated to include <span class="process-math">\(S_8\text{,}\)</span> <span class="process-math">\(S_{16}\text{,}\)</span> and the corresponding errors.</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr data-evidence="true" id="paragraph-d0c591b34090786f-2">
+<td class="l m b1 r0 l0 t1 lines">Rule</td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(\int_0^1 (1-x^2) \,dx = 0.\overline{6}\)</span></td>
+<td class="l m b1 r0 l0 t1 lines">error</td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx = 0.5\)</span></td>
+<td class="l m b1 r0 l0 t1 lines">error</td>
+</tr>
+<tr data-evidence="true" id="paragraph-a36a6986d6ec8584-2">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(T_4\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.65625\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0104166667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5089937642\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0089937642\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-b67ab95122988be3-2">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(M_4\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.671875\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0052083333\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.4955479365\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0044520635\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-45695c893f6c0df1-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(S_8\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.6666666667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5000298792\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0000298792\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-6fbaafe76f2dba6d-2">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(T_8\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.6640625\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0026041667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5022708502\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0022708502\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-f1d3798fa7aaa181-2">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(M_8\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.66796875\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0013020833\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.4988674899\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(-0.0011325101\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-d8da3ab6c92b779f-1">
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(S_{16}\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.6666666667\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.5000019434\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0.0000019434\)</span></td>
+</tr>
+</table></div>
+</figure>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-6-8">The results seen in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#T-5-6-Ex3" title="Table 5.6.6: Table 5.6.5 updated to include S_8 S_{16} and the corresponding errors.">Table 5.6.6</a> are striking. If we consider the <span class="process-math">\(S_{16}\)</span> approximation of <span class="process-math">\(\int_1^2 \frac{1}{x^2} \, dx\text{,}\)</span> the error is only <span class="process-math">\(E_{S,16} = 0.0000019434\text{.}\)</span> By contrast, <span class="process-math">\(L_8 = 0.5491458502\text{,}\)</span> so the error of that estimate is <span class="process-math">\(E_{L,8} = 0.0491458502\text{.}\)</span> Moreover, we observe that generating the approximations for Simpson’s Rule is almost no additional work: once we have <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> and <span class="process-math">\(M_n\)</span> for a given value of <span class="process-math">\(n\text{,}\)</span> it is a simple exercise to generate <span class="process-math">\(T_n\text{,}\)</span> and from there to calculate <span class="process-math">\(S_{2n}\text{.}\)</span> Finally, note that the error in the Simpson’s Rule approximations of <span class="process-math">\(\int_0^1 (1-x^2) \, dx\)</span> is zero!<details class="ptx-footnote" id="sec-5-6-num-int-6-8-14"><summary class="ptx-footnote__number" title="Footnote 5.6.2"><sup> 2 </sup></summary>
+<div class="ptx-footnote__contents">Similar to how the Midpoint and Trapezoid approximations are exact for linear functions, Simpson’s Rule approximations are exact for quadratic and cubic functions. See additional discussion on this issue later in the section and in the exercises.
+</div></details>
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-6-9">These rules are not only useful for approximating definite integrals such as <span class="process-math">\(\int_0^1 e^{-x^2} \, dx\text{,}\)</span> for which we cannot find an elementary antiderivative of <span class="process-math">\(e^{-x^2}\text{,}\)</span> but also for approximating definite integrals when we are given a function through a table of data.
+</div>
+<section class="worksheet" id="ws-act-5-6-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-5-6-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-5-6-2-1">
+<div class="para" data-evidence="true" id="act-5-6-2-1-1">A car traveling along a straight road is braking and its velocity is measured at several different points in time, as given in the following table. Assume that <span class="process-math">\(v\)</span> is continuous, always decreasing, and always concave down, as is suggested by the data.
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel fixed-width sbspanel--middle middle"><table class="tabular">
+<tr data-evidence="true" id="paragraph-d3a5c4e2cdd7c067-1">
+<td class="c m b1 r0 l0 t0 lines">seconds, <span class="process-math">\(t\)</span>
+</td>
+<td class="c m b1 r0 l0 t0 lines">Velocity in ft/sec, <span class="process-math">\(v(t)\)</span>
+</td>
+</tr>
+<tr data-evidence="true" id="paragraph-8a6288a0e49bfe96-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(100\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-88809e0aaefc09a5-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(0.3\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(99\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-75ef7a9167811e7c-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(0.6\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(96\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-347f54145531ff20-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(0.9\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(90\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-620c9b103ee36afc-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(1.2\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(80\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-25352a6c8011fd51-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(1.5\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(50\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-bd61e8bb602b53dd-1">
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(1.8\)</span></td>
+<td class="c m b0 r0 l0 t0 lines"><span class="process-math">\(0\)</span></td>
+</tr>
+</table></div>
+<div class="sbspanel sbspanel--middle middle"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_Act2.svg"/><details class="image-description"><summary title="details"></summary><div id="act-5-6-2-1-2-2-description">
+<div class="para" data-evidence="true" id="act-5-6-2-1-2-2-1-1">Axes for plotting the given velocity data.  The horizontal <span class="process-math">\(t\)</span>-axis ranges from <span class="process-math">\(-0.3\)</span> to <span class="process-math">\(2.1\)</span> with labeled tickmarks every <span class="process-math">\(0.3\)</span> units.  The vertical scale is not labeled.
+</div>
+</div></details>
+</div></div>
+</div>
+</div>
+<div class="para" id="act-5-6-2-1-3"></div>
+</div>
+<article class="task exercise-like" id="act-5-6-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-0-1-1">Plot the given data on the set of axes provided in the figure, with time on the horizontal axis and the velocity on the vertical axis.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-1-1-1">What definite integral will give you the exact distance the car traveled on <span class="process-math">\([0,1.8]\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-2-1-1">Estimate the total distance traveled on <span class="process-math">\([0,1.8]\)</span> by computing <span class="process-math">\(L_3\text{,}\)</span> <span class="process-math">\(R_3\text{,}\)</span> and <span class="process-math">\(T_3\text{.}\)</span> Which of these under-estimates the true distance traveled?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-3-1-1">Estimate the total distance traveled on <span class="process-math">\([0,1.8]\)</span> by computing <span class="process-math">\(M_3\text{.}\)</span> Is this an over- or under-estimate? Why?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-4-1-1">Using your results from (c) and (d), improve your estimate further by using Simpson’s Rule.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-2-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-2-task-5-1-1">What is your best estimate of the average velocity of the car on <span class="process-math">\([0,1.8]\text{?}\)</span> Why? What are the units on this quantity?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-5-6-num-int-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Overall observations regarding <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> <span class="process-math">\(T_n\text{,}\)</span> <span class="process-math">\(M_n\text{,}\)</span> and <span class="process-math">\(S_{2n}\text{.}\)</span></span>
+</h2>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-7-2">As we conclude our discussion of numerical approximation of definite integrals, it is important to summarize general trends in how the various rules over- or under-estimate the true value of a definite integral, and by how much. To revisit some past observations and see some new ones, we consider the following activity.
+</div>
+<section class="worksheet" id="ws-act-5-6-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-5-6-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-5-6-3-1">
+<div class="para" data-evidence="true" id="act-5-6-3-1-1">Consider the functions <span class="process-math">\(f(x) = 2-x^2\text{,}\)</span> <span class="process-math">\(g(x) = 2-x^3\text{,}\)</span> and <span class="process-math">\(h(x) = 2-x^4\text{,}\)</span> all on the interval <span class="process-math">\([0,1]\text{.}\)</span> For each of the questions that require a numerical answer in what follows, write your answer exactly in fraction form.
+</div>
+<div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_Act3.svg"/><details class="image-description"><summary title="details"></summary><div id="act-5-6-3-1-2-description">
+<div class="para" data-evidence="true" id="act-5-6-3-1-2-1-1">Three sets of identical coordinate axes.  In each, the <span class="process-math">\(x\)</span>-values range horizontally from <span class="process-math">\(-0.25\)</span> to <span class="process-math">\(1.25\)</span> and the <span class="process-math">\(y\)</span>-values range horizontally from <span class="process-math">\(-0.5\)</span> to <span class="process-math">\(2.5\text{.}\)</span>
+</div>
+</div></details>
+</div>
+</div>
+<article class="task exercise-like" id="act-5-6-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-3-task-0-1-1">On the three sets of axes in the provided figure, sketch a graph of each function on the interval <span class="process-math">\([0,1]\text{,}\)</span> and compute <span class="process-math">\(L_1\)</span> and <span class="process-math">\(R_1\)</span> for each. What do you observe?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-3-task-1-1-1">Compute <span class="process-math">\(M_1\)</span> for each function to approximate <span class="process-math">\(\int_0^1 f(x) \,dx\text{,}\)</span> <span class="process-math">\(\int_0^1 g(x) \,dx\text{,}\)</span> and <span class="process-math">\(\int_0^1 h(x) \,dx\text{,}\)</span> respectively.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-3-task-2-1-1">Compute <span class="process-math">\(T_1\)</span> for each of the three functions, and hence compute <span class="process-math">\(S_2\)</span> for each of the three functions.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-3-task-3-1-1">Evaluate each of the integrals <span class="process-math">\(\int_0^1 f(x) \,dx\text{,}\)</span> <span class="process-math">\(\int_0^1 g(x) \,dx\text{,}\)</span> and <span class="process-math">\(\int_0^1 h(x) \,dx\)</span> exactly using the First FTC.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-5-6-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-5-6-3-task-4-1-1">For each of the three functions <span class="process-math">\(f\text{,}\)</span> <span class="process-math">\(g\text{,}\)</span> and <span class="process-math">\(h\text{,}\)</span> compare the results of <span class="process-math">\(L_1\text{,}\)</span> <span class="process-math">\(R_1\text{,}\)</span> <span class="process-math">\(M_1\text{,}\)</span> <span class="process-math">\(T_1\text{,}\)</span> and <span class="process-math">\(S_2\)</span> to the true value of the corresponding definite integral. What patterns do you observe?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-7-4">The results seen in <a class="xref" href="/book/active-calculus-html/sec-5-6-num-int#act-5-6-3" title="Activity 5.6.4">Activity 5.6.4</a> generalize nicely. For instance, if <span class="process-math">\(f\)</span> is decreasing on <span class="process-math">\([a,b]\text{,}\)</span> <span class="process-math">\(L_n\)</span> will over-estimate the exact value of <span class="process-math">\(\int_a^b f(x) \,dx\text{,}\)</span> and if <span class="process-math">\(f\)</span> is concave down on <span class="process-math">\([a,b]\text{,}\)</span> <span class="process-math">\(M_n\)</span> will over-estimate the exact value of the integral. An excellent exercise is to write a collection of scenarios of possible function behavior, and then categorize whether each of <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> <span class="process-math">\(T_n\text{,}\)</span> and <span class="process-math">\(M_n\)</span> is an over- or under-estimate.
+</div>
+<div class="para" data-evidence="true" id="sec-5-6-num-int-7-5">Finally, we make two important notes about Simpson’s Rule. When T. Simpson first developed this rule, his idea was to replace the function <span class="process-math">\(f\)</span> on a given interval with a quadratic function that shared three values with the function <span class="process-math">\(f\text{.}\)</span> In so doing, he guaranteed that this new approximation rule would be exact for the definite integral of any quadratic polynomial. In one of the pleasant surprises of numerical analysis, it turns out that even though it was designed to be exact for quadratic polynomials, Simpson’s Rule is exact for any cubic polynomial: that is, if we are interested in an integral such as <span class="process-math">\(\int_2^5 (5x^3 - 2x^2 + 7x - 4)\, dx\text{,}\)</span> <span class="process-math">\(S_{2n}\)</span> will always be exact, regardless of the value of <span class="process-math">\(n\text{.}\)</span> This is just one more piece of evidence that shows how effective Simpson’s Rule is as an approximation tool for estimating definite integrals.<details class="ptx-footnote" id="sec-5-6-num-int-7-5-7"><summary class="ptx-footnote__number" title="Footnote 5.6.3"><sup> 3 </sup></summary>
+<div class="ptx-footnote__contents">One reason that Simpson’s Rule is so effective is that <span class="process-math">\(S_{2n}\)</span> benefits from using <span class="process-math">\(2n+1\)</span> points of data. Because it combines <span class="process-math">\(M_n\text{,}\)</span> which uses <span class="process-math">\(n\)</span> midpoints, and <span class="process-math">\(T_n\text{,}\)</span> which uses the <span class="process-math">\(n+1\)</span> endpoints of the chosen subintervals, <span class="process-math">\(S_{2n}\)</span> takes advantage of the maximum amount of information we have when we know function values at the endpoints and midpoints of <span class="process-math">\(n\)</span> subintervals.
+</div></details>
+</div>
+</section>
+<section class="subsection" id="sec-5-6-num-int-8">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" id="sec-5-6-num-int-8-2">
+<ul class="disc" id="sec-5-6-num-int-8-2-1">
+<li id="sec-5-6-num-int-8-2-1-1">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-8-2-1-1-1">For a definite integral such as <span class="process-math">\(\int_0^1 e^{-x^2} \, dx\)</span> when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative, we can estimate the integral’s value by using a sequence of Riemann sum approximations. Typically, we start by computing <span class="process-math">\(L_n\text{,}\)</span> <span class="process-math">\(R_n\text{,}\)</span> and <span class="process-math">\(M_n\)</span> for one or more chosen values of <span class="process-math">\(n\text{.}\)</span>
+</div>
+</li>
+<li id="sec-5-6-num-int-8-2-1-2">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-8-2-1-2-1">The Trapezoid Rule, which estimates <span class="process-math">\(\int_a^b f(x) \, dx\)</span> by using trapezoids, rather than rectangles, can also be viewed as the average of Left and Right Riemann sums. That is, <span class="process-math">\(T_n = \frac{1}{2}(L_n + R_n)\text{.}\)</span>
+</div>
+</li>
+<li id="sec-5-6-num-int-8-2-1-3">
+<div class="para" data-evidence="true" id="sec-5-6-num-int-8-2-1-3-1">The Midpoint Rule is typically twice as accurate as the Trapezoid Rule, and the signs of the respective errors of these rules are opposites. Hence, by taking the weighted average <span class="process-math">\(S_{2n} = \frac{2M_n + T_n}{3}\text{,}\)</span> we can build a much more accurate approximation to <span class="process-math">\(\int_a^b f(x) \, dx\)</span> by using approximations we have already computed. The rule for <span class="process-math">\(S_{2n}\)</span> is known as Simpson’s Rule, which can also be developed by approximating a given continuous function with pieces of quadratic polynomials.
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-5-6">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="csafranski__5-_6HW_prob1"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__5-_6HW_prob1-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob1-1-1-1">Calculate the integral approximations <span class="process-math">\(T_{6}\)</span> , <span class="process-math">\(M_{6}\)</span> and <span class="process-math">\(S_{12}\)</span> for
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob1-1-1-2">
+<span class="process-math">\(\int^{4}_{0} x^{5} \, dx\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob1-1-1-3">
+<span class="process-math">\(T_{6}\)</span> = <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob1-1-1-4">
+<span class="process-math">\(M_{6}\)</span> = <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob1-1-1-5">
+<span class="process-math">\(S_{12}\)</span> = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__5-_6HW_prob2"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__5-_6HW_prob2-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob2-1-1-1">Estimate <span class="process-math">\(\int_0^{6}x^{2}\, dx\)</span> using SIMP(4).
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob2-1-1-2">
+<span class="process-math">\(\int_0^{6}x^{2}\, dx \approx\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__5-_6HW_prob3"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__5-_6HW_prob3-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-1">
+<em class="emphasis"><em class="alert">Note: for this problem, because later answers depend on earlier ones, you must enter answers for all answer blanks for the problem to be correctly graded.  If you would like to get feedback before you completed all computations, enter a "1" for each answer you did not yet compute and then submit the problem.  (But note that this will, obviously, result in a problem submission.)</em></em>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-2">
+<em class="alert">(a)</em> What is the exact value of <span class="process-math">\(\int_{0}^{4}\,e^x\,dx\text{?}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-3">
+<span class="process-math">\(\int_{0}^{4}\,e^x\,dx =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-4">
+<em class="alert">(b)</em>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-5">Find LEFT(2), RIGHT(2), TRAP(2), MID(2), and SIMP(4); compute the error for each.
+</div> <div class="tabular-box natural-width"><table class="tabular">
+<tr data-evidence="true" id="paragraph-325ae515dfe9fc5b-1">
+<td class="l m b2 r2 l2 t2 lines"></td>
+<td class="l m b2 r2 l0 t2 lines">LEFT(2)</td>
+<td class="l m b2 r2 l0 t2 lines">RIGHT(2)</td>
+<td class="l m b2 r2 l0 t2 lines">TRAP(2)</td>
+<td class="l m b2 r2 l0 t2 lines">MID(2)</td>
+<td class="l m b2 r2 l0 t2 lines">SIMP(4)</td>
+</tr>
+<tr data-evidence="true" id="paragraph-cd42404d52ad55cc-1">
+<td class="l m b2 r2 l2 t0 lines">value</td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-ca00fccfb408989e-1">
+<td class="l m b2 r2 l2 t0 lines">error</td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+</tr>
+</table></div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-7">
+<em class="alert">(c)</em>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__5-_6HW_prob3-1-1-8">Repeat part (b) with <span class="process-math">\(n=4\)</span> (instead of <span class="process-math">\(n=2\)</span>).
+</div> <div class="tabular-box natural-width"><table class="tabular">
+<tr data-evidence="true" id="paragraph-6842e4b47a59806a-1">
+<td class="l m b2 r2 l2 t2 lines"></td>
+<td class="l m b2 r2 l0 t2 lines">LEFT(4)</td>
+<td class="l m b2 r2 l0 t2 lines">RIGHT(4)</td>
+<td class="l m b2 r2 l0 t2 lines">TRAP(4)</td>
+<td class="l m b2 r2 l0 t2 lines">MID(4)</td>
+<td class="l m b2 r2 l0 t2 lines">SIMP(8)</td>
+</tr>
+<tr data-evidence="true" id="paragraph-cd42404d52ad55cc-2">
+<td class="l m b2 r2 l2 t0 lines">value</td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-ca00fccfb408989e-2">
+<td class="l m b2 r2 l2 t0 lines">error</td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="fillin underline"></span></td>
+</tr>
+</table></div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap7Sec5__Q13"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap7Sec5__Q13-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap7Sec5__Q13-1-1-1">Using the figure showing <span class="process-math">\(f(x)\)</span> below, order the following approximations to the integral <span class="process-math">\(\int_0^3\,f(x)\,dx\)</span> and its exact value from smallest to largest.
+</div> <div class="image-box"><img class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap7Sec5__Q13-image-1.png"/></div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap7Sec5__Q13-1-1-3">
+<em class="emphasis">(Click on the graph for a larger version.)</em>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap7Sec5__Q13-1-1-4">Enter each of "LEFT(n)", "RIGHT(n)", "TRAP(n)", "MID(n)" and "Exact" in one of the following answer blanks to indicate the correct ordering:
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap7Sec5__Q13-1-1-5">
+<span class="fillin underline"></span> <span class="process-math">\(\lt \)</span> <span class="fillin underline"></span> <span class="process-math">\(\lt \)</span> <span class="fillin underline"></span> <span class="process-math">\(\lt \)</span> <span class="fillin underline"></span> <span class="process-math">\(\lt \)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-5-6-5"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-5-6-5-1-1">
+<div class="para" data-evidence="true" id="paragraph-c32a188ff765ccbc-1">Consider the definite integral <span class="process-math">\(\int_0^1 x \tan(x) \, dx\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-5-6-5-1-1-2">
+<li id="ez-5-6-5-1-1-2-1">
+<div class="para" data-evidence="true" id="ez-5-6-5-1-1-2-1-1">Explain why this integral cannot be evaluated exactly by using either <span class="process-math">\(u\)</span>-substitution or by integrating by parts.
+</div>
+</li>
+<li id="ez-5-6-5-1-1-2-2">
+<div class="para" data-evidence="true" id="ez-5-6-5-1-1-2-2-1">Using appropriate subintervals, compute <span class="process-math">\(L_4\text{,}\)</span> <span class="process-math">\(R_4\text{,}\)</span> <span class="process-math">\(M_4\text{,}\)</span> <span class="process-math">\(T_4\text{,}\)</span> and <span class="process-math">\(S_8\text{.}\)</span>
+</div>
+</li>
+<li id="ez-5-6-5-1-1-2-3">
+<div class="para" data-evidence="true" id="ez-5-6-5-1-1-2-3-1">Which of the approximations in (b) is an over-estimate to the true value of <span class="process-math">\(\int_0^1 x \tan(x) \, dx\text{?}\)</span> Which is an under-estimate? How do you know?
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-5-6-6"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-5-6-6-1-1">
+<div class="para" data-evidence="true" id="paragraph-0d1dec8ba46cf090-1">For an unknown function <span class="process-math">\(f(x)\text{,}\)</span> the following information is known.</div>
+<ul class="disc" id="ez-5-6-6-1-1-2">
+<li id="ez-5-6-6-1-1-2-1">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-2-1-1">
+<span class="process-math">\(f\)</span> is continuous on <span class="process-math">\([3,6]\text{;}\)</span>
+</div>
+</li>
+<li id="ez-5-6-6-1-1-2-2">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-2-2-1">
+<span class="process-math">\(f\)</span> is either always increasing or always decreasing on <span class="process-math">\([3,6]\text{;}\)</span>
+</div>
+</li>
+<li id="ez-5-6-6-1-1-2-3">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-2-3-1">
+<span class="process-math">\(f\)</span> has the same concavity throughout the interval <span class="process-math">\([3,6]\text{;}\)</span>
+</div>
+</li>
+<li id="ez-5-6-6-1-1-2-4">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-2-4-1">As approximations to <span class="process-math">\(\int_3^6 f(x) \, dx\text{,}\)</span> <span class="process-math">\(L_4 = 7.23\text{,}\)</span> <span class="process-math">\(R_4 = 6.75\text{,}\)</span> and <span class="process-math">\(M_4 = 7.05\text{.}\)</span>
+</div>
+</li>
+</ul>
+<ol class="lower-alpha" id="ez-5-6-6-1-1-3">
+<li id="ez-5-6-6-1-1-3-1">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-3-1-1">Is <span class="process-math">\(f\)</span> increasing or decreasing on <span class="process-math">\([3,6]\text{?}\)</span> What data tells you?
+</div>
+</li>
+<li id="ez-5-6-6-1-1-3-2">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-3-2-1">Is <span class="process-math">\(f\)</span> concave up or concave down on <span class="process-math">\([3,6]\text{?}\)</span> Why?
+</div>
+</li>
+<li id="ez-5-6-6-1-1-3-3">
+<div class="para" data-evidence="true" id="ez-5-6-6-1-1-3-3-1">Determine the best possible estimate you can for <span class="process-math">\(\int_3^6 f(x) \, dx\text{,}\)</span> based on the given information.
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-5-6-7"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" data-evidence="true" id="ez-5-6-7-1-1">The rate at which water flows through Table Rock Dam on the White River in Branson, MO, is measured in cubic feet per second (CFS). As engineers open the floodgates, flow rates are recorded according to the following chart.
+</div>
+<figure class="table table-like" id="ez-5-6-7-1-2"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.6.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Water flow data.</figcaption><div class="tabular-box natural-width"><table class="tabular">
+<tr data-evidence="true" id="paragraph-8572d0d20ebc55e2-1">
+<td class="l m b1 r0 l0 t1 lines">seconds, <span class="process-math">\(t\)</span>
+</td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(0\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(10\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(20\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(30\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(40\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(50\)</span></td>
+<td class="l m b1 r0 l0 t1 lines"><span class="process-math">\(60\)</span></td>
+</tr>
+<tr data-evidence="true" id="paragraph-0630669090914234-1">
+<td class="l m b1 r0 l0 t0 lines">flow in CFS, <span class="process-math">\(r(t)\)</span>
+</td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(2000\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(2100\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(2400\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(3000\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(3900\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(5100\)</span></td>
+<td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(6500\)</span></td>
+</tr>
+</table></div>
+</figure>
+<div class="para logical" id="ez-5-6-7-1-3">
+<ol class="lower-alpha" id="ez-5-6-7-1-3-1">
+<li id="ez-5-6-7-1-3-1-1">
+<div class="para" data-evidence="true" id="ez-5-6-7-1-3-1-1-1">What definite integral measures the total volume of water to flow through the dam in the 60 second time period provided by the table above?
+</div>
+</li>
+<li id="ez-5-6-7-1-3-1-2">
+<div class="para" data-evidence="true" id="ez-5-6-7-1-3-1-2-1">Use the given data to calculate <span class="process-math">\(M_n\)</span> for the largest possible value of <span class="process-math">\(n\)</span> to approximate the integral you stated in (a). Do you think <span class="process-math">\(M_n\)</span> over- or under-estimates the exact value of the integral? Why?
+</div>
+</li>
+<li id="ez-5-6-7-1-3-1-3">
+<div class="para" data-evidence="true" id="ez-5-6-7-1-3-1-3-1">Approximate the integral stated in (a) by calculating <span class="process-math">\(S_n\)</span> for the largest possible value of <span class="process-math">\(n\text{,}\)</span> based on the given data.
+</div>
+</li>
+<li id="ez-5-6-7-1-3-1-4">
+<div class="para" data-evidence="true" id="ez-5-6-7-1-3-1-4-1">Compute <span class="process-math">\(\frac{1}{60} S_n\)</span> and <span class="process-math">\(\frac{2000+2100+2400+3000+3900+5100+6500}{7}\text{.}\)</span> What quantity do both of these values estimate? Which is a more accurate approximation?
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>

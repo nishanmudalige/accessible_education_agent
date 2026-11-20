@@ -52,3 +52,15 @@ python benchmark/run.py --questions benchmark/questions_plan.json --plan-quality
 ```
 
 `--skip-plan` overrides the environment for that benchmark process only. For the browser, edit `.env` and restart the server. The English initial questions exercise the fast path; the two French questions retain planning. These commands do not measure streaming.
+
+## HTML books and isolated index measurements
+
+HTML snapshots are imported by `scripts/import_html.py` from a PreTeXt frontmatter directory or a Pressbooks home page. Downloads are sequential with a default 1.5-second interval; raw responses are cached under `content/BOOK/raw/` (not committed). A completed `book.json` contains chapter titles, paragraph text, source chapter URLs and original/local anchor IDs. Paragraphs lacking a source ID receive a SHA-256 text-based ID plus a duplicate counter; it locates the exact paragraph in this saved snapshot, while the original URL links to the source chapter without inventing a source fragment. Re-importing the same snapshot preserves IDs. MathJax 3.2.2 and fonts are local; images load from original URLs and interactive embeds are omitted in favor of the original chapter link. Import sanitizes scripts and event attributes.
+
+```sh
+python scripts/import_html.py --id active-calculus-html --kind pretext --url https://mattboelkins.github.io/active-calculus-single-mbx/html2e/frontmatter.html
+python benchmark/run.py --offline-only --book active-calculus-pdf --index-book active-calculus-pdf
+python benchmark/run.py --offline-only --book active-calculus-html --index-book active-calculus-html
+```
+
+`--index-book` isolates measured index rebuilds to that book. Initial `/health` warm-up still loads the full collection and is reported separately. Without `--index-book`, per-book logs still show each book's time. HTML page measurements time serving a saved chapter, not browser MathJax layout. An HTML `page` value is a chapter ordinal, not a printed page. Existing PDF reading is unchanged.

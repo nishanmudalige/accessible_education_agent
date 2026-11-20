@@ -15,7 +15,8 @@
         2,
         3,
         4
-      ]
+      ],
+      "format": "pdf"
     },
     {
       "id": "active-calculus-pdf",
@@ -26,7 +27,20 @@
       "language": "en-CA",
       "source_url": "https://activecalculus.org/acs2e/",
       "purpose": "Benchmark testing",
-      "license": "CC BY-SA (see official website)"
+      "license": "CC BY-SA (see official website)",
+      "format": "pdf"
+    },
+    {
+      "id": "active-calculus-html",
+      "format": "html",
+      "file": "active-calculus-html/book.json",
+      "title": "Active Calculus, 2nd Edition (HTML)",
+      "authors": "Matthew Boelkins; contributing authors David Austin, Christina Safranski and Steven Schlicker",
+      "subject": "Single-variable calculus: limits, derivatives, chain rule, integration, differential equations and Taylor series",
+      "language": "en-CA",
+      "source_url": "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/",
+      "license": "CC BY-SA 4.0, except where otherwise noted",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     }
   ]
 }

@@ -32,7 +32,7 @@
   function resultCards(results,query='',supported=new Set()){
     const details=el('details','results'),summary=label(el('summary'),'Retrieved passages · select text to read or translate','Passages trouvés · sélectionnez le texte pour le lire ou le traduire');details.append(summary);
     for(const r of results){
-      const card=el('article','result-card'),heading=el('a','',`${r.title} · PDF ${r.page}${r.key?' · ['+r.key+']':''}`);heading.href=r.url;heading.target='_blank';heading.rel='noopener';
+      const card=el('article','result-card'),heading=el('a','',`${r.title} · ${r.format==='html'?r.chapter_title:'PDF '+r.page}${r.key?' · ['+r.key+']':''}`);heading.href=r.url;heading.target='_blank';heading.rel='noopener';
       const text=el('p','result-text');text.lang=r.language||'en-CA';text.dataset.speechLang=text.lang;
       const terms=[...new Set((query.toLowerCase().match(/[\p{L}\p{N}]+/gu)||[]).filter(w=>w.length>3))];
       const re=terms.length?new RegExp('('+terms.join('|')+')','ig'):null;
@@ -48,7 +48,7 @@
     for(const match of text.matchAll(/\[(S\d+)\]/g)){
       root.append(document.createTextNode(text.slice(at,match.index)));
       const e=byKey.get(match[1]);
-      if(e){const a=el('a','citation',match[0]);a.href=e.url;a.target='_blank';a.rel='noopener';a.title=`${e.title} · PDF ${e.page}`;root.append(a);}else root.append(document.createTextNode(match[0]));
+      if(e){const a=el('a','citation',match[0]);a.href=e.url;a.target='_blank';a.rel='noopener';a.title=`${e.title} · ${e.format==='html'?e.chapter_title:'PDF '+e.page}`;root.append(a);}else root.append(document.createTextNode(match[0]));
       at=match.index+match[0].length;
     }
     root.append(document.createTextNode(text.slice(at)));return root;

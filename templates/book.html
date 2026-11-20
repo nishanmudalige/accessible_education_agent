@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block scripts %}
+<script src="{{ url_for('static',filename='mathjax-config.js') }}" defer></script>
+<script src="{{ url_for('static',filename='vendor/mathjax/es5/tex-chtml-full.js') }}" defer></script>
+<script src="{{ url_for('static',filename='book.js') }}" defer></script>
+{% endblock %}
+{% block content %}
+<main id="main" class="html-book" lang="{{ doc.language }}">
+<header class="book-attribution">
+<a href="/" data-en="← Ask about the books" data-fr="← Poser une question sur les livres">← Ask about the books</a>
+<h1>{{ doc.title }}</h1><p>{{ doc.authors }}</p>
+<p><a href="{{ doc.license_url }}" target="_blank" rel="noopener">{{ doc.license }}</a> · <a href="{{ doc.source_url }}" target="_blank" rel="noopener" data-en="Original book" data-fr="Livre original">Original book</a> · <a href="{{ chapter.source_url }}" target="_blank" rel="noopener" data-en="Original chapter" data-fr="Chapitre original">Original chapter</a></p>
+<p data-en="Local reading copy: navigation removed and paragraph links added. Images link to the original site. Interactive activities open at the source. Original third-party exceptions still apply." data-fr="Copie locale : navigation retirée et liens de paragraphes ajoutés. Les images proviennent du site original. Les activités interactives se consultent à la source. Les exceptions relatives au contenu tiers s’appliquent toujours.">Local reading copy: navigation removed and paragraph links added. Images link to the original site. Interactive activities open at the source. Original third-party exceptions still apply.</p>
+</header>
+<details class="book-contents"><summary data-en="Chapters" data-fr="Chapitres">Chapters</summary><nav aria-label="Chapters"><ol>{% for c in doc.toc %}<li><a href="{{ c.url }}"{% if c.chapter==chapter.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ol></nav></details>
+<p id="citation-status" role="status" aria-live="polite" data-source-lang="{{ doc.language }}"></p>
+<article class="chapter-content" aria-live="off" aria-label="{{ chapter.title }}">{{ content|safe }}</article>
+</main>
+{% endblock %}

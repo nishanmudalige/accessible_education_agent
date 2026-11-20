@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--questions', type=Path, default=ROOT / 'benchmark/questions_calculus.json')
+    parser.add_argument('--index-book', help='Limit measured cold index builds to one book ID; warm-up still loads the full library')
     parser.add_argument('--book', help='Override every question book ID')
     parser.add_argument('--limit', type=int, help='Run only the first N requests after expanding repeats')
     parser.add_argument('--interval', type=float, default=8.0, help='Seconds between Ask requests (default: 8)')
@@ -85,28 +86,30 @@ def main():
     if any(args.page > library.docs[book]['page_count'] for book in books):
         raise ValueError('Requested page is outside a selected book')
 
-    print('Cold index runs (full collection, per-book times in [TIMING] logs):')
+    print('Cold index runs ('+(args.index_book or 'full collection')+'; per-book times in [TIMING] logs):')
     cold = []
     cold_start = len(collector.records)
     for _ in range(args.cold_runs):
         start = time.perf_counter()
-        index = LibraryIndex(ROOT / 'content/manifest.json')
+        index = LibraryIndex(ROOT / 'content/manifest.json', doc_id=args.index_book)
         cold.append(time.perf_counter()-start)
         del index
-    print('  full index median:', f'{statistics.median(cold):.3f}s' if cold else 'skipped')
+    print('  index build median:', f'{statistics.median(cold):.3f}s' if cold else 'skipped')
     per_book = defaultdict(list)
     for event in collector.records[cold_start:]:
         if event.get('event') == 'book_index':
             per_book[event['book']].append(event['seconds'])
     for book, values in sorted(per_book.items()):
         print(f'  {book}: {statistics.median(values):.3f}s median (n={len(values)})')
-    print('Uncached page rendering:')
+    print('Page responses (HTML serves saved chapters; PDF renders uncached PNG):')
     for book in sorted(books):
         times = []
         for _ in range(args.page_runs):
             page_png.cache_clear()
             start = time.perf_counter()
-            response = client.get(f'/page-image/{book}/{args.page}')
+            doc=library.docs[book]
+            path=doc['toc'][args.page-1]['url'] if doc.get('format')=='html' else f'/page-image/{book}/{args.page}'
+            response = client.get(path)
             if response.status_code != 200:
                 raise RuntimeError(f'Page render failed: HTTP {response.status_code}')
             times.append(time.perf_counter()-start)

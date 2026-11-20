@@ -1,0 +1,934 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-2-3-prod-quot">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The product and quotient rules</span>
+</h1>
+<article class="objectives goal-like" id="sec-2-3-prod-quot-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-2-3-prod-quot-2-1">
+<li id="sec-2-3-prod-quot-2-1-1">
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-2-1-1-1">How does the algebraic structure of a function guide us in computing its derivative using shortcut rules?
+</div>
+</li>
+<li id="sec-2-3-prod-quot-2-1-2">
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-2-1-2-1">How do we compute the derivative of a product of two basic functions in terms of the derivatives of the basic functions?
+</div>
+</li>
+<li id="sec-2-3-prod-quot-2-1-3">
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-2-1-3-1">How do we compute the derivative of a quotient of two basic functions in terms of the derivatives of the basic functions?
+</div>
+</li>
+<li id="sec-2-3-prod-quot-2-1-4">
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-2-1-4-1">How do the product and quotient rules combine with the sum and constant multiple rules to expand the library of functions we can differentiate quickly?
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-2-3-prod-quot-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-3-2">So far, we can differentiate power functions (<span class="process-math">\(x^n\)</span>), exponential functions (<span class="process-math">\(a^x\)</span>), and the two fundamental trigonometric functions (<span class="process-math">\(\sin(x)\)</span> and <span class="process-math">\(\cos(x)\)</span>). With the sum rule and constant multiple rules, we can also compute the derivative of combined functions.
+</div>
+<article class="example example-like" id="sec-2-3-prod-quot-3-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="sec-2-3-prod-quot-3-3-1-1">
+<div class="para" data-evidence="true" id="paragraph-e6218be3db2b7501-1">Find the derivative of</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-3-3-1-1-1">
+\begin{equation*}
+f(x) = 7x^{11} - 4 \cdot 9^x + \pi \sin(x) - \sqrt{3}\cos(x)\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-480299647717c7bd-1">Because <span class="process-math">\(f\)</span> is  a sum of basic functions, we can now quickly say that <span class="process-math">\(f'(x) = 77x^{10} - 4 \cdot 9^x \ln(9) + \pi \cos(x) + \sqrt{3} \sin(x)\text{.}\)</span>
+</div>
+</div>
+</article>
+<div class="para logical" id="sec-2-3-prod-quot-3-4">
+<div class="para" data-evidence="true" id="paragraph-1fa0fca13f0336f1-1">What about a product or quotient of two basic functions, such as</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-3-4-1">
+\begin{equation*}
+p(z) = z^3 \cos(z)\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-7175517a370b5cd2-1">or</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-3-4-2">
+\begin{equation*}
+q(t) = \frac{\sin(t)}{2^t}\text{?}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-3-5">While the derivative of a sum is the sum of the derivatives, it turns out that the rules for computing derivatives of products and quotients are more complicated.
+</div>
+<section class="worksheet" id="ws-PA-2-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-2-3"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-2-3-1">
+<div class="para" data-evidence="true" id="PA-2-3-1-1">Let <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> be the functions defined by <span class="process-math">\(f(t) = 2t^2\)</span> and <span class="process-math">\(g(t) = t^3 + 4t\text{.}\)</span>
+</div>
+</div>
+<article class="task exercise-like" id="PA-2-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-3-task-0-1-1">Determine <span class="process-math">\(f'(t)\)</span> and <span class="process-math">\(g'(t)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-3-task-1-1-1">Let <span class="process-math">\(p(t) = 2t^2 (t^3 + 4t)\)</span> and observe that <span class="process-math">\(p(t) = f(t) \cdot g(t)\text{.}\)</span> Rewrite the formula for <span class="process-math">\(p\)</span> by distributing the <span class="process-math">\(2t^2\)</span> term. Then, compute <span class="process-math">\(p'(t)\)</span> using the sum and constant multiple rules.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-3-task-2-1-1">True or false: <span class="process-math">\(p'(t) = f'(t) \cdot g'(t)\text{.}\)</span>  Why?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-3-task-3-1-1">Let <span class="process-math">\(q(t) = \frac{t^3 + 4t}{2t^2}\)</span> and observe that <span class="process-math">\(q(t) = \frac{g(t)}{f(t)}\text{.}\)</span> Rewrite the formula for <span class="process-math">\(q\)</span> by dividing each term in the numerator by the denominator and simplify to write <span class="process-math">\(q\)</span> as a sum of constant multiples of powers of <span class="process-math">\(t\text{.}\)</span> Then, compute <span class="process-math">\(q'(t)\)</span> using the sum and constant multiple rules.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-3-task-4-1-1">True or false: <span class="process-math">\(q'(t) = \frac{g'(t)}{f'(t)}\text{.}\)</span>  Why?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-3-prod-quot-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The product rule</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-2">As part (b) of <a class="xref" href="/book/active-calculus-html/sec-2-3-prod-quot#PA-2-3" title="Preview Activity 2.3.1">Preview Activity 2.3.1</a> shows, it is not true in general that the derivative of a product of two functions is the product of the derivatives of those functions. To see why this is the case, we consider an example involving meaningful functions.
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-4-3">
+<div class="para" data-evidence="true" id="paragraph-ff61926af3d19c01-1">Say that an investor is regularly purchasing stock in a particular company. Let <span class="process-math">\(N(t)\)</span> represent the number of shares owned on day <span class="process-math">\(t\text{,}\)</span> where <span class="process-math">\(t = 0\)</span> represents the first day on which shares were purchased. Let <span class="process-math">\(S(t)\)</span> give the value of one share of the stock on day <span class="process-math">\(t\text{;}\)</span> note that the units on <span class="process-math">\(S(t)\)</span> are dollars per share. To compute the total value of the stock on day <span class="process-math">\(t\text{,}\)</span> we take the product</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-4-3-8">
+\begin{equation*}
+V(t) = N(t) \, \text{shares}  \cdot S(t) \, \text{dollars per share}\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-13525835231e1747-1">Observe that over time, both the number of shares and the value of a given share will vary. The derivative <span class="process-math">\(N'(t)\)</span> measures the rate at which the number of shares is changing, while <span class="process-math">\(S'(t)\)</span> measures the rate at which the value per share is changing. How do these respective rates of change affect the rate of change of the total value function?</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-4-4">
+<div class="para" data-evidence="true" id="paragraph-c00276f5004efb3c-1">To help us understand the relationship among changes in <span class="process-math">\(N\text{,}\)</span> <span class="process-math">\(S\text{,}\)</span> and <span class="process-math">\(V\text{,}\)</span> let’s consider some specific data.</div>
+<ul class="disc" id="sec-2-3-prod-quot-4-4-4">
+<li id="sec-2-3-prod-quot-4-4-4-1">
+<div class="para" data-evidence="true" id="p-derived-sec-2-3-prod-quot-4-4-4-1">Suppose that on day 100, the investor owns 520 shares of stock and the stock’s current value is $27.50 per share. This tells us that <span class="process-math">\(N(100) = 520\)</span> and <span class="process-math">\(S(100) = 27.50\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-3-prod-quot-4-4-4-2">
+<div class="para" data-evidence="true" id="p-derived-sec-2-3-prod-quot-4-4-4-2">On day 100, the investor purchases an additional 12 shares (so the number of shares held is rising at a rate of 12 shares per day).</div>
+</li>
+<li id="sec-2-3-prod-quot-4-4-4-3">
+<div class="para" data-evidence="true" id="p-derived-sec-2-3-prod-quot-4-4-4-3">On that same day the price of the stock is rising at a rate of 0.75 dollars per share per day.</div>
+</li>
+</ul>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-5">In calculus notation, the latter two facts tell us that <span class="process-math">\(N'(100) = 12\)</span> (shares per day) and <span class="process-math">\(S'(100) = 0.75\)</span> (dollars per share per day). At what rate is the value of the investor’s total holdings changing on day 100?
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-4-6">
+<div class="para" data-evidence="true" id="paragraph-712d6dba9a2efb63-1">Observe that the increase in total value comes from two sources: the growing number of shares, and the rising value of each share. If only the number of shares is increasing (and the value of each share is constant), the rate at which total value would rise is the product of the current value of the shares and the rate at which the number of shares is changing. That is, the rate at which total value would change is given by</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-4-6-1">
+\begin{equation*}
+S(100) \cdot N'(100) = 27.50 \, \frac{\text{dollars} }{\text{share} } \cdot 12 \, \frac{\text{shares} }{\text{day} } = 330 \, \frac{\text{dollars} }{\text{day} }\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-7">Note particularly how the units make sense and show the rate at which the total value <span class="process-math">\(V\)</span> is changing, measured in dollars per day.
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-4-8">
+<div class="para" data-evidence="true" id="paragraph-ef562b2a822d7e38-1">If instead the number of shares is constant, but the value of each share is rising, the rate at which the total value would rise is  the product of the number of shares and the rate of change of share value. The total value is rising at a rate of</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-4-8-1">
+\begin{equation*}
+N(100) \cdot S'(100) = 520 \, \text{shares}  \cdot 0.75 \, \frac{\text{dollars per share} }{\text{day} } = 390 \, \frac{\text{dollars} }{\text{day} }\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-4-9">
+<div class="para" data-evidence="true" id="paragraph-9a9f8f7873a29060-1">Of course, when both the number of shares and the value of each share are changing, we have to include both of these sources. In that case the rate at which the total value is rising is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-4-9-1">
+\begin{equation*}
+V'(100) = S(100) \cdot N'(100) + N(100) \cdot S'(100) = 330 + 390 = 720 \, \frac{\text{dollars} }{\text{day} }\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-10">We expect the total value of the investor’s holdings to rise by about $720 on the 100th day.<details class="ptx-footnote" id="sec-2-3-prod-quot-4-10-1"><summary class="ptx-footnote__number" title="Footnote 2.3.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents">While this example highlights why the product rule is true, there are some subtle issues to recognize. For one, if the stock’s value really does rise exactly $0.75 on day 100, and the number of shares really rises by 12 on day 100, then we’d expect that <span class="process-math">\(V(101) = N(101) \cdot S(101) = 532 \cdot 28.25 = 15029\text{.}\)</span> If, as noted above, we expect the total value to rise by $720, then with <span class="process-math">\(V(100) = N(100) \cdot S(100) = 520 \cdot 27.50 = 14300\text{,}\)</span> then it seems we should find that <span class="process-math">\(V(101) = V(100) + 720 = 15020\text{.}\)</span> Why do the two results differ by 9? One way to understand why this difference occurs is to recognize that <span class="process-math">\(N'(100) = 12\)</span> represents an <em class="emphasis">instantaneous</em> rate of change, while our (informal) discussion has also thought of this number as the total change in the number of shares over the course of a single day. The formal proof of the product rule reconciles this issue by taking the limit as the change in the input tends to zero.
+</div></details>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-11">Next, we expand our perspective from the specific example above to the more general and abstract setting of a product <span class="process-math">\(P\)</span> of two differentiable functions, <span class="process-math">\(f\)</span> and <span class="process-math">\(g\text{.}\)</span> If <span class="process-math">\(P(x) = f(x) \cdot g(x)\text{,}\)</span> our work above suggests that <span class="process-math">\(P'(x) = f(x) g'(x) + g(x) f'(x)\text{.}\)</span> Indeed, a formal proof using the limit definition of the derivative can be given to show that the following rule, called the <em class="emphasis">product rule</em>,  holds in general.
+</div>
+<article class="assemblage assemblage-like" id="prod-rule"><h3 class="heading"><span class="title">The Product Rule.</span></h3>
+<div class="para logical" id="prod-rule-2">
+<div class="para" data-evidence="true" id="paragraph-879b744cca8fb362-1"> If <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are differentiable functions, then their product <span class="process-math">\(P(x) = f(x) \cdot g(x)\)</span> is also a differentiable function, and</div>
+<div class="displaymath process-math" data-evidence="true" id="prod-rule-2-5">
+\begin{equation*}
+P'(x) = f(x) g'(x) + g(x) f'(x)\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-13">In light of the earlier example involving shares of stock, the product rule also makes sense intuitively: the rate of change of <span class="process-math">\(P\)</span> should take into account both how fast <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are changing, as well as how large <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are at the point of interest. In words the product rule says: if <span class="process-math">\(P\)</span> is the product of two functions <span class="process-math">\(f\)</span> (the first function) and <span class="process-math">\(g\)</span> (the second), then “the derivative of <span class="process-math">\(P\)</span> is the first times the derivative of the second, plus the second times the derivative of the first.” It is often a helpful mental exercise to say this phrasing aloud when executing the product rule.
+</div>
+<article class="example example-like" id="sec-2-3-prod-quot-4-14"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-4-14-1-1">Use the product rule to differentiate <span class="process-math">\(P(z) = z^3 \cdot \cos(z)\text{.}\)</span>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-2-3-prod-quot-4-14-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec-2-3-prod-quot-4-14-2-1">
+<div class="para" data-evidence="true" id="paragraph-0791791e7a779fcc-1">In <span class="process-math">\(P(z) = z^3 \cdot \cos(z)\text{,}\)</span> the first function is <span class="process-math">\(z^3\)</span> and the second function is <span class="process-math">\(\cos(z)\text{.}\)</span> By the product rule, <span class="process-math">\(P'\)</span> will be given by the first, <span class="process-math">\(z^3\text{,}\)</span> times the derivative of the second, <span class="process-math">\(-\sin(z)\text{,}\)</span> plus the second, <span class="process-math">\(\cos(z)\text{,}\)</span> times the derivative of the first, <span class="process-math">\(3z^2\text{.}\)</span> That is,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-4-14-2-1-9">
+\begin{equation*}
+P'(z) = z^3(-\sin(z)) + \cos(z) 3z^2 = -z^3 \sin(z) + 3z^2 \cos(z)\text{.}
+\end{equation*}
+</div>
+</div>
+</div></details>
+</div>
+</article>
+<section class="worksheet" id="ws-act-2-3-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-3-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-3-1-1">
+<div class="para" data-evidence="true" id="act-2-3-1-1-1">Use the product rule to respond to each of the prompts below. Throughout, be sure to carefully label any derivative you find by name. It is not necessary to algebraically simplify any of the derivatives you compute.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-3-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-1-task-0-1-1">Let <span class="process-math">\(m(w)=3w^{17} 4^w\text{.}\)</span> Find <span class="process-math">\(m'(w)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-1-task-1-1-1">Let <span class="process-math">\(h(t) = (\sin(t) + \cos(t))t^4\text{.}\)</span> Find <span class="process-math">\(h'(t)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-1-task-2-1-1">Determine the slope of the tangent line to the curve <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((1, f(1))\)</span> if <span class="process-math">\(f\)</span> is given by the rule <span class="process-math">\(f(x) = e^x \sin(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-1-task-3-1-1">Find the tangent line approximation <span class="process-math">\(L(x)\)</span> to the function <span class="process-math">\(y = g(x)\)</span> at the point <span class="process-math">\((-1,g(-1))\)</span> if <span class="process-math">\(g\)</span> is given by the rule <span class="process-math">\(g(x) = (x^2 + x) 2^x\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-3-prod-quot-5">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The quotient rule</span>
+</h2>
+<div class="para logical" id="sec-2-3-prod-quot-5-2">
+<div class="para" data-evidence="true" id="paragraph-3cc0fba48a213562-1">Because quotients and products are closely linked, we can use the product rule to understand how to take the derivative of a quotient. Let <span class="process-math">\(Q(x)\)</span> be defined by <span class="process-math">\(Q(x) = f(x)/g(x)\text{,}\)</span> where <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are both differentiable functions. It turns out that <span class="process-math">\(Q\)</span> is differentiable everywhere that <span class="process-math">\(g(x) \ne 0\text{.}\)</span> We would like a formula for <span class="process-math">\(Q'\)</span> in terms of <span class="process-math">\(f\text{,}\)</span> <span class="process-math">\(g\text{,}\)</span> <span class="process-math">\(f'\text{,}\)</span> and <span class="process-math">\(g'\text{.}\)</span> Multiplying both sides of the formula <span class="process-math">\(Q = f/g\)</span> by <span class="process-math">\(g\text{,}\)</span> we observe that</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-2-14">
+\begin{equation*}
+f(x) = Q(x) \cdot g(x)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-5-3">
+<div class="para" data-evidence="true" id="paragraph-827b1170d6e21809-1">Applying the product rule to differentiate <span class="process-math">\(f\text{,}\)</span> it follows</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-3-2">
+\begin{equation*}
+f'(x) = Q(x) g'(x) + g(x) Q'(x)\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-5-4">
+<div class="para" data-evidence="true" id="paragraph-c05110d7ac40e5ab-1">Since we want to know a formula for <span class="process-math">\(Q'\text{,}\)</span> we solve this most recent equation for <span class="process-math">\(Q'(x)\)</span> and find</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-4-3">
+\begin{equation*}
+Q'(x) g(x) = f'(x) - Q(x) g'(x)\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-a6ec0c8f2142026f-1">Dividing both sides by <span class="process-math">\(g(x)\text{,}\)</span> we have</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-4-5">
+\begin{equation*}
+Q'(x) = \frac{f'(x) - Q(x) g'(x)}{g(x)}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-5-5">
+<div class="para" data-evidence="true" id="paragraph-d4c47bca7e2c85a8-1">Finally, we recall that <span class="process-math">\(Q(x) = \frac{f(x)}{g(x)}\text{.}\)</span> Substituting this expression in the preceding equation and simplifying, it follows that</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-5-2">
+\begin{align*}
+Q'(x) \amp= \frac{f'(x) - \frac{f(x)}{g(x)} g'(x)}{g(x)}\\
+\amp= \frac{f'(x) - \frac{f(x)}{g(x)} g'(x)}{g(x)} \cdot \frac{g(x)}{g(x)}\\
+\amp= \frac{g(x) f'(x) -  f(x) g'(x)}{g(x)^2}\text{.}
+\end{align*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-5-6">The preceding argument results in the <em class="emphasis">quotient rule</em>.
+</div>
+<article class="assemblage assemblage-like" id="quot-rule"><h3 class="heading"><span class="title">The Quotient Rule.</span></h3>
+<div class="para logical" id="quot-rule-2">
+<div class="para" data-evidence="true" id="paragraph-e3a49ee58630762b-1"> If <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are differentiable functions, then their quotient <span class="process-math">\(Q(x) = \frac{f(x)}{g(x)}\)</span> is also a differentiable function for all <span class="process-math">\(x\)</span> where <span class="process-math">\(g(x) \ne 0\)</span> and</div>
+<div class="displaymath process-math" data-evidence="true" id="quot-rule-2-7">
+\begin{equation*}
+Q'(x) = \frac{g(x) f'(x) -  f(x) g'(x)}{g(x)^2}\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-5-8">As with the product rule, it can be helpful to think of the quotient rule verbally. If a function <span class="process-math">\(Q\)</span> is the quotient of a top function <span class="process-math">\(f\)</span> and a bottom function <span class="process-math">\(g\text{,}\)</span> then <span class="process-math">\(Q'\)</span> is given by “the bottom times the derivative of the top, minus the top times the derivative of the bottom, all over the bottom squared.”
+</div>
+<article class="example example-like" id="sec-2-3-prod-quot-5-9"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-5-9-1-1">Use the quotient rule to differentiate <span class="process-math">\(Q(t) = \dfrac{\sin(t)}{2^t}\text{.}\)</span>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-2-3-prod-quot-5-9-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec-2-3-prod-quot-5-9-2-1">
+<div class="para" data-evidence="true" id="paragraph-746806c11e962492-1">Since <span class="process-math">\(Q(t) = \frac{\sin(t)}{2^t}\text{,}\)</span> we call  <span class="process-math">\(\sin(t)\)</span> the top function and <span class="process-math">\(2^t\)</span> the bottom function. By the quotient rule, <span class="process-math">\(Q'\)</span> is given by the bottom, <span class="process-math">\(2^t\text{,}\)</span> times the derivative of the top, <span class="process-math">\(\cos(t)\text{,}\)</span> minus the top, <span class="process-math">\(\sin(t)\text{,}\)</span> times the derivative of the bottom, <span class="process-math">\(2^t \ln(2)\text{,}\)</span> all over the bottom squared, <span class="process-math">\((2^t)^2\text{.}\)</span> That is,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-9-2-1-10">
+\begin{equation*}
+Q'(t) = \frac{2^t \cos(t) - \sin(t) 2^t \ln(2)}{(2^t)^2}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-5-9-2-2">
+<div class="para" data-evidence="true" id="paragraph-73fb58677af06b64-1">In this particular example, it is possible to simplify <span class="process-math">\(Q'(t)\)</span> by removing a factor of <span class="process-math">\(2^t\)</span> from both the numerator and denominator, so that</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-5-9-2-2-3">
+\begin{equation*}
+Q'(t) = \frac{\cos(t) - \sin(t) \ln(2)}{2^t}\text{.}
+\end{equation*}
+</div>
+</div>
+</div></details>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-5-10">In general, we must be careful in doing any such simplification, as we don’t want to execute the quotient rule correctly but then make an algebra error.
+</div>
+<section class="worksheet" id="ws-act-2-3-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-3-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-3-2-1">
+<div class="para" data-evidence="true" id="act-2-3-2-1-1">Use the quotient rule to respond to each of the prompts below. Throughout, be sure to carefully label any derivative you find by name. That is, if you’re given a formula for <span class="process-math">\(f(x)\text{,}\)</span> clearly label the formula you find for <span class="process-math">\(f'(x)\text{.}\)</span> It is not necessary to algebraically simplify any of the derivatives you compute.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-3-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-2-task-0-1-1">Let <span class="process-math">\(r(z)=\frac{3^z}{z^4 + 1}\text{.}\)</span> Find <span class="process-math">\(r'(z)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-2-task-1-1-1">Let <span class="process-math">\(v(t) = \frac{\sin(t)}{\cos(t) + t^2}\text{.}\)</span> Find <span class="process-math">\(v'(t)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-2-task-2-1-1">Determine the slope of the tangent line to the curve <span class="process-math">\(\displaystyle R(x) = \frac{x^2 - 2x - 8}{x^2 - 9}\)</span> at the point where <span class="process-math">\(x = 0\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para logical" id="act-2-3-2-task-3-1-1">
+<div class="para" data-evidence="true" id="paragraph-7722d890d9157b5a-1">When a camera flashes, the intensity <span class="process-math">\(I\)</span> of light seen by the eye is given by the function</div>
+<div class="displaymath process-math" data-evidence="true" id="act-2-3-2-task-3-1-1-2">
+\begin{equation*}
+I(t) = \frac{100t}{e^t}\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-ce511e971f6fa43c-1">where <span class="process-math">\(I\)</span> is measured in candles and <span class="process-math">\(t\)</span> is measured in milliseconds. Compute <span class="process-math">\(I'(0.5)\text{,}\)</span> <span class="process-math">\(I'(2)\text{,}\)</span> and <span class="process-math">\(I'(5)\text{;}\)</span> include appropriate units on each value; and discuss the meaning of each.</div>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-3-prod-quot-6">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Combining rules</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-6-2">In order to apply the derivative shortcut rules correctly we must recognize the fundamental structure of a function.
+</div>
+<article class="example example-like" id="sec-2-3-prod-quot-6-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="sec-2-3-prod-quot-6-3-1-1">
+<div class="para" data-evidence="true" id="paragraph-a58999b30b25b999-1">Determine the derivative of the function</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-3-1-1-1">
+\begin{equation*}
+f(x) = x\sin(x) + \frac{x^2}{\cos(x) + 2}\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-a9a0ff6a18507f8d-1">Clearly state which derivative rules you use and how they were applied.</div>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-2-3-prod-quot-6-3-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec-2-3-prod-quot-6-3-2-1">
+<div class="para" data-evidence="true" id="paragraph-3bacdd018673a9ba-1">To differentiate any complicated function, our first task is to recognize the structure of the function. This function <span class="process-math">\(f\)</span> is a sum of two slightly less complicated functions, so we can apply the sum rule<details class="ptx-footnote" id="sec-2-3-prod-quot-6-3-2-1-2"><summary class="ptx-footnote__number" title="Footnote 2.3.2"><sup> 2 </sup></summary>
+<div class="ptx-footnote__contents">When taking a derivative that involves the use of multiple derivative rules, it is often helpful to use the notation <span class="process-math">\(\frac{d}{dx} \left[ ~~\right]\)</span> to wait to apply subsequent rules. This is demonstrated both in this example and the one that follows.
+</div></details> to get</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-3-2-1-3">
+\begin{align*}
+f'(x) \amp= \frac{d}{dx} \left[ x\sin(x) + \frac{x^2}{\cos(x) + 2} \right]\\
+\amp= \frac{d}{dx} \left[ x\sin(x) \right] + \frac{d}{dx}\left[ \frac{x^2}{\cos(x) + 2} \right]
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="sec-2-3-prod-quot-6-3-2-2">
+<div class="para" data-evidence="true" id="paragraph-525cc13a63c9cdcf-1">Now, the left-hand term above is a product, so the product rule is needed there, while the right-hand term is a quotient, so the quotient rule is required. Applying these rules respectively, we find that</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-3-2-2-1">
+\begin{align*}
+f'(x) \amp= \left( x \cos(x) + \sin(x) \right) + \frac{(\cos(x) + 2) 2x - x^2(-\sin(x))}{(\cos(x) + 2)^2}\\
+\amp= x \cos(x) + \sin(x) + \frac{2x\cos(x) + 4x + x^2\sin(x)}{(\cos(x) + 2)^2}\text{.}
+\end{align*}
+</div>
+</div>
+</div></details>
+</div>
+</article>
+<article class="example example-like" id="sec-2-3-prod-quot-6-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="sec-2-3-prod-quot-6-4-1-1">
+<div class="para" data-evidence="true" id="paragraph-a58999b30b25b999-2">Determine the derivative of the function</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-4-1-1-1">
+\begin{equation*}
+s(y) = \frac{y \cdot 7^y}{y^2 + 1}\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-3021d90ad693c3f9-1">Clearly state which rules you used and how they were applied.</div>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-2-3-prod-quot-6-4-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec-2-3-prod-quot-6-4-2-1">
+<div class="para" data-evidence="true" id="paragraph-bda0cc6d0fbf8d3f-1">The function <span class="process-math">\(s\)</span> is a quotient of two simpler functions, so the quotient rule will be needed. To begin, we set up the quotient rule and use the notation <span class="process-math">\(\frac{d}{dy}\)</span> to indicate the derivatives of the numerator and denominator. Thus,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-4-2-1-3">
+\begin{equation*}
+s'(y) = \frac{(y^2 + 1) \cdot \frac{d}{dy}\left[ y \cdot 7^y \right] - y \cdot 7^y \cdot \frac{d}{dy}\left[y^2 + 1 \right]}{(y^2 + 1)^2}\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-b13f7375530ae276-1">Now, there remain two derivatives to determine. The first one, <span class="process-math">\(\frac{d}{dy}\left[ y \cdot 7^y \right]\)</span> calls for use of the product rule, while the second, <span class="process-math">\(\frac{d}{dy}\left[y^2 + 1 \right]\)</span> needs only the sum rule. Applying these rules, we now have</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-6-4-2-1-6">
+\begin{equation*}
+s'(y) = \frac{(y^2 + 1) [y \cdot 7^y \ln(7) + 7^y \cdot 1] - y \cdot 7^y [2y]}{(y^2 + 1)^2}\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-29f42ca23822be56-1">While some minor simplification is possible, we are content to leave <span class="process-math">\(s'(y)\)</span> in its current form.</div>
+</div>
+</div></details>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-6-5">Success in applying derivative rules begins with recognizing the structure of the function, followed by the careful and diligent application of the relevant derivative rules. The best way to become proficient at this process is to do a large number of examples.
+</div>
+<section class="worksheet" id="ws-act-2-3-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-3-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-3-3-1">
+<div class="para" data-evidence="true" id="act-2-3-3-1-1">Use relevant derivative rules to respond to each of the prompts below. Throughout, be sure to use proper notation and carefully label any derivative you find by name.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-3-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-3-task-0-1-1">Let <span class="process-math">\(f(r) = (5r^3 + \sin(r))(4^r - 2\cos(r))\text{.}\)</span> Find <span class="process-math">\(f'(r)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-3-task-1-1-1">Let <span class="process-math">\(\displaystyle p(t) = \frac{\cos(t)}{t^6 \cdot 6^t}\text{.}\)</span> Find <span class="process-math">\(p'(t)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-3-task-2-1-1">Let <span class="process-math">\(g(z) = 3z^7 e^z - 2z^2 \sin(z) + \frac{z}{z^2 + 1}\text{.}\)</span> Find <span class="process-math">\(g'(z)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-3-task-3-1-1">A moving particle has its position in feet at time <span class="process-math">\(t\)</span> in seconds given by the function <span class="process-math">\(s(t) = \frac{3\cos(t) - \sin(t)}{e^t}\text{.}\)</span> Find the particle’s instantaneous velocity at the moment <span class="process-math">\(t = 1\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-3-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-3-3-task-4-1-1">Suppose that <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> are differentiable functions and it is known that <span class="process-math">\(f(3) = -2\text{,}\)</span> <span class="process-math">\(f'(3) = 7\text{,}\)</span> <span class="process-math">\(g(3) = 4\text{,}\)</span> and <span class="process-math">\(g'(3) = -1\text{.}\)</span> If <span class="process-math">\(p(x) = f(x) \cdot g(x)\)</span> and <span class="process-math">\(\displaystyle q(x) = \frac{f(x)}{g(x)}\text{,}\)</span> calculate <span class="process-math">\(p'(3)\)</span> and <span class="process-math">\(q'(3)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-6-7">As the algebraic complexity of the functions we are able to differentiate continues to increase, it is important to remember that all of the derivative’s meaning continues to hold. Regardless of the structure of the function <span class="process-math">\(f\text{,}\)</span> the value of <span class="process-math">\(f'(a)\)</span> tells us the instantaneous rate of change of <span class="process-math">\(f\)</span> with respect to <span class="process-math">\(x\)</span> at the moment <span class="process-math">\(x = a\text{,}\)</span> as well as the slope of the tangent line to <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((a,f(a))\text{.}\)</span>
+</div>
+</section>
+<section class="subsection" id="sec-2-3-prod-quot-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" id="sec-2-3-prod-quot-7-2">
+<ul class="disc" id="sec-2-3-prod-quot-7-2-1">
+<li id="sec-2-3-prod-quot-7-2-1-1">
+<div class="para" data-evidence="true" id="sec-2-3-prod-quot-7-2-1-1-1">If a function is a sum, product, or quotient of simpler functions, then we can use the sum, product, or quotient rules to differentiate it in terms of the simpler functions and their derivatives.
+</div>
+</li>
+<li id="sec-2-3-prod-quot-7-2-1-2">
+<div class="para logical" id="sec-2-3-prod-quot-7-2-1-2-1">
+<div class="para" data-evidence="true" id="paragraph-2652300e75da9f18-1">The product rule tells us that if <span class="process-math">\(P\)</span> is a product of differentiable functions <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> according to the rule <span class="process-math">\(P(x) = f(x) g(x)\text{,}\)</span> then</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-7-2-1-2-1-5">
+\begin{equation*}
+P'(x) = f(x)g'(x) + g(x)f'(x)\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="sec-2-3-prod-quot-7-2-1-3">
+<div class="para logical" id="sec-2-3-prod-quot-7-2-1-3-1">
+<div class="para" data-evidence="true" id="paragraph-418197dc12f3d44d-1">The quotient rule tells us that if <span class="process-math">\(Q\)</span> is a quotient of differentiable functions <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> according to the rule <span class="process-math">\(Q(x) = \frac{f(x)}{g(x)}\text{,}\)</span> then</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-7-2-1-3-1-5">
+\begin{equation*}
+Q'(x) = \frac{g(x)f'(x) - f(x)g'(x)}{g(x)^2}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="sec-2-3-prod-quot-7-2-1-4">
+<div class="para logical" id="sec-2-3-prod-quot-7-2-1-4-1">
+<div class="para" data-evidence="true" id="paragraph-5a7ed11d74cac41b-1">Along with the constant multiple and sum rules, the product and quotient rules enable us to compute the derivative of any function that consists of sums, constant multiples, products, and quotients of basic functions. For instance, if <span class="process-math">\(F\)</span> has the form</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-3-prod-quot-7-2-1-4-1-2">
+\begin{equation*}
+F(x) = \frac{2a(x) - 5b(x)}{c(x) \cdot d(x)}\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-d1e137603748c76c-1">then <span class="process-math">\(F\)</span> is a quotient, in which the numerator is a sum of constant multiples and the denominator is a product. This, the derivative of <span class="process-math">\(F\)</span> can be found by applying the quotient rule and then using the sum and constant multiple rules to differentiate the numerator and the product rule to differentiate the denominator.</div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-2-3">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="csafranski__2_3HW_prob1_pg"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__2_3HW_prob1_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" id="extracted-csafranski__2_3HW_prob1_pg-1-1-1">
+<div class="para" data-evidence="true" id="paragraph-e947a3d4f4a1b236-1">Let</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-1-1">
+\begin{equation*}
+y = 2x^{4}\mathopen{}\left(x^{7}-9\right)
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-fce8b18faed0dc16-1">Calculate the derivative using the product rule.</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-2">
+<span class="process-math">\(f(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-3">which means that
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-4">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g'(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-5">And thus <span class="process-math">\(y' =\)</span> <span class="fillin underline"></span> <span class="process-math">\(+\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-6">(It doesn’t matter which part of the sum you enter first or second.)
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob1_pg-1-1-7">Try checking your answer by multiplying <span class="process-math">\(y\)</span> out and then using power rule.
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__2_3HW_prob2_pg"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__2_3HW_prob2_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" id="extracted-csafranski__2_3HW_prob2_pg-1-1-1">
+<div class="para" data-evidence="true" id="paragraph-e947a3d4f4a1b236-2">Let</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-1-1">
+\begin{equation*}
+y = \sqrt{x} (x^{2}+x^{2})
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-fce8b18faed0dc16-2">Calculate the derivative using the product rule.</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-2">
+<span class="process-math">\(f(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-3">which means that
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-4">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g'(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-5">And thus <span class="process-math">\(y' =\)</span> <span class="fillin underline"></span> <span class="process-math">\(+\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-6">(It doesn’t matter which part of the sum you enter first or second.)
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob2_pg-1-1-7">Try checking your answer by multiplying <span class="process-math">\(y\)</span> out and then using power rule.
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__2_3HW_prob3_pg"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__2_3HW_prob3_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-1">Calculate the derivative of the function below using the quotient rule.
+</div>
+<div class="para logical" id="extracted-csafranski__2_3HW_prob3_pg-1-1-2">
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-2-1">
+\begin{equation*}
+y= \frac{4x}{8x+9}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-3">
+<span class="process-math">\(f(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-4">which means that
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-5">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g'(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para logical" id="extracted-csafranski__2_3HW_prob3_pg-1-1-6">
+<div class="para" data-evidence="true" id="paragraph-7c4cf3445dc647e6-1">And thus</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob3_pg-1-1-6-1">
+\begin{equation*}
+\left[\frac{4x}{8x+9}\right]' = \frac{p(x)}{q(x)}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-7a87f178201c6893-1">where <span class="process-math">\(p(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(q(x) =\)</span><span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__2_3HW_prob4_pg"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__2_3HW_prob4_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-1">Calculate the derivative of the function below using the quotient rule.
+</div>
+<div class="para logical" id="extracted-csafranski__2_3HW_prob4_pg-1-1-2">
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-2-1">
+\begin{equation*}
+y= \frac{x^{5}}{\sqrt{x}+5x^{10}}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-3">
+<span class="process-math">\(f(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-4">which means that
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-5">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(g'(x)=\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para logical" id="extracted-csafranski__2_3HW_prob4_pg-1-1-6">
+<div class="para" data-evidence="true" id="paragraph-7c4cf3445dc647e6-2">And thus</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__2_3HW_prob4_pg-1-1-6-1">
+\begin{equation*}
+\left[\frac{x^{5}}{\sqrt{x}+5x^{10}}\right]' = \frac{p(x)}{q(x)}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-7a87f178201c6893-2">where <span class="process-math">\(p(x) =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(q(x) =\)</span><span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec3__Q51_pg"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec3__Q51_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-1">Let <span class="process-math">\(F(3) = 1, F'(3) = 2, H(3) = 5, H'(3) = 4\text{.}\)</span>
+</div>
+<div class="para logical" id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2">
+<ol class="upper-alpha" id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2-1">
+<li id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2-1-1">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2-1-1-1">If <span class="process-math">\(G(z) = F(z)\cdot H(z)\text{,}\)</span> then <span class="process-math">\(G'(3) =\)</span> <span class="fillin underline"></span>
+</div>
+</li>
+<li id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2-1-2">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q51_pg-1-1-2-1-2-1">If <span class="process-math">\(G(w) = F(w)/H(w)\text{,}\)</span> then <span class="process-math">\(G'(3) =\)</span> <span class="fillin underline"></span>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec3__Q37_pg"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec3__Q37_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-1">Let <span class="process-math">\(h(x)=f(x)\cdot g(x)\text{,}\)</span> and <span class="process-math">\(k(x)=f(x)/g(x)\text{.}\)</span> Use the figures below to find the <em class="alert">exact</em> values of the indicated derivatives. All sharp corners in the graphs occur at points whose coordinates are integers or half-integers.
+</div> <div class="tabular-box natural-width"><table class="tabular">
+<tr>
+<td class="l m b2 r2 l2 t2 lines"><div class="image-box"><img alt="graph of a piecewise linear function" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap3Sec3__Q37_pg-image-1.png"/></div></td>
+<td class="l m b2 r2 l0 t2">
+<div class="para" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-2-1-2-2"></div>
+</td>
+</tr>
+<tr data-evidence="true" id="paragraph-68119faeb59d8815-1">
+<td class="l m b2 r2 l2 t0 lines"><span class="process-math">\(f(x)\)</span></td>
+<td class="l m b2 r2 l0 t0 lines"><span class="process-math">\(g(x)\)</span></td>
+</tr>
+</table></div>
+<div class="para logical" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3">
+<ol class="upper-alpha" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3-1">
+<li id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3-1-1">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3-1-1-1">
+<span class="process-math">\(h'(1) =\)</span><span class="fillin underline"></span>
+</div>
+</li>
+<li id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3-1-2">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-3-1-2-1">
+<span class="process-math">\(k'(-2) =\)</span><span class="fillin underline"></span>
+</div>
+</li>
+</ol>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q37_pg-1-1-4">
+<em class="emphasis">(Enter <em class="alert">dne</em> for any answer where the derivative does not exist.)</em>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec5__Q03_pg"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec5__Q03_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec5__Q03_pg-1-1-1">Find the derivative of <span class="process-math">\(s(q) = 15 \cos q \sin q\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec5__Q03_pg-1-1-2">
+<span class="process-math">\(s'(q) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__UVA-Stew5e__setUVA-Stew5e-C03S02-ProdQuotRules__3-2-25_pg"><h3 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__UVA-Stew5e__setUVA-Stew5e-C03S02-ProdQuotRules__3-2-25_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" id="extracted-Library__UVA-Stew5e__setUVA-Stew5e-C03S02-ProdQuotRules__3-2-25_pg-1-1-1">
+<div class="para" data-evidence="true" id="paragraph-0b343d3c6e00819d-1">Find an equation for the line tangent to the graph of</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-Library__UVA-Stew5e__setUVA-Stew5e-C03S02-ProdQuotRules__3-2-25_pg-1-1-1-1">
+\begin{equation*}
+f(x) = -7 x e^x
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-373ae787a83c83db-1">at the point <span class="process-math">\((a,f(a))\)</span> for <span class="process-math">\(a=2\text{.}\)</span>
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__UVA-Stew5e__setUVA-Stew5e-C03S02-ProdQuotRules__3-2-25_pg-1-1-2">
+<span class="process-math">\(y\)</span> = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec3__Q07_pg"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec3__Q07_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q07_pg-1-1-1">Find the derivative of the function <span class="process-math">\(f(x)\text{,}\)</span> below.  It may be to your advantage to simplify  first.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q07_pg-1-1-2">
+<span class="process-math">\(\displaystyle f(x) = (x^9 - \root 7\of{x}) 2^x\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec3__Q07_pg-1-1-3">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__ma122DB__set4__s3_2_32_pg"><h3 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__ma122DB__set4__s3_2_32_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-1">Given that
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-2">
+<span class="process-math">\(f(1) =  1 ,\  f'(1)=-2\text{,}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-3">
+<span class="process-math">\(g(1) =  -5 , \  g'(1)=5\text{,}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-4">calculate the following:
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-5">
+<span class="process-math">\((f+g)'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-6">
+<span class="process-math">\((f-g)'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-7">
+<span class="process-math">\((f\cdot g)'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__ma122DB__set4__s3_2_32_pg-1-1-8">
+<span class="process-math">\((f/g)'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-3-11"><h3 class="heading"><span class="codenumber">11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-3-11-1-1">
+<div class="para" data-evidence="true" id="paragraph-b07d75898218a76b-1">Let <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> be differentiable functions for which the following information is known: <span class="process-math">\(f(2) = 5\text{,}\)</span> <span class="process-math">\(g(2) = -3\text{,}\)</span> <span class="process-math">\(f'(2) = -1/2\text{,}\)</span> <span class="process-math">\(g'(2) = 2\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-3-11-1-1-7">
+<li id="ez-2-3-11-1-1-7-1">
+<div class="para" data-evidence="true" id="ez-2-3-11-1-1-7-1-1">Let <span class="process-math">\(h\)</span> be the new function defined by the rule <span class="process-math">\(h(x) = g(x) \cdot f(x)\text{.}\)</span> Determine <span class="process-math">\(h(2)\)</span> and <span class="process-math">\(h'(2)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-11-1-1-7-2">
+<div class="para" data-evidence="true" id="ez-2-3-11-1-1-7-2-1">Find an equation for the tangent line to <span class="process-math">\(y = h(x)\)</span> at the point <span class="process-math">\((2,h(2))\)</span> (where <span class="process-math">\(h\)</span> is the function defined in (a)).
+</div>
+</li>
+<li id="ez-2-3-11-1-1-7-3">
+<div class="para" data-evidence="true" id="ez-2-3-11-1-1-7-3-1">Let <span class="process-math">\(r\)</span> be the function defined by the rule <span class="process-math">\(r(x) = \frac{g(x)}{f(x)}\text{.}\)</span> Is <span class="process-math">\(r\)</span> increasing, decreasing, or neither at <span class="process-math">\(a = 2\text{?}\)</span> Why?
+</div>
+</li>
+<li id="ez-2-3-11-1-1-7-4">
+<div class="para" data-evidence="true" id="ez-2-3-11-1-1-7-4-1">Estimate the value of <span class="process-math">\(r(2.06)\)</span> (where <span class="process-math">\(r\)</span> is the function defined in (c)) by using the local linearization of <span class="process-math">\(r\)</span> at the point <span class="process-math">\((2,r(2))\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-3-12"><h3 class="heading"><span class="codenumber">12<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" data-evidence="true" id="ez-2-3-12-1-1">Let functions <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> be the piecewise linear functions given by their respective graphs in <a class="xref" href="/book/active-calculus-html/sec-2-3-prod-quot#F-2-3-Ez3" title="Figure 2.3.6">Figure 2.3.6</a>. Use the graphs to answer the following questions.
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel sbspanel--middle middle">
+<div class="para logical" id="ez-2-3-12-1-2-1">
+<ol class="lower-alpha" id="ez-2-3-12-1-2-1-1">
+<li id="ez-2-3-12-1-2-1-1-1">
+<div class="para" data-evidence="true" id="ez-2-3-12-1-2-1-1-1-1">Let <span class="process-math">\(r(x) = p(x) \cdot q(x)\text{.}\)</span> Determine <span class="process-math">\(r'(-2)\)</span> and <span class="process-math">\(r'(0)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-12-1-2-1-1-2">
+<div class="para" data-evidence="true" id="ez-2-3-12-1-2-1-1-2-1">Are there values of <span class="process-math">\(x\)</span> for which <span class="process-math">\(r'(x)\)</span> does not exist? If so, which values, and why?
+</div>
+</li>
+<li id="ez-2-3-12-1-2-1-1-3">
+<div class="para" data-evidence="true" id="ez-2-3-12-1-2-1-1-3-1">Find an equation for the tangent line to <span class="process-math">\(y = r(x)\)</span> at the point <span class="process-math">\((2,r(2))\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-12-1-2-1-1-4">
+<div class="para" data-evidence="true" id="ez-2-3-12-1-2-1-1-4-1">Let <span class="process-math">\(z(x) = \frac{q(x)}{p(x)}\text{.}\)</span> Determine <span class="process-math">\(z'(0)\)</span> and <span class="process-math">\(z'(2)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-12-1-2-1-1-5">
+<div class="para" data-evidence="true" id="ez-2-3-12-1-2-1-1-5-1">Are there values of <span class="process-math">\(x\)</span> for which <span class="process-math">\(z'(x)\)</span> does not exist? If so, which values, and why?
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sbspanel sbspanel--middle middle">
+<figure class="figure figure-like" id="F-2-3-Ez3"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_1_Ez3.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-3-Ez3-2-description">
+<div class="para" data-evidence="true" id="F-2-3-Ez3-2-1-1">Two piecewise linear functions <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> are shown on the same set of axes with <span class="process-math">\(x\)</span> and <span class="process-math">\(y\)</span> each ranging from <span class="process-math">\(-3.5\)</span> to <span class="process-math">\(3.5\text{.}\)</span>  The graph of <span class="process-math">\(p\)</span> consists of straight lines that connect the points <span class="process-math">\((-3,3)\)</span> and <span class="process-math">\((-1,1)\text{;}\)</span> <span class="process-math">\((-1,1)\)</span> and <span class="process-math">\((1,0)\text{;}\)</span> and <span class="process-math">\((1,0)\)</span> and <span class="process-math">\((2.5,3)\text{.}\)</span> The graph of <span class="process-math">\(q\)</span> consists of straight lines that connect the points <span class="process-math">\((-2.5,-2.5)\)</span> and <span class="process-math">\((-1,2)\text{;}\)</span> <span class="process-math">\((-1,2)\)</span> and <span class="process-math">\((1,2)\text{;}\)</span> and <span class="process-math">\((1,2)\)</span> and <span class="process-math">\((3,0)\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.3.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The graphs of <span class="process-math">\(p\)</span> (in blue) and <span class="process-math">\(q\)</span> (in green).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-3-13"><h3 class="heading"><span class="codenumber">13<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-3-13-1-1">
+<div class="para" data-evidence="true" id="paragraph-dec2ec5444b6aab8-1">Consider the functions <span class="process-math">\(r(t) = t^t\)</span> and <span class="process-math">\(s(t) = \arccos(t)\text{,}\)</span> for which you are given the facts that <span class="process-math">\(r'(t) = t^t(\ln(t) + 1)\)</span> and <span class="process-math">\(s'(t) = -\frac{1}{\sqrt{1-t^2}}\text{.}\)</span> Do not be concerned with where these derivative formulas come from. We restrict our interest in both functions to the domain <span class="process-math">\(0 \lt t \lt 1\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-3-13-1-1-6">
+<li id="ez-2-3-13-1-1-6-1">
+<div class="para" data-evidence="true" id="ez-2-3-13-1-1-6-1-1">Let <span class="process-math">\(w(t) = t^t \arccos(t)\text{.}\)</span> Determine <span class="process-math">\(w'(t)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-13-1-1-6-2">
+<div class="para" data-evidence="true" id="ez-2-3-13-1-1-6-2-1">Find an equation for the tangent line to <span class="process-math">\(y = w(t)\)</span> at the point <span class="process-math">\((\frac{1}{2}, w(\frac{1}{2}))\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-13-1-1-6-3">
+<div class="para" data-evidence="true" id="ez-2-3-13-1-1-6-3-1">Let <span class="process-math">\(v(t) = \frac{t^t}{\arccos(t)}\text{.}\)</span> Is <span class="process-math">\(v\)</span> increasing or decreasing at the instant <span class="process-math">\(t = \frac{1}{2}\text{?}\)</span> Why?
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-3-14"><h3 class="heading"><span class="codenumber">14<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-3-14-1-1">
+<div class="para" data-evidence="true" id="paragraph-9656d896f63e0610-1">A farmer with large land holdings has historically grown a wide variety of crops. With the price of ethanol fuel rising, he decides that it would be prudent to devote more and more of his acreage to producing corn. As he grows more and more corn, he learns efficiencies that increase his yield per acre. In the present year, he used 7000 acres of his land to grow corn, and that land had an average yield of 170 bushels per acre. At the current time, he plans to increase his number of acres devoted to growing corn at a rate of 600 acres/year, and he expects that right now his average yield is increasing at a rate of 8 bushels per acre per year. Use this information to answer the following questions.</div>
+<ol class="lower-alpha" id="ez-2-3-14-1-1-1">
+<li id="ez-2-3-14-1-1-1-1">
+<div class="para" data-evidence="true" id="ez-2-3-14-1-1-1-1-1">Say that the present year is <span class="process-math">\(t = 0\text{,}\)</span> that <span class="process-math">\(A(t)\)</span> denotes the number of acres the farmer devotes to growing corn in year <span class="process-math">\(t\text{,}\)</span> <span class="process-math">\(Y(t)\)</span> represents the average yield in year <span class="process-math">\(t\)</span> (measured in bushels per acre), and <span class="process-math">\(C(t)\)</span> is the total number of bushels of corn the farmer produces. What is the formula for <span class="process-math">\(C(t)\)</span> in terms of <span class="process-math">\(A(t)\)</span> and <span class="process-math">\(Y(t)\text{?}\)</span> Why?
+</div>
+</li>
+<li id="ez-2-3-14-1-1-1-2">
+<div class="para" data-evidence="true" id="ez-2-3-14-1-1-1-2-1">What is the value of <span class="process-math">\(C(0)\text{?}\)</span> What does it measure?
+</div>
+</li>
+<li id="ez-2-3-14-1-1-1-3">
+<div class="para" data-evidence="true" id="ez-2-3-14-1-1-1-3-1">Write an expression for <span class="process-math">\(C'(t)\)</span> in terms of <span class="process-math">\(A(t)\text{,}\)</span> <span class="process-math">\(A'(t)\text{,}\)</span> <span class="process-math">\(Y(t)\text{,}\)</span> and <span class="process-math">\(Y'(t)\text{.}\)</span> Explain your thinking.
+</div>
+</li>
+<li id="ez-2-3-14-1-1-1-4">
+<div class="para" data-evidence="true" id="ez-2-3-14-1-1-1-4-1">What is the value of <span class="process-math">\(C'(0)\text{?}\)</span> What does it measure?
+</div>
+</li>
+<li id="ez-2-3-14-1-1-1-5">
+<div class="para" data-evidence="true" id="ez-2-3-14-1-1-1-5-1">Based on the given information and your work above, estimate the value of <span class="process-math">\(C(1)\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-3-15"><h3 class="heading"><span class="codenumber">15<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-3-15-1-1">
+<div class="para" data-evidence="true" id="paragraph-14a5eb6f9084714c-1">Let <span class="process-math">\(f(v)\)</span> be the gas consumption (in liters/km) of a car going at velocity <span class="process-math">\(v\)</span> (in km/hour). In other words, <span class="process-math">\(f(v)\)</span> tells you how many liters of gas the car uses to go one kilometer if it is traveling at <span class="process-math">\(v\)</span> kilometers per hour. In addition, suppose that <span class="process-math">\(f(80)=0.05\)</span> and <span class="process-math">\(f'(80) = 0.0004\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-3-15-1-1-7">
+<li id="ez-2-3-15-1-1-7-1">
+<div class="para" data-evidence="true" id="ez-2-3-15-1-1-7-1-1">Let <span class="process-math">\(g(v)\)</span> be the distance the same car goes on one liter of gas at velocity <span class="process-math">\(v\text{.}\)</span> What is the relationship between <span class="process-math">\(f(v)\)</span> and <span class="process-math">\(g(v)\text{?}\)</span> Hence find <span class="process-math">\(g(80)\)</span> and <span class="process-math">\(g'(80)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-15-1-1-7-2">
+<div class="para" data-evidence="true" id="ez-2-3-15-1-1-7-2-1">Let <span class="process-math">\(h(v)\)</span> be the gas consumption in liters per hour of a car going at velocity <span class="process-math">\(v\text{.}\)</span> In other words, <span class="process-math">\(h(v)\)</span> tells you how many liters of gas the car uses in one hour if it is going at velocity <span class="process-math">\(v\text{.}\)</span> What is the algebraic relationship between <span class="process-math">\(h(v)\)</span> and <span class="process-math">\(f(v)\text{?}\)</span> Hence find <span class="process-math">\(h(80)\)</span> and <span class="process-math">\(h'(80)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-3-15-1-1-7-3">
+<div class="para" data-evidence="true" id="ez-2-3-15-1-1-7-3-1">How would you explain the practical meaning of these function and derivative values to a driver who knows no calculus? Include units on each of the function and derivative values you discuss in your response.
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>

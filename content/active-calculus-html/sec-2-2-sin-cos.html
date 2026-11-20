@@ -1,0 +1,420 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-2-2-sin-cos">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The sine and cosine functions</span>
+</h1>
+<article class="objectives goal-like" id="sec-2-2-sin-cos-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-2-2-sin-cos-2-1">
+<li id="sec-2-2-sin-cos-2-1-1">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-2-1-1-1">What is a graphical justification for why <span class="process-math">\(\frac{d}{dx}[a^x] = a^x \ln(a)\text{?}\)</span>
+</div>
+</li>
+<li id="sec-2-2-sin-cos-2-1-2">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-2-1-2-1">What do the graphs of <span class="process-math">\(y = \sin(x)\)</span> and <span class="process-math">\(y = \cos(x)\)</span> suggest as formulas for their respective derivatives?
+</div>
+</li>
+<li id="sec-2-2-sin-cos-2-1-3">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-2-1-3-1">Once we know the derivatives of <span class="process-math">\(\sin(x)\)</span> and <span class="process-math">\(\cos(x)\text{,}\)</span> how do previous derivative rules work when these functions are involved?
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-2-2-sin-cos-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para logical" id="sec-2-2-sin-cos-3-2">
+<div class="para" data-evidence="true" id="paragraph-c8112c255e170a7d-1">Throughout <a class="internal" href="/book/active-calculus-html/C-2" title="Chapter 2: Computing Derivatives">Chapter 2</a>, we will develop shortcut derivative rules to help us bypass the limit definition and quickly compute <span class="process-math">\(f'(x)\)</span> from a formula for <span class="process-math">\(f(x)\text{.}\)</span> In <a class="internal" href="/book/active-calculus-html/sec-2-1-elem-rules" title="Section 2.1: Elementary derivative rules">Section 2.1</a>, we stated the rule for power functions,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-2-sin-cos-3-2-5">
+\begin{equation*}
+\text{if}~ f(x) = x^n,~ \text{then}~ f'(x) = nx^{n-1}\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-d342efa6f6dfe271-1">and the rule for exponential functions,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-2-2-sin-cos-3-2-6">
+\begin{equation*}
+\text{if}~ a ~ \text{is a positive real number and}~ f(x) = a^x,~
+\text{then}~ f'(x) = a^x \ln(a)\text{.}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-7f0d36e569f5479d-1">Later in this section, we will use a graphical argument to conjecture derivative formulas for the sine and cosine functions.  In <a class="xref" href="/book/active-calculus-html/sec-2-2-sin-cos#PA-2-2" title="Preview Activity 2.2.1">Preview Activity 2.2.1</a> we use a graphical approach to understand why the rule for exponential functions is plausible.</div>
+</div>
+<section class="worksheet" id="ws-PA-2-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-2-2"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-2-2-1">
+<div class="para" data-evidence="true" id="PA-2-2-1-1">Consider the function <span class="process-math">\(g(x) = 2^x\text{,}\)</span> which is graphed in the provided figure.
+</div>
+<div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_PA1a.svg"/><details class="image-description"><summary title="details"></summary><div id="PA-2-2-1-2-description">
+<div class="para" data-evidence="true" id="PA-2-2-1-2-1-1">Two adjacent sets of coordinate axes are shown with <span class="process-math">\(x\)</span> ranging from <span class="process-math">\(-3\)</span> to <span class="process-math">\(3\)</span> and <span class="process-math">\(y\)</span> ranging from <span class="process-math">\(-1\)</span> to <span class="process-math">\(8\text{.}\)</span>  On the left axes, the graph of <span class="process-math">\(g(x) = 2^x\)</span> is shown, which passes through the points <span class="process-math">\((-2,\frac14)\text{,}\)</span> <span class="process-math">\((1,0)\text{,}\)</span> and <span class="process-math">\((2,4)\text{.}\)</span>  The right axes are blank and provided for responding to the prompts in the preview activity.
+</div>
+</div></details>
+</div>
+</div>
+<article class="task exercise-like" id="PA-2-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-2-task-0-1-1">At each of <span class="process-math">\(x = -2, -1, 0, 1, 2\text{,}\)</span> use a straightedge to sketch an accurate tangent line to <span class="process-math">\(y = g(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-2-task-1-1-1">Use the provided grid to estimate the slope of the tangent line you drew at each point in (a).
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-2-task-2-1-1">Use the limit definition of the derivative to estimate <span class="process-math">\(g'(0)\)</span> by using small values of <span class="process-math">\(h\text{,}\)</span> and compare the result to your visual estimate for the slope of the tangent line to <span class="process-math">\(y = g(x)\)</span> at <span class="process-math">\(x = 0\)</span> in (b).
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-2-task-3-1-1">Based on your work in (a), (b), and (c), sketch an accurate graph of <span class="process-math">\(y = g'(x)\)</span> on the axes adjacent to the graph of <span class="process-math">\(y = g(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-2-task-4-1-1">Write at least one sentence that explains why it is reasonable to think that <span class="process-math">\(g'(x) = cg(x)\text{,}\)</span> where <span class="process-math">\(c\)</span> is a constant. In addition, calculate <span class="process-math">\(\ln(2)\text{,}\)</span> and then discuss how this value, combined with your work above, reasonably suggests that <span class="process-math">\(g'(x) = 2^x \ln(2)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-2-sin-cos-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The sine and cosine functions</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-4-2">The sine and cosine functions are among the most important functions in all of mathematics. Sometimes called the <em class="emphasis">circular</em> functions due to their definition on the unit circle, these periodic functions play a key role in modeling repeating phenomena such as tidal elevations, the behavior of an oscillating mass attached to a spring, or the location of a point on a bicycle tire. Like polynomial and exponential functions, the sine and cosine functions are considered basic functions, ones that are often used in building more complicated functions. As such, we would like to know formulas for <span class="process-math">\(\frac{d}{dx} [\sin(x)]\)</span> and <span class="process-math">\(\frac{d}{dx} [\cos(x)]\text{,}\)</span> and the next two activities lead us to that end.
+</div>
+<section class="worksheet" id="ws-act-2-2-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-2-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-2-1-1">
+<div class="para" data-evidence="true" id="act-2-2-1-1-1">Consider the function <span class="process-math">\(f(x) = \sin(x)\text{,}\)</span> whose graph is provided in the lefthand side of the given figure. Note carefully that the grid in the diagram does not have boxes that are <span class="process-math">\(1 \times 1\text{,}\)</span> but rather approximately <span class="process-math">\(1.57 \times 1\text{,}\)</span> as the horizontal scale of the grid is <span class="process-math">\(\pi/2\)</span> units per box.
+</div>
+<div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_sine.svg"/><details class="image-description"><summary title="details"></summary><div id="act-2-2-1-1-2-description">
+<div class="para" data-evidence="true" id="act-2-2-1-1-2-1-1">Two adjacent sets of axes are shown with <span class="process-math">\(x\)</span> ranging from <span class="process-math">\(-2\pi\)</span> to <span class="process-math">\(2\pi\)</span> and <span class="process-math">\(y\)</span> ranging from <span class="process-math">\(-2\)</span> to <span class="process-math">\(2\text{.}\)</span>  The grid boxes are <span class="process-math">\(\frac{\pi}{2} \times 1\text{.}\)</span>  On the left axes, the graph of <span class="process-math">\(f(x) = \sin(x)\)</span> is shown, which passes through the points <span class="process-math">\((0,0)\text{,}\)</span> <span class="process-math">\((\frac{\pi}{2},1)\text{,}\)</span> and <span class="process-math">\((\pi,0)\text{,}\)</span> among others.  The right axes are blank and provided for responding to the prompts in the activity.
+</div>
+</div></details>
+</div>
+</div>
+<article class="task exercise-like" id="act-2-2-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-1-task-0-1-1">At each of <span class="process-math">\(x = -2\pi, -\frac{3\pi}{2}, -\pi, -\frac{\pi}{2}, 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, 2\pi\text{,}\)</span> use a straightedge to sketch an accurate tangent line to <span class="process-math">\(y = f(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-1-task-1-1-1">Use the provided grid to estimate the slope of the tangent line you drew at each point. Pay careful attention to the scale of the grid.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-1-task-2-1-1">Use the limit definition of the derivative to estimate <span class="process-math">\(f'(0)\)</span> by using small values of <span class="process-math">\(h\text{,}\)</span> and compare the result to your visual estimate for the slope of the tangent line to <span class="process-math">\(y = f(x)\)</span> at <span class="process-math">\(x = 0\)</span> in (b). Using periodicity, what does this result suggest about <span class="process-math">\(f'(2\pi)\text{?}\)</span> about <span class="process-math">\(f'(-2\pi)\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-1-task-3-1-1">Based on your work in (a), (b), and (c), sketch an accurate graph of <span class="process-math">\(y = f'(x)\)</span> on the axes adjacent to the graph of <span class="process-math">\(y = f(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-1-task-4-1-1">What familiar function do you think is the derivative of <span class="process-math">\(f(x) = \sin(x)\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<section class="worksheet" id="ws-act-2-2-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-2-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-2-2-1">
+<div class="para" data-evidence="true" id="act-2-2-2-1-1">Consider the function <span class="process-math">\(g(x) = \cos(x)\text{,}\)</span> whose graph is provided on the lefthand axes in the figure given below. Note carefully that the grid in the diagram does not have boxes that are <span class="process-math">\(1 \times 1\text{,}\)</span> but rather approximately <span class="process-math">\(1.57 \times 1\text{,}\)</span> as the horizontal scale of the grid is <span class="process-math">\(\pi/2\)</span> units per box.
+</div>
+<div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_cosine.svg"/><details class="image-description"><summary title="details"></summary><div id="act-2-2-2-1-2-description">
+<div class="para" data-evidence="true" id="act-2-2-2-1-2-1-1">Two adjacent sets of axes are shown with <span class="process-math">\(x\)</span> ranging from <span class="process-math">\(-2\pi\)</span> to <span class="process-math">\(2\pi\)</span> and <span class="process-math">\(y\)</span> ranging from <span class="process-math">\(-2\)</span> to <span class="process-math">\(2\text{.}\)</span>  The grid boxes are <span class="process-math">\(\frac{\pi}{2} \times 1\text{.}\)</span>  On the left axes, the graph of <span class="process-math">\(g(x) = \cos(x)\)</span> is shown, which passes through the points <span class="process-math">\((0,1)\text{,}\)</span> <span class="process-math">\((\frac{\pi}{2},0)\text{,}\)</span> and <span class="process-math">\((\pi,-1)\text{,}\)</span> among others.  The right axes are blank and provided for responding to the prompts in the activity.
+</div>
+</div></details>
+</div>
+</div>
+<article class="task exercise-like" id="act-2-2-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-2-task-0-1-1">At each of <span class="process-math">\(x = -2\pi, -\frac{3\pi}{2}, -\pi, -\frac{\pi}{2}, 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, 2\pi\text{,}\)</span> use a straightedge to sketch an accurate tangent line to <span class="process-math">\(y = g(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-2-task-1-1-1">Use the provided grid to estimate the slope of the tangent line you drew at each point. Again, note the scale of the axes and grid.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-2-task-2-1-1">Use the limit definition of the derivative to estimate <span class="process-math">\(g'(\frac{\pi}{2})\)</span> by using small values of <span class="process-math">\(h\text{,}\)</span> and compare the result to your visual estimate for the slope of the tangent line to <span class="process-math">\(y = g(x)\)</span> at <span class="process-math">\(x = \frac{\pi}{2}\)</span> in (b). Using periodicity, what does this result suggest about <span class="process-math">\(g'(-\frac{3\pi}{2})\text{?}\)</span> can symmetry on the graph help you estimate other slopes easily?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-2-task-3-1-1">Based on your work in (a), (b), and (c), sketch an accurate graph of <span class="process-math">\(y = g'(x)\)</span> on the axes adjacent to the graph of <span class="process-math">\(y = g(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-2-task-4-1-1">What familiar function do you think is the derivative of <span class="process-math">\(g(x) = \cos(x)\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-4-5">The results of the two preceding activities suggest that the sine and cosine functions not only have beautiful connections such as the identities <span class="process-math">\(\sin^2(x) + \cos^2(x) = 1\)</span> and <span class="process-math">\(\cos(x - \frac{\pi}{2}) = \sin(x)\text{,}\)</span> but that they are even further linked through calculus, as the derivative of each involves the other. We have now added the sine and cosine functions to our library of basic functions whose derivatives we know. The constant multiple and sum rules still hold, of course, as well as all of the inherent meaning of the derivative.
+</div>
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-4-6">The following rules summarize the results of the activities<details class="ptx-footnote" id="sec-2-2-sin-cos-4-6-1"><summary class="ptx-footnote__number" title="Footnote 2.2.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents">These two rules may be formally proved using the limit definition of the derivative and the expansion identities for <span class="process-math">\(\sin(x+h)\)</span> and <span class="process-math">\(\cos(x+h)\text{.}\)</span>
+</div></details>.
+</div>
+<article class="assemblage assemblage-like" id="sine-cosine-fxns"><h3 class="heading"><span class="title">The derivatives of the sine and cosine functions.</span></h3>
+<div class="para logical" id="sine-cosine-fxns-2">
+<div class="para" data-evidence="true" id="paragraph-3ed5c8e155fa7719-1"> For all real numbers <span class="process-math">\(x\text{,}\)</span>
+</div>
+<div class="displaymath process-math" data-evidence="true" id="sine-cosine-fxns-2-4">
+\begin{equation*}
+\frac{d}{dx} [\sin(x)] = \cos(x) \ \ \text{and}  \ \ \frac{d}{dx} [\cos(x)] = -\sin(x)\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-2-2-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-2-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-2-3-1">
+<div class="para" data-evidence="true" id="act-2-2-3-1-1">Respond to each of the following prompts. Where a derivative is requested, be sure to label the derivative function with its name using proper notation.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-2-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-3-task-0-1-1">Determine the derivative of <span class="process-math">\(h(t) = 3\cos(t) - 4\sin(t)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-3-task-1-1-1">Find the exact slope of the tangent line to <span class="process-math">\(y = f(x) = 2x + \frac{\sin(x)}{2}\)</span> at the point where <span class="process-math">\(x = \frac{\pi}{6}\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-3-task-2-1-1">Find the equation of the tangent line to <span class="process-math">\(y = g(x) = x^2 + 2\cos(x)\)</span> at the point where <span class="process-math">\(x = \frac{\pi}{2}\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-3-task-3-1-1">Determine the derivative of <span class="process-math">\(p(z) = z^4 + 4^z + 4\cos(z) - \sin(\frac{\pi}{2})\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-2-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-2-3-task-4-1-1">The function <span class="process-math">\(P(t) = 24 + 8\sin(t)\)</span> represents a population of a particular kind of animal that lives on a small island, where <span class="process-math">\(P\)</span> is measured in hundreds and <span class="process-math">\(t\)</span> is measured in decades since January 1, 2010. What is the instantaneous rate of change of <span class="process-math">\(P\)</span> on January 1, 2030? What are the units of this quantity? Write a sentence in everyday language that explains how the population is behaving at this point in time.
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-2-sin-cos-5">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" id="sec-2-2-sin-cos-5-2">
+<ul class="disc" id="sec-2-2-sin-cos-5-2-1">
+<li id="sec-2-2-sin-cos-5-2-1-1">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-5-2-1-1-1">For an exponential function <span class="process-math">\(f(x) = a^x\)</span> <span class="process-math">\((a \gt 1)\text{,}\)</span> the graph of <span class="process-math">\(f'(x)\)</span> appears to be a scaled version of the original function. In particular, careful analysis of the graph of<span class="process-math">\(f(x) = 2^x\text{,}\)</span> suggests that <span class="process-math">\(\frac{d}{dx}[2^x] = 2^x \ln(2)\text{,}\)</span> which is a special case of the rule we stated in <a class="internal" href="/book/active-calculus-html/sec-2-1-elem-rules" title="Section 2.1: Elementary derivative rules">Section 2.1</a>: <span class="process-math">\(\frac{d}{dx}[a^x] = a^x \ln(a)\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-2-sin-cos-5-2-1-2">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-5-2-1-2-1">By carefully analyzing the graphs of <span class="process-math">\(y = \sin(x)\)</span> and <span class="process-math">\(y = \cos(x)\text{,}\)</span> and by using the limit definition of the derivative at select points, we found that <span class="process-math">\(\frac{d}{dx} [\sin(x)] = \cos(x)\)</span> and <span class="process-math">\(\frac{d}{dx} [\cos(x)] = -\sin(x)\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-2-sin-cos-5-2-1-3">
+<div class="para" data-evidence="true" id="sec-2-2-sin-cos-5-2-1-3-1">We note that all previously encountered derivative rules still hold, but now may also be applied to functions involving the sine and cosine. All of the established meaning of the derivative applies to these trigonometric functions as well.
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-2-2">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.2.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="Library__Rochester__setDerivatives4Trig__s2_4_21a_pg"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Rochester__setDerivatives4Trig__s2_4_21a_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" id="extracted-Library__Rochester__setDerivatives4Trig__s2_4_21a_pg-1-1-1">
+<div class="para" data-evidence="true" id="paragraph-e947a3d4f4a1b236-1">Let</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-Library__Rochester__setDerivatives4Trig__s2_4_21a_pg-1-1-1-1">
+\begin{equation*}
+f(x) = 10 \sin x + 7 \cos x
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives4Trig__s2_4_21a_pg-1-1-2">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives4Trig__s2_4_21a_pg-1-1-3">
+<span class="process-math">\(f'(  \frac { 5 \pi } {4} ) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__NAU__setCalcI__trigTanLines_pg"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__NAU__setCalcI__trigTanLines_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__NAU__setCalcI__trigTanLines_pg-1-1-1">In this problem, please evaluate the trig functions without a calculator and do not use a decimal point in your answer.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__NAU__setCalcI__trigTanLines_pg-1-1-2">An equation of the tangent line to the curve <span class="process-math">\(y =   \sin (x)\)</span> at <span class="process-math">\(x = \pi/4 \,\)</span> is
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__NAU__setCalcI__trigTanLines_pg-1-1-3">
+<span class="process-math">\(y =\)</span> <span class="fillin underline"></span> <span class="process-math">\(+\)</span> <span class="fillin underline"></span> <span class="process-math">\(\cdot (x - \pi/4)\)</span> .
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__NAU__setCalcI__trigTanLines_pg-1-1-4">An equation of the tangent line to the curve <span class="process-math">\(y =   \cos (x)\)</span> at <span class="process-math">\(x = \pi/2 \,\)</span> is
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__NAU__setCalcI__trigTanLines_pg-1-1-5">
+<span class="process-math">\(y =\)</span> <span class="fillin underline"></span> <span class="process-math">\(+\)</span> <span class="fillin underline"></span> <span class="process-math">\(\cdot (x - \pi/2)\)</span>  .
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__UCSB__Stewart5_3_4__Stewart5_3_4_29_pg"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__UCSB__Stewart5_3_4__Stewart5_3_4_29_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_3_4__Stewart5_3_4_29_pg-1-1-1">For what values of <span class="process-math">\(x\)</span> in <span class="process-math">\([0, 2\pi]\)</span> does the graph of <span class="process-math">\(f(x)=x+2\sin{x}\)</span> have a horizontal tangent?
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_3_4__Stewart5_3_4_29_pg-1-1-2">List the values of <span class="process-math">\(x\)</span> below. Separate multiple values with commas.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_3_4__Stewart5_3_4_29_pg-1-1-3">
+<span class="process-math">\(x=\)</span><span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-2-5"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-2-5-1-1">
+<div class="para" data-evidence="true" id="paragraph-25092393fd59e8a8-1">Suppose that <span class="process-math">\(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\)</span> represents the value of a person’s investment portfolio in thousands of dollars in year <span class="process-math">\(t\text{,}\)</span> where <span class="process-math">\(t = 0\)</span> corresponds to January 1, 2010.</div>
+<ol class="lower-alpha" id="ez-2-2-5-1-1-4">
+<li id="ez-2-2-5-1-1-4-1">
+<div class="para" data-evidence="true" id="ez-2-2-5-1-1-4-1-1">At what instantaneous rate is the portfolio’s value changing on January 1, 2012? Include units on your answer.
+</div>
+</li>
+<li id="ez-2-2-5-1-1-4-2">
+<div class="para" data-evidence="true" id="ez-2-2-5-1-1-4-2-1">Determine the value of <span class="process-math">\(V''(2)\text{.}\)</span> What are the units on this quantity and what does it tell you about how the portfolio’s value is changing?
+</div>
+</li>
+<li id="ez-2-2-5-1-1-4-3">
+<div class="para" data-evidence="true" id="ez-2-2-5-1-1-4-3-1">On the interval <span class="process-math">\(0 \le t \le 20\text{,}\)</span> graph the function <span class="process-math">\(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\)</span> and describe its behavior in the context of the problem. Then, compare the graphs of the functions <span class="process-math">\(A(t) = 24 \cdot 1.07^t\)</span> and <span class="process-math">\(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\text{,}\)</span> as well as the graphs of their derivatives <span class="process-math">\(A'(t)\)</span> and <span class="process-math">\(V'(t)\text{.}\)</span> What is the impact of the term <span class="process-math">\(6 \sin(t)\)</span> on the behavior of the function <span class="process-math">\(V(t)\text{?}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-2-6"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-2-6-1-1">
+<div class="para" data-evidence="true" id="paragraph-ab7c0533e2911f39-1">Let <span class="process-math">\(f(x) = 3\cos(x) - 2\sin(x) + 6\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-2-6-1-1-2">
+<li id="ez-2-2-6-1-1-2-1">
+<div class="para" data-evidence="true" id="ez-2-2-6-1-1-2-1-1">Determine the exact slope of the tangent line to <span class="process-math">\(y = f(x)\)</span> at the point where <span class="process-math">\(a = \frac{\pi}{4}\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-2-6-1-1-2-2">
+<div class="para" data-evidence="true" id="ez-2-2-6-1-1-2-2-1">Determine the tangent line approximation to <span class="process-math">\(y = f(x)\)</span> at the point where <span class="process-math">\(a = \pi\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-2-6-1-1-2-3">
+<div class="para" data-evidence="true" id="ez-2-2-6-1-1-2-3-1">At the point where <span class="process-math">\(a = \frac{\pi}{2}\text{,}\)</span> is <span class="process-math">\(f\)</span> increasing, decreasing, or neither?
+</div>
+</li>
+<li id="ez-2-2-6-1-1-2-4">
+<div class="para" data-evidence="true" id="ez-2-2-6-1-1-2-4-1">At the point where <span class="process-math">\(a = \frac{3\pi}{2}\text{,}\)</span> does the tangent line to <span class="process-math">\(y = f(x)\)</span> lie above the curve, below the curve, or neither? How can you answer this question without even graphing the function or the tangent line?
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-2-7"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-2-2-7-1-1">
+<div class="para" data-evidence="true" id="paragraph-197f0b06d4cc0a85-1">In this exercise, we explore how the limit definition of the derivative more formally shows that <span class="process-math">\(\frac{d}{dx}[\sin(x)] = \cos(x)\text{.}\)</span> Letting <span class="process-math">\(f(x) = \sin(x)\text{,}\)</span> note that the limit definition of the derivative tells us that</div>
+<div class="displaymath process-math" data-evidence="true" id="ez-2-2-7-1-1-3">
+\begin{equation*}
+f'(x) = \lim_{h \to 0} \frac{\sin(x+h) - \sin(x)}{h}\text{.}
+\end{equation*}
+</div>
+<ol class="lower-alpha" id="ez-2-2-7-1-1-4">
+<li id="ez-2-2-7-1-1-4-1">
+<div class="para logical" id="ez-2-2-7-1-1-4-1-1">
+<div class="para" data-evidence="true" id="paragraph-c4cbad06f47749be-1">Recall the trigonometric identity for the sine of a sum of angles <span class="process-math">\(\alpha\)</span> and <span class="process-math">\(\beta\text{:}\)</span> <span class="process-math">\(\sin(\alpha + \beta) = \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta)\text{.}\)</span> Use this identity and some algebra to show that</div>
+<div class="displaymath process-math" data-evidence="true" id="ez-2-2-7-1-1-4-1-1-4">
+\begin{equation*}
+f'(x) = \lim_{h \to 0} \frac{\sin(x)(\cos(h)-1) + \cos(x)\sin(h)}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-2-7-1-1-4-2">
+<div class="para logical" id="ez-2-2-7-1-1-4-2-1">
+<div class="para" data-evidence="true" id="paragraph-48dc4072dd4caa18-1">Next, note that as <span class="process-math">\(h\)</span> changes, <span class="process-math">\(x\)</span> remains constant. Explain why it therefore makes sense to say that</div>
+<div class="displaymath process-math" data-evidence="true" id="ez-2-2-7-1-1-4-2-1-3">
+\begin{equation*}
+f'(x) = \sin(x) \cdot \lim_{h \to 0} \frac{\cos(h) -1 }{h} + \cos(x) \cdot \lim_{h \to 0} \frac{\sin(h)}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-2-7-1-1-4-3">
+<div class="para logical" id="ez-2-2-7-1-1-4-3-1">
+<div class="para" data-evidence="true" id="paragraph-bcf400b821ba5411-1">Finally, use small values of <span class="process-math">\(h\)</span> to estimate the values of the two limits in (c):</div>
+<div class="displaymath process-math" data-evidence="true" id="ez-2-2-7-1-1-4-3-1-2">
+\begin{equation*}
+\lim_{h \to 0} \frac{\cos(h) - 1}{h} \ \ \text{and}  \ \ \lim_{h \to 0} \frac{\sin(h)}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-2-7-1-1-4-4">
+<div class="para" data-evidence="true" id="ez-2-2-7-1-1-4-4-1">What do your results in (b) and (c) thus tell you about <span class="process-math">\(f'(x)\text{?}\)</span>
+</div>
+</li>
+<li id="ez-2-2-7-1-1-4-5">
+<div class="para" data-evidence="true" id="ez-2-2-7-1-1-4-5-1">By emulating the steps taken above, use the limit definition of the derivative to argue convincingly that <span class="process-math">\(\frac{d}{dx}[\cos(x)] = -\sin(x)\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>

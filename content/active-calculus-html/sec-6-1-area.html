@@ -1,0 +1,688 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-6-1-area">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Using definite integrals to find area and length</span>
+</h1>
+<article class="objectives goal-like" id="sec-6-1-area-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-6-1-area-2-1">
+<li id="sec-6-1-area-2-1-1">
+<div class="para" data-evidence="true" id="sec-6-1-area-2-1-1-1">How can we use definite integrals to measure the area between two curves?
+</div>
+</li>
+<li id="sec-6-1-area-2-1-2">
+<div class="para" data-evidence="true" id="sec-6-1-area-2-1-2-1">How do we decide whether to integrate with respect to <span class="process-math">\(x\)</span> or with respect to <span class="process-math">\(y\)</span> when we try to find the area of a region?
+</div>
+</li>
+<li id="sec-6-1-area-2-1-3">
+<div class="para" data-evidence="true" id="sec-6-1-area-2-1-3-1">How can a definite integral be used to measure the length of a curve?
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-6-1-area-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-6-1-area-3-2">Early on in our work with the definite integral, we learned that for an object moving along an axis, the area under a non-negative velocity function <span class="process-math">\(v\)</span> between <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> tells us the distance the object traveled on that time interval, and that area is given precisely by the definite integral <span class="process-math">\(\int_a^b v(t) \, dt\text{.}\)</span> In general, for any nonnegative function <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\text{,}\)</span> <span class="process-math">\(\int_a^b f(x) \, dx\)</span> measures the area bounded by the curve and the <span class="process-math">\(x\)</span>-axis between <span class="process-math">\(x = a\)</span> and <span class="process-math">\(x = b\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-3-3">Next, we will explore how definite integrals can be used to represent other physically important properties. In <a class="xref" href="/book/active-calculus-html/sec-6-1-area#PA-6-1" title="Preview Activity 6.1.1">Preview Activity 6.1.1</a>, we investigate how a single definite integral may be used to represent the area between two curves.
+</div>
+<section class="worksheet" id="ws-PA-6-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-6-1"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-6-1-1">
+<div class="para" data-evidence="true" id="PA-6-1-1-1">Consider the functions given by <span class="process-math">\(f(x) = 5-(x-1)^2\)</span> and <span class="process-math">\(g(x) = 4-x\text{.}\)</span>
+</div>
+</div>
+<article class="task exercise-like" id="PA-6-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-6-1-task-0-1-1">Use algebra to find the points where the graphs of <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> intersect.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-6-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-6-1-task-1-1-1">Sketch an accurate graph of <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> on the axes provided, labeling the curves by name and the intersection points with ordered pairs.
+</div> <div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1.svg"/><details class="image-description"><summary title="details"></summary><div id="PA-6-1-task-1-1-2-description">
+<div class="para" data-evidence="true" id="PA-6-1-task-1-1-2-1-1">Axes for plotting <span class="process-math">\(f\)</span> and <span class="process-math">\(g\text{.}\)</span>  The <span class="process-math">\(x\)</span>-values range horizontally from <span class="process-math">\(x = -0.5\)</span> to <span class="process-math">\(x = 4\text{,}\)</span> while the <span class="process-math">\(y\)</span>-values range vertically from <span class="process-math">\(y = -0.5\)</span> to <span class="process-math">\(y = 8\text{.}\)</span>  Boxes on the grid are <span class="process-math">\(0.5 \times 1\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-6-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-6-1-task-2-1-1">Find and evaluate exactly an integral expression that represents the area between <span class="process-math">\(y = f(x)\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval between the intersection points of <span class="process-math">\(f\)</span> and <span class="process-math">\(g\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-6-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-6-1-task-3-1-1">Find and evaluate exactly an integral expression that represents the area between <span class="process-math">\(y = g(x)\)</span> and the <span class="process-math">\(x\)</span>-axis on the interval between the intersection points of <span class="process-math">\(f\)</span> and <span class="process-math">\(g\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-6-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-6-1-task-4-1-1">What is the exact area between <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> between their intersection points? Why?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-6-1-area-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Area Between Two Curves</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-6-1-area-4-3">In <a class="xref" href="/book/active-calculus-html/sec-6-1-area#PA-6-1" title="Preview Activity 6.1.1">Preview Activity 6.1.1</a>, we saw a natural way to think about the area between two curves: it is the area beneath the upper curve minus the area below the lower curve.
+</div>
+<article class="example example-like" id="sec-6-1-area-4-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" data-evidence="true" id="sec-6-1-area-4-4-1-1">Find the area bounded between the graphs of <span class="process-math">\(f(x) = (x-1)^2 + 1\)</span> and <span class="process-math">\(g(x) = x+2\text{.}\)</span>
+</div>
+<div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-6-1-area-4-4-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para logical" id="sec-6-1-area-4-4-2-1">
+<div class="para" data-evidence="true" id="paragraph-185fbe0353bda129-1">We can find the intersection points of the graphs of <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> algebraically by solving the system of equations given by <span class="process-math">\(y = x+2\)</span> and <span class="process-math">\(y = (x-1)^2 + 1\text{:}\)</span> substituting <span class="process-math">\(x+2\)</span> for <span class="process-math">\(y\)</span> in the second equation yields <span class="process-math">\(x+2 = (x-1)^2 + 1\text{,}\)</span> so <span class="process-math">\(x+2 = x^2 - 2x + 1 + 1\text{,}\)</span> and thus</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-4-2-1-9">
+\begin{equation*}
+x^2 - 3x = x(x-3) = 0\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-1929a46fbdfbc175-1">from which it follows that <span class="process-math">\(x = 0\)</span> or <span class="process-math">\(x = 3\text{.}\)</span> Using <span class="process-math">\(y = x+2\text{,}\)</span> we find the corresponding <span class="process-math">\(y\)</span>-values of the intersection points. In <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-PA1revisited" title="Figure 6.1.2">Figure 6.1.2</a>, we confirm this result and show the <span class="process-math">\(y\)</span>-coordinates of the points, <span class="process-math">\((0,2)\)</span> and <span class="process-math">\((3,5)\text{.}\)</span>  Furthermore, the figure shows how we can think of the area beneath <span class="process-math">\(f\)</span> and the area beneath <span class="process-math">\(g\)</span> separately, and use the difference of these quantities to find the difference between the curves.</div>
+</div>
+<figure class="figure figure-like" id="F-6-1-PA1revisited"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1revisited.svg"/><details class="image-description"><summary title="details"></summary><div id="F-6-1-PA1revisited-2-description">
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited-2-1-1">There are three adjacent images that show how we can think about the area bounded by the functions <span class="process-math">\(f(x) = (x-1)^2 + 1\)</span> and <span class="process-math">\(g(x) = x+2\)</span> on the interval <span class="process-math">\([0,3]\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited-2-1-2">In the first image on the left, only the graph of <span class="process-math">\(g\)</span> is shown and the area between its graph and the <span class="process-math">\(x\)</span>-axis on <span class="process-math">\([0,3]\)</span> is shaded.  This region has the shape of a trapezoid.
+</div>
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited-2-1-3">In the second image in the middle, the focus is on the area beneath <span class="process-math">\(f\text{.}\)</span>  The graph of <span class="process-math">\(g\)</span> is still shown, but now the graph of <span class="process-math">\(f\)</span> is included and the area between the graph of <span class="process-math">\(f\)</span> and the <span class="process-math">\(x\)</span>-axis on <span class="process-math">\([0,3]\)</span> is shaded.
+</div>
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited-2-1-4">The third and final image shows only the shaded area between the curves, which consists of the area below <span class="process-math">\(g\)</span> and above <span class="process-math">\(f\)</span> on the interval  <span class="process-math">\([0,3]\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The area bounded by the functions <span class="process-math">\(f(x) = (x-1)^2 + 1\)</span> and <span class="process-math">\(g(x) = x+2\)</span> on the interval <span class="process-math">\([0,3]\text{.}\)</span></figcaption>
+</figure>
+<div class="para logical" id="sec-6-1-area-4-4-2-3">
+<div class="para" data-evidence="true" id="paragraph-18955facef44548f-1">Now, using definite integrals to find the values of the respective areas beneath the curves, on the interval <span class="process-math">\([0,3]\text{,}\)</span> the area beneath <span class="process-math">\(g\)</span> is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-4-2-3-3">
+\begin{equation*}
+\int_0^3 (x+2) \, dx = \frac{21}{2}\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-ed376188519eeb41-1">while the area under <span class="process-math">\(f\)</span> on the same interval is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-4-2-3-5">
+\begin{equation*}
+\int_0^3 [(x-1)^2 + 1] \, dx = 6\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-4-4-2-4">
+<div class="para" data-evidence="true" id="paragraph-0287d3516937f8a2-1">Thus, the area between the curves is</div>
+<div class="displaymath process-math" data-evidence="true" id="E-DiffOfInt">
+\begin{equation}
+A = \int_0^3 (x+2) \, dx -  \int_0^3 [(x-1)^2 + 1] \, dx = \frac{21}{2} - 6 = \frac{9}{2}\text{.}\tag{6.1.1}
+\end{equation}
+</div>
+</div>
+</div></details>
+</div>
+</article>
+<div class="para logical" id="sec-6-1-area-4-5">
+<div class="para" data-evidence="true" id="paragraph-9bdf8a4f0cdbe7fd-1">We can also think of the area in this slightly different way: if we slice up the region between two curves into thin vertical rectangles (in the same spirit as we originally sliced the region between a single curve and the <span class="process-math">\(x\)</span>-axis in <a class="internal" href="/book/active-calculus-html/sec-4-2-Riemann" title="Section 4.2: Riemann sums">Section 4.2</a>), we see (as shown in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-PA1revisited2" title="Figure 6.1.3">Figure 6.1.3</a>) that the height of a typical rectangle is given by the difference between the two functions, <span class="process-math">\(g(x) - f(x)\text{,}\)</span> and its width is <span class="process-math">\(\Delta x\text{.}\)</span> Thus the area of the rectangle is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-5-6">
+\begin{equation*}
+A_{\text{rect} } = (g(x) - f(x)) \Delta x\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-4-6">
+<div class="para" data-evidence="true" id="paragraph-a9d56d48c27e7ce5-1">The area between the two curves on <span class="process-math">\([0,3]\)</span> is thus approximated by the Riemann sum</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-6-2">
+\begin{equation*}
+A \approx \sum_{i=1}^{n} (g(x_i) - f(x_i)) \Delta x\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-34b691599bbdd2e2-1">and as we let <span class="process-math">\(n \to \infty\text{,}\)</span> it follows that the area is given by the single definite integral</div>
+<div class="displaymath process-math" data-evidence="true" id="E-IntOfDiff">
+\begin{equation}
+A = \int_0^3 (g(x) - f(x)) \, dx\text{.}\tag{6.1.2}
+\end{equation}
+</div>
+</div>
+<figure class="figure figure-like" id="F-6-1-PA1revisited2"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1revisited2.svg"/><details class="image-description"><summary title="details"></summary><div id="F-6-1-PA1revisited2-2-description">
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited2-2-1-1">There are two adjacent images that show key features of the area bounded by the functions <span class="process-math">\(f(x) = (x-1)^2 + 1\)</span> and <span class="process-math">\(g(x) = x+2\)</span> on the interval <span class="process-math">\([0,3]\text{.}\)</span>  Both curves are plotted along with their intersection points at <span class="process-math">\((0,2)\)</span> and <span class="process-math">\((3,5)\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited2-2-1-2">In the first version of the image on the left, a thin representative vertical rectangular slice is shown.  The bottom of the rectangle is on the curve <span class="process-math">\(y = f(x) = (x-1)^2 + 1\)</span> and the top of the rectangle is on the curve <span class="process-math">\(y = g(x) = x+2\text{.}\)</span>  This makes the height of the rectangle <span class="process-math">\(g(x)-f(x)\text{.}\)</span>  The width of the rectangle is <span class="process-math">\(\Delta x\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="F-6-1-PA1revisited2-2-1-3">In the second version of the image on the right, the full region between the curves is shaded to reflect the area that is measured by the definite integral <span class="process-math">\(\int_0^3 (g(x)-f(x)) \, dx\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The area bounded by the functions <span class="process-math">\(f(x) = (x-1)^2 + 1\)</span> and <span class="process-math">\(g(x) = x+2\)</span> on the interval <span class="process-math">\([0,3]\text{.}\)</span></figcaption>
+</figure>
+<div class="para" data-evidence="true" id="sec-6-1-area-4-8">In many applications of the definite integral, we will find it helpful to think of a “representative slice” and use the definite integral to add up these slices. Here, the integral sums the areas of thin rectangles.
+</div>
+<div class="para logical" id="sec-6-1-area-4-9">
+<div class="para" data-evidence="true" id="paragraph-e0a22acc1ceb4942-1">Finally, it doesn’t matter whether we think of the area between two curves as the difference between the area bounded by the individual curves (as in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#E-DiffOfInt" title="Equation 6.1.1">(6.1.1)</a>) or as the limit of a Riemann sum of the areas of thin rectangles between the curves (as in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#E-IntOfDiff" title="Equation 6.1.2">(6.1.2)</a>). These two results are the same, since the difference of two integrals is the integral of the difference:</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-9-5">
+\begin{equation*}
+\int_0^3 g(x) \, dx -  \int_0^3 f(x) \, dx = \int_0^3 (g(x) - f(x)) \, dx\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-4-10">Our work so far in this section illustrates the following general principle.
+</div>
+<article class="assemblage assemblage-like" id="sec-6-1-area-4-11"><h3 class="heading"><span class="title">The area between two curves.</span></h3>
+<div class="para logical" id="sec-6-1-area-4-11-2">
+<div class="para" data-evidence="true" id="paragraph-5677bbcaafd7e4b6-1">If two curves <span class="process-math">\(y = g(x)\)</span> and <span class="process-math">\(y = f(x)\)</span> intersect at <span class="process-math">\((a,g(a))\)</span> and <span class="process-math">\((b,g(b))\text{,}\)</span> and for all <span class="process-math">\(x\)</span> such that <span class="process-math">\(a \le x \le b\text{,}\)</span> <span class="process-math">\(g(x) \ge f(x)\text{,}\)</span> then the area between the curves is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-4-11-2-8">
+\begin{equation*}
+A = \int_a^b (g(x) - f(x)) \, dx\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-6-1-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-6-1-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-6-1-1-1">
+<div class="para" data-evidence="true" id="act-6-1-1-1-1">In each of the following situations, our goal is to determine the area of the region described. For each region, (i) determine the intersection points of the curves, (ii) sketch the region whose area is being found, (iii) draw and label a representative slice, and (iv) state the area of the representative slice. Then, state a definite integral whose value is the exact area of the region, and evaluate the integral to find the numeric value of the region’s area.
+</div>
+</div>
+<article class="task exercise-like" id="act-6-1-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-1-task-0-1-1">The finite region bounded by <span class="process-math">\(y = \sqrt{x}\)</span> and <span class="process-math">\(y = \frac{1}{4}x\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-1-task-1-1-1">The finite region bounded by <span class="process-math">\(y = 12-2x^2\)</span> and <span class="process-math">\(y = x^2 - 8\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-1-task-2-1-1">The area bounded by the <span class="process-math">\(y\)</span>-axis, <span class="process-math">\(f(x) = \cos(x)\text{,}\)</span> and <span class="process-math">\(g(x) = \sin(x)\text{,}\)</span> where we consider the region formed by the first positive value of <span class="process-math">\(x\)</span> for which <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> intersect.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-1-task-3-1-1">The finite regions between the curves <span class="process-math">\(y = x^3-x\)</span> and <span class="process-math">\(y = x^2\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-6-1-area-5">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Finding Area with Horizontal Slices</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-2">At times, the shape of a region may dictate that we use horizontal rectangular slices, instead of vertical ones.
+</div>
+<article class="example example-like" id="sec-6-1-area-5-3"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-3-1-1">Find the area of the region bounded by the parabola <span class="process-math">\(x = y^2 - 1\)</span> and the line <span class="process-math">\(y = x-1\text{,}\)</span> shown at left in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-IntWRTy" title="Figure 6.1.5">Figure 6.1.5</a>.
+</div>
+<figure class="figure figure-like" id="F-6-1-IntWRTy"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_IntWRTy.svg"/><details class="image-description"><summary title="details"></summary><div id="F-6-1-IntWRTy-2-description">
+<div class="para" data-evidence="true" id="F-6-1-IntWRTy-2-1-1">There are three adjacent images that show how we can think about the area bounded by the curves <span class="process-math">\(x = y^2 - 1\)</span> and <span class="process-math">\(y = x-1\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="F-6-1-IntWRTy-2-1-2">In the first image on the left, the region between the two curves is shaded.  The curves intersect at the points <span class="process-math">\((0,-1)\)</span> and <span class="process-math">\((3,2)\text{,}\)</span> with the region between them consisting of the area to the right of <span class="process-math">\(x = y^2 - 1\)</span> and to the left of <span class="process-math">\(y = x-1\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="F-6-1-IntWRTy-2-1-3">In the second image in the middle, we consider using thin vertical rectangles to slice up the region between the curves.  While one vertical rectangle, located at approximately <span class="process-math">\(x = 1.2\)</span> has its top on the parabola and its bottom on the line, another vertical rectangle located  at approximately <span class="process-math">\(x = -0.5\)</span> has both its top and bottom on the parabola.
+</div>
+<div class="para" data-evidence="true" id="F-6-1-IntWRTy-2-1-4">The third and final image on the right shows a representative horizontal rectangular slice that has thickness <span class="process-math">\(\Delta y\text{.}\)</span>  This rectangular (which is typical of of any horizontal slice) has its left end on the parabola and its right end on the line.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The area bounded by the functions <span class="process-math">\(x = y^2-1\)</span> and <span class="process-math">\(y = x-1\)</span> (at left), with the region sliced vertically (center) and horizontally (at right).</figcaption>
+</figure><div class="solutions">
+<details class="solution solution-like born-hidden-knowl" id="sec-6-1-area-5-3-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
+<div class="solution solution-like knowl__content">
+<div class="para" data-evidence="true" id="sec-6-1-area-5-3-2-1">By solving the second equation for <span class="process-math">\(x\)</span> and writing <span class="process-math">\(x = y + 1\text{,}\)</span> we find that <span class="process-math">\(y+1 = y^2 - 1\text{.}\)</span> Hence the curves intersect where <span class="process-math">\(y^2 - y - 2 = 0\text{.}\)</span> Thus, we find <span class="process-math">\(y = -1\)</span> or <span class="process-math">\(y = 2\text{,}\)</span> so the intersection points of the two curves are <span class="process-math">\((0,-1)\)</span> and <span class="process-math">\((3,2)\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-3-2-2">If we attempt to use vertical rectangles to slice up the area (as in the center graph of <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-IntWRTy" title="Figure 6.1.5">Figure 6.1.5</a>), we see that from <span class="process-math">\(x = -1\)</span> to <span class="process-math">\(x = 0\)</span> the curves that bound the top and bottom of the rectangle are one and the same. This suggests, as shown in the rightmost graph in the figure, that we try using horizontal rectangles.
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-3-2-3">Note that the width of a horizontal rectangle depends on <span class="process-math">\(y\text{.}\)</span> Between <span class="process-math">\(y = -1\)</span> and <span class="process-math">\(y = 2\text{,}\)</span> the right end of a representative rectangle is determined by the line <span class="process-math">\(x = y+1\text{,}\)</span> and the left end is determined by the parabola, <span class="process-math">\(x = y^2-1\text{.}\)</span> The thickness of the rectangle is <span class="process-math">\(\Delta y\text{.}\)</span>
+</div>
+<div class="para logical" id="sec-6-1-area-5-3-2-4">
+<div class="para" data-evidence="true" id="paragraph-808497132fe0a83d-1">Therefore, the area of the rectangle is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-5-3-2-4-1">
+\begin{equation*}
+A_{\text{rect} } = [(y+1) - (y^2-1)] \Delta y\text{,}
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-29c07f668e75eee1-1">and the area between the two curves on the <span class="process-math">\(y\)</span>-interval <span class="process-math">\([-1,2]\)</span> is approximated by the Riemann sum</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-5-3-2-4-4">
+\begin{equation*}
+A \approx \sum_{i=1}^{n} [(y_i+1)-(y_i^2-1)] \Delta y\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-5-3-2-5">
+<div class="para" data-evidence="true" id="paragraph-4edebbaf4f9e52d4-1">Taking the limit of the Riemann sum, it follows that the area of the region is</div>
+<div class="displaymath process-math" data-evidence="true" id="E-IntWRTy">
+\begin{equation}
+A = \int_{y=-1}^{y=2} [(y+1) - (y^2-1)] \, dy\text{.}\tag{6.1.3}
+\end{equation}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-3-2-6">We emphasize that we are integrating with respect to <span class="process-math">\(y\text{;}\)</span> this is because we chose to use horizontal rectangles whose widths depend on <span class="process-math">\(y\)</span> and whose thickness is denoted <span class="process-math">\(\Delta y\text{.}\)</span> It is a straightforward exercise to evaluate the integral in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#E-IntWRTy" title="Equation 6.1.3">Equation (6.1.3)</a> and find that <span class="process-math">\(A = \frac{9}{2}\text{.}\)</span>
+</div>
+</div></details>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-6-1-area-5-4">Just as with the use of vertical rectangles of thickness <span class="process-math">\(\Delta x\text{,}\)</span> we have a general principle for finding the area between two curves, which we state as follows.
+</div>
+<article class="assemblage assemblage-like" id="sec-6-1-area-5-5"><h3 class="heading"><span class="title">Using horizontal slices to find the area between two curves.</span></h3>
+<div class="para logical" id="sec-6-1-area-5-5-2">
+<div class="para" data-evidence="true" id="paragraph-25957bf4a81317f0-1">If two curves <span class="process-math">\(x = g(y)\)</span> and <span class="process-math">\(x = f(y)\)</span> intersect at <span class="process-math">\((g(c),c)\)</span> and <span class="process-math">\((g(d),d)\text{,}\)</span> and for all <span class="process-math">\(y\)</span> such that <span class="process-math">\(c \le y \le d\text{,}\)</span> <span class="process-math">\(g(y) \ge f(y)\text{,}\)</span> then the area between the curves is</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-5-5-2-8">
+\begin{equation*}
+A = \int_{y=c}^{y=d} (g(y) - f(y)) \, dy\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-6-1-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-6-1-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-6-1-2-1">
+<div class="para" data-evidence="true" id="act-6-1-2-1-1">In each of the following situations, our goal is to determine the area of the region described. For each region, (i) determine the intersection points of the curves, (ii) sketch the region whose area is being found, (iii) draw and label a representative slice, and (iv) state the area of the representative slice. Then, state a definite integral whose value is the exact area of the region, and evaluate the integral to find the numeric value of the region’s area. <em class="emphasis">Note well:</em> At the step where you draw a representative slice, you need to make a choice about whether to slice vertically or horizontally.
+</div>
+</div>
+<article class="task exercise-like" id="act-6-1-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-2-task-0-1-1">The finite region bounded by <span class="process-math">\(x=y^2\)</span> and <span class="process-math">\(x=6-2y^2\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-2-task-1-1-1">The finite region bounded by <span class="process-math">\(x=1-y^2\)</span> and <span class="process-math">\(x = 2-2y^2\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-2-task-2-1-1">The area bounded by the <span class="process-math">\(x\)</span>-axis, <span class="process-math">\(y=x^2\text{,}\)</span> and <span class="process-math">\(y=2-x\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-2-task-3-1-1">The finite regions between the curves <span class="process-math">\(x=y^2-2y\)</span> and <span class="process-math">\(y=x\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-6-1-area-6">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Finding the length of a curve</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-6-1-area-6-3">We can also use the definite integral to find the length of a portion of a curve. We use the same fundamental principle: we slice the curve up into small pieces whose lengths we can easily approximate. Specifically, we subdivide the curve into small approximating line segments, as shown at left in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-ArcLength" title="Figure 6.1.6">Figure 6.1.6</a>.
+</div>
+<figure class="figure figure-like" id="F-6-1-ArcLength"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_ArcLength.svg"/><details class="image-description"><summary title="details"></summary><div id="F-6-1-ArcLength-2-description">
+<div class="para" data-evidence="true" id="F-6-1-ArcLength-2-1-1">There are two adjacent images that show how we can think about the length of the given curve.
+</div>
+<div class="para" data-evidence="true" id="F-6-1-ArcLength-2-1-2">In the first version of the image on the left, the focus is on an interval in the first quadrant from <span class="process-math">\(x=x_0\)</span> to <span class="process-math">\(x = x_3\)</span> with three subdivisions.  On the graph of the cubic function <span class="process-math">\(f\text{,}\)</span> the points <span class="process-math">\((x_0,f(x_0))\text{,}\)</span> <span class="process-math">\((x_1,f(x_1))\text{,}\)</span> <span class="process-math">\((x_2,f(x_2))\text{,}\)</span> and <span class="process-math">\((x_3,f(x_4))\)</span> are plotted along with line segments connecting each adjacent pair of points.  There is a box in the graph that includes the points <span class="process-math">\((x_1,f(x_1))\)</span> and <span class="process-math">\((x_2,f(x_2))\text{,}\)</span> as the contents of this box are magnified in the next image.
+</div>
+<div class="para" data-evidence="true" id="F-6-1-ArcLength-2-1-3">The second image zooms in on the portion of the graph of <span class="process-math">\(f\)</span> from <span class="process-math">\(x=x_1\)</span> to <span class="process-math">\(x=x_2\text{,}\)</span> focusing on the line segment between <span class="process-math">\((x_1,f(x_1))\)</span> and <span class="process-math">\((x_2,f(x_2))\text{.}\)</span>  We think of that line segment as the hypotenuse of the right triangle that’s now in this figure.  That right triangle has a horizontal leg of length <span class="process-math">\(\Delta x\text{,}\)</span> a vertical leg of length <span class="process-math">\(\Delta y\text{,}\)</span> and we call the length of the hypotenuse <span class="process-math">\(h\text{.}\)</span>  Finally, the portion of the curve that lies between <span class="process-math">\((x_1,f(x_1))\)</span> and <span class="process-math">\((x_2,f(x_2))\)</span> we label as “<span class="process-math">\(L_{\text{slice}}\)</span>”.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>At left, a continuous function <span class="process-math">\(y = f(x)\)</span> whose length we seek on the interval <span class="process-math">\(a = x_0\)</span> to <span class="process-math">\(b = x_3\text{.}\)</span>  At right, a close up view of a portion of the curve.</figcaption>
+</figure>
+<div class="para logical" id="sec-6-1-area-6-5">
+<div class="para" data-evidence="true" id="paragraph-7f4ccc803843c38d-1">We estimate the length <span class="process-math">\(L_{\text{slice} }\)</span> of each portion of the curve on a small interval of length <span class="process-math">\(\Delta x\text{.}\)</span> We use the right triangle with legs parallel to the coordinate axes and hypotenuse connecting the endpoints of the slice, as seen at right in <a class="xref" href="/book/active-calculus-html/sec-6-1-area#F-6-1-ArcLength" title="Figure 6.1.6">Figure 6.1.6</a>. The length, <span class="process-math">\(h\text{,}\)</span> of the hypotenuse approximates the length, <span class="process-math">\(L_{\text{slice} }\text{,}\)</span> of the curve between the two selected points. Thus,</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-6-5-6">
+\begin{equation*}
+L_{\text{slice} } \approx h = \sqrt{ (\Delta x)^2 + (\Delta y)^2 }\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-6-6">
+<div class="para" data-evidence="true" id="paragraph-96021c63261b8e80-1">Next we use algebra to rearrange the expression for the length of the hypotenuse into a form that we can integrate. By removing a factor of <span class="process-math">\((\Delta x)^2\text{,}\)</span> we find</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-6-6-2">
+\begin{align*}
+L_{\text{slice}} &amp;\approx  \sqrt{ (\Delta x)^2 + (\Delta y)^2 }\\
+&amp;= \sqrt{ (\Delta x)^2\left(1 + \frac{(\Delta y)^2}{(\Delta x)^2} \right)}\\
+&amp;= \sqrt{1 + \frac{(\Delta y)^2}{(\Delta x)^2} } \cdot \Delta x\text{.}
+\end{align*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-6-7">
+<div class="para" data-evidence="true" id="paragraph-07ec4da5c5a9d161-1">Then, as <span class="process-math">\(n \to \infty\)</span> and <span class="process-math">\(\Delta x \to 0\text{,}\)</span> we have that <span class="process-math">\(\frac{\Delta y}{\Delta x} \to \frac{dy}{dx} = f'(x)\text{.}\)</span> Thus, we can say that</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-6-7-4">
+\begin{equation*}
+L_{\text{slice} } \approx \sqrt{1 + f'(x)^2} \Delta x\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" id="sec-6-1-area-6-8">
+<div class="para" data-evidence="true" id="paragraph-3550ff7de33234d4-1">Taking a Riemann sum of all of these slices and letting <span class="process-math">\(n \to \infty\text{,}\)</span> the total length of the curve is therefore</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-6-8-2">
+\begin{equation*}
+L = \int_a^b \sqrt{1+f'(x)^2} \, dx\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-6-1-area-6-9">We summarize this result more formally as follows.
+</div>
+<article class="assemblage assemblage-like" id="sec-6-1-area-6-10"><h3 class="heading"><span class="title">The arc length of a curve.</span></h3>
+<div class="para logical" id="sec-6-1-area-6-10-2">
+<div class="para" data-evidence="true" id="paragraph-32db8347247f5212-1">Given a differentiable function <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\text{,}\)</span> the total arc length,  <span class="process-math">\(L\text{,}\)</span> along the curve <span class="process-math">\(y = f(x)\)</span> from <span class="process-math">\(x = a\)</span> to <span class="process-math">\(x = b\)</span> is given by</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-6-10-2-8">
+\begin{equation*}
+L = \int_a^b \sqrt{1+f'(x)^2} \, dx\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-6-1-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-6-1-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-6-1-3-1">
+<div class="para" data-evidence="true" id="act-6-1-3-1-1">Each of the following questions involves the arc length along a curve.
+</div>
+</div>
+<article class="task exercise-like" id="act-6-1-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-3-task-0-1-1">Use the definition and appropriate computational technology to determine the arc length along <span class="process-math">\(y = x^2\)</span> from <span class="process-math">\(x = -1\)</span> to <span class="process-math">\(x = 1\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-3-task-1-1-1">Find the arc length of <span class="process-math">\(y = \sqrt{4-x^2}\)</span> on the interval <span class="process-math">\(-2 \le x \le 2\text{.}\)</span> Find this value in two different ways: (a) by using a definite integral, and (b) by using a familiar property of the curve.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-3-task-2-1-1">Determine the arc length of <span class="process-math">\(y = xe^{3x}\)</span> on the interval <span class="process-math">\([0,1]\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-3-task-3-1-1">Will the integrals that arise calculating arc length typically be ones that we can evaluate exactly using the First FTC, or ones that we need to approximate? Why?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-6-1-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-6-1-3-task-4-1-1">A moving particle is traveling along the curve given by <span class="process-math">\(y = f(x) = 0.1x^2 + 1\text{,}\)</span> and does so at a constant rate of 7 cm/sec, where both <span class="process-math">\(x\)</span> and <span class="process-math">\(y\)</span> are measured in cm (that is, the curve <span class="process-math">\(y = f(x)\)</span> is the path along which the object actually travels; the curve is not a “position function”). Find the position of the particle when <span class="process-math">\(t = 4\)</span> sec, assuming that when <span class="process-math">\(t = 0\text{,}\)</span> the particle’s location is <span class="process-math">\((0,f(0))\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-6-1-area-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" id="sec-6-1-area-7-2">
+<ul class="disc" id="sec-6-1-area-7-2-1">
+<li id="sec-6-1-area-7-2-1-1">
+<div class="para logical" id="sec-6-1-area-7-2-1-1-1">
+<div class="para" data-evidence="true" id="paragraph-4e8f86e5e86e683a-1">To find the area between two curves, we think about slicing the region into thin rectangles. If, for instance, the area of a typical rectangle on the interval <span class="process-math">\(x = a\)</span> to <span class="process-math">\(x = b\)</span> is given by <span class="process-math">\(A_{\text{rect} } = (g(x) - f(x)) \Delta x\text{,}\)</span> then the exact area of the region is given by the definite integral</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-7-2-1-1-1-4">
+\begin{equation*}
+A = \int_a^b (g(x)-f(x))\, dx\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="sec-6-1-area-7-2-1-2">
+<div class="para" data-evidence="true" id="sec-6-1-area-7-2-1-2-1">The shape of the region usually dictates whether we should use vertical rectangles of thickness <span class="process-math">\(\Delta x\)</span> or horizontal rectangles of thickness <span class="process-math">\(\Delta y\text{.}\)</span> We want the height of the rectangle given by the difference between two curves: if those curves are best thought of as functions of <span class="process-math">\(y\text{,}\)</span> we use horizontal rectangles, whereas if those curves are best viewed as functions of <span class="process-math">\(x\text{,}\)</span> we use vertical rectangles.
+</div>
+</li>
+<li id="sec-6-1-area-7-2-1-3">
+<div class="para logical" id="sec-6-1-area-7-2-1-3-1">
+<div class="para" data-evidence="true" id="paragraph-c189e8f2b94ff010-1">The arc length, <span class="process-math">\(L\text{,}\)</span> along the curve <span class="process-math">\(y = f(x)\)</span> from <span class="process-math">\(x = a\)</span> to <span class="process-math">\(x = b\)</span> is given by</div>
+<div class="displaymath process-math" data-evidence="true" id="sec-6-1-area-7-2-1-3-1-5">
+\begin{equation*}
+L = \int_a^b \sqrt{1 + f'(x)^2} \, dx\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-6-1">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">6.1.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="csafranski__6-_1HW_prob1"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__6-_1HW_prob1-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob1-1-1-1">Find the area enclosed between  <span class="process-math">\(f(x) = 0.9 x^2  +    8\)</span> and  <span class="process-math">\(g(x) = x\)</span> from <span class="process-math">\(x= -2\)</span>  to <span class="process-math">\(x= 3\text{.}\)</span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap5Sec4__Q07"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap5Sec4__Q07-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap5Sec4__Q07-1-1-1">Find the area of the region between <span class="process-math">\(y=x^{1/2}\)</span> and <span class="process-math">\(y=x^{1/5}\)</span> for <span class="process-math">\(0 \leq x \leq 1\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap5Sec4__Q07-1-1-2">area = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-1-1-1">Find the area of the shaded region below.
+</div> <div class="image-box">
+<img alt="Graph of the region between two functions of y in the plane." class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-image-1.png"/><details class="image-description"><summary title="details"></summary><div id="extracted-Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-1-1-2-description">
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-1-1-2-2-1">A region in the <span class="process-math">\(x-y\)</span> coordinate plane. The parabola <span class="process-math">\(x=y^2-4y\)</span> forms the left boundary of the region. The parabola <span class="process-math">\(x=2y-y^2\)</span> forms the right boundary of the region. The two parabolas intersect at a point labeled <span class="process-math">\((-3,3)\)</span> and at another point which looks like the origin.
+</div>
+</div></details>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-1-1-3">Area = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__6_Applications_of_the_Integral__6-_1_Area_Between_Two_Curves__6-_1-_6"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__6_Applications_of_the_Integral__6-_1_Area_Between_Two_Curves__6-_1-_6-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__6_Applications_of_the_Integral__6-_1_Area_Between_Two_Curves__6-_1-_6-1-1-1">Find the area between <span class="process-math">\(y = 2 \sin x\)</span> and <span class="process-math">\(y = 4 \cos x\)</span> over the interval <span class="process-math">\(\left[0,\pi\right]\text{.}\)</span> Sketch the curves if necessary.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__6_Applications_of_the_Integral__6-_1_Area_Between_Two_Curves__6-_1-_6-1-1-2">
+<span class="process-math">\(A=\)</span><span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__6-_1HW_prob5"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__6-_1HW_prob5-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-1">The boundaries of the shaded region are the <span class="process-math">\(y\)</span>-axis, the line <span class="process-math">\(y = 1\text{,}\)</span> and the curve <span class="process-math">\(y=\sqrt[4]{x}.\)</span>
+</div> <div class="image-box">
+<img alt="Graph of the region." class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__6-_1HW_prob5-image-1.png"/><details class="image-description"><summary title="details"></summary><div id="extracted-csafranski__6-_1HW_prob5-1-1-2-description">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-2-2-1">The region in the <span class="process-math">\(x-y\)</span>-plane. The shaded region looks like a triangle with a curved side and seems to have vertices at the origin, <span class="process-math">\((0,1)\)</span> and <span class="process-math">\((1,1)\text{.}\)</span> The top boundary of the region is the horizontal line <span class="process-math">\(y=1\text{,}\)</span> the left boundary of the region is the <span class="process-math">\(y\)</span>-axis, and the bottom boundary of the region is the function <span class="process-math">\(y=\sqrt[4]{x}\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-3">This area can be computed in two different ways using integrals.
+</div>
+<div class="para logical" id="extracted-csafranski__6-_1HW_prob5-1-1-4">
+<div class="para" data-evidence="true" id="paragraph-77b1eaa6687ef264-1">First, it can be computed as an integral with respect to x,</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-4-1">
+\begin{equation*}
+\int_a^b [f(x)- g(x)]\,dx
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-5">where <span class="process-math">\(a =\)</span> <span class="fillin underline"></span>, <span class="process-math">\(b =\)</span> <span class="fillin underline"></span>, and
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-6">
+<span class="process-math">\(f(x) -g(x) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para logical" id="extracted-csafranski__6-_1HW_prob5-1-1-7">
+<div class="para" data-evidence="true" id="paragraph-94541214b2199f55-1">Alternatively, this area can be computed as an integral with respect to y,</div>
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-7-1">
+\begin{equation*}
+\int_{c}^{d} h(y)\,dy
+\end{equation*}
+</div>
+<div class="para" data-evidence="true" id="paragraph-43022d66ac0ab970-1">where <span class="process-math">\(c =\)</span> <span class="fillin underline"></span>, <span class="process-math">\(d =\)</span> <span class="fillin underline"></span> and</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-8">
+<span class="process-math">\(h(y) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob5-1-1-9">Either way we find that the area is <span class="fillin underline"></span>.
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__6-_1HW_prob6"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__6-_1HW_prob6-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-1">Find the area of the region between the curves <span class="process-math">\(4x+y^2=12\)</span> and <span class="process-math">\(x=y\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-2">These two curves intersect when  <span class="process-math">\(y =\)</span> <span class="fillin underline"></span> and <span class="process-math">\(y =\)</span> <span class="fillin underline"></span>.
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-3">This is better to integrate with respect to y, since we know the starting value and ending value of y, and the region can be described with one integral,
+</div>
+<div class="para logical" id="extracted-csafranski__6-_1HW_prob6-1-1-4">
+<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-4-1">
+\begin{equation*}
+\int_{c}^{d} \left[ h(y)-k(y) \right] \,dy
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-5">where <span class="process-math">\(c =\)</span> <span class="fillin underline"></span>, <span class="process-math">\(d =\)</span> <span class="fillin underline"></span> and
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-6">
+<span class="process-math">\(h(y)-k(y) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob6-1-1-7">Then we find that the area is <span class="fillin underline"></span>.
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__6-_1HW_prob7"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__6-_1HW_prob7-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob7-1-1-1">Consider the curve defined by the equation <span class="process-math">\(y=3x^{3}+2x\text{.}\)</span>  Set up an integral that represents the length of curve from the point <span class="process-math">\((-3,-87)\)</span> to the point <span class="process-math">\((3,87)\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob7-1-1-2">arclength = <span class="process-math">\(\int_c^d f(x)\, dx\text{,}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob7-1-1-3">where <span class="process-math">\(c=\)</span> <span class="fillin underline"></span> <span class="process-math">\(d=\)</span> <span class="fillin underline"></span> <span class="process-math">\(f(x)=\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap8Sec2__Q11"><h3 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap8Sec2__Q11-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap8Sec2__Q11-1-1-1">Find the arc length of the graph of the function <span class="process-math">\(f(x)=5 \sqrt{x^{3}}\)</span> from <span class="process-math">\(x= 4\)</span> to <span class="process-math">\(x=8\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap8Sec2__Q11-1-1-2">arc length = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__6-_1HW_prob9"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__6-_1HW_prob9-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob9-1-1-1">Approximate the arc length of the curve <span class="process-math">\(y=\frac{1}{4}x^4\)</span> over the interval <span class="process-math">\([1,2]\)</span> using the trapezoidal rule and <span class="process-math">\(8\)</span> intervals (i.e., <span class="process-math">\(T_{8}\)</span>).
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__6-_1HW_prob9-1-1-2">
+<span class="process-math">\(T_{8}=\)</span><span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-6-1-10"><h3 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-6-1-10-1-1">
+<div class="para" data-evidence="true" id="paragraph-623c23688999365b-1">Find the exact area of each described region.</div>
+<ol class="lower-alpha" id="ez-6-1-10-1-1-1">
+<li id="ez-6-1-10-1-1-1-1">
+<div class="para" data-evidence="true" id="ez-6-1-10-1-1-1-1-1">The finite region between the curves <span class="process-math">\(x = y(y-2)\)</span> and <span class="process-math">\(x=-(y-1)(y-3)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-6-1-10-1-1-1-2">
+<div class="para" data-evidence="true" id="ez-6-1-10-1-1-1-2-1">The region between the sine and cosine functions on the interval <span class="process-math">\([\frac{\pi}{4}, \frac{3\pi}{4}]\text{.}\)</span>
+</div>
+</li>
+<li id="ez-6-1-10-1-1-1-3">
+<div class="para" data-evidence="true" id="ez-6-1-10-1-1-1-3-1">The finite region between <span class="process-math">\(x = y^2 - y - 2\)</span> and <span class="process-math">\(y = 2x-1\text{.}\)</span>
+</div>
+</li>
+<li id="ez-6-1-10-1-1-1-4">
+<div class="para" data-evidence="true" id="ez-6-1-10-1-1-1-4-1">The finite region between <span class="process-math">\(y = mx\)</span> and <span class="process-math">\(y = x^2-1\text{,}\)</span> where <span class="process-math">\(m\)</span> is a positive constant.
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-6-1-11"><h3 class="heading"><span class="codenumber">11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" data-evidence="true" id="ez-6-1-11-1-1">Let <span class="process-math">\(f(x) = 1-x^2\)</span> and <span class="process-math">\(g(x) = ax^2 - a\text{,}\)</span> where <span class="process-math">\(a\)</span> is an unknown positive real number. For what value(s) of <span class="process-math">\(a\)</span> is the area between the curves <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> equal to 2?
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-6-1-12"><h3 class="heading"><span class="codenumber">12<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" id="ez-6-1-12-1-1">
+<div class="para" data-evidence="true" id="paragraph-da02e36f9b832392-1">Let <span class="process-math">\(f(x) = 2-x^2\text{.}\)</span> Recall that the average value of any continuous function <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\)</span> is given by <span class="process-math">\(\frac{1}{b-a} \int_a^b f(x) \, dx\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-6-1-12-1-1-5">
+<li id="ez-6-1-12-1-1-5-1">
+<div class="para" data-evidence="true" id="ez-6-1-12-1-1-5-1-1">Find the average value of <span class="process-math">\(f(x) = 2-x^2\)</span> on the interval <span class="process-math">\([0,\sqrt{2}]\text{.}\)</span> Call this value <span class="process-math">\(r\text{.}\)</span>
+</div>
+</li>
+<li id="ez-6-1-12-1-1-5-2">
+<div class="para" data-evidence="true" id="ez-6-1-12-1-1-5-2-1">Sketch a graph of <span class="process-math">\(y = f(x)\)</span> and <span class="process-math">\(y = r\text{.}\)</span> Find their intersection point(s).
+</div>
+</li>
+<li id="ez-6-1-12-1-1-5-3">
+<div class="para" data-evidence="true" id="ez-6-1-12-1-1-5-3-1">Show that on the interval <span class="process-math">\([0,\sqrt{2}]\text{,}\)</span> the amount of area that lies below <span class="process-math">\(y = f(x)\)</span> and above <span class="process-math">\(y = r\)</span> is equal to the amount of area that lies below <span class="process-math">\(y = r\)</span> and above <span class="process-math">\(y = f(x)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-6-1-12-1-1-5-4">
+<div class="para" data-evidence="true" id="ez-6-1-12-1-1-5-4-1">Will the result of (c) be true for any continuous function and its average value on any interval? Why?
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>
