@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--offline-only', action='store_true', help='Only measure health, indexing and page rendering; no model requests')
     parser.add_argument('--plan-quality', action='store_true', help='Log planning output and retrieved block identifiers (may contain user input)')
     parser.add_argument('--defer-web', action='store_true', help='For web-enabled questions, request the book answer first and search separately')
+    parser.add_argument('--skip-plan', choices=('on','off'), help='Override SKIP_PLAN for this benchmark process')
     args = parser.parse_args()
     if args.interval < 0 or args.cold_runs < 0 or args.page_runs < 0 or args.page < 1:
         parser.error('interval and run counts must be nonnegative, and page must be positive')
@@ -54,6 +55,8 @@ def main():
     from timing import log
 
     application.app.config['BENCHMARK_PLAN_QUALITY'] = args.plan_quality
+    if args.skip_plan is not None:
+        application.app.config['SKIP_PLAN'] = args.skip_plan == 'on'
 
     class Collector(logging.Handler):
         def __init__(self):

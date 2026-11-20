@@ -22,6 +22,7 @@ import ai_service as ai  # Load model overrides after .env.
 from retrieval import LibraryIndex
 from reader_backend import page_png, page_data, resolution
 from timing import request_timing, stage, plan_quality
+from planning import is_english
 
 @lru_cache(maxsize=1)
 def library():
@@ -38,6 +39,8 @@ def create_app(config=None):
         SESSION_COOKIE_SECURE=os.getenv('RENDER','').lower()=='true',
         AI_ENABLED=True, RATE_LIMIT=int(os.getenv('REQUESTS_PER_MINUTE','8')),
         WEB_SEARCH_DEFAULT=os.getenv('WEB_SEARCH_DEFAULT','off').lower()=='on',
+        SKIP_PLAN=os.getenv('SKIP_PLAN','off').lower()=='on',
+        SKIP_PLAN_MIN_SCORE=float(os.getenv('SKIP_PLAN_MIN_SCORE','1.0')),
         BENCHMARK_PLAN_QUALITY=False)
     if config:
         app.config.update(config)
@@ -186,32 +189,51 @@ def create_app(config=None):
         history=[{'role':h['role'],'content':h['content'][:2500]} for h in raw_history[-6:]
                  if isinstance(h,dict) and h.get('role') in ('user','assistant') and isinstance(h.get('content'),str)]
         docs=[d for d in library().public_docs() if not doc_id or d['id']==doc_id]
+        skip_plan=app.config['SKIP_PLAN'] and language in ('auto','en-CA') and not raw_history and is_english(question)
+        def outside(lang):
+            return jsonify(category='out_of_scope',language=lang,book_answer='',evidence=[],results=[],
+                notice=('Cette demande ne concerne pas les sujets des documents sélectionnés. Essayez une question liée à ces sujets.' if lang=='fr-CA' else 'This request is outside the subjects of the selected documents. Try a question related to those subjects.'),web=None)
         def operation():
-            with stage('plan'):
-                search_plan=ai.plan(question,language,docs,history)
+            if skip_plan:
+                search_plan={'related':None,'language':'en-CA','query_en':question,'query_fr':''}
+            else:
+                with stage('plan'):
+                    search_plan=ai.plan(question,language,docs,history)
             lang=language if language!='auto' else search_plan['language']
-            if not search_plan['related']:
+            if not skip_plan and not search_plan['related']:
                 if app.config['BENCHMARK_PLAN_QUALITY']:
-                    plan_quality(search_plan, [])
-                return jsonify(category='out_of_scope',language=lang,book_answer='',evidence=[],results=[],
-                    notice=('Cette demande ne concerne pas les sujets des documents sélectionnés. Essayez une question liée à ces sujets.' if lang=='fr-CA' else 'This request is outside the subjects of the selected documents. Try a question related to those subjects.'),web=None)
-            query=question+' '+search_plan['query_en']+' '+search_plan['query_fr']
+                    plan_quality(search_plan, [], plan_skipped=False)
+                return outside(lang)
+            query=question if skip_plan else question+' '+search_plan['query_en']+' '+search_plan['query_fr']
             with stage('retrieve'):
                 hits=library().search(query,doc_id,10)
             # Explicit page requests are bound to a single chosen document, not guessed across books.
+            top_score=hits[0]['score'] if hits else 0.0
+            explicit_page=False
             match=re.search(r'\b(?:pdf\s*)?(?:page|p\.)\s*(\d{1,4})\b',question,re.I)
             if match and len(docs)==1:
                 page=int(match.group(1))
                 if (docs[0]['id'],page) in library().pages:
                     hits=library().page(docs[0]['id'],page)
-            if app.config['BENCHMARK_PLAN_QUALITY']:
-                plan_quality(search_plan, hits)
+                    explicit_page=True
+            if skip_plan and not explicit_page and top_score < app.config['SKIP_PLAN_MIN_SCORE']:
+                search_plan['related']=False
+                if app.config['BENCHMARK_PLAN_QUALITY']:
+                    plan_quality(search_plan, hits, plan_skipped=True, top_score=top_score, scope_source='bm25_gate')
+                return outside(lang)
             offered=[{**p,'key':f'S{i+1}'} for i,p in enumerate(hits)]
             payload=[{k:p[k] for k in ('key','doc','page','id','text')} for p in offered]
             result={}
             if payload:
                 with stage('answer'):
-                    result=ai.answer(question,lang,payload,history)
+                    result=ai.answer(question,lang,payload,history,docs)
+            if skip_plan:
+                search_plan['related']=result.get('related')
+            if app.config['BENCHMARK_PLAN_QUALITY']:
+                plan_quality(search_plan, hits, plan_skipped=skip_plan, top_score=top_score,
+                    scope_source='answer' if skip_plan else 'planner')
+            if result.get('related') is False:
+                return outside(lang)
             text,evidence=ai.validate_answer(result,offered)
             notice='' if text else ('Je ne peux pas confirmer la réponse à partir des passages trouvés. Cela ne signifie pas que le livre ne traite pas du sujet.' if lang=='fr-CA' else 'I could not verify an answer from the retrieved passages. This does not establish that the book omits the topic.')
             def present(p):
@@ -230,7 +252,8 @@ def create_app(config=None):
                 results=[present(p) for p in offered],web=web,
                 web_token=web_tokens.dumps({'query':search_plan['query_en'], 'language':lang,
                     'docs':[d['id'] for d in docs], 'binding':web_binding()}))
-        with request_timing(doc_id):
+        with request_timing(doc_id) as timing:
+            timing['plan_skipped']=skip_plan
             return run_ai(operation)
 
     @app.post('/api/web-search')

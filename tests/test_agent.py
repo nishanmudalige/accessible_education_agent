@@ -11,7 +11,7 @@ from retrieval import LibraryIndex
 
 @pytest.fixture
 def client():
-    app=module.create_app({'TESTING':True,'SECRET_KEY':'test-secret','APP_PASSWORD':'test-password','RATE_LIMIT':100})
+    app=module.create_app({'TESTING':True,'SECRET_KEY':'test-secret','APP_PASSWORD':'test-password','RATE_LIMIT':100,'SKIP_PLAN':False})
     c=app.test_client()
     with c.session_transaction() as s:s['authenticated']=True;s['csrf']='test-csrf'
     return c
@@ -21,7 +21,7 @@ def post(c,path,data):return c.post(path,json=data,headers={'X-CSRF-Token':'test
 def fake_ai(monkeypatch,related=True,supported=True,bad_key=False):
     calls=[]
     monkeypatch.setattr(ai,'plan',lambda *args:dict(related=related,language='fr-CA',query_en='confidence interval',query_fr='intervalle de confiance',reason=''))
-    def answer(q,lang,hits,history):
+    def answer(q,lang,hits,history,docs):
         calls.append(hits)
         return {'supported':supported,'answer':'Un intervalle de confiance. [S999]' if bad_key else 'Un intervalle de confiance. [S1]', 'evidence':['S999' if bad_key else 'S1']}
     monkeypatch.setattr(ai,'answer',answer)

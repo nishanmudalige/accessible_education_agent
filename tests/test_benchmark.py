@@ -23,10 +23,11 @@ def test_benchmark_mocked_end_to_end(monkeypatch, capsys, limit, count, totals, 
     bench = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bench)
     monkeypatch.setitem(app.app.config, 'RATE_LIMIT', 100)
+    monkeypatch.setitem(app.app.config, 'SKIP_PLAN', False)
     def plan(question, language, docs, history):
         usage(SimpleNamespace(usage=SimpleNamespace(input_tokens=10, output_tokens=2)), 'fake', 'plan')
         return {'related': 'weather' not in question, 'language': language, 'query_en': 'derivative', 'query_fr': 'dérivée', 'reason': ''}
-    def answer(question, language, hits, history):
+    def answer(question, language, hits, history, docs):
         usage(SimpleNamespace(usage=SimpleNamespace(input_tokens=20, output_tokens=3)), 'fake', 'answer')
         return {'answer':'Derivative. [S1]', 'supported':True, 'evidence':['S1']}
     def web(*args):
@@ -72,7 +73,7 @@ def test_quality_logging_is_opt_in_and_records_hits(monkeypatch):
     handler = Capture()
     log.addHandler(handler)
     try:
-        application = app.create_app({'TESTING': True, 'SECRET_KEY': 'test', 'RATE_LIMIT': 100})
+        application = app.create_app({'TESTING': True, 'SECRET_KEY': 'test', 'RATE_LIMIT': 100, 'SKIP_PLAN': False})
         client = application.test_client()
         with client.session_transaction() as session:
             session['csrf'] = 'test-csrf'

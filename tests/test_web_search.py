@@ -6,7 +6,7 @@ import pytest
 
 @pytest.fixture
 def setup(monkeypatch):
-    application=module.create_app({'TESTING':True,'SECRET_KEY':'web-tests','RATE_LIMIT':100})
+    application=module.create_app({'TESTING':True,'SECRET_KEY':'web-tests','RATE_LIMIT':100,'SKIP_PLAN':False})
     client=application.test_client()
     with client.session_transaction() as session: session['csrf']='web-csrf'
     calls=[]

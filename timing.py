@@ -61,10 +61,10 @@ def usage(response, model, operation):
             data['tokens_in'] += tokens_in
             data['tokens_out'] += tokens_out
 
-def plan_quality(plan, hits):
+def plan_quality(plan, hits, plan_skipped=False, **details):
     data = current.get()
     emit(event='plan_quality', request_id=data['request_id'] if data else None,
          book=data['book'] if data else None,
-         related=plan['related'], language=plan['language'],
+         related=plan['related'], language=plan['language'], plan_skipped=plan_skipped, **details,
          query_en=plan['query_en'], query_fr=plan['query_fr'],
          hits=[{'doc': p['doc'], 'page': p['page'], 'id': p['id']} for p in hits])

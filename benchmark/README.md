@@ -35,3 +35,20 @@ python benchmark/run.py --questions benchmark/questions_calculus.json --cold-run
 Both commands incur model usage. In the `web=True` group, `client` and `total` measure the initial Ask request, `web` measures the search stage, and `combined_client` measures both requests combined. In deferred mode token totals include both requests. Their combined duration is not expected to shrink merely from splitting the requests; the book answer becomes available sooner. `questions_plan.json` has web disabled for every entry, so it measures book-only speed and is not a web-on/off comparison.
 
 Manual browser check: run `python app.py`, open http://127.0.0.1:5000, select a book and ask a related question. The web checkbox starts unchecked; the textbook answer should offer the web button. Clicking it should populate a separate external section while keeping the textbook answer. Use the browser Network panel to confirm one `/api/ask` followed by `/api/web-search` and no second Ask. Check a related unsupported question for the emphasized button, an unrelated question for no web button, and a checked checkbox for automatic follow-up search. Error messages leave the button available for another attempt. Run `node tests/web_ui.cjs` for mocked UI interactions without model usage.
+
+## Optional planning fast path
+
+`SKIP_PLAN=off` is the default: all questions use model planning. Set `SKIP_PLAN=on` to experimentally enable raw-question BM25 search when local conservative detection recognizes English, the reply language is English or automatic, and the request has no history. French, mixed or uncertain language and follow-ups retain model planning. Browser testing found that “What is a limit” could return an unverified answer without query expansion while planning answered it correctly, so the fast path remains opt-in. This heuristic can send some English input through planning; it does not make a language-model request to detect language. The answer schema now includes `related`, and the answer model receives the selected document subjects to distinguish unrelated requests from related-but-unsupported questions. A valid selected page request bypasses the lexical score gate, preserving page explanation requests.
+
+`SKIP_PLAN_MIN_SCORE=1.0` is a provisional low-match gate used only on the fast path. A raw BM25 top score below it returns the existing outside-subjects response without a model call. On the current two-book corpus with Active Calculus selected, the three English calculus questions score 5.698, 18.903 and 14.335. The weather question scores 7.958, above the derivative question: no single score threshold separates this small sample. The conservative threshold therefore only removes very weak/no matches; it does NOT reliably identify off-topic questions. Related topics with no lexical overlap can be rejected, and scores change with corpus size/content. Use `SKIP_PLAN=off` to restore planning for all questions. No semantic classifier or embedding was added.
+
+With `--plan-quality`, logs include `plan_skipped`, `top_score`, and the scope source (`bm25_gate`, `answer` or `planner`). On skipped requests, the English query is the original question, the French query is empty, and `related` is the answer model's final decision or the lexical gate's decision. The regular Ask timing summary includes `plan_skipped`; `plan=null` means no planning call was made.
+
+Compare without editing `.env` (these are paid runs):
+
+```sh
+python benchmark/run.py --questions benchmark/questions_plan.json --plan-quality --skip-plan off --cold-runs 0 --page-runs 0 2>&1 | tee benchmark/skip_plan_off.log
+python benchmark/run.py --questions benchmark/questions_plan.json --plan-quality --skip-plan on --cold-runs 0 --page-runs 0 2>&1 | tee benchmark/skip_plan_on.log
+```
+
+`--skip-plan` overrides the environment for that benchmark process only. For the browser, edit `.env` and restart the server. The English initial questions exercise the fast path; the two French questions retain planning. These commands do not measure streaming.
