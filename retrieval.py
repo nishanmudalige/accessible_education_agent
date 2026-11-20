@@ -10,6 +10,8 @@ import json
 import math
 import re
 import unicodedata
+import time
+from timing import emit
 import fitz
 
 STOP = set('the a an and or of to in is are it this that how what why explain please book page le la les un une des de du et ou est sont en dans que qui comment pourquoi expliquer livre je me vous mon my for with from on au aux pour avec ce ces il elle'.split())
@@ -42,8 +44,12 @@ class LibraryIndex:
     def __init__(self, manifest: Path):
         self.root = manifest.parent.resolve()
         self.docs, self.pages, self.passages = {}, {}, []
+        self.bags = []
+        self.postings = defaultdict(list)
         entries = json.loads(manifest.read_text(encoding='utf-8'))['documents']
         for entry in entries:
+            book_started = time.perf_counter()
+            first_passage = len(self.passages)
             doc_id = entry['id']
             if not re.fullmatch(r'[a-z0-9-]+', doc_id) or doc_id in self.docs:
                 raise ValueError('Each document needs a unique lowercase slug ID')
@@ -74,13 +80,15 @@ class LibraryIndex:
                         if number not in excluded and len(text) >= 55:
                             self.passages.append(record)
                     self.pages[(doc_id, number)] = blocks
-        self.bags = [Counter(tokens(p['text'])) for p in self.passages]
+            for passage in self.passages[first_passage:]:
+                bag = Counter(tokens(passage['text']))
+                i = len(self.bags)
+                self.bags.append(bag)
+                for term in bag:
+                    self.postings[term].append(i)
+            emit(event='book_index', book=doc_id, seconds=time.perf_counter()-book_started)
         self.lengths = [sum(b.values()) for b in self.bags]
         self.avg = sum(self.lengths)/max(1,len(self.lengths))
-        self.postings = defaultdict(list)
-        for i, bag in enumerate(self.bags):
-            for term in bag:
-                self.postings[term].append(i)
 
     def public_docs(self):
         return [{k:v for k,v in d.items() if k != 'path'} for d in self.docs.values()]

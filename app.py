@@ -20,6 +20,7 @@ load_dotenv(BASE / '.env', override=os.getenv('RENDER','').lower()!='true')
 import ai_service as ai  # Load model overrides after .env.
 from retrieval import LibraryIndex
 from reader_backend import page_png, page_data, resolution
+from timing import request_timing, stage, plan_quality
 
 @lru_cache(maxsize=1)
 def library():
@@ -34,7 +35,8 @@ def create_app(config=None):
         MAX_CONTENT_LENGTH=48000,
         SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE='Lax',
         SESSION_COOKIE_SECURE=os.getenv('RENDER','').lower()=='true',
-        AI_ENABLED=True, RATE_LIMIT=int(os.getenv('REQUESTS_PER_MINUTE','8')))
+        AI_ENABLED=True, RATE_LIMIT=int(os.getenv('REQUESTS_PER_MINUTE','8')),
+        BENCHMARK_PLAN_QUALITY=False)
     if config:
         app.config.update(config)
     rate = defaultdict(deque)
@@ -127,7 +129,7 @@ def create_app(config=None):
         if (doc_id,number) not in index.pages: abort(404)
         try:scale=resolution(request.args.get('scale','2.5'))
         except ValueError:abort(400)
-        data=page_png(str(index.docs[doc_id]['path']),number,scale)
+        data=page_png(str(index.docs[doc_id]['path']),number,scale,doc_id)
         return send_file(io.BytesIO(data),mimetype='image/png')
 
     @app.get('/api/reader/<doc_id>/<int:number>')
@@ -178,22 +180,31 @@ def create_app(config=None):
                  if isinstance(h,dict) and h.get('role') in ('user','assistant') and isinstance(h.get('content'),str)]
         docs=[d for d in library().public_docs() if not doc_id or d['id']==doc_id]
         def operation():
-            search_plan=ai.plan(question,language,docs,history)
+            with stage('plan'):
+                search_plan=ai.plan(question,language,docs,history)
             lang=language if language!='auto' else search_plan['language']
             if not search_plan['related']:
+                if app.config['BENCHMARK_PLAN_QUALITY']:
+                    plan_quality(search_plan, [])
                 return jsonify(category='out_of_scope',language=lang,book_answer='',evidence=[],results=[],
                     notice=('Cette demande ne concerne pas les sujets des documents sélectionnés. Essayez une question liée à ces sujets.' if lang=='fr-CA' else 'This request is outside the subjects of the selected documents. Try a question related to those subjects.'),web=None)
             query=question+' '+search_plan['query_en']+' '+search_plan['query_fr']
-            hits=library().search(query,doc_id,10)
+            with stage('retrieve'):
+                hits=library().search(query,doc_id,10)
             # Explicit page requests are bound to a single chosen document, not guessed across books.
             match=re.search(r'\b(?:pdf\s*)?(?:page|p\.)\s*(\d{1,4})\b',question,re.I)
             if match and len(docs)==1:
                 page=int(match.group(1))
                 if (docs[0]['id'],page) in library().pages:
                     hits=library().page(docs[0]['id'],page)
+            if app.config['BENCHMARK_PLAN_QUALITY']:
+                plan_quality(search_plan, hits)
             offered=[{**p,'key':f'S{i+1}'} for i,p in enumerate(hits)]
             payload=[{k:p[k] for k in ('key','doc','page','id','text')} for p in offered]
-            result=ai.answer(question,lang,payload,history) if payload else {}
+            result={}
+            if payload:
+                with stage('answer'):
+                    result=ai.answer(question,lang,payload,history)
             text,evidence=ai.validate_answer(result,offered)
             notice='' if text else ('Je ne peux pas confirmer la réponse à partir des passages trouvés. Cela ne signifie pas que le livre ne traite pas du sujet.' if lang=='fr-CA' else 'I could not verify an answer from the retrieved passages. This does not establish that the book omits the topic.')
             def present(p):
@@ -201,14 +212,17 @@ def create_app(config=None):
                     'language':library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
             web=None
             if data.get('web',True) is True:
-                try: web=ai.web_search(search_plan['query_en'],lang,'; '.join(d['subject'] for d in docs))
+                try:
+                    with stage('web'):
+                        web=ai.web_search(search_plan['query_en'],lang,'; '.join(d['subject'] for d in docs))
                 except Exception as e:
                     logging.warning('External search unavailable: %s',type(e).__name__)
                     web={'text':'','citations':[],'verified':False,'error':True}
             return jsonify(category='book' if text else 'related_outside',language=lang,
                 book_answer=text or '',notice=notice,evidence=[present(p) for p in evidence],
                 results=[present(p) for p in offered],web=web)
-        return run_ai(operation)
+        with request_timing(doc_id):
+            return run_ai(operation)
 
     @app.post('/api/translate')
     def translate():

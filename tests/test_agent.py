@@ -135,6 +135,21 @@ def test_responses_contract_and_exact_model_names(monkeypatch):
     assert calls[0]['store'] is False and calls[0]['text']['format']['strict']
     assert calls[0]['reasoning']['effort']=='low'
 
+def test_plan_sends_only_needed_document_metadata(monkeypatch):
+    calls=[]
+    class Responses:
+        def create(self, **kwargs):
+            calls.append(kwargs)
+            return NS(status='completed', output_text='{"related":true,"language":"en-CA","query_en":"derivative","query_fr":"dérivée"}')
+    monkeypatch.setattr(ai, 'client', lambda: NS(responses=Responses()))
+    doc = {'id':'book', 'title':'Calculus', 'subject':'calculus', 'language':'en-CA',
+           'toc':[{'title':'Chapter 1'}], 'page_count':593, 'authors':'Author'}
+    ai.plan('derivative', 'en-CA', [doc], [])
+    assert json.loads(calls[0]['input'])['subjects'] == [
+        {'id':'book', 'title':'Calculus', 'subject':'calculus', 'language':'en-CA'}]
+    schema = calls[0]['text']['format']['schema']
+    assert 'reason' not in schema['properties'] and 'reason' not in schema['required']
+
 def test_web_requires_real_search_and_safe_citations(monkeypatch):
     response=NS(status='completed',output=[NS(type='message',content=[NS(type='output_text',text='Invented answer',annotations=[])])])
     class Responses:

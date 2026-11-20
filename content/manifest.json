@@ -16,6 +16,17 @@
         3,
         4
       ]
+    },
+    {
+      "id": "active-calculus-pdf",
+      "file": "Active Calculus_ Single Variable 2nd Edition.pdf",
+      "title": "Active Calculus: Single Variable, Second Edition (benchmark test)",
+      "authors": "Matthew Boelkins, David Austin, Christina Safranski, Steven Schlicker",
+      "subject": "Single-variable calculus, limits, derivatives, integrals, differentiation and integration",
+      "language": "en-CA",
+      "source_url": "https://activecalculus.org/acs2e/",
+      "purpose": "Benchmark testing",
+      "license": "CC BY-SA (see official website)"
     }
   ]
 }
