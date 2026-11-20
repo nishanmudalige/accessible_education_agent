@@ -16,8 +16,8 @@ def emit(**fields):
     log.info('[TIMING] %s', json.dumps(fields, ensure_ascii=False, sort_keys=True))
 
 @contextmanager
-def request_timing(book):
-    data = {'event': 'ask', 'request_id': uuid.uuid4().hex, 'book': book or 'all',
+def request_timing(book, event='ask'):
+    data = {'event': event, 'request_id': uuid.uuid4().hex, 'book': book or 'all',
             'plan': None, 'retrieve': None, 'answer': None, 'web': None,
             'tokens_in': 0, 'tokens_out': 0, 'usage_unknown': False}
     token = current.set(data)

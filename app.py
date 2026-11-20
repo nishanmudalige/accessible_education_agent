@@ -14,6 +14,7 @@ from urllib.parse import urlencode
 import fitz
 from dotenv import load_dotenv
 from flask import Flask, abort, jsonify, redirect, render_template, request, send_file, session, url_for
+from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 
 BASE = Path(__file__).resolve().parent
 load_dotenv(BASE / '.env', override=os.getenv('RENDER','').lower()!='true')
@@ -36,11 +37,16 @@ def create_app(config=None):
         SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE='Lax',
         SESSION_COOKIE_SECURE=os.getenv('RENDER','').lower()=='true',
         AI_ENABLED=True, RATE_LIMIT=int(os.getenv('REQUESTS_PER_MINUTE','8')),
+        WEB_SEARCH_DEFAULT=os.getenv('WEB_SEARCH_DEFAULT','off').lower()=='on',
         BENCHMARK_PLAN_QUALITY=False)
     if config:
         app.config.update(config)
     rate = defaultdict(deque)
     rate_lock = threading.Lock()
+    web_tokens = URLSafeTimedSerializer(app.config['SECRET_KEY'], salt='related-web-search')
+
+    def web_binding():
+        return hmac.new(app.secret_key.encode(), session.get('csrf','').encode(), 'sha256').hexdigest()
 
     def csrf():
         if 'csrf' not in session:
@@ -102,7 +108,8 @@ def create_app(config=None):
     @app.get('/')
     def home():
         return render_template('index.html',docs=library().public_docs(),
-            answer_model=ai.ASTRA, search_model=ai.SOL)
+            answer_model=ai.ASTRA, search_model=ai.SOL,
+            web_search_default=app.config['WEB_SEARCH_DEFAULT'])
 
     @app.get('/reader')
     def reader():
@@ -211,7 +218,7 @@ def create_app(config=None):
                 return {**{k:v for k,v in p.items() if k!='rects'},'title':library().docs[p['doc']]['title'],
                     'language':library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
             web=None
-            if data.get('web',True) is True:
+            if data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
                 try:
                     with stage('web'):
                         web=ai.web_search(search_plan['query_en'],lang,'; '.join(d['subject'] for d in docs))
@@ -220,8 +227,33 @@ def create_app(config=None):
                     web={'text':'','citations':[],'verified':False,'error':True}
             return jsonify(category='book' if text else 'related_outside',language=lang,
                 book_answer=text or '',notice=notice,evidence=[present(p) for p in evidence],
-                results=[present(p) for p in offered],web=web)
+                results=[present(p) for p in offered],web=web,
+                web_token=web_tokens.dumps({'query':search_plan['query_en'], 'language':lang,
+                    'docs':[d['id'] for d in docs], 'binding':web_binding()}))
         with request_timing(doc_id):
+            return run_ai(operation)
+
+    @app.post('/api/web-search')
+    def related_web_search():
+        token=body().get('token')
+        if not isinstance(token,str) or not token:
+            return jsonify(error='Missing web search request. Ask the question again.'),400
+        try:
+            saved=web_tokens.loads(token,max_age=900)
+        except SignatureExpired:
+            return jsonify(error='This web search request expired. Ask the question again.'),410
+        except BadSignature:
+            return jsonify(error='Invalid web search request. Ask the question again.'),403
+        if not hmac.compare_digest(saved['binding'],web_binding()):
+            return jsonify(error='This web search belongs to another session. Ask the question again.'),403
+        docs=[library().docs.get(doc) for doc in saved['docs']]
+        if not docs or any(d is None for d in docs):
+            return jsonify(error='The document collection changed. Ask the question again.'),400
+        def operation():
+            with stage('web'):
+                web=ai.web_search(saved['query'],saved['language'],'; '.join(d['subject'] for d in docs))
+            return jsonify(web=web,language=saved['language'])
+        with request_timing(','.join(saved['docs']),event='web_search'):
             return run_ai(operation)
 
     @app.post('/api/translate')

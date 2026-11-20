@@ -78,12 +78,37 @@
       answer.append(label(el('span',`badge ${data.category==='out_of_scope'?'outside':'related'}`),data.category==='out_of_scope'?'Outside the subjects':'Related · not verified in source',data.category==='out_of_scope'?'Hors des sujets':'Connexe · non confirmé dans la source'));
       const text=el('div','prose',data.notice);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text,actionBar(text,data.language));
     }
-    if(data.web){
-      const section=el('section','web-section');section.append(label(el('span','badge related'),'Related · external web search','Connexe · recherche Web externe'));
-      if(data.web.verified){const text=webText(data.web);text.lang=data.language;text.dataset.speechLang=data.language;section.append(text,actionBar(text,data.language));
-        const list=el('ul','web-sources'),seen=new Set();for(const c of data.web.citations){if(seen.has(c.url))continue;seen.add(c.url);const li=el('li'),link=el('a','',c.title||new URL(c.url).hostname);link.href=c.url;link.target='_blank';link.rel='noopener';li.append(link);list.append(li);}section.append(list);
-      }else section.append(label(el('p','muted'),'External search unavailable or returned no verifiable citations. No web-based claim is shown.','La recherche externe est indisponible ou n’a fourni aucune référence vérifiable. Aucune affirmation tirée du Web n’est affichée.'));
-      answer.append(section);
+    if(data.web || data.web_token){
+      const section=el('section','web-section');
+      const heading=label(el('span','badge related'),'Related · external web search','Connexe · recherche Web externe');
+      const content=el('div','web-content'),status=el('p','muted');status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+      const prompt=label(el('p'),'Do you want me to search the web?','Voulez-vous que je fasse une recherche sur le Web?');
+      const button=label(el('button',data.category==='related_outside'?'primary':''),'Search the web','Chercher sur le Web');button.type='button';
+      section.classList.toggle('web-suggested',data.category==='related_outside');
+      section.append(heading,prompt,button,status,content);answer.append(section);
+      function show(web){
+        content.replaceChildren();
+        if(web.verified){
+          const text=webText(web);text.lang=data.language;text.dataset.speechLang=data.language;content.append(text,actionBar(text,data.language));
+          const list=el('ul','web-sources'),seen=new Set();
+          for(const c of web.citations){if(seen.has(c.url))continue;seen.add(c.url);const li=el('li'),link=el('a','',c.title||new URL(c.url).hostname);link.href=c.url;link.target='_blank';link.rel='noopener';li.append(link);list.append(li);}content.append(list);
+          button.hidden=prompt.hidden=true;
+          status.textContent=A.tr('Web resources ready.','Les ressources Web sont prêtes.');
+        }else{
+          status.textContent=A.tr('External search unavailable or returned no verifiable citations. You can try again.','La recherche externe est indisponible ou n’a fourni aucune référence vérifiable. Vous pouvez réessayer.');
+        }
+        A.localize(content);
+      }
+      button.onclick=async()=>{
+        if(button.disabled||!data.web_token)return;
+        button.disabled=true;section.setAttribute('aria-busy','true');
+        status.textContent=A.tr('Searching the web…','Recherche sur le Web…');
+        try{const result=await A.post('/api/web-search',{token:data.web_token});show(result.web);}
+        catch(error){status.textContent=error.message;}
+        finally{button.disabled=false;section.setAttribute('aria-busy','false');}
+      };
+      if(data.web)show(data.web);
+      else if(data.autoWeb)button.click();
     }
     if(data.results?.length)answer.append(resultCards(data.results,data.question||'',new Set(data.evidence.map(e=>e.key))));block.append(answer);A.localize(block);
   }
@@ -104,9 +129,9 @@
   }
   $('ask-form').onsubmit=async e=>{
     e.preventDefault();if(busy)return;const q=$('question').value.trim();if(!q)return;
-    const block=message(q);setBusy(true);
+    const block=message(q),autoWeb=$('web').checked;setBusy(true);
     try{
-      const r=await A.post('/api/ask',{question:q,language:$('reply-language').value,doc:$('doc').value,web:$('web').checked,history});r.question=q;render(block,r);
+      const r=await A.post('/api/ask',{question:q,language:$('reply-language').value,doc:$('doc').value,web:false,history});r.question=q;r.autoWeb=autoWeb;render(block,r);
       history.push({role:'user',content:q},{role:'assistant',content:r.book_answer||r.notice||''});if(history.length>6)history.splice(0,history.length-6);$('question').value='';
       $('status').textContent=A.tr('Response ready.','Réponse prête.');
     }catch(err){const p=el('p','error',err.message);p.setAttribute('role','alert');block.append(p);}

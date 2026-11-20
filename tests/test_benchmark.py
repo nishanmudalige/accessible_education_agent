@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
     (1, 1, 'input=30 output=5 total=35'),
     (3, 3, 'input=90 output=15 total=105'),
 ])
-def test_benchmark_mocked_end_to_end(monkeypatch, capsys, limit, count, totals):
+@pytest.mark.parametrize('defer_web', [False, True])
+def test_benchmark_mocked_end_to_end(monkeypatch, capsys, limit, count, totals, defer_web):
     spec = importlib.util.spec_from_file_location('benchmark_run', ROOT / 'benchmark/run.py')
     bench = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(bench)
@@ -37,6 +38,8 @@ def test_benchmark_mocked_end_to_end(monkeypatch, capsys, limit, count, totals):
     args = ['run.py', '--interval', '0', '--cold-runs', '0', '--page-runs', '0']
     if limit is not None:
         args += ['--limit', str(limit)]
+    if defer_web:
+        args += ['--defer-web']
     monkeypatch.setattr(sys, 'argv', args)
     assert bench.main() == 0
     out = capsys.readouterr().out
@@ -44,6 +47,8 @@ def test_benchmark_mocked_end_to_end(monkeypatch, capsys, limit, count, totals):
     assert totals in out
     assert out.count('Request en/') + out.count('Request fr/') == count
     assert 'failed requests=0' in out
+    if defer_web and limit is None:
+        assert 'Separate web request:' in out
 
 
 def test_dry_run_does_not_call_app(monkeypatch, capsys):

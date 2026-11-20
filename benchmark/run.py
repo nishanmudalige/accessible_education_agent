@@ -24,6 +24,7 @@ def main():
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--offline-only', action='store_true', help='Only measure health, indexing and page rendering; no model requests')
     parser.add_argument('--plan-quality', action='store_true', help='Log planning output and retrieved block identifiers (may contain user input)')
+    parser.add_argument('--defer-web', action='store_true', help='For web-enabled questions, request the book answer first and search separately')
     args = parser.parse_args()
     if args.interval < 0 or args.cold_runs < 0 or args.page_runs < 0 or args.page < 1:
         parser.error('interval and run counts must be nonnegative, and page must be positive')
@@ -123,14 +124,35 @@ def main():
         before = len(collector.records)
         start = time.perf_counter()
         response = client.post('/api/ask', json={'doc': book, 'question': q['question'],
-            'language': {'en':'en-CA', 'fr':'fr-CA'}[q['reply_language']], 'web': q['web'], 'history': []},
+            'language': {'en':'en-CA', 'fr':'fr-CA'}[q['reply_language']], 'web': q['web'] and not args.defer_web, 'history': []},
             headers={'X-CSRF-Token': csrf})
         elapsed = time.perf_counter()-start
         records = [r for r in collector.records[before:] if r.get('event') == 'ask']
-        entry = records[-1] if records else {}
+        entry = dict(records[-1]) if records else {}
         entry['client'] = elapsed
         entry['http'] = response.status_code
         entry['category'] = (response.get_json(silent=True) or {}).get('category')
+        entry['combined_client'] = elapsed
+        result = response.get_json(silent=True) or {}
+        if args.defer_web and q['web'] and response.status_code == 200 and result.get('web_token'):
+            time.sleep(max(0, args.interval - (time.monotonic() - previous)))
+            previous = time.monotonic()
+            web_before = len(collector.records)
+            web_start = time.perf_counter()
+            response = client.post('/api/web-search', json={'token': result['web_token']}, headers={'X-CSRF-Token': csrf})
+            web_elapsed = time.perf_counter()-web_start
+            web_records = [r for r in collector.records[web_before:] if r.get('event') == 'web_search']
+            entry['combined_client'] += web_elapsed
+            entry['http'] = response.status_code
+            if web_records:
+                web_record = web_records[-1]
+                entry['web'] = web_record['web']
+                for name in ('tokens_in', 'tokens_out'):
+                    entry[name] = entry.get(name, 0) + web_record.get(name, 0)
+                entry['usage_unknown'] = entry.get('usage_unknown', True) or web_record.get('usage_unknown', True)
+            else:
+                entry['usage_unknown'] = True
+            print(f'Separate web request: client={web_elapsed:.3f}s HTTP={response.status_code}')
         if response.status_code != 200:
             failures += 1
             print(f"FAILED HTTP {response.status_code}: {q['question']} (repeat {repeat+1})")
@@ -140,7 +162,7 @@ def main():
     total_in = total_out = unknown = 0
     for key, entries in sorted(groups.items()):
         parts = []
-        for name in ('plan', 'retrieve', 'answer', 'web', 'total', 'client'):
+        for name in ('plan', 'retrieve', 'answer', 'web', 'total', 'client', 'combined_client'):
             values = [e[name] for e in entries if isinstance(e.get(name), (float, int))]
             parts.append(f'{name}={statistics.median(values):.3f}s (n={len(values)})' if values else f'{name}=skipped')
         tin = sum(e.get('tokens_in', 0) for e in entries)

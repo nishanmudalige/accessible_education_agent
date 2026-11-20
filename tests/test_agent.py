@@ -102,7 +102,7 @@ def test_external_failure_preserves_book(client,monkeypatch):
     fake_ai(monkeypatch)
     def fail(*args):raise RuntimeError('private provider details')
     monkeypatch.setattr(ai,'web_search',fail)
-    r=post(client,'/api/ask',{'question':'confidence interval'}).json
+    r=post(client,'/api/ask',{'question':'confidence interval','web':True}).json
     assert r['book_answer'] and r['web']['error'] and 'private' not in str(r)
 
 def test_translation_language_and_output(client,monkeypatch):

@@ -20,3 +20,18 @@ Use `--questions path/to/questions.json` to choose a question file and `--book B
 `--limit N` runs the first N requests in file order after expanding each question’s repeats; it also limits the count shown by `--dry-run`. Omit it to run all requests. Pre-warm and offline index/page measurements still run unless disabled with `--cold-runs 0 --page-runs 0`.
 
 To compare planning quality, pass `--plan-quality` to explicitly log the planner's related decision, language and search terms, together with the final retrieved document/page/block IDs. These logs can contain user-provided information; ordinary service requests do not enable them. Model timing logs include `reasoning_tokens` when the API returns it (otherwise `null`); reasoning tokens are a subset of output tokens and must not be added to the total again.
+
+## On-demand web search (stage one)
+
+`WEB_SEARCH_DEFAULT=off` is the application default. Set it to `on` in `.env` and restart to preselect the homepage checkbox and enable web search when API callers omit `web`. The browser always obtains the book answer first, then sends a separate `/api/web-search` request if the user selected automatic web search or clicks **Search the web**. The signed search request expires after 15 minutes and is bound to the current session. No second planning call is made. If it expires, ask the original question again.
+
+The question file's explicit `web` field overrides the application default. Without `--defer-web`, the benchmark retains the synchronous API path for comparison. With `--defer-web`, web-enabled entries call the same independent endpoint as the browser, after the book answer. The configured interval also applies before separate web requests to respect the rate limit; that intentional wait is excluded from `combined_client`, which sums the two request durations:
+
+```sh
+python benchmark/run.py --questions benchmark/questions_calculus.json --cold-runs 0 --page-runs 0 2>&1 | tee benchmark/web_inline.log
+python benchmark/run.py --questions benchmark/questions_calculus.json --cold-runs 0 --page-runs 0 --defer-web 2>&1 | tee benchmark/web_deferred.log
+```
+
+Both commands incur model usage. In the `web=True` group, `client` and `total` measure the initial Ask request, `web` measures the search stage, and `combined_client` measures both requests combined. In deferred mode token totals include both requests. Their combined duration is not expected to shrink merely from splitting the requests; the book answer becomes available sooner. `questions_plan.json` has web disabled for every entry, so it measures book-only speed and is not a web-on/off comparison.
+
+Manual browser check: run `python app.py`, open http://127.0.0.1:5000, select a book and ask a related question. The web checkbox starts unchecked; the textbook answer should offer the web button. Clicking it should populate a separate external section while keeping the textbook answer. Use the browser Network panel to confirm one `/api/ask` followed by `/api/web-search` and no second Ask. Check a related unsupported question for the emphasized button, an unrelated question for no web button, and a checked checkbox for automatic follow-up search. Error messages leave the button available for another attempt. Run `node tests/web_ui.cjs` for mocked UI interactions without model usage.
