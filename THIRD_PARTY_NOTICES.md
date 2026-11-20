@@ -45,3 +45,14 @@ Imported from the complete official XHTML download (publisher export filename da
 Authors listed by the publisher: Larry Steele, Julia Hines, Olivia Bazot, Alexandra Tsedryk, Juliette Valcke, Gretchen V. Angelo and Emmanuelle Remy. Canadian adaptation copyright © 2025 Alexandra Tsedryk, Juliette Valcke and Gretchen V. Angelo.
 Source: https://pressbooks.atlanticoer-relatlantique.ca/liberte1/ . Canadian adaptation CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/), based on Liberté © 2003 Gretchen V. Angelo under CC BY-NC-SA 3.0 (https://creativecommons.org/licenses/by-nc-sa/3.0/), except where otherwise noted.
 Imported from the publisher's complete official XHTML download (export filename dated June 2025), downloaded through the browser on 2026-11-19. The original is preserved as `content/liberte1-html/source.xhtml`. All 30 exported TOC entries are present, including the three chapters, activities, grammar sections and supplementary modules. The adaptation sanitizes scripts/navigation and adds paragraph anchors; images link to original URLs and embedded interactive activities require the original website. English grammar explanations in the source remain English; the configured reply language can be Canadian French.
+
+## Local image and structural import repair — 2026-11-20
+
+Images previously linked to the source websites are now copied locally with the surrounding books' original attribution and third-party exceptions retained. Active Calculus images were taken from the publisher's `gh-pages` commit `f45f25761f6cbcc614531574293c525b34a9994b`; Writing and Liberté images were taken from their official EPUB exports (the same editions as the XHTML snapshots). Per-image source/provenance appears in each book's `media.json`. Alt text is retained and indexed, and tables/teaching boxes are grouped into complete evidence blocks. No original textbook wording is supplied by an AI model.
+
+Writing's original `image1.jpeg` and `image21.jpeg` return 404 and are absent from the publisher's EPUB. Locally generated SVG notices mark these unavailable originals and display existing source alt text when informative; they do not reconstruct or claim to be the original images. The copied example text remains under the book's CC BY-NC-SA terms.
+
+
+## Marked 18.2.1 and DOMPurify 3.4.18
+
+Client-side Markdown parsing and HTML sanitization use the official npm distributions, vendored locally. Marked is MIT licensed (`static/vendor/marked/LICENSE`); DOMPurify offers Apache-2.0 or MPL-2.0 (`static/vendor/dompurify/LICENSE`). See https://marked.js.org/ and https://github.com/cure53/DOMPurify . HTML is sanitized before insertion; MathJax additionally restricts TeX-created URLs and supplies assistive MathML.

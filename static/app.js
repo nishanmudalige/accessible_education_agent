@@ -25,9 +25,9 @@
   function label(node,en,fr){node.dataset.en=en;node.dataset.fr=fr;node.textContent=A.tr(en,fr);return node;}
   function actionBar(root,lang){
     const bar=el('div','answer-actions'),read=label(el('button'),'Read aloud','Lire à voix haute');read.type='button';
-    read.onclick=()=>A.speak(root.textContent,lang,root);
+    read.onclick=()=>A.speak(root.sourceText||root.textContent,lang,root);
     const fr=el('button','','→ Français canadien'),en=el('button','','→ English');fr.type=en.type='button';
-    fr.onclick=()=>A.translate(root.textContent,'fr-CA');en.onclick=()=>A.translate(root.textContent,'en-CA');bar.append(read,fr,en);return bar;
+    fr.onclick=()=>A.translate(root.sourceText||root.textContent,'fr-CA');en.onclick=()=>A.translate(root.sourceText||root.textContent,'en-CA');bar.append(read,fr,en);return bar;
   }
   function resultCards(results,query='',supported=new Set()){
     const details=el('details','results'),summary=label(el('summary'),'Retrieved passages · select text to read or translate','Passages trouvés · sélectionnez le texte pour le lire ou le traduire');details.append(summary);
@@ -43,29 +43,8 @@
     }
     return details;
   }
-  function evidenceText(text,evidence){
-    const root=el('div','prose'),byKey=new Map(evidence.map(e=>[e.key,e]));let at=0;
-    for(const match of text.matchAll(/\[(S\d+)\]/g)){
-      root.append(document.createTextNode(text.slice(at,match.index)));
-      const e=byKey.get(match[1]);
-      if(e){const a=el('a','citation',match[0]);a.href=e.url;a.target='_blank';a.rel='noopener';a.title=`${e.title} · ${e.format==='html'?e.chapter_title:'PDF '+e.page}`;root.append(a);}else root.append(document.createTextNode(match[0]));
-      at=match.index+match[0].length;
-    }
-    root.append(document.createTextNode(text.slice(at)));return root;
-  }
-  function webText(web){
-    const root=el('div','prose');let at=0;
-    // Provider offsets are Unicode character indexes. Use code points, not JS UTF-16 offsets.
-    const chars=Array.from(web.text);
-    const citations=[...web.citations].sort((a,b)=>a.start-b.start);
-    for(const c of citations){
-      if(c.start<at||c.end>chars.length||c.end<c.start)continue;
-      let url;try{url=new URL(c.url);}catch{continue;}if(!['https:','http:'].includes(url.protocol))continue;
-      root.append(document.createTextNode(chars.slice(at,c.start).join('')));
-      const a=el('a','citation',`[${citations.indexOf(c)+1}]`);a.href=url.href;a.target='_blank';a.rel='noopener';a.title=c.title;root.append(a);at=c.end;
-    }
-    root.append(document.createTextNode(chars.slice(at).join('')));return root;
-  }
+  function evidenceText(text,evidence){return window.AccessRichText.render(text,{evidence});}
+  function webText(web){return window.AccessRichText.render(web.text,{citations:web.citations});}
   function message(question){
     const block=el('section','turn'),q=el('p','user-question',question);block.append(q);$('conversation').append(block);return block;
   }
@@ -91,7 +70,8 @@
         if(web.verified){
           const text=webText(web);text.lang=data.language;text.dataset.speechLang=data.language;content.append(text,actionBar(text,data.language));
           const list=el('ul','web-sources'),seen=new Set();
-          for(const c of web.citations){if(seen.has(c.url))continue;seen.add(c.url);const li=el('li'),link=el('a','',c.title||new URL(c.url).hostname);link.href=c.url;link.target='_blank';link.rel='noopener';li.append(link);list.append(li);}content.append(list);
+          for(const c of web.citations){if(!window.AccessRichText.safeURL(c.url)||seen.has(c.url))continue;seen.add(c.url);const li=el('li'),link=el('a','',c.title||new URL(c.url).hostname);link.href=c.url;link.target='_blank';link.rel='noopener';li.append(link);list.append(li);}content.append(list);
+          if(text.isConnected)window.AccessRichText.typeset(text);
           button.hidden=prompt.hidden=true;
           status.textContent=A.tr('Web resources ready.','Les ressources Web sont prêtes.');
         }else{
@@ -111,6 +91,7 @@
       else if(data.autoWeb)button.click();
     }
     if(data.results?.length)answer.append(resultCards(data.results,data.question||'',new Set(data.evidence.map(e=>e.key))));block.append(answer);A.localize(block);
+    for(const root of answer.querySelectorAll('.rich-text'))window.AccessRichText.typeset(root);
   }
   let busy=false;
   function setBusy(value){

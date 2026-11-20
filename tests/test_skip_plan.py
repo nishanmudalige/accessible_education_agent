@@ -25,6 +25,8 @@ def test_ambiguous_or_french_keeps_planner(question):
 
 @pytest.fixture
 def setup(monkeypatch):
+    index=module.library(module.BASE/'content/manifest.benchmark.json')
+    monkeypatch.setattr(module,'library',lambda manifest=None:index)
     application=module.create_app({'TESTING':True,'SECRET_KEY':'skip','RATE_LIMIT':100,'SKIP_PLAN':True})
     client=application.test_client()
     with client.session_transaction() as s: s['csrf']='skip-csrf'

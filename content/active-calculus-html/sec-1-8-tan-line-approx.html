@@ -14,16 +14,16 @@
 </h1>
 <article class="objectives goal-like" id="sec-1-8-tan-line-approx-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
 <ul class="disc" id="sec-1-8-tan-line-approx-2-1">
-<li id="sec-1-8-tan-line-approx-2-1-1">
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-2-1-1-1">What is the formula for the general tangent line approximation to a differentiable function <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((a,f(a))\text{?}\)</span>
+<li data-evidence="true" id="sec-1-8-tan-line-approx-2-1-1">
+<div class="para" id="sec-1-8-tan-line-approx-2-1-1-1">What is the formula for the general tangent line approximation to a differentiable function <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((a,f(a))\text{?}\)</span>
 </div>
 </li>
-<li id="sec-1-8-tan-line-approx-2-1-2">
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-2-1-2-1">What is the principle of local linearity and what is the local linearization of a differentiable function <span class="process-math">\(f\)</span> at a point <span class="process-math">\((a,f(a))\text{?}\)</span>
+<li data-evidence="true" id="sec-1-8-tan-line-approx-2-1-2">
+<div class="para" id="sec-1-8-tan-line-approx-2-1-2-1">What is the principle of local linearity and what is the local linearization of a differentiable function <span class="process-math">\(f\)</span> at a point <span class="process-math">\((a,f(a))\text{?}\)</span>
 </div>
 </li>
-<li id="sec-1-8-tan-line-approx-2-1-3">
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-2-1-3-1">How does knowing just the tangent line approximation tell us information about the behavior of the original function itself near the point of approximation? How does knowing the second derivative’s value at this point provide us additional knowledge of the original function’s behavior?
+<li data-evidence="true" id="sec-1-8-tan-line-approx-2-1-3">
+<div class="para" id="sec-1-8-tan-line-approx-2-1-3-1">How does knowing just the tangent line approximation tell us information about the behavior of the original function itself near the point of approximation? How does knowing the second derivative’s value at this point provide us additional knowledge of the original function’s behavior?
 </div>
 </li>
 </ul>
@@ -72,7 +72,7 @@
 <article class="task exercise-like" id="PA-1-8-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
 <div class="para" data-evidence="true" id="PA-1-8-task-4-1-1">On the axes provided below, sketch an accurate, labeled graph of <span class="process-math">\(y = g(x)\)</span> along with its tangent line at the point <span class="process-math">\((2,g(2))\text{.}\)</span>
 </div> <div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_PA1.svg"/><details class="image-description"><summary title="details"></summary><div id="PA-1-8-task-4-1-2-description">
+<img alt="described in detail following the image" class="contained" data-evidence="true" id="paragraph-20fce51b32592827-1" loading="lazy" src="/book-assets/active-calculus-html/1b066ea6374907a21a4739f3.svg"/><details class="image-description"><summary title="details"></summary><div id="PA-1-8-task-4-1-2-description">
 <div class="para" data-evidence="true" id="PA-1-8-task-4-1-2-1-1">Axes for plotting <span class="process-math">\(y = g(x)\)</span> and its tangent line at the point <span class="process-math">\((2,g(2))\text{.}\)</span>  While there is not scale on the axes or grid, if the boxes are taken to be <span class="process-math">\(1 \times 1\text{,}\)</span> the horizontal and vertical axes then range from <span class="process-math">\(-2\)</span> to <span class="process-math">\(5\text{.}\)</span>
 </div>
 </div></details>
@@ -86,19 +86,19 @@
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The tangent line</span>
 </h2>
-<div class="para logical" id="sec-1-8-tan-line-approx-4-3">
-<div class="para" data-evidence="true" id="paragraph-3cacbdd2e2e03f59-1">Given a function <span class="process-math">\(f\)</span> that is differentiable at <span class="process-math">\(x = a\text{,}\)</span> we know that we can determine the slope of the tangent line to <span class="process-math">\(y = f(x)\)</span> at <span class="process-math">\((a,f(a))\)</span> by computing <span class="process-math">\(f'(a)\text{.}\)</span> The equation of the resulting tangent line is given in point-slope form by</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-4-3-6">
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-4-3">
+<div class="para">Given a function <span class="process-math">\(f\)</span> that is differentiable at <span class="process-math">\(x = a\text{,}\)</span> we know that we can determine the slope of the tangent line to <span class="process-math">\(y = f(x)\)</span> at <span class="process-math">\((a,f(a))\)</span> by computing <span class="process-math">\(f'(a)\text{.}\)</span> The equation of the resulting tangent line is given in point-slope form by</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-4-3-6">
 \begin{equation*}
 y - f(a) = f'(a)(x-a) \ \ \text{or} \ \ y = f'(a)(x-a) + f(a)\text{.}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-669e6bfcda1c5eae-1">
+<div class="para">
 <em class="alert">Note well</em>: there is a major difference between <span class="process-math">\(f(a)\)</span> and <span class="process-math">\(f(x)\)</span> in this context. The former is a constant that results from using the given fixed value of <span class="process-math">\(a\text{,}\)</span> while the latter is the general expression for the rule that defines the function. The same is true for <span class="process-math">\(f'(a)\)</span> and <span class="process-math">\(f'(x)\text{:}\)</span> we must carefully distinguish between these expressions. Each time we find the tangent line, we need to evaluate the function and its derivative at a fixed <span class="process-math">\(a\)</span>-value.</div>
 </div>
-<figure class="figure figure-like" id="F-1-8-TanLine"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_TanLine.svg"/><details class="image-description"><summary title="details"></summary><div id="F-1-8-TanLine-2-description">
-<div class="para" data-evidence="true" id="F-1-8-TanLine-2-1-1">At left, there’s a graph of a polynomial function <span class="process-math">\(y = f(x)\)</span> and its tangent line at the point <span class="process-math">\((a,f(a))\text{.}\)</span>  There’s a small box shown around the point <span class="process-math">\((a,f(a))\text{.}\)</span>  At right, the graph is the magnified version of what appears in the box:  this shows the point <span class="process-math">\((a,f(a))\)</span> and how near that point, the tangent line function <span class="process-math">\(y = L(x)\)</span> is very close to the graph of <span class="process-math">\(y = f(x)\text{.}\)</span>  We thus write <span class="process-math">\(f(x) \approx L(x)\text{.}\)</span>
+<figure class="figure figure-like" data-evidence="true" id="F-1-8-TanLine"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/09b5a6b10de21c058b181d04.svg"/><details class="image-description"><summary title="details"></summary><div id="F-1-8-TanLine-2-description">
+<div class="para" id="F-1-8-TanLine-2-1-1">At left, there’s a graph of a polynomial function <span class="process-math">\(y = f(x)\)</span> and its tangent line at the point <span class="process-math">\((a,f(a))\text{.}\)</span>  There’s a small box shown around the point <span class="process-math">\((a,f(a))\text{.}\)</span>  At right, the graph is the magnified version of what appears in the box:  this shows the point <span class="process-math">\((a,f(a))\)</span> and how near that point, the tangent line function <span class="process-math">\(y = L(x)\)</span> is very close to the graph of <span class="process-math">\(y = f(x)\text{.}\)</span>  We thus write <span class="process-math">\(f(x) \approx L(x)\text{.}\)</span>
 </div>
 </div></details>
 </div>
@@ -111,33 +111,33 @@ y - f(a) = f'(a)(x-a) \ \ \text{or} \ \ y = f'(a)(x-a) + f(a)\text{.}
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The local linearization</span>
 </h2>
-<div class="para logical" id="sec-1-8-tan-line-approx-5-3">
-<div class="para" data-evidence="true" id="paragraph-f4c267fee47012e9-1">A slight change in perspective and notation will enable us to be more precise in discussing how the tangent line approximates <span class="process-math">\(f\)</span> near <span class="process-math">\(x = a\text{.}\)</span> By solving for <span class="process-math">\(y\text{,}\)</span> we can write the equation for the tangent line as</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-3-4">
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-5-3">
+<div class="para">A slight change in perspective and notation will enable us to be more precise in discussing how the tangent line approximates <span class="process-math">\(f\)</span> near <span class="process-math">\(x = a\text{.}\)</span> By solving for <span class="process-math">\(y\text{,}\)</span> we can write the equation for the tangent line as</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-3-4">
 \begin{equation*}
 y = f'(a)(x-a) + f(a)
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-1c1e6d0ff3fe84dd-1">This line is itself a function of <span class="process-math">\(x\text{.}\)</span> Replacing the variable <span class="process-math">\(y\)</span> with the expression <span class="process-math">\(L(x)\text{,}\)</span> we call</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-3-8">
+<div class="para">This line is itself a function of <span class="process-math">\(x\text{.}\)</span> Replacing the variable <span class="process-math">\(y\)</span> with the expression <span class="process-math">\(L(x)\text{,}\)</span> we call</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-3-8">
 \begin{equation*}
 L(x) = f'(a)(x-a) + f(a)
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-3201b0d610a8a065-1">the <em class="emphasis">local linearization of <span class="process-math">\(f\)</span></em> at the point <span class="process-math">\((a,f(a))\text{.}\)</span> In this notation, <span class="process-math">\(L(x)\)</span> is nothing more than a new name for the tangent line. As we saw above, for <span class="process-math">\(x\)</span> close to <span class="process-math">\(a\text{,}\)</span> <span class="process-math">\(f(x) \approx L(x)\text{.}\)</span>
+<div class="para">the <em class="emphasis">local linearization of <span class="process-math">\(f\)</span></em> at the point <span class="process-math">\((a,f(a))\text{.}\)</span> In this notation, <span class="process-math">\(L(x)\)</span> is nothing more than a new name for the tangent line. As we saw above, for <span class="process-math">\(x\)</span> close to <span class="process-math">\(a\text{,}\)</span> <span class="process-math">\(f(x) \approx L(x)\text{.}\)</span>
 </div>
 </div>
-<article class="example example-like" id="sec-1-8-tan-line-approx-5-4"><h3 class="heading">
+<article class="example example-like" data-evidence="true" id="sec-1-8-tan-line-approx-5-4"><h3 class="heading">
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h3>
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-5-4-1-1">Suppose that a function <span class="process-math">\(y = f(x)\)</span> has its tangent line approximation given by <span class="process-math">\(L(x) = 3 - 2(x-1)\)</span> at the point <span class="process-math">\((1,3)\text{,}\)</span> but we do not know anything else about the function <span class="process-math">\(f\text{.}\)</span>  How can we estimate the value of <span class="process-math">\(f(x)\)</span> for <span class="process-math">\(x\)</span> near <span class="process-math">\(1\text{?}\)</span>
+<div class="para" id="sec-1-8-tan-line-approx-5-4-1-1">Suppose that a function <span class="process-math">\(y = f(x)\)</span> has its tangent line approximation given by <span class="process-math">\(L(x) = 3 - 2(x-1)\)</span> at the point <span class="process-math">\((1,3)\text{,}\)</span> but we do not know anything else about the function <span class="process-math">\(f\text{.}\)</span>  How can we estimate the value of <span class="process-math">\(f(x)\)</span> for <span class="process-math">\(x\)</span> near <span class="process-math">\(1\text{?}\)</span>
 </div>
 <div class="solutions">
 <details class="solution solution-like born-hidden-knowl" id="sec-1-8-tan-line-approx-5-4-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
 <div class="solution solution-like knowl__content">
 <div class="para logical" id="sec-1-8-tan-line-approx-5-4-2-1">
-<div class="para" data-evidence="true" id="paragraph-7363cd8379cf19d4-1">To estimate a value of <span class="process-math">\(f(x)\)</span> for <span class="process-math">\(x\)</span> near 1, such as <span class="process-math">\(f(1.2)\text{,}\)</span> we can use the fact that <span class="process-math">\(f(1.2) \approx L(1.2)\)</span> and hence</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-4-2-1-5">
+<div class="para">To estimate a value of <span class="process-math">\(f(x)\)</span> for <span class="process-math">\(x\)</span> near 1, such as <span class="process-math">\(f(1.2)\text{,}\)</span> we can use the fact that <span class="process-math">\(f(1.2) \approx L(1.2)\)</span> and hence</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-4-2-1-5">
 \begin{equation*}
 f(1.2) \approx L(1.2) = 3 - 2(1.2-1) = 3 - 2(0.2) = 2.6\text{.}
 \end{equation*}
@@ -146,9 +146,9 @@ f(1.2) \approx L(1.2) = 3 - 2(1.2-1) = 3 - 2(0.2) = 2.6\text{.}
 </div></details>
 </div>
 </article>
-<div class="para logical" id="sec-1-8-tan-line-approx-5-5">
-<div class="para" data-evidence="true" id="paragraph-802fd043f0d2e210-1">We emphasize that <span class="process-math">\(y = L(x)\)</span> is simply a new name for the tangent line function. Using this new notation and our observation that <span class="process-math">\(L(x) \approx f(x)\)</span> for <span class="process-math">\(x\)</span> near <span class="process-math">\(a\text{,}\)</span> it follows that we can write</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-5-5">
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-5-5">
+<div class="para">We emphasize that <span class="process-math">\(y = L(x)\)</span> is simply a new name for the tangent line function. Using this new notation and our observation that <span class="process-math">\(L(x) \approx f(x)\)</span> for <span class="process-math">\(x\)</span> near <span class="process-math">\(a\text{,}\)</span> it follows that we can write</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-5-5">
 \begin{equation*}
 f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 \end{equation*}
@@ -193,7 +193,7 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <article class="task exercise-like" id="act-1-8-1-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
 <div class="para" data-evidence="true" id="act-1-8-1-task-5-1-1">For <span class="process-math">\(x\)</span> near <span class="process-math">\(-1\text{,}\)</span> sketch the graph of the local linearization <span class="process-math">\(y = L(x)\)</span> as well as a possible graph of <span class="process-math">\(y = g(x)\)</span> on the axes provided.
 </div> <div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act1.svg"/><details class="image-description"><summary title="details"></summary><div id="act-1-8-1-task-5-1-2-description">
+<img alt="described in detail following the image" class="contained" data-evidence="true" id="paragraph-f056dcc4b59d3133-1" loading="lazy" src="/book-assets/active-calculus-html/c3a508419090f49cdc7394be.svg"/><details class="image-description"><summary title="details"></summary><div id="act-1-8-1-task-5-1-2-description">
 <div class="para" data-evidence="true" id="act-1-8-1-task-5-1-2-1-1">Axes for plotting <span class="process-math">\(y = g(x)\)</span> and its given tangent line.  While there is not scale on the axes or grid, if the boxes are taken to be <span class="process-math">\(1 \times 1\text{,}\)</span> the horizontal and vertical axes then range from <span class="process-math">\(-5\)</span> to <span class="process-math">\(2\text{.}\)</span>
 </div>
 </div></details>
@@ -202,47 +202,47 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 </article>
 </article>
 </section>
-<div class="para logical" id="sec-1-8-tan-line-approx-5-7">
-<div class="para" data-evidence="true" id="paragraph-f5ced8eb1f17ea28-1">From <a class="xref" href="/book/active-calculus-html/sec-1-8-tan-line-approx#act-1-8-1" title="Activity 1.8.2">Activity 1.8.2</a>, we see that the local linearization <span class="process-math">\(y = L(x)\)</span> is a linear function that shares two important values with the function <span class="process-math">\(y = f(x)\)</span> that it is derived from. In particular,</div>
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-5-7">
+<div class="para">From <a class="xref" href="/book/active-calculus-html/sec-1-8-tan-line-approx#act-1-8-1" title="Activity 1.8.2">Activity 1.8.2</a>, we see that the local linearization <span class="process-math">\(y = L(x)\)</span> is a linear function that shares two important values with the function <span class="process-math">\(y = f(x)\)</span> that it is derived from. In particular,</div>
 <ul class="disc" id="sec-1-8-tan-line-approx-5-7-4">
 <li id="sec-1-8-tan-line-approx-5-7-4-1">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-7-4-1">because <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\text{,}\)</span> it follows that <span class="process-math">\(L(a) = f(a)\text{;}\)</span> and</div>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-7-4-1">because <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\text{,}\)</span> it follows that <span class="process-math">\(L(a) = f(a)\text{;}\)</span> and</div>
 </li>
 <li id="sec-1-8-tan-line-approx-5-7-4-2">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-7-4-2">because <span class="process-math">\(L\)</span> is a linear function, its derivative is its slope.</div>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-7-4-2">because <span class="process-math">\(L\)</span> is a linear function, its derivative is its slope.</div>
 </li>
 </ul>
-<div class="para" data-evidence="true" id="paragraph-cbde7b82cbde85fa-1">Hence, <span class="process-math">\(L'(x) = f'(a)\)</span> for every value of <span class="process-math">\(x\text{,}\)</span> and specifically <span class="process-math">\(L'(a) = f'(a)\text{.}\)</span> Therefore, we see that <span class="process-math">\(L\)</span> is a linear function that has both the same value and the same slope as the function <span class="process-math">\(f\)</span> at the point <span class="process-math">\((a,f(a))\text{.}\)</span>
+<div class="para">Hence, <span class="process-math">\(L'(x) = f'(a)\)</span> for every value of <span class="process-math">\(x\text{,}\)</span> and specifically <span class="process-math">\(L'(a) = f'(a)\text{.}\)</span> Therefore, we see that <span class="process-math">\(L\)</span> is a linear function that has both the same value and the same slope as the function <span class="process-math">\(f\)</span> at the point <span class="process-math">\((a,f(a))\text{.}\)</span>
 </div>
 </div>
 <div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-5-8">Thus, if we know the linear approximation <span class="process-math">\(y = L(x)\)</span> for a function, we know the original function’s value and its slope at the point of tangency. What remains unknown, however, is the shape of the function <span class="process-math">\(f\)</span> at the point of tangency. There are essentially four possibilities, as shown in <a class="xref" href="/book/active-calculus-html/sec-1-8-tan-line-approx#F-1-8-Options" title="Figure 1.8.3">Figure 1.8.3</a>.
 </div>
-<figure class="figure figure-like" id="F-1-8-Options"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Options.svg"/><details class="image-description"><summary title="details"></summary><div id="F-1-8-Options-2-description">
-<div class="para" data-evidence="true" id="F-1-8-Options-2-1-1">We describe the graphs from left to right.  The first graph is always concave up on the interval shown, and thus its tangent line falls below the graph at the point of tangency.  The second graph is always concave down on the interval shown, and thus its tangent line lies above the graph at the point of tangency.  The third graph is concave down to the left of the point of tangency and concave up to the right of that point; this makes the tangent line lie above the curve to the left of the point of tangency, and lie below the curve to the right of that point.  The fourth and final graph is concave up to the left of the point of tangency and concave down to the right of that point; this makes the tangent line lie below the curve to the left of the point of tangency, and lie above the curve to the right of that point.
+<figure class="figure figure-like" data-evidence="true" id="F-1-8-Options"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/5e5a9553508b921fa4bab42e.svg"/><details class="image-description"><summary title="details"></summary><div id="F-1-8-Options-2-description">
+<div class="para" id="F-1-8-Options-2-1-1">We describe the graphs from left to right.  The first graph is always concave up on the interval shown, and thus its tangent line falls below the graph at the point of tangency.  The second graph is always concave down on the interval shown, and thus its tangent line lies above the graph at the point of tangency.  The third graph is concave down to the left of the point of tangency and concave up to the right of that point; this makes the tangent line lie above the curve to the left of the point of tangency, and lie below the curve to the right of that point.  The fourth and final graph is concave up to the left of the point of tangency and concave down to the right of that point; this makes the tangent line lie below the curve to the left of the point of tangency, and lie above the curve to the right of that point.
 </div>
 </div></details>
 </div>
 <figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Four possible graphs for a nonlinear differentiable function and how it can be situated relative to its tangent line at a point.</figcaption>
 </figure>
-<div class="para logical" id="sec-1-8-tan-line-approx-5-10">
-<div class="para" data-evidence="true" id="paragraph-ccbe515eb113acbe-1">These possible shapes result from the fact that there are three options for the value of the second derivative: either <span class="process-math">\(f''(a) \lt 0\text{,}\)</span> <span class="process-math">\(f''(a) = 0\text{,}\)</span> or <span class="process-math">\(f''(a) \gt 0\text{.}\)</span>
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-5-10">
+<div class="para">These possible shapes result from the fact that there are three options for the value of the second derivative: either <span class="process-math">\(f''(a) \lt 0\text{,}\)</span> <span class="process-math">\(f''(a) = 0\text{,}\)</span> or <span class="process-math">\(f''(a) \gt 0\text{.}\)</span>
 </div>
 <ul class="disc" id="sec-1-8-tan-line-approx-5-10-4">
 <li id="sec-1-8-tan-line-approx-5-10-4-1">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-10-4-1">If <span class="process-math">\(f''(a) \gt 0\text{,}\)</span> then we know the graph of <span class="process-math">\(f\)</span> is concave up, and we see the first possibility on the left, where the tangent line lies entirely below the curve.</div>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-10-4-1">If <span class="process-math">\(f''(a) \gt 0\text{,}\)</span> then we know the graph of <span class="process-math">\(f\)</span> is concave up, and we see the first possibility on the left, where the tangent line lies entirely below the curve.</div>
 </li>
 <li id="sec-1-8-tan-line-approx-5-10-4-2">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-10-4-2">If <span class="process-math">\(f''(a) \lt 0\text{,}\)</span> then <span class="process-math">\(f\)</span> is concave down and the tangent line lies above the curve, as shown in the second figure.</div>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-10-4-2">If <span class="process-math">\(f''(a) \lt 0\text{,}\)</span> then <span class="process-math">\(f\)</span> is concave down and the tangent line lies above the curve, as shown in the second figure.</div>
 </li>
 <li id="sec-1-8-tan-line-approx-5-10-4-3">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-10-4-3">If <span class="process-math">\(f''(a) = 0\)</span> and <span class="process-math">\(f''\)</span> changes sign at <span class="process-math">\(x = a\text{,}\)</span> the concavity of the graph will change, and we will see either the third or fourth figure.<details class="ptx-footnote" id="sec-1-8-tan-line-approx-5-10-4-3-4"><summary class="ptx-footnote__number" title="Footnote 1.8.2"><sup> 2 </sup></summary>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-10-4-3">If <span class="process-math">\(f''(a) = 0\)</span> and <span class="process-math">\(f''\)</span> changes sign at <span class="process-math">\(x = a\text{,}\)</span> the concavity of the graph will change, and we will see either the third or fourth figure.<details class="ptx-footnote" id="sec-1-8-tan-line-approx-5-10-4-3-4"><summary class="ptx-footnote__number" title="Footnote 1.8.2"><sup> 2 </sup></summary>
 <div class="ptx-footnote__contents">It is possible that <span class="process-math">\(f''(a) = 0\)</span> but <span class="process-math">\(f''\)</span> does not change sign at <span class="process-math">\(x = a\text{,}\)</span> in which case the graph will look like one of the first two options.
 </div></details>
 </div>
 </li>
 <li id="sec-1-8-tan-line-approx-5-10-4-4">
-<div class="para" data-evidence="true" id="p-derived-sec-1-8-tan-line-approx-5-10-4-4">A fifth option (which is not very interesting) can occur if the function <span class="process-math">\(f\)</span> itself is linear, so that <span class="process-math">\(f(x) = L(x)\)</span> for all values of <span class="process-math">\(x\text{.}\)</span>
+<div class="para" id="p-derived-sec-1-8-tan-line-approx-5-10-4-4">A fifth option (which is not very interesting) can occur if the function <span class="process-math">\(f\)</span> itself is linear, so that <span class="process-math">\(f(x) = L(x)\)</span> for all values of <span class="process-math">\(x\text{.}\)</span>
 </div>
 </li>
 </ul>
@@ -257,28 +257,28 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="introduction" id="act-1-8-2-1">
-<div class="para logical" id="act-1-8-2-1-1">
-<div class="para" data-evidence="true" id="paragraph-42cc0072bbc4c165-1">This activity concerns a function <span class="process-math">\(f(x)\)</span> about which the following information is known:</div>
+<div class="para logical" data-evidence="true" id="act-1-8-2-1-1">
+<div class="para">This activity concerns a function <span class="process-math">\(f(x)\)</span> about which the following information is known:</div>
 <ul class="disc" id="act-1-8-2-1-1-2">
 <li id="act-1-8-2-1-1-2-1">
-<div class="para" data-evidence="true" id="act-1-8-2-1-1-2-1-1">
+<div class="para" id="act-1-8-2-1-1-2-1-1">
 <span class="process-math">\(f\)</span> is a differentiable function defined at every real number <span class="process-math">\(x\)</span>
 </div>
 </li>
 <li id="act-1-8-2-1-1-2-2">
-<div class="para" data-evidence="true" id="act-1-8-2-1-1-2-2-1">
+<div class="para" id="act-1-8-2-1-1-2-2-1">
 <span class="process-math">\(\displaystyle f(2) = -1\)</span>
 </div>
 </li>
 <li id="act-1-8-2-1-1-2-3">
-<div class="para" data-evidence="true" id="act-1-8-2-1-1-2-3-1">
+<div class="para" id="act-1-8-2-1-1-2-3-1">
 <span class="process-math">\(y = f'(x)\)</span> has its graph given in the following figure.
 </div>
 </li>
 </ul>
 </div>
 <div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act2.svg"/><details class="image-description"><summary title="details"></summary><div id="act-1-8-2-1-2-description">
+<img alt="described in detail following the image" class="contained" data-evidence="true" id="paragraph-c36aee51e8d98e48-1" loading="lazy" src="/book-assets/active-calculus-html/9b279dc6d04c0a3858cf92c1.svg"/><details class="image-description"><summary title="details"></summary><div id="act-1-8-2-1-2-description">
 <div class="para" data-evidence="true" id="act-1-8-2-1-2-1-1">There are three sets of coordinate axes provided, all with <span class="process-math">\(x\)</span> ranging from <span class="process-math">\(-2\)</span> to <span class="process-math">\(6\text{,}\)</span> and <span class="process-math">\(y\)</span> ranging from <span class="process-math">\(-4\)</span> to <span class="process-math">\(4\text{.}\)</span>  The leftmost and rightmost axes are blank and will be used for plotting <span class="process-math">\(y = f(x)\)</span> and <span class="process-math">\(y = f''(x)\text{,}\)</span> respectively.
 </div>
 <div class="para" data-evidence="true" id="act-1-8-2-1-2-1-2">On the middle set of axes, a plot of <span class="process-math">\(f'(x)\)</span> is given; this function is a parabola with vertex <span class="process-math">\((2,2)\text{,}\)</span> opening down, and passing through <span class="process-math">\((0,0)\)</span> and <span class="process-math">\((4,0)\text{.}\)</span>
@@ -320,21 +320,21 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 </article>
 </article>
 </section>
-<div class="para logical" id="sec-1-8-tan-line-approx-5-13">
-<div class="para" data-evidence="true" id="paragraph-31d28fcd4fecc404-1">The idea that a differentiable function looks linear and can be well-approximated by a linear function is an important one that finds wide application in calculus. For example, by approximating a function with its local linearization, it is possible to develop an effective algorithm to estimate the zeroes of a function. Local linearity also helps us to make further sense of certain challenging limits. For instance, we have seen that the limit</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-13-1">
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-5-13">
+<div class="para">The idea that a differentiable function looks linear and can be well-approximated by a linear function is an important one that finds wide application in calculus. For example, by approximating a function with its local linearization, it is possible to develop an effective algorithm to estimate the zeroes of a function. Local linearity also helps us to make further sense of certain challenging limits. For instance, we have seen that the limit</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-13-1">
 \begin{equation*}
 \lim_{x \to 0} \frac{\sin(x)}{x}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-c2ce9497dc03a24d-1">is indeterminate, because both its numerator and denominator tend to 0. While there is no algebra that we can do to simplify <span class="process-math">\(\frac{\sin(x)}{x}\text{,}\)</span> it is straightforward to show that the linearization of <span class="process-math">\(f(x) = \sin(x)\)</span> at the point <span class="process-math">\((0,0)\)</span> is given by <span class="process-math">\(L(x) = x\text{.}\)</span> Hence, for values of <span class="process-math">\(x\)</span> near 0, <span class="process-math">\(\sin(x) \approx x\text{,}\)</span> and therefore</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-13-8">
+<div class="para">is indeterminate, because both its numerator and denominator tend to 0. While there is no algebra that we can do to simplify <span class="process-math">\(\frac{\sin(x)}{x}\text{,}\)</span> it is straightforward to show that the linearization of <span class="process-math">\(f(x) = \sin(x)\)</span> at the point <span class="process-math">\((0,0)\)</span> is given by <span class="process-math">\(L(x) = x\text{.}\)</span> Hence, for values of <span class="process-math">\(x\)</span> near 0, <span class="process-math">\(\sin(x) \approx x\text{,}\)</span> and therefore</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-13-8">
 \begin{equation*}
 \frac{\sin(x)}{x} \approx \frac{x}{x} = 1\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-80c952d9104291e2-1">which makes plausible the fact that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-5-13-9">
+<div class="para">which makes plausible the fact that</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-5-13-9">
 \begin{equation*}
 \lim_{x \to 0} \frac{\sin(x)}{x} = 1\text{.}
 \end{equation*}
@@ -367,8 +367,8 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <article class="task exercise-like" id="act-1-8-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
 <div class="para" data-evidence="true" id="act-1-8-3-task-2-1-1">Complete the following table of values for <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\text{:}\)</span>
 </div>
-<figure class="table table-like" id="T-act-1-8-4-f-g-L"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Values of <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\text{.}\)</span></figcaption><div class="tabular-box natural-width"><table class="tabular">
-<tr data-evidence="true" id="paragraph-0ff37911900475fc-1">
+<figure class="table table-like" id="T-act-1-8-4-f-g-L"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Values of <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\text{.}\)</span></figcaption><div class="tabular-box natural-width"><table class="tabular" data-evidence="true" id="paragraph-4c1222c5c08d1d1a-1">
+<tr>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(x\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(2.9\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(2.99\)</span></td>
@@ -378,7 +378,7 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(3.01\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(3.1\)</span></td>
 </tr>
-<tr data-evidence="true" id="paragraph-87c09674dfb7478b-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(f(x)\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
@@ -388,7 +388,7 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 </tr>
-<tr data-evidence="true" id="paragraph-865db51b64a0743a-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(g(x)\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
@@ -398,7 +398,7 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 </tr>
-<tr data-evidence="true" id="paragraph-3ea1aab3e3f09d8d-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(L(x)\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
@@ -417,9 +417,9 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <article class="task exercise-like" id="act-1-8-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
 <div class="para" data-evidence="true" id="act-1-8-3-task-3-1-1">On the axes provided in <a class="xref" href="/book/active-calculus-html/sec-1-8-tan-line-approx#Fig-act-1-8-3-axes" title="Figure 1.8.5">Figure 1.8.5</a>, plot <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\)</span> near <span class="process-math">\(x = 3\text{.}\)</span>  In addition, compute <span class="process-math">\(f''(3)\text{,}\)</span> <span class="process-math">\(g''(3)\text{,}\)</span> and <span class="process-math">\(L''(3)\text{.}\)</span>  How do the second derivative values and the graph explain why <span class="process-math">\(L(x)\)</span> is a better approximation for one of the functions than it is for the other?
 </div>
-<figure class="figure figure-like" id="Fig-act-1-8-3-axes"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/F-act-1-8-3-axe.svg"/><details class="image-description"><summary title="details"></summary><div id="Fig-act-1-8-3-axes-2-description">
-<div class="para" data-evidence="true" id="Fig-act-1-8-3-axes-2-1-1">Axes for plotting <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\)</span> near <span class="process-math">\(x = 3\text{.}\)</span>
+<figure class="figure figure-like" data-evidence="true" id="Fig-act-1-8-3-axes"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/803b844a4e1f3476f8306985.svg"/><details class="image-description"><summary title="details"></summary><div id="Fig-act-1-8-3-axes-2-description">
+<div class="para" id="Fig-act-1-8-3-axes-2-1-1">Axes for plotting <span class="process-math">\(f(x)\text{,}\)</span> <span class="process-math">\(g(x)\text{,}\)</span> and <span class="process-math">\(L(x)\)</span> near <span class="process-math">\(x = 3\text{.}\)</span>
 </div>
 </div></details>
 </div>
@@ -433,12 +433,12 @@ f(x) \approx f(a) + f'(a)(x-a) \ \text{for}  \  x \ \text{near}  \ a\text{.}
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
 </h2>
-<div class="para logical" id="sec-1-8-tan-line-approx-6-2">
+<div class="para logical" data-evidence="true" id="sec-1-8-tan-line-approx-6-2">
 <ul class="disc" id="sec-1-8-tan-line-approx-6-2-1">
 <li id="sec-1-8-tan-line-approx-6-2-1-1">
 <div class="para logical" id="sec-1-8-tan-line-approx-6-2-1-1-1">
-<div class="para" data-evidence="true" id="paragraph-86ed01740784197d-1">The tangent line to a differentiable function <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((a,f(a))\)</span> is given in point-slope form by the equation</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-1-8-tan-line-approx-6-2-1-1-1-3">
+<div class="para">The tangent line to a differentiable function <span class="process-math">\(y = f(x)\)</span> at the point <span class="process-math">\((a,f(a))\)</span> is given in point-slope form by the equation</div>
+<div class="displaymath process-math" id="sec-1-8-tan-line-approx-6-2-1-1-1-3">
 \begin{equation*}
 y - f(a) = f'(a)(x-a)\text{.}
 \end{equation*}
@@ -446,11 +446,11 @@ y - f(a) = f'(a)(x-a)\text{.}
 </div>
 </li>
 <li id="sec-1-8-tan-line-approx-6-2-1-2">
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-6-2-1-2-1">The principle of local linearity tells us that if we zoom in on a point where a function <span class="process-math">\(y = f(x)\)</span> is differentiable, the function will be indistinguishable from its tangent line. That is, a differentiable function looks linear when viewed up close. We rename the tangent line to be the function <span class="process-math">\(y = L(x)\text{,}\)</span> where <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\text{.}\)</span> Thus, <span class="process-math">\(f(x) \approx L(x)\)</span> for all <span class="process-math">\(x\)</span> near <span class="process-math">\(x = a\text{.}\)</span>
+<div class="para" id="sec-1-8-tan-line-approx-6-2-1-2-1">The principle of local linearity tells us that if we zoom in on a point where a function <span class="process-math">\(y = f(x)\)</span> is differentiable, the function will be indistinguishable from its tangent line. That is, a differentiable function looks linear when viewed up close. We rename the tangent line to be the function <span class="process-math">\(y = L(x)\text{,}\)</span> where <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\text{.}\)</span> Thus, <span class="process-math">\(f(x) \approx L(x)\)</span> for all <span class="process-math">\(x\)</span> near <span class="process-math">\(x = a\text{.}\)</span>
 </div>
 </li>
 <li id="sec-1-8-tan-line-approx-6-2-1-3">
-<div class="para" data-evidence="true" id="sec-1-8-tan-line-approx-6-2-1-3-1">If we know the tangent line approximation <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\)</span> to a function <span class="process-math">\(y=f(x)\text{,}\)</span> then because <span class="process-math">\(L(a) = f(a)\)</span> and <span class="process-math">\(L'(a) = f'(a)\text{,}\)</span> we also know the values of both the function and its derivative at the point where <span class="process-math">\(x = a\text{.}\)</span> In other words, the linear approximation tells us the height and slope of the original function. If, in addition, we know the value of <span class="process-math">\(f''(a)\text{,}\)</span> we then know whether the tangent line lies above or below the graph of <span class="process-math">\(y = f(x)\text{,}\)</span> depending on the concavity of <span class="process-math">\(f\text{.}\)</span>
+<div class="para" id="sec-1-8-tan-line-approx-6-2-1-3-1">If we know the tangent line approximation <span class="process-math">\(L(x) = f(a) + f'(a)(x-a)\)</span> to a function <span class="process-math">\(y=f(x)\text{,}\)</span> then because <span class="process-math">\(L(a) = f(a)\)</span> and <span class="process-math">\(L'(a) = f'(a)\text{,}\)</span> we also know the values of both the function and its derivative at the point where <span class="process-math">\(x = a\text{.}\)</span> In other words, the linear approximation tells us the height and slope of the original function. If, in addition, we know the value of <span class="process-math">\(f''(a)\text{,}\)</span> we then know whether the tangent line lies above or below the graph of <span class="process-math">\(y = f(x)\text{,}\)</span> depending on the concavity of <span class="process-math">\(f\text{.}\)</span>
 </div>
 </li>
 </ul>
@@ -530,7 +530,7 @@ y - f(a) = f'(a)(x-a)\text{.}
 <div class="problem-contents">
 <div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec9__Q11_pg-1-1-1">The figure below shows <span class="process-math">\(f(x)\)</span> and its local linearization at <span class="process-math">\(x=a\text{,}\)</span> <span class="process-math">\(y = 4 x - 4\text{.}\)</span>  (The local linearization is shown in blue.)
 </div> <div class="image-box">
-<img alt="Graph of a concave up function and its tangent line at a point." class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap3Sec9__Q11_pg-image-1.png"/><details class="image-description"><summary title="details"></summary><div id="extracted-Library__Michigan__Chap3Sec9__Q11_pg-1-1-2-description">
+<img alt="Graph of a concave up function and its tangent line at a point." class="contained" data-evidence="true" id="paragraph-c238b6389477138d-1" loading="lazy" src="/book-assets/active-calculus-html/15e1bb4bc9044598e35fac7f.png"/><details class="image-description"><summary title="details"></summary><div id="extracted-Library__Michigan__Chap3Sec9__Q11_pg-1-1-2-description">
 <div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec9__Q11_pg-1-1-2-2-1">Graph of a concave up function and its local linearization.  The two functions appear to intersect when <span class="process-math">\(x=4\text{.}\)</span>
 </div>
 </div></details>
@@ -571,24 +571,24 @@ y - f(a) = f'(a)(x-a)\text{.}
 </div>
 </article>
 <article class="exercise exercise-like" id="ez-1-8-7"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
-<div class="para logical" id="ez-1-8-7-1-1">
-<div class="para" data-evidence="true" id="paragraph-f2dda123f0ae085f-1">A certain function <span class="process-math">\(y=p(x)\)</span> has its local linearization at <span class="process-math">\(a = 3\)</span> given by <span class="process-math">\(L(x) = -2x + 5\text{.}\)</span>
+<div class="para logical" data-evidence="true" id="ez-1-8-7-1-1">
+<div class="para">A certain function <span class="process-math">\(y=p(x)\)</span> has its local linearization at <span class="process-math">\(a = 3\)</span> given by <span class="process-math">\(L(x) = -2x + 5\text{.}\)</span>
 </div>
 <ol class="lower-alpha" id="ez-1-8-7-1-1-4">
 <li id="ez-1-8-7-1-1-4-1">
-<div class="para" data-evidence="true" id="ez-1-8-7-1-1-4-1-1">What are the values of <span class="process-math">\(p(3)\)</span> and <span class="process-math">\(p'(3)\text{?}\)</span> Why?
+<div class="para" id="ez-1-8-7-1-1-4-1-1">What are the values of <span class="process-math">\(p(3)\)</span> and <span class="process-math">\(p'(3)\text{?}\)</span> Why?
 </div>
 </li>
 <li id="ez-1-8-7-1-1-4-2">
-<div class="para" data-evidence="true" id="ez-1-8-7-1-1-4-2-1">Estimate the value of <span class="process-math">\(p(2.79)\text{.}\)</span>
+<div class="para" id="ez-1-8-7-1-1-4-2-1">Estimate the value of <span class="process-math">\(p(2.79)\text{.}\)</span>
 </div>
 </li>
 <li id="ez-1-8-7-1-1-4-3">
-<div class="para" data-evidence="true" id="ez-1-8-7-1-1-4-3-1">Suppose that <span class="process-math">\(p''(3) = 0\)</span> and you know that <span class="process-math">\(p''(x) \lt 0\)</span> for <span class="process-math">\(x \lt 3\text{.}\)</span> Is your estimate in (b) too large or too small?
+<div class="para" id="ez-1-8-7-1-1-4-3-1">Suppose that <span class="process-math">\(p''(3) = 0\)</span> and you know that <span class="process-math">\(p''(x) \lt 0\)</span> for <span class="process-math">\(x \lt 3\text{.}\)</span> Is your estimate in (b) too large or too small?
 </div>
 </li>
 <li id="ez-1-8-7-1-1-4-4">
-<div class="para" data-evidence="true" id="ez-1-8-7-1-1-4-4-1">Suppose that <span class="process-math">\(p''(x) \gt 0\)</span> for <span class="process-math">\(x \gt 3\text{.}\)</span> Use this fact and the additional information above to sketch an accurate graph of <span class="process-math">\(y = p(x)\)</span> near <span class="process-math">\(x = 3\text{.}\)</span> Include a sketch of <span class="process-math">\(y = L(x)\)</span> in your work.
+<div class="para" id="ez-1-8-7-1-1-4-4-1">Suppose that <span class="process-math">\(p''(x) \gt 0\)</span> for <span class="process-math">\(x \gt 3\text{.}\)</span> Use this fact and the additional information above to sketch an accurate graph of <span class="process-math">\(y = p(x)\)</span> near <span class="process-math">\(x = 3\text{.}\)</span> Include a sketch of <span class="process-math">\(y = L(x)\)</span> in your work.
 </div>
 </li>
 </ol>
@@ -597,8 +597,8 @@ y - f(a) = f'(a)(x-a)\text{.}
 <article class="exercise exercise-like" id="ez-1-8-8"><h3 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
 <div class="para" data-evidence="true" id="ez-1-8-8-1-1">A potato is placed in an oven, and the potato’s temperature <span class="process-math">\(F\)</span> (in degrees Fahrenheit) at various points in time is taken and recorded in the following table. Time <span class="process-math">\(t\)</span> is measured in minutes.
 </div>
-<figure class="table table-like" id="ez-1-8-8-1-2"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Temperature data for the potato.</figcaption><div class="tabular-box natural-width"><table class="tabular">
-<tr data-evidence="true" id="paragraph-0370e0a2b47086d8-1">
+<figure class="table table-like" id="ez-1-8-8-1-2"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">1.8.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Temperature data for the potato.</figcaption><div class="tabular-box natural-width"><table class="tabular" data-evidence="true" id="paragraph-1e8f2a4bd89787f5-1">
+<tr>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(t\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(0\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(10\)</span></td>
@@ -608,7 +608,7 @@ y - f(a) = f'(a)(x-a)\text{.}
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(50\)</span></td>
 <td class="l m b2 r0 l0 t1 lines"><span class="process-math">\(60\)</span></td>
 </tr>
-<tr data-evidence="true" id="paragraph-c6af2361009f67bc-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(F(t)\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(65\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(94.7\)</span></td>
@@ -620,61 +620,61 @@ y - f(a) = f'(a)(x-a)\text{.}
 </tr>
 </table></div>
 </figure>
-<div class="para logical" id="ez-1-8-8-1-3">
+<div class="para logical" data-evidence="true" id="ez-1-8-8-1-3">
 <ol class="lower-alpha" id="ez-1-8-8-1-3-1">
 <li id="ez-1-8-8-1-3-1-1">
-<div class="para" data-evidence="true" id="ez-1-8-8-1-3-1-1-1">Use a central difference to estimate <span class="process-math">\(F'(30)\text{.}\)</span> Use this estimate as needed in subsequent questions.
+<div class="para" id="ez-1-8-8-1-3-1-1-1">Use a central difference to estimate <span class="process-math">\(F'(30)\text{.}\)</span> Use this estimate as needed in subsequent questions.
 </div>
 </li>
 <li id="ez-1-8-8-1-3-1-2">
-<div class="para" data-evidence="true" id="ez-1-8-8-1-3-1-2-1">Find the local linearization <span class="process-math">\(y = L(t)\)</span> to the function <span class="process-math">\(y = F(t)\)</span> at the point where <span class="process-math">\(a = 30\text{.}\)</span>
+<div class="para" id="ez-1-8-8-1-3-1-2-1">Find the local linearization <span class="process-math">\(y = L(t)\)</span> to the function <span class="process-math">\(y = F(t)\)</span> at the point where <span class="process-math">\(a = 30\text{.}\)</span>
 </div>
 </li>
 <li id="ez-1-8-8-1-3-1-3">
-<div class="para" data-evidence="true" id="ez-1-8-8-1-3-1-3-1">Determine an estimate for <span class="process-math">\(F(33)\)</span> by employing the local linearization.
+<div class="para" id="ez-1-8-8-1-3-1-3-1">Determine an estimate for <span class="process-math">\(F(33)\)</span> by employing the local linearization.
 </div>
 </li>
 <li id="ez-1-8-8-1-3-1-4">
-<div class="para" data-evidence="true" id="ez-1-8-8-1-3-1-4-1">Do you think your estimate in (c) is too large or too small? Why?
+<div class="para" id="ez-1-8-8-1-3-1-4-1">Do you think your estimate in (c) is too large or too small? Why?
 </div>
 </li>
 </ol>
 </div>
 </article>
 <article class="exercise exercise-like" id="ez-1-8-9"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
-<div class="para logical" id="ez-1-8-9-1-1">
-<div class="para" data-evidence="true" id="paragraph-9576842f77896416-1">An object moving along a straight line path has a differentiable position function <span class="process-math">\(y = s(t)\text{;}\)</span> <span class="process-math">\(s(t)\)</span> measures the object’s position relative to the origin at time <span class="process-math">\(t\text{.}\)</span> It is known that at time <span class="process-math">\(t = 9\)</span> seconds, the object’s position is <span class="process-math">\(s(9) = 4\)</span> feet (i.e., 4 feet to the right of the origin). Furthermore, the object’s instantaneous velocity at <span class="process-math">\(t = 9\)</span> is <span class="process-math">\(-1.2\)</span> feet per second, and its acceleration at the same instant is <span class="process-math">\(0.08\)</span> feet per second per second.</div>
+<div class="para logical" data-evidence="true" id="ez-1-8-9-1-1">
+<div class="para">An object moving along a straight line path has a differentiable position function <span class="process-math">\(y = s(t)\text{;}\)</span> <span class="process-math">\(s(t)\)</span> measures the object’s position relative to the origin at time <span class="process-math">\(t\text{.}\)</span> It is known that at time <span class="process-math">\(t = 9\)</span> seconds, the object’s position is <span class="process-math">\(s(9) = 4\)</span> feet (i.e., 4 feet to the right of the origin). Furthermore, the object’s instantaneous velocity at <span class="process-math">\(t = 9\)</span> is <span class="process-math">\(-1.2\)</span> feet per second, and its acceleration at the same instant is <span class="process-math">\(0.08\)</span> feet per second per second.</div>
 <ol class="lower-alpha" id="ez-1-8-9-1-1-9">
 <li id="ez-1-8-9-1-1-9-1">
-<div class="para" data-evidence="true" id="ez-1-8-9-1-1-9-1-1">Use local linearity to estimate the position of the object at <span class="process-math">\(t = 9.34\text{.}\)</span>
+<div class="para" id="ez-1-8-9-1-1-9-1-1">Use local linearity to estimate the position of the object at <span class="process-math">\(t = 9.34\text{.}\)</span>
 </div>
 </li>
 <li id="ez-1-8-9-1-1-9-2">
-<div class="para" data-evidence="true" id="ez-1-8-9-1-1-9-2-1">Is your estimate likely too large or too small? Why?
+<div class="para" id="ez-1-8-9-1-1-9-2-1">Is your estimate likely too large or too small? Why?
 </div>
 </li>
 <li id="ez-1-8-9-1-1-9-3">
-<div class="para" data-evidence="true" id="ez-1-8-9-1-1-9-3-1">In everyday language, describe the behavior of the moving object at <span class="process-math">\(t = 9\text{.}\)</span> Is it moving toward the origin or away from it? Is its velocity increasing or decreasing?
+<div class="para" id="ez-1-8-9-1-1-9-3-1">In everyday language, describe the behavior of the moving object at <span class="process-math">\(t = 9\text{.}\)</span> Is it moving toward the origin or away from it? Is its velocity increasing or decreasing?
 </div>
 </li>
 </ol>
 </div>
 </article>
 <article class="exercise exercise-like" id="ez-1-8-10"><h3 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
-<div class="para logical" id="ez-1-8-10-1-1">
-<div class="para" data-evidence="true" id="paragraph-0a5d760d5dc5f19a-1">For a certain function <span class="process-math">\(f\text{,}\)</span> its derivative is known to be <span class="process-math">\(f'(x) = (x-1)e^{-x^2}\text{.}\)</span> Note that you do not know a formula for <span class="process-math">\(y = f(x)\text{.}\)</span>
+<div class="para logical" data-evidence="true" id="ez-1-8-10-1-1">
+<div class="para">For a certain function <span class="process-math">\(f\text{,}\)</span> its derivative is known to be <span class="process-math">\(f'(x) = (x-1)e^{-x^2}\text{.}\)</span> Note that you do not know a formula for <span class="process-math">\(y = f(x)\text{.}\)</span>
 </div>
 <ol class="lower-alpha" id="ez-1-8-10-1-1-4">
 <li id="ez-1-8-10-1-1-4-1">
-<div class="para" data-evidence="true" id="ez-1-8-10-1-1-4-1-1">At what <span class="process-math">\(x\)</span>-value(s) is <span class="process-math">\(f'(x) = 0\text{?}\)</span> Justify your answer algebraically, but include a graph of <span class="process-math">\(f'\)</span> to support your conclusion.
+<div class="para" id="ez-1-8-10-1-1-4-1-1">At what <span class="process-math">\(x\)</span>-value(s) is <span class="process-math">\(f'(x) = 0\text{?}\)</span> Justify your answer algebraically, but include a graph of <span class="process-math">\(f'\)</span> to support your conclusion.
 </div>
 </li>
 <li id="ez-1-8-10-1-1-4-2">
-<div class="para" data-evidence="true" id="ez-1-8-10-1-1-4-2-1">Reasoning graphically, for what intervals of <span class="process-math">\(x\)</span>-values is <span class="process-math">\(f''(x) \gt 0\text{?}\)</span> What does this tell you about the behavior of the original function <span class="process-math">\(f\text{?}\)</span> Explain.
+<div class="para" id="ez-1-8-10-1-1-4-2-1">Reasoning graphically, for what intervals of <span class="process-math">\(x\)</span>-values is <span class="process-math">\(f''(x) \gt 0\text{?}\)</span> What does this tell you about the behavior of the original function <span class="process-math">\(f\text{?}\)</span> Explain.
 </div>
 </li>
 <li id="ez-1-8-10-1-1-4-3">
-<div class="para" data-evidence="true" id="ez-1-8-10-1-1-4-3-1">Assuming that <span class="process-math">\(f(2) = -3\text{,}\)</span> estimate the value of <span class="process-math">\(f(1.88)\)</span> by finding and using the tangent line approximation to <span class="process-math">\(f\)</span> at <span class="process-math">\(x=2\text{.}\)</span> Is your estimate larger or smaller than the true value of <span class="process-math">\(f(1.88)\text{?}\)</span> Justify your answer.
+<div class="para" id="ez-1-8-10-1-1-4-3-1">Assuming that <span class="process-math">\(f(2) = -3\text{,}\)</span> estimate the value of <span class="process-math">\(f(1.88)\)</span> by finding and using the tangent line approximation to <span class="process-math">\(f\)</span> at <span class="process-math">\(x=2\text{.}\)</span> Is your estimate larger or smaller than the true value of <span class="process-math">\(f(1.88)\text{?}\)</span> Justify your answer.
 </div>
 </li>
 </ol>

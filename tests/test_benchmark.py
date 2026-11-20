@@ -80,7 +80,7 @@ def test_quality_logging_is_opt_in_and_records_hits(monkeypatch):
         plan = {'related': True, 'language': 'en-CA', 'query_en': 'derivative', 'query_fr': 'dérivée', 'reason': ''}
         monkeypatch.setattr(ai_service, 'plan', lambda *args: plan)
         monkeypatch.setattr(ai_service, 'answer', lambda *args: {'answer': 'Answer. [S1]', 'supported': True, 'evidence': ['S1']})
-        payload = {'question': 'What is a derivative?', 'doc': 'active-calculus-pdf', 'language': 'en-CA', 'web': False}
+        payload = {'question': 'What is a derivative?', 'doc': 'active-calculus-html', 'language': 'en-CA', 'web': False}
         def ask():
             return client.post('/api/ask', json=payload, headers={'X-CSRF-Token': 'test-csrf'})
         assert ask().status_code == 200

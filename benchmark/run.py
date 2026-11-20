@@ -55,9 +55,12 @@ def main():
     from reader_backend import page_png
     from timing import log
 
-    application.app.config['BENCHMARK_PLAN_QUALITY'] = args.plan_quality
+    benchmark_manifest=ROOT/'content/manifest.benchmark.json'
+    settings=dict(application.app.config)
+    settings['BENCHMARK_PLAN_QUALITY']=args.plan_quality
     if args.skip_plan is not None:
-        application.app.config['SKIP_PLAN'] = args.skip_plan == 'on'
+        settings['SKIP_PLAN']=args.skip_plan=='on'
+    benchmark_app=application.create_app(settings,index_provider=lambda:application.library(benchmark_manifest))
 
     class Collector(logging.Handler):
         def __init__(self):
@@ -69,7 +72,7 @@ def main():
                 self.records.append(json.loads(message[len('[TIMING] '):]))
     collector = Collector()
     log.addHandler(collector)
-    client = application.app.test_client()
+    client = benchmark_app.test_client()
     start = time.perf_counter()
     response = client.get('/health')
     if response.status_code != 200:
@@ -78,7 +81,7 @@ def main():
     client.get('/')
     with client.session_transaction() as session:
         csrf = session['csrf']
-    library = application.library()
+    library = application.library(benchmark_manifest)
     books = {args.book or q['book'] for q, _ in requests}
     missing = books - set(library.docs)
     if missing:
@@ -91,7 +94,7 @@ def main():
     cold_start = len(collector.records)
     for _ in range(args.cold_runs):
         start = time.perf_counter()
-        index = LibraryIndex(ROOT / 'content/manifest.json', doc_id=args.index_book)
+        index = LibraryIndex(benchmark_manifest, doc_id=args.index_book)
         cold.append(time.perf_counter()-start)
         del index
     print('  index build median:', f'{statistics.median(cold):.3f}s' if cold else 'skipped')

@@ -1,0 +1,2107 @@
+{
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/CC-BY-SA-license.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c2197c092ec75531907ef4c0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/CC-BY-SA-license.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/78fffae9b9d66602a5fa6e30.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_1_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f602a62ee6866b17e7b60cdf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_1_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_1_Summary.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/45ef71d5bc5224841ca4463d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_1_Summary.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q10_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3d19c09b970adf2496d7368f.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q10_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q16_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/071242e2702e033af2ce7212.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q16_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q07_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bdb29188b227339d00ccca73.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q07_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q06_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bdb29188b227339d00ccca73.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__LoyolaChicago__Precalc__Chap1Sec2__Q06_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9c6e5be5d18d9a6ee859f852.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/082311879ad716200c10ede9.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5bc3269ee6c195e8cf3f44b1.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-4.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bee3313cdbca9ce32f327c79.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-4.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-5.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/03de69334799f8880e2a12f5.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-5.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-6.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a29aaa145024402bdbbd8e42.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-6.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-7.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d146742ff8de1f9e2388df6c.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q13_pg-image-7.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_1_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/701162dee9c86d602e8b90eb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_1_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_1_Ez2a.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6bef2796df58de6a2f2b2b17.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_1_Ez2a.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_1_Ez2b.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/eefb85c01c2bf02359142948.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_1_Ez2b.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/da27b3ef23dd329de10b7233.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ex1f.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7f84af9fcf18eaae7c9d11ef.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ex1f.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ex1g.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/427264c4f2d535987fefd94c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ex1g.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1843c8bf1797cc8aa8596934.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap1Sec8__Q01_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b53a5ca962dffeffd3f92bc0.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap1Sec8__Q01_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/17644cc6a5a73a2fe00ce39c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/82605d5eced8ac085b567a12.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_SecToTanSeq.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a47408c9326b3ad8ded75851.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_SecToTanSeq.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_SecToTan.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3e702328599509e393adac20.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_SecToTan.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Ex1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2e52b7d3f7b716f2c222d369.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Ex1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/251b9e2b93f466e489c43056.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q15_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d226f3680c9be7563f8d95bb.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q15_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q05_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/57f6e3998f13375d05cad33c.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec1__Q05_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__3_Differentiation__3_1_Definition_of_the_Derivative__3_1_11_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d1cf260904f5cf89bad78c09.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__3_Differentiation__3_1_Definition_of_the_Derivative__3_1_11_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q09_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b4f53feaa42b6b6bbc0a698d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q09_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q13_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/44777f708631714850c5d549.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec2__Q13_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/585c662e90754902272a131a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_ffprimeplot.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2b498bfd0054043c2f7f8e80.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_ffprimeplot.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1a.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/382920ddd4e0aa1a219e8814.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1a.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1b.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4996c90aafa3ff6e551776e4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1b.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1c.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/fd15d00d926b43900b003d4d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1c.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1d.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/62c9ded26d9bfbfe9f76580a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1d.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q09_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0772f1c11060362bff457bec.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q09_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4c360c8e070ec333de37a01e.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4926b6fa5026b1031321d38e.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/074c9a92f7c2d1d314272ad5.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-4.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7cafc6e43a640a271e583b35.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-4.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-5.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2878069b5237c15f7f441d56.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-5.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-6.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d3504898be300ae87f33a18b.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-6.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-7.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a9eac83ceaa9a2e36bac4dfe.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-7.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-8.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/499d556c260b75c415b97f39.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q31_pg-image-8.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/79f3255bdf71231e507a162a.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5419e9704e9dc2499dcb8dca.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5e8b091f92cab49a6b12c582.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-5.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/87c18206a9ee40ca44903ed4.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-5.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-6.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/872f9fa40c35ca7ee39bf4c8.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-6.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-7.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d2396c23cfa521a19220f450.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_4HW_prob3_pg-image-7.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0f0ccf994db01aa3f2d677b6.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/668cc8519a788b4a9e0e3d76.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/90f2216bfb27ffca2565a12d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-4.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c3702440293918663120eb4d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-4.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-5.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1d36f962e234c1e95ad580d8.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-5.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-6.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d2be713e409d97dbdde4c4c2.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-6.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-7.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c72362a9d6263ed8a63919e9.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-7.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-8.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c805cdcac489372d7d1859de.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q41_pg-image-8.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q37_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/12e35536156227d7ca9c9999.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec3__Q37_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez3a.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c86e610cd0e5a9e1f969f0cf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez3a.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez3b.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5b5fa71403415b173f844dd9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez3b.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c124bb2a587bdbafa8750a88.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/PA-1-5.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3d846d85bde53fdbeb75e20d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/PA-1-5.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-1-5a-CD.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ca15f0925ad3eb6c5a2fc441.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-1-5a-CD.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-1-5a-P-1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2a4eeaae02b11b32d0186433.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-1-5a-P-1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/PA-1-5-PPrime-1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cb2e7f2b66133cc7ed1b5e38.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/PA-1-5-PPrime-1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7d8f8fbacb7d05a744d9f24a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3050d0851ff97014561834af.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_PA1b.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cacc8c93e1519b77f039fb9c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_PA1b.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Intro2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d12028467a13321349c16f2b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Intro2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_3optsi.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/eee2886b9c5fea54b92d9259.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_3optsi.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_3optsd.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4ab9631a918c97a7530b8fe1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_3optsd.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_concavity.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/194a239b9ef94b3bc26e187c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_concavity.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4a6b164096cb4122e7dbcfe8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q01_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/92c2ff404c310214d223893f.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q01_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q21_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7363b5638d989741dc003276.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q21_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q19_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/84590c1c90dfc757ea7a20d6.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q19_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q03_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/093909d971dfd9248e121bda.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec5__Q03_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Rochester__setDerivatives1__nsc2s10p1_mo_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cdaccfd134b7c30127233a64.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Rochester__setDerivatives1__nsc2s10p1_mo_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__1_6HW_prob9_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/497c653a4f5c323f168a2471.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__1_6HW_prob9_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b60f2827c2e182dea509642d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2ea9a67a81f6c4bca70363a1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_NoLimit.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3e2b643899bfabce0c57fdcf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_NoLimit.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5907681f27c2cb955274cc11.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Cont.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e900152f5f786372acb139bf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Cont.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_NotDiff.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e7b677c222f4cde9fe408f13.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_NotDiff.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__ASU-topics__setLimitConcepts__3-2-36_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6eadae9000625dc0ffe70265.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__ASU-topics__setLimitConcepts__3-2-36_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UMN__calculusStewartCCC__s_2_4_3_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d56ea57a56d00b2ace44c085.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UMN__calculusStewartCCC__s_2_4_3_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap2Sec6__Q02_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f6c21b23f2a0b8454742174b.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap2Sec6__Q02_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UBC__setContinuity__graphs_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c5a68602739a10555b6f76db.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UBC__setContinuity__graphs_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/35382ab4e62705f1a8c6a814.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f89699856c3d5adc3943f995.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1b066ea6374907a21a4739f3.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_TanLine.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/09b5a6b10de21c058b181d04.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_TanLine.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c3a508419090f49cdc7394be.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Options.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5e5a9553508b921fa4bab42e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Options.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9b279dc6d04c0a3858cf92c1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/F-act-1-8-3-axe.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/803b844a4e1f3476f8306985.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/F-act-1-8-3-axe.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap3Sec9__Q11_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/15e1bb4bc9044598e35fac7f.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap3Sec9__Q11_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_1_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/17a084bc66c3b8b25a420336.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_1_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_PA1a.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/00504983bdef91124354f0dd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_PA1a.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_sine.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4b85b3534195ec48e38eac52.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_sine.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_cosine.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3745c98e5ffdae9042e56536.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_cosine.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap3Sec3__Q37_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5b1180d2fa6444f54f818e0e.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap3Sec3__Q37_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_4_UnitCircle.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d3a870371d4882316b889f1a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_4_UnitCircle.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UCSB__Stewart5_3_5__Stewart5_3_5_57__Stewart5_3_5_57_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6e1a25783b453115485a5a2e.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UCSB__Stewart5_3_5__Stewart5_3_5_57__Stewart5_3_5_57_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_InversePlot.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d8a1585b7e839863b073ec25.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_InversePlot.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_LogExp.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/39480dd208fc3a4aa3999f93.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_LogExp.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_arcsine.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/832a9836f32fbf13795b9156.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_arcsine.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_cosarcsin.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7897dd8a89f00ab81f2e162a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_cosarcsin.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_GenInv.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7c8fb9d1ddae9d14a470191a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_GenInv.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap3Sec6__Q51_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2de2e4e1f50465908ae48613.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap3Sec6__Q51_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_Ez4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6281bbee492906244b027b5f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_Ez4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e2d44a1dd50d5476aa33d354.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Circle.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bddc664068b14b8ceb962552.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Circle.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Ex1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/deca8a3dfeccd11cd5c04cde.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Ex1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e6866965b91683dd7e1ec19c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5b2e71b8246f2fc9502487fc.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UCSB__Stewart5_3_6__Stewart5_3_6_27__Stewart5_3_6_27_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1429db23452e331ad2d1f18f.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UCSB__Stewart5_3_6__Stewart5_3_6_27__Stewart5_3_6_27_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_ConeEx.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cb8519c3abb2dda9852fb2be.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_ConeEx.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/09560ac1cdbd27713e6291d9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_LHR.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bad6a1c9507edca19297f3a8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_LHR.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_LHR2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/fe5109c02f101a88d61f487c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_LHR2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b731d4c8a59a878d4230ebf2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_Infty.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cb10b5537469de077dbc1a5b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_Infty.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_InftyLib.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8c86e98880e15e281ab444e6.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_InftyLib.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q15_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5cb088208fc1f7c4940a1707.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q15_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q01_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/798550acf5a2b358f335dda3.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q01_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q01_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a3e9c07c6f38d18bfd8c751a.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap4Sec7__Q01_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6c6e1593648ad2616bbae482.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cf5a3a0f485c6baedd2752b8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_extremes.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/62fdf2ae1bfee80334cc9d72.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_extremes.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_signchart.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/978f7cd8cc67a30d77e10901.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_signchart.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_2Dtest.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4e358caf12012e5cc292eaa4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_2Dtest.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_signchart2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/82ba26d4cb148f5a19e2a7f9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_signchart2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_signchart3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1a118bdcf0b1d50689c58914.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_signchart3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Ex2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/69bcf1958dd70cc68b0290f4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Ex2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/517f5113cd32a2c9cfeb2141.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/40e0f610ad41332942ea6440.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap4Sec1__Q03_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/084aeebb7f8be9d12d1b0dce.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap4Sec1__Q03_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UVA-Stew5e__setUVA-Stew5e-C04S03-GraphShape__4-3-08_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1867f6cdaa460da6c6c11dc8.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UVA-Stew5e__setUVA-Stew5e-C04S03-GraphShape__4-3-08_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/21aaafc3902f23fbf01680ec.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/60114984bb0670fed4c6a9b1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_SineFam.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/33c739da415d4706cef6d86c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_SineFam.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_signchartg.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bc6b8dc5c8e4b3ee5400304c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_signchartg.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_signchartg2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b2d379b21cfc2892e5d199b6.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_signchartg2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_SurgeFam.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a90c858888946c80c0a8a797.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_SurgeFam.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f31f67347cd6882bab8f36d5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Interval.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ab511acd41e46855d1370dd0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Interval.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Ex1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/12a1322fc74909a3a6b391d4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Ex1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Ex1Plot.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bd4a49ff470f63a8b4208fb3.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Ex1Plot.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_4_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7132dbbe2247d03dae884d69.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_4_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_4_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5112f58a59553fe8784073bd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_4_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_4_Act4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/29dc03c555d855a42305ab1e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_4_Act4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__4_Applications_of_the_Derivative__4_7_Applied_Optimization__4_7_7_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/72f91a3d929f5db5cae709c4.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__4_Applications_of_the_Derivative__4_7_Applied_Optimization__4_7_7_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/358ac3aa1ebb82c2a5dcaa81.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_VelArea.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/18b183524fb9c389b7d973c2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_VelArea.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_VelArea2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3b4eb645e11d777571de6395.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_VelArea2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/act-4-1-1-v.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b95d33c4108722a62616edb2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/act-4-1-1-v.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_PA1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/49930a5735422334b201f4bb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_PA1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ad35688a07d7886ac92662f5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_NegVel.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a19f48e08b41b5190dc0bdc3.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_NegVel.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ba3735a258104607f3c3d95f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b3c01cc2204b79b98994029b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/499bad87dedd15124a4fae96.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d9e9034fe6a7dfa2bafff10d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6602a3fafd0a31bb641517f8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Interval.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f78144df3f256bbfb572e550.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Interval.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_LeftSum.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0da42c120ec5189a0fafc684.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_LeftSum.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_RightMidSum.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9ea39dbb89fa4163ae9891f7.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_RightMidSum.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_RenaultAppletRS.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cfd7c6341110aa538111f98f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_RenaultAppletRS.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_NegF.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a823d4c12a45bbc08026a0d4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_NegF.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__FortLewis__Calc1__05-02-Definite-integral__HGM5-05-02-Definite-integral-25b_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/81da43b43aa694b3c0a6afac.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__FortLewis__Calc1__05-02-Definite-integral__HGM5-05-02-Definite-integral-25b_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__FortLewis__Calc1__05-02-Definite-integral__HGM5-05-02-Definite-integral-25b_pg-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/82980f61d9ad908881d1b10b.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__FortLewis__Calc1__05-02-Definite-integral__HGM5-05-02-Definite-integral-25b_pg-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e4923377aa3754ca8dc3b65d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_GGBApplet.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/32ece79010558640c248727e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_GGBApplet.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_GGBApplet2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/63d7f9ea0a30b6607872c4dd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_GGBApplet2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_DefIntInterp.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e476182746553f72ca422176.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_DefIntInterp.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_TrapArea.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d52d35489acdd53cf203108c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_TrapArea.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e132149e7037d7b266303281.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_AdditiveProp.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/34c0a3a1371d9f92b2a5c340.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_AdditiveProp.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_ConstMult.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f856b25096a5f5bbc07b8955.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_ConstMult.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Sum.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f96505fcbec741be1fbd26b0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Sum.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_AvgVal.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/73809998dc0761ac60a761b8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_AvgVal.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q27_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a69391ab105b32ebcffead77.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q27_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q29_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f9228376aac7100385061c4d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q29_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec3__Q23_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ee1cbdcd3d090bd6b8813d09.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec3__Q23_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec3__Q25_pg-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2e65f5e8efab4e805aa4a981.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec3__Q25_pg-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7d14211e6b76ac5989f876e7.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e4fa4b381f262df964d308fb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_FTCVel.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c12daba0475f8aa17e6634b8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_FTCVel.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_FTCVel2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/dabdd182d388254adf740caf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_FTCVel2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_TCT.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9c72a5b072fff04228a11fef.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_TCT.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_TCTEx.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4da6b92b2d80245d2ed9ea82.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_TCTEx.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2fbb947812e1ff138a7bffb9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2b64c7a7f16988bd3653464e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3769ae1d69d1994e38c45c44.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e51275d27da90343786ff608.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ex1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/997fb45ed64f7928ddedfb3b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ex1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_IntFxn.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7312b145339a28713225e1c5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_IntFxn.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/56774f45848d670e0d66a584.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec4__Q03-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/017f6f0da34e6aa4bf2bd07d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec4__Q03-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap6Sec1__Q15-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/51555b0ba8f8d01c6630c980.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap6Sec1__Q15-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap6Sec4__Q11-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/595d9af29db465cbfe064e97.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap6Sec4__Q11-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q21-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/871dd2abac27c6fae89d317d.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap5Sec2__Q21-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/15c2a786376c3b0667d8d864.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/198795af54ba531e29c766d2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a0414d889a94494b2feafcc3.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/69a6336245169547a4f8fe68.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_2_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Act1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e51275d27da90343786ff608.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_2_Act1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_erf.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/560fca6fa069ac9590fba373.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_2_erf.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/prefigure-act-5-2-Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c3cf5968eb9bace70faac8f2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/prefigure-act-5-2-Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__5_The_Integral__5-_4_The_Fundamental_Theorem_of_Calculus_Part_II__5-_4-_35-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d5acbdf1fb6c23cc92ca502b.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__5_The_Integral__5-_4_The_Fundamental_Theorem_of_Calculus_Part_II__5-_4-_35-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap6Sec4__Q21-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c71f02dc59b2b44ea899be08.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap6Sec4__Q21-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Ez1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1fb1647a1e91bc31c48c9d71.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_2_Ez1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_LRMsum.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/abdfb5e498a3475032f4c0bb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_LRMsum.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_TRAP.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d6a63e1f7b188ef29450efaf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_TRAP.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_MidVTrap.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ce96d5585521c6de289f555e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_MidVTrap.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_MidTrapError.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/45ba6044552f8c882304f8c4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_MidTrapError.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_Act2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2afb7139ed392564cd656ad1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_Act2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_6_Act3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1184008f279bd59d0c77ba3b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_6_Act3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap7Sec5__Q13-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d5dd23fa32b349c281ef73d3.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap7Sec5__Q13-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e28bdae043dc15382ff76551.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1revisited.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b649422f71a7230277aaf268.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_PA1revisited.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_PA1revisited2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e71eb152feb570876515963b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_PA1revisited2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_IntWRTy.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d38f34b8e031b45f635d4425.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_IntWRTy.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_ArcLength.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0f4dd022c0d6f7be7db3e20e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_ArcLength.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3dae46081ae0cbd4c3d760af.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UCSB__Stewart5_6_1__Stewart5_6_1_4__Stewart5_6_1_4-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__6-_1HW_prob5-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/facec2c460d8aba5207f3016.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__6-_1HW_prob5-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_PA1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/803fda4662af1d11e2d9bf2b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_PA1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6ec1a8cd5cb73c2222223dfa.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex2_left.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1b6ba0a86f7c777c67cac14f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex2_left.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex2_right.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4742ae78701a871d1e11a7cb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex2_right.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex3_left.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5ba297a3fa5ee09889e69464.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex3_left.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex3_right.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6783966215db83ac8fcd4349.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex3_right.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ex4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d623a4d444a53070a6168b6a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ex4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UCSB__Stewart5_6_2__Stewart5_6_2_23__Stewart5_6_2_23-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d035783592082d21582e6dfa.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UCSB__Stewart5_6_2__Stewart5_6_2_23__Stewart5_6_2_23-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UMN__calculusStewartCCC__s_6_2_8-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2bd61dd1f963c9dd191830da.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UMN__calculusStewartCCC__s_6_2_8-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_3_VelArea.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a0f0432ee8b26ff678824a86.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_3_VelArea.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_3_Bar.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a56bf97d8c356e540e8a4ec5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_3_Bar.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_Intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bca15282f1b18578ffc33533.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_Intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_SumpCrock.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c73f8ec7c59a29769ffbcafd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_SumpCrock.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_Crock.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1b499930228f90954033124a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_Crock.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_Act2Trough.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e7e0c3dcc8417635b5465f1e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_Act2Trough.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_DamEx.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a9d3c604317ccbdf09bbaff7.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_DamEx.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_5_InfReg.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5cb5bef84b2cdcdb7d819913.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_5_InfReg.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_5_InfIntegrand.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3f44d67da0b451a1e72541a2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_5_InfIntegrand.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_5_InfIntegrand2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5d5d6ba570b24fc45d39a2bc.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_5_InfIntegrand2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UMN__calculusStewartET__s_7_8_prob01-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/fea50b2c2a81a7b26b31d8a7.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UMN__calculusStewartET__s_7_8_prob01-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-7-1-2-act-skydiver.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/14d0db7575922f7771112250.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-7-1-2-act-skydiver.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-7-1-2-act-axes.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8c2095a6709f1f8e0858855e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-7-1-2-act-axes.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-7-1-2-act-meteorite.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d44ec15c1e2434d8f0d0c928.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-7-1-2-act-meteorite.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_1_family.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b1eaccc1672e5ef7564ae218.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_1_family.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/47198926dd14f87066f4c7ee.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/43ca191e53f890da98a77f12.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/113498d3cd9a2769f99453a1.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-4.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8cd3bf4e95ee4209357ff905.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__7-_1HW_prob1-image-4.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_1_exercise_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d2c6589069d6988220b74484.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_1_exercise_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_1_threshold.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8c82f21f6302088eb0d94841.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_1_threshold.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_PA_tangents.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f329d40f1cce57db2b90ce41.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_PA_tangents.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_0.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/eab95b040f2380b646ebfca4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_0.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f714268d62a59226fbfee854.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1791a1f1c6245bd1098b9f06.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_23.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5a29f0236e0fbb00d427e424.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_23.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_31.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/026d1fc1f6937c1b842c707c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_31.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_32.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bdeb7f94329583eb0b864c99.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_32.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_33.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/07105bf49f749da8ca670ac5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_33.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_field_4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c92aae8acfe926826d7873c5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_field_4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act1_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/446867156f8fc8a4d825cfe0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act1_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act1_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d0d962f90c4df0fa5e52bb8a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act1_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/668b7590cc518529c9a0a27f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f86a7b580835ca3eb1c2055c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_4.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d8e3b638f2dd7ee0b6ce994e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_4.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap11Sec2__Q01-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/66a5ca99eb998cf59a0e2060.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap11Sec2__Q01-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c6413089ddcc37f0aedf29fb.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-2.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d73349035a6babc69580ef0f.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-2.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-3.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c9c612ef7cfe4064d6714bfb.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Rochester__setDiffEQ2DirectionFields__ur_de_2_3-image-3.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__UMN__calculusStewartET__s_9_2_1-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0502b6acf8e3b3bdf8c155ab.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__UMN__calculusStewartET__s_9_2_1-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap11Sec2__Q03-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cb0f1f070bbd8179a039eb43.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap11Sec2__Q03-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_ex_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/52c8f14b7c0732dc46b50b64.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_ex_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_PA.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/68e0796ebbfcb580d52064f9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_PA.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_slope.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/19425f1cdfab84c45db560e0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_slope.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler_points_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f709e0d8398528e21d0bf214.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler_points_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler_points_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f2c7347ed60a3d3497909a1f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler_points_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler_points_6.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b8a28575a6b844c319eb22e0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler_points_6.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d0680f6e9079a3d90de4600d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler_empty.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/98674ceb1bffb423033ceac0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler_empty.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_slopefield.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9cf8bc0a4d9bee6113e5f94a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_slopefield.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_euler_empty_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e7fe219a77d6b7735488c714.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_euler_empty_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_error.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e3a034c5f09b74c2aa6cdb15.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_error.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_5_lake_michigan.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/97837eed29e5be3857b9929e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_5_lake_michigan.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_5_slope_field.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5b453bf2d87b60c36ed0bf13.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_5_slope_field.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_5_solution.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6cb588efeff634be29476716.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_5_solution.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_preview.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e0495ab9ddfc9cfdb74ff62b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_preview.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_census.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/56952d481263d3cda96a84a2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_census.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_census_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/edb1fc82fd7d423bc478583c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_census_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_census_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3c3716fec91b0c40d4fb10f9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_census_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_logistic_de.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/846c73b4ec3fb1d8bf993bd4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_logistic_de.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_logistic_sol.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f0228c3b0f83c50ece0be853.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_logistic_sol.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_6_activity_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b7bd84f28b265d3ddf5a4462.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_6_activity_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap11Sec7__Q03-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/275086355b789e4d642f1d3b.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/Library__Michigan__Chap11Sec7__Q03-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_1_intro2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6fa54f08c09460152e402dbe.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_1_intro2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_1_act_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/fb43cb0d207c0037b609232f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_1_act_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_1_act_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1f19d4442cf1f106197a75a8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_1_act_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/csafranski__8-_1HW_prob1-image-1.png": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0732c0f1d0abf0b3778240b7.png",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/webwork/images/csafranski__8-_1HW_prob1-image-1.png"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_intro.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/be53e376c23e034393d9037a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_intro.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_PA.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d259d09ddce41faa18b98474.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_PA.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_log.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2721309caabbaff42f82909b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_log.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/27ae3444e705ee4c0a3b18ec.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0b3dbdb09b90c3b86c997be4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_3.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6b5ad1a77b070b8907325f91.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_3.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-8a-3-geom-half.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3be8256509fe50e358ce3d9a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-8a-3-geom-half.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_3_geom_x_T.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1309f172f5fd3a59b9e78e5d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_3_geom_x_T.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_4_Ex_1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a3aa09f191a0537a69bc6890.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_4_Ex_1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-8a-4-T159.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/69bdb168e27cd2f9553fce72.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-8a-4-T159.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-8a-5x-alt-partial-sums.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6f505460a1833e0947895cb4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-8a-5x-alt-partial-sums.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4347aadd73439bb886959eb8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Act3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cd4409cfd81deb2b09bad565.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Act3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1aSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/7ab2cef8edfd4b6daf9c8daf.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1aSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3d2ed5a351905a55b0b2f587.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1cSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e1f035fe2658b055d9a226c7.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1cSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Act1dSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/15e409a3c5af5f571cbeb1ed.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Act1dSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6089f203394fa18ab03f0e23.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1cd5b95519d53cbc6254abc1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/19f52aedddb61f92eeb778f1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/507dd2780c8cfc544d52e38b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/F-act-1-8-3-ans.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2686e7c60cc07dca9a7f1a5d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/F-act-1-8-3-ans.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_sineSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/75464269308a27682fbda931.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_sineSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_cosineSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e93faf50b7474b4579b2a6f9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_cosineSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/e0c4041f4422642247024267.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/213897f29b3014172d8d06da.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Act3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bd77cc41d42201919679d087.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Act3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Act4Soln1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/94a82f493016edd4c1d4a3c4.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Act4Soln1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_5_Act4Soln2.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9ed1f3eaeeb382f2febda286.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_5_Act4Soln2.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-act-3-3-1-ans.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c6a4b3e63ff8fef845e48ed7.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-act-3-3-1-ans.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5bc327a85b294a5b09ec0083.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b0d0800ed851689b395ecde5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Act3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/29483b09455ad9dbbdf2e516.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Act3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ab511acd41e46855d1370dd0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_3_Act3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c080d0c23bcd8e7aedcd2d21.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_3_Act3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Act2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5856c13b8ff2d22e06251901.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Act2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_act_2_soln_a1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/759d5477323aa1532816a306.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_act_2_soln_a1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/act-5-1-2a-ans.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/bdc27da3918f673fd598e04a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/act-5-1-2a-ans.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_act_2_soln_c1.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5296019c6de25318a6a35d64.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_act_2_soln_c1.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/prefigure-act-5-2-Act2ans.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ea5b60ee8e562138f04d70b1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/prefigure-act-5-2-Act2ans.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/Fig-7-1-2-act-ans.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/46cc45c8e8f33610b379bd87.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/generated/prefigure/Fig-7-1-2-act-ans.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act1_dydt_plot_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/aec90b691c3b32a348340ec0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act1_dydt_plot_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act1_slope_field_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a4884363ce63d54eef174c77.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act1_slope_field_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act1_trajectories_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b8e9fcc651075e6d8ef1f0de.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act1_trajectories_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_dydt_plot_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1ef4d73267047e9d6053208a.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_dydt_plot_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_slope_field_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c52e24bdf190422349c38d6b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_slope_field_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Act2_trajectories_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5b0b9b76445a8302e678b0f5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Act2_trajectories_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_Act1_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4f321fd51c68451e3691f0de.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_Act1_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_Act2_slope_field_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/37519406568b6c7f4ec21ac9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_Act2_slope_field_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_Act2_euler_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1f96606703520b56e00b3586.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_Act2_euler_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_1_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/aa3ac91c533c31e535acc6da.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_1_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_2_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a335ec6cf9fa34a3c301db69.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_2_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/8a_2_act_3_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/76519c76c19a5fa44c53d5e0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/8a_2_act_3_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ez1f_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/17db10474a3f920acb9e1cc3.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ez1f_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ez2f_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/572f5917120560c16699a811.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ez2f_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ez3a_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2198f5be40fa8a824ad6d7c8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ez3a_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_2_Ez3b_soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/345300ba1528a6dd3239cca2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_2_Ez3b_soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_3_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2b52d56c889f4298816330a5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_3_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/195862294f07b87e11ed24e8.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez2bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/321611e2d5e5ea919f5eb7dd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez2bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez4aSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c9999557d8f10e33377c9948.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez4aSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez4bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c1b794bbc78ed5d39446004f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez4bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_4_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5af797c8f225173c5e083599.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_4_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez1dSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c1a2ab627429c3427c05439e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez1dSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez_4aSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8b23d6641be06947a8b196bd.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez_4aSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez_4bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/8bbdac617c5c84a3cc962902.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez_4bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez_4cSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/fbd8399aae1c8cc621f74858.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez_4cSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_6_Ez_4dSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/369ce33c6e9f1879fb2b5c01.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_6_Ez_4dSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez2_Soln-updated.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/c441fba0bb20302bd54afb0d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez2_Soln-updated.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez1_Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d2e76b4e472dbb0d2fd72d1c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez1_Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez3_Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3d926b2553bb345e16a10e09.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez3_Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_7_Ez4_Soln-updated.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/244035822f34d8e4df1e0cfc.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_7_Ez4_Soln-updated.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/1_8_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2fd69ea04b3119048ca99bd5.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/1_8_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_2_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f384113c2289979f1cf7c776.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_2_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_6_Ez4Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/3f93ef109581b47628eb9450.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_6_Ez4Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0347d0cb4a619cd57a4ddd1f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_7_Ez2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/059b5581092ecc0f7382c630.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_7_Ez2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/a931ef06a887438ebda51620.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/2_8_Ez2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/78000fa63b502768b28b6af1.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/2_8_Ez2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f32133f720cfefeb74900fbc.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/cdb32e259924f05300a6fd4e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_1_Act1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b94ed97f7b6f3363d8b81cae.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_1_Act1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/249ab15789f73f560175ec8d.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Ez2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b2ac22df05d9597cd4a18fdb.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Ez2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/3_2_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/9d4c10a35e726395374aa261.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/3_2_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/06d55b6cc2024968a20bbee2.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_1_Ez4Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/87d38f31b09a3d199a8e07ee.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_1_Ez4Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/109c2dc531d163a8a7bcdcb0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez1Solnc.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/4c605cd867befc56c53fefe0.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez1Solnc.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/805ad4ee96c2e12115406d8c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez4aSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/6ffdaa79d1689b9c8ab52e7c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez4aSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_2_Ez4bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/0270d0c623dc137b84139238.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_2_Ez4bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Ez4aSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/398d6a67e15fb27eece3274f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Ez4aSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_3_Ez4bSoln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/dd671ec35d0b1137276b82f9.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_3_Ez4bSoln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/4_4_Ez2Solnc.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/b65cc5a278cfa4640f5d8b3f.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/4_4_Ez2Solnc.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/5f1fd13a8bc33c01958190dc.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ed2c036a20bc426eeba75343.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_1_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/aab4e18ce88bb6df54659077.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_1_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d608a568608a0e6e95cf3812.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_2_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_3_Ez4Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/520c8324cb7e49af9a07f43e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/5_3_Ez4Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_1_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/52461044d0c6fe15f4549072.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_1_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_2_Ez2Region.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/40709e6a0256fa087d7d3c5c.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_2_Ez2Region.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_3_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/85fae7ebb8e8ddc6bc93471b.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_3_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/6_4_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/2580bc451e5370ca281e9598.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/6_4_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_1_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/d0b29aadb70eaa5cc4ca0897.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_1_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1fa0017a68ba2462d448f691.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Ez2Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/28d0c8aefd9c39a477da99e6.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Ez2Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_2_Ez3Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/f7a4d176095285ca5e35879e.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_2_Ez3Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_Ez1Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/ddee9dd1b2272b2ed5772907.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_Ez1Soln.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_3_Ez1SolnB.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/be845656a4664d5a7dd164da.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_3_Ez1SolnB.svg"
+  },
+  "https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/7_4_Ez4Soln.svg": {
+    "status": "ok",
+    "local_url": "/book-assets/active-calculus-html/1277a8faa88333df1db90588.svg",
+    "provenance": "archive:active-calculus-single-mbx-f45f25761f6cbcc614531574293c525b34a9994b/html2e/external/images/7_4_Ez4Soln.svg"
+  }
+}

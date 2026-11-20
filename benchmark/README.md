@@ -55,7 +55,7 @@ python benchmark/run.py --questions benchmark/questions_plan.json --plan-quality
 
 ## HTML books and isolated index measurements
 
-HTML snapshots are imported by `scripts/import_html.py` from a PreTeXt frontmatter directory or a Pressbooks home page. Downloads are sequential with a default 1.5-second interval; raw responses are cached under `content/BOOK/raw/` (not committed). A completed `book.json` contains chapter titles, paragraph text, source chapter URLs and original/local anchor IDs. Paragraphs lacking a source ID receive a SHA-256 text-based ID plus a duplicate counter; it locates the exact paragraph in this saved snapshot, while the original URL links to the source chapter without inventing a source fragment. Re-importing the same snapshot preserves IDs. MathJax 3.2.2 and fonts are local; images load from original URLs and interactive embeds are omitted in favor of the original chapter link. Import sanitizes scripts and event attributes.
+HTML snapshots are imported by `scripts/import_html.py` from a PreTeXt frontmatter directory or a Pressbooks home page. Downloads are sequential with a default 1.5-second interval; raw responses are cached under `content/BOOK/raw/` (not committed). A completed `book.json` contains chapter titles, paragraph text, source chapter URLs and original/local anchor IDs. Paragraphs lacking a source ID receive a SHA-256 text-based ID plus a duplicate counter; it locates the exact paragraph in this saved snapshot, while the original URL links to the source chapter without inventing a source fragment. Re-importing the same snapshot preserves IDs. MathJax 3.2.2 and fonts are local; images are stored locally and interactive embeds are omitted in favor of the original chapter link. Import sanitizes scripts and event attributes.
 
 ```sh
 python scripts/import_html.py --id active-calculus-html --kind pretext --url https://mattboelkins.github.io/active-calculus-single-mbx/html2e/frontmatter.html
@@ -80,3 +80,27 @@ python benchmark/run.py --questions benchmark/questions_html_smoke.json --plan-q
 ```
 
 Use `--limit 1 --dry-run` to preview a single request. The provided calculus questions test calculus; Writing for Success tests writing/grammar; Liberté tests beginner French. No live model calls were made during import validation; automated tests mock model outputs and verify retrieval and local evidence links.
+
+## Re-importing images, tables and teaching boxes
+
+HTML imports now store every displayed image under `content/BOOK/assets/` and serve it through `/book-assets/BOOK/FILENAME`. `media.json` records the source URL, local file, archive member/provenance and any unavailable original. The importer resolves relative URLs, prefers real lazy-image sources (`data-src`, `data-lazy-src`, `data-original`) over placeholders, chooses a usable `srcset`/`picture` candidate, and removes remote responsive/lazy attributes after localization. Direct image links are rewritten as well. Invalid HTML error responses are rejected instead of being saved as image files. Asset filenames use content hashes; existing downloaded files are reused on re-import.
+
+To avoid hundreds of requests to the book sites, images can be read from the publisher's official EPUB or published GitHub ZIP. Examples for an initial image import:
+
+```sh
+python scripts/import_html.py --id active-calculus-html --kind pretext --url https://mattboelkins.github.io/active-calculus-single-mbx/html2e/frontmatter.html --media-archive /path/to/published-gh-pages.zip --media-prefix html2e
+python scripts/import_html.py --id writing-for-success-html --kind pressbooks --url https://opentextbc.ca/writingforsuccess/ --export-file content/writing-for-success-html/source.xhtml --media-archive /path/to/official-writing.epub
+python scripts/import_html.py --id liberte1-html --kind pressbooks --url https://pressbooks.atlanticoer-relatlantique.ca/liberte1/ --export-file content/liberte1-html/source.xhtml --media-archive /path/to/official-liberte.epub
+```
+
+Network fallbacks still use the configured request interval. Published source archives are only used as image sources; chapter text continues to come from the original HTML/XHTML snapshots. After a successful import, local `media.json` and assets are enough for subsequent imports without the archive. Known unavailable images also reuse their marked placeholders rather than repeatedly requesting broken URLs.
+
+All image alternative text is included in evidence text, including image-only examples. Tables remain complete chunks with caption, row/cell boundaries, the source section heading and nearby explanatory text. PreTeXt theorem/definition/assemblage/example blocks and Pressbooks textboxes remain complete evidence blocks; their child paragraphs/formulas are not separately disconnected. Ordinary nested paragraphs preserve their surrounding text as well. Index/navigation items are not evidence. Local citations still point at the actual block, table or image-containing paragraph, not a made-up source fragment.
+
+The repaired snapshots contain 421 Active Calculus image sources, 105 Writing sources and 235 Liberté sources. All are served locally. Two Writing originals (`image1.jpeg`, `image21.jpeg`) return 404 in the original site and are also marked `#fixme`/missing in its official EPUB. Their local placeholders explicitly say the original is unavailable; `image21` retains the full source alternative-text example. `image1` only has the non-descriptive alternative text “image,” so its original visual content could not be recovered.
+
+`benchmark/questions_html_regression.json` contains the three reported failure questions, one request each. Offline regression tests verify complete evidence reaches the answer adapter and citations resolve locally; they mock the models. For an actual paid model check:
+
+```sh
+python benchmark/run.py --questions benchmark/questions_html_regression.json --plan-quality --skip-plan off --cold-runs 0 --page-runs 0
+```

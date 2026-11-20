@@ -19,7 +19,7 @@ def post(client,path,data):
     return client.post(path,json=data,headers={'X-CSRF-Token':'web-csrf'})
 
 def ask(client,**extra):
-    return post(client,'/api/ask',{'question':'What is a derivative?','doc':'active-calculus-pdf',**extra})
+    return post(client,'/api/ask',{'question':'What is a derivative?','doc':'active-calculus-html',**extra})
 
 def test_default_off_and_optional_on(setup):
     application,client,calls=setup
@@ -99,3 +99,13 @@ def test_browser_web_interactions():
     node=shutil.which('node')
     if not node: pytest.skip('Node.js is needed for the browser interaction fixture')
     subprocess.run([node,'tests/web_ui.cjs'],cwd=Path(__file__).resolve().parents[1],check=True)
+
+
+def test_rich_text_security_and_assistive_mathml():
+    import shutil
+    import subprocess
+    from pathlib import Path
+    import pytest
+    node=shutil.which('node')
+    if not node: pytest.skip('Node.js needed for Markdown and MathJax fixture')
+    subprocess.run([node,'tests/rich_text.cjs'],cwd=Path(__file__).resolve().parents[1],check=True)

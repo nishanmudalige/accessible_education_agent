@@ -14,16 +14,16 @@
 </h1>
 <article class="objectives goal-like" id="sec-5-2-FTC2-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
 <ul class="disc" id="sec-5-2-FTC2-2-1">
-<li id="sec-5-2-FTC2-2-1-1">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-2-1-1-1">How does the integral function <span class="process-math">\(A(x) = \int_1^x f(t) \, dt\)</span> define an antiderivative of <span class="process-math">\(f\text{?}\)</span>
+<li data-evidence="true" id="sec-5-2-FTC2-2-1-1">
+<div class="para" id="sec-5-2-FTC2-2-1-1-1">How does the integral function <span class="process-math">\(A(x) = \int_1^x f(t) \, dt\)</span> define an antiderivative of <span class="process-math">\(f\text{?}\)</span>
 </div>
 </li>
-<li id="sec-5-2-FTC2-2-1-2">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-2-1-2-1">What is the statement of the Second Fundamental Theorem of Calculus?
+<li data-evidence="true" id="sec-5-2-FTC2-2-1-2">
+<div class="para" id="sec-5-2-FTC2-2-1-2-1">What is the statement of the Second Fundamental Theorem of Calculus?
 </div>
 </li>
-<li id="sec-5-2-FTC2-2-1-3">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-2-1-3-1">How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?
+<li data-evidence="true" id="sec-5-2-FTC2-2-1-3">
+<div class="para" id="sec-5-2-FTC2-2-1-3-1">How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?
 </div>
 </li>
 </ul>
@@ -32,34 +32,34 @@
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
 </h2>
-<div class="para logical" id="sec-5-2-FTC2-3-2">
-<div class="para" data-evidence="true" id="paragraph-486397ac2cbaf8ae-1">In <a class="internal" href="/book/active-calculus-html/sec-4-4-FTC" title="Section 4.4: The Fundamental Theorem of Calculus">Section 4.4</a>, we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <em class="emphasis">First</em> Fundamental Theorem of Calculus,  as in this section we develop a corresponding result that follows it. Recall that the First FTC tells us that if <span class="process-math">\(f\)</span> is a continuous function on <span class="process-math">\([a,b]\)</span> and <span class="process-math">\(F\)</span> is any antiderivative of <span class="process-math">\(f\)</span> (that is, <span class="process-math">\(F' = f\)</span>), then</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-3-2-9">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-3-2">
+<div class="para">In <a class="internal" href="/book/active-calculus-html/sec-4-4-FTC" title="Section 4.4: The Fundamental Theorem of Calculus">Section 4.4</a>, we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <em class="emphasis">First</em> Fundamental Theorem of Calculus,  as in this section we develop a corresponding result that follows it. Recall that the First FTC tells us that if <span class="process-math">\(f\)</span> is a continuous function on <span class="process-math">\([a,b]\)</span> and <span class="process-math">\(F\)</span> is any antiderivative of <span class="process-math">\(f\)</span> (that is, <span class="process-math">\(F' = f\)</span>), then</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-3-2-9">
 \begin{equation*}
 \int_a^b f(x) \, dx = F(b) - F(a)\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="sec-5-2-FTC2-3-3">
-<div class="para" data-evidence="true" id="paragraph-1697e59527b5d199-1">We have used this result in two settings:</div>
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-3-3">
+<div class="para">We have used this result in two settings:</div>
 <ol class="decimal" id="sec-5-2-FTC2-3-3-1">
 <li id="sec-5-2-FTC2-3-3-1-1">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-3-3-1-1-1">If we have a graph of <span class="process-math">\(f\)</span> and we can compute the exact area bounded by <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\text{,}\)</span> we can compute the change in an antiderivative <span class="process-math">\(F\)</span> over the interval.
+<div class="para" id="sec-5-2-FTC2-3-3-1-1-1">If we have a graph of <span class="process-math">\(f\)</span> and we can compute the exact area bounded by <span class="process-math">\(f\)</span> on an interval <span class="process-math">\([a,b]\text{,}\)</span> we can compute the change in an antiderivative <span class="process-math">\(F\)</span> over the interval.
 </div>
 </li>
 <li id="sec-5-2-FTC2-3-3-1-2">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-3-3-1-2-1">If we can find an algebraic formula for an antiderivative of <span class="process-math">\(f\text{,}\)</span> we can evaluate the integral to find the net signed area bounded by the function on the interval.
+<div class="para" id="sec-5-2-FTC2-3-3-1-2-1">If we can find an algebraic formula for an antiderivative of <span class="process-math">\(f\text{,}\)</span> we can evaluate the integral to find the net signed area bounded by the function on the interval.
 </div>
 </li>
 </ol>
-<div class="para" data-evidence="true" id="paragraph-4bbd4faa229414aa-1">For the former, see <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#PA-5-1" title="Preview Activity 5.1.1">Preview Activity 5.1.1</a> or <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#act-5-1-1" title="Activity 5.1.2">Activity 5.1.2</a>. For the latter, we can easily evaluate exactly integrals such as</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-3-3-4">
+<div class="para">For the former, see <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#PA-5-1" title="Preview Activity 5.1.1">Preview Activity 5.1.1</a> or <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#act-5-1-1" title="Activity 5.1.2">Activity 5.1.2</a>. For the latter, we can easily evaluate exactly integrals such as</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-3-3-4">
 \begin{equation*}
 \int_1^4 x^2 \, dx\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-a98985fd8634c8dc-1">since we know that the function <span class="process-math">\(F(x) = \frac{1}{3}x^3\)</span> is an antiderivative of <span class="process-math">\(f(x) = x^2\text{.}\)</span> Thus,</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-3-3-7">
+<div class="para">since we know that the function <span class="process-math">\(F(x) = \frac{1}{3}x^3\)</span> is an antiderivative of <span class="process-math">\(f(x) = x^2\text{.}\)</span> Thus,</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-3-3-7">
 \begin{align*}
 \int_1^4 x^2 \, dx \amp= \frac{1}{3}x^3 \bigg\vert_1^4\\
 \amp=  \frac{1}{3}(4)^3 - \frac{1}{3}(1)^3\\
@@ -69,13 +69,13 @@
 </div>
 <div class="para" data-evidence="true" id="sec-5-2-FTC2-3-4">Thus, the First FTC can be used in two ways. First, to find the difference <span class="process-math">\(F(b) - F(a)\)</span> for an antiderivative <span class="process-math">\(F\)</span> of the integrand <span class="process-math">\(f\text{,}\)</span> even if we may not have a formula for <span class="process-math">\(F\)</span> itself. To do this, we must know the value of the integral <span class="process-math">\(\int_a^b f(x) \, dx\)</span> exactly, perhaps through known geometric formulas for area. In addition, the First FTC provides a way to find the exact value of a definite integral, and hence a certain net signed area exactly, by finding an antiderivative of the integrand and evaluating its total change over the interval. In this case, we need to know a formula for the antiderivative <span class="process-math">\(F\text{.}\)</span> Both of these perspectives are reflected in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#F-5-2-Intro" title="Figure 5.2.1">Figure 5.2.1</a>.
 </div>
-<figure class="figure figure-like" id="F-5-2-Intro"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Intro.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Intro-2-description">
-<div class="para" data-evidence="true" id="F-5-2-Intro-2-1-1">There are two adjacent graphs, both shown on the interval of <span class="process-math">\(x\)</span> values from <span class="process-math">\(-1\)</span> to <span class="process-math">\(4.5\)</span> and on the interval of <span class="process-math">\(y\)</span> values from <span class="process-math">\(-5\)</span> to <span class="process-math">\(25\text{.}\)</span>
+<figure class="figure figure-like" data-evidence="true" id="F-5-2-Intro"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/69a6336245169547a4f8fe68.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Intro-2-description">
+<div class="para" id="F-5-2-Intro-2-1-1">There are two adjacent graphs, both shown on the interval of <span class="process-math">\(x\)</span> values from <span class="process-math">\(-1\)</span> to <span class="process-math">\(4.5\)</span> and on the interval of <span class="process-math">\(y\)</span> values from <span class="process-math">\(-5\)</span> to <span class="process-math">\(25\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Intro-2-1-2">At left, the graph of <span class="process-math">\(f(x) = x^2\)</span> and the region it bounds along with the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([1,4]\text{.}\)</span>  The region is shaded and labeled with an area of <span class="process-math">\(\int_1^4 x^2 \, dx = 21\text{.}\)</span>
+<div class="para" id="F-5-2-Intro-2-1-2">At left, the graph of <span class="process-math">\(f(x) = x^2\)</span> and the region it bounds along with the <span class="process-math">\(x\)</span>-axis on the interval <span class="process-math">\([1,4]\text{.}\)</span>  The region is shaded and labeled with an area of <span class="process-math">\(\int_1^4 x^2 \, dx = 21\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Intro-2-1-3">At right, the graph of <span class="process-math">\(F(x) = \frac{1}{3}x^3\)</span> with important points labeled on the interval <span class="process-math">\([1,4]\text{:}\)</span> <span class="process-math">\((1,\frac13)\)</span> and <span class="process-math">\((4,\frac{64}{3})\text{.}\)</span>  The difference in these heights of <span class="process-math">\(F(x)\)</span> is noted on the graph with the label <span class="process-math">\(F(4)-F(1) = 21\text{.}\)</span>
+<div class="para" id="F-5-2-Intro-2-1-3">At right, the graph of <span class="process-math">\(F(x) = \frac{1}{3}x^3\)</span> with important points labeled on the interval <span class="process-math">\([1,4]\text{:}\)</span> <span class="process-math">\((1,\frac13)\)</span> and <span class="process-math">\((4,\frac{64}{3})\text{.}\)</span>  The difference in these heights of <span class="process-math">\(F(x)\)</span> is noted on the graph with the label <span class="process-math">\(F(4)-F(1) = 21\text{.}\)</span>
 </div>
 </div></details>
 </div>
@@ -93,14 +93,14 @@
 <span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h4>
 <div class="introduction" id="PA-5-2-1">
-<div class="para logical" id="PA-5-2-1-1">
-<div class="para" data-evidence="true" id="paragraph-60586809c70d00d4-1">Consider the function <span class="process-math">\(A\)</span> defined by the rule</div>
-<div class="displaymath process-math" data-evidence="true" id="PA-5-2-1-1-2">
+<div class="para logical" data-evidence="true" id="PA-5-2-1-1">
+<div class="para">Consider the function <span class="process-math">\(A\)</span> defined by the rule</div>
+<div class="displaymath process-math" id="PA-5-2-1-1-2">
 \begin{equation*}
 A(x) = \int_1^x f(t) \, dt\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-9b9a99255170b53b-1">where <span class="process-math">\(f(t) = 4-2t\text{.}\)</span>
+<div class="para">where <span class="process-math">\(f(t) = 4-2t\text{.}\)</span>
 </div>
 </div>
 </div>
@@ -136,9 +136,9 @@ A(x) = \int_1^x f(t) \, dt\text{,}
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The Second Fundamental Theorem of Calculus</span>
 </h2>
-<div class="para logical" id="sec-5-2-FTC2-4-3">
-<div class="para" data-evidence="true" id="paragraph-d1c87ba903a1efba-1">The result of <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#PA-5-2" title="Preview Activity 5.2.1">Preview Activity 5.2.1</a> is not particular to the function <span class="process-math">\(f(t) = 4-2t\text{,}\)</span> nor to the choice of “<span class="process-math">\(1\)</span>” as the lower bound in the integral that defines the function <span class="process-math">\(A\text{.}\)</span> For instance, if we let <span class="process-math">\(f(t) = \cos(t) - t\)</span> and set <span class="process-math">\(A(x) = \int_2^x f(t) \, dt\text{,}\)</span> we can determine a formula for <span class="process-math">\(A\)</span> by the First FTC. Specifically,</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-3-8">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-4-3">
+<div class="para">The result of <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#PA-5-2" title="Preview Activity 5.2.1">Preview Activity 5.2.1</a> is not particular to the function <span class="process-math">\(f(t) = 4-2t\text{,}\)</span> nor to the choice of “<span class="process-math">\(1\)</span>” as the lower bound in the integral that defines the function <span class="process-math">\(A\text{.}\)</span> For instance, if we let <span class="process-math">\(f(t) = \cos(t) - t\)</span> and set <span class="process-math">\(A(x) = \int_2^x f(t) \, dt\text{,}\)</span> we can determine a formula for <span class="process-math">\(A\)</span> by the First FTC. Specifically,</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-3-8">
 \begin{align*}
 A(x) \amp=  \int_2^x (\cos(t) - t) \, dt\\
 \amp=  \sin(t) - \frac{1}{2}t^2 \bigg\vert_2^x\\
@@ -146,40 +146,40 @@ A(x) \amp=  \int_2^x (\cos(t) - t) \, dt\\
 \end{align*}
 </div>
 </div>
-<div class="para logical" id="sec-5-2-FTC2-4-4">
-<div class="para" data-evidence="true" id="paragraph-157f2346402bfd18-1">Differentiating <span class="process-math">\(A(x)\text{,}\)</span> since <span class="process-math">\((\sin(2) - 2)\)</span> is constant, it follows that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-4-3">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-4-4">
+<div class="para">Differentiating <span class="process-math">\(A(x)\text{,}\)</span> since <span class="process-math">\((\sin(2) - 2)\)</span> is constant, it follows that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-4-3">
 \begin{equation*}
 A'(x) = \cos(x) - x\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-39f98fa9e36a87e8-1">and thus we see that <span class="process-math">\(A'(x) = f(x)\text{,}\)</span> so <span class="process-math">\(A\)</span> is an antiderivative of <span class="process-math">\(f\text{.}\)</span> And since <span class="process-math">\(A(2) = \int_2^2 f(t) \, dt = 0\text{,}\)</span> <span class="process-math">\(A\)</span> is the only antiderivative of <span class="process-math">\(f\)</span> for which <span class="process-math">\(A(2) = 0\text{.}\)</span>
+<div class="para">and thus we see that <span class="process-math">\(A'(x) = f(x)\text{,}\)</span> so <span class="process-math">\(A\)</span> is an antiderivative of <span class="process-math">\(f\text{.}\)</span> And since <span class="process-math">\(A(2) = \int_2^2 f(t) \, dt = 0\text{,}\)</span> <span class="process-math">\(A\)</span> is the only antiderivative of <span class="process-math">\(f\)</span> for which <span class="process-math">\(A(2) = 0\text{.}\)</span>
 </div>
 </div>
-<div class="para logical" id="sec-5-2-FTC2-4-5">
-<div class="para" data-evidence="true" id="paragraph-0cc846810b3901a8-1">In general, if <span class="process-math">\(f\)</span> is any continuous function, and we define the function <span class="process-math">\(A\)</span> by the rule</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-5-3">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-4-5">
+<div class="para">In general, if <span class="process-math">\(f\)</span> is any continuous function, and we define the function <span class="process-math">\(A\)</span> by the rule</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-5-3">
 \begin{equation*}
 A(x) = \int_c^x f(t) \, dt\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-6605096bef9fa51f-1">where <span class="process-math">\(c\)</span> is an arbitrary constant, then we can show that <span class="process-math">\(A\)</span> is an antiderivative of <span class="process-math">\(f\text{.}\)</span> To see why, let’s demonstrate that <span class="process-math">\(A'(x) = f(x)\)</span> by using the limit definition of the derivative. Doing so, we observe that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-5-8">
+<div class="para">where <span class="process-math">\(c\)</span> is an arbitrary constant, then we can show that <span class="process-math">\(A\)</span> is an antiderivative of <span class="process-math">\(f\text{.}\)</span> To see why, let’s demonstrate that <span class="process-math">\(A'(x) = f(x)\)</span> by using the limit definition of the derivative. Doing so, we observe that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-5-8">
 \begin{align}
 A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h}\notag\\
 \amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h}\notag\\
 \amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h}\text{,}\tag{5.2.1}
 \end{align}
 </div>
-<div class="para" data-evidence="true" id="paragraph-f52139c9d68dc977-1">where <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#sec-5-2-FTC2-4-5-8" title="Equation 5.2.1">Equation (5.2.1)</a> follows from the fact that <span class="process-math">\(\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt\text{.}\)</span> Now, observe that for small values of <span class="process-math">\(h\text{,}\)</span>
+<div class="para">where <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#sec-5-2-FTC2-4-5-8" title="Equation 5.2.1">Equation (5.2.1)</a> follows from the fact that <span class="process-math">\(\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt\text{.}\)</span> Now, observe that for small values of <span class="process-math">\(h\text{,}\)</span>
 </div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-5-12">
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-5-12">
 \begin{equation*}
 \int_x^{x+h} f(t) \, dt \approx f(x) \cdot h\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-767178fbaa446808-1">by a simple left-hand approximation of the integral. Thus, as we take the limit in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#sec-5-2-FTC2-4-5-8" title="Equation 5.2.1">Equation (5.2.1)</a>, it follows that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-4-5-14">
+<div class="para">by a simple left-hand approximation of the integral. Thus, as we take the limit in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#sec-5-2-FTC2-4-5-8" title="Equation 5.2.1">Equation (5.2.1)</a>, it follows that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-4-5-14">
 \begin{equation*}
 A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac{f(x) \cdot h}{h} = f(x)\text{.}
 \end{equation*}
@@ -187,8 +187,8 @@ A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac
 </div>
 <div class="para" data-evidence="true" id="sec-5-2-FTC2-4-6">Hence, <span class="process-math">\(A\)</span> is indeed an antiderivative of <span class="process-math">\(f\text{.}\)</span> In addition, <span class="process-math">\(A(c) = \int_c^c f(t) \, dt = 0\text{.}\)</span> The preceding argument demonstrates the truth of the Second Fundamental Theorem of Calculus, which we state as follows.
 </div>
-<article class="assemblage assemblage-like" id="FTC-2"><h3 class="heading"><span class="title">The Second Fundamental Theorem of Calculus.</span></h3>
-<div class="para" data-evidence="true" id="FTC-2-2"> If <span class="process-math">\(f\)</span> is a continuous function and <span class="process-math">\(c\)</span> is any constant, then <span class="process-math">\(f\)</span> has a unique antiderivative <span class="process-math">\(A\)</span> that satisfies <span class="process-math">\(A(c) = 0\text{,}\)</span> and that antiderivative is given by the rule <span class="process-math">\(A(x) = \int_c^x f(t) \, dt\text{.}\)</span>
+<article class="assemblage assemblage-like" data-evidence="true" id="FTC-2"><h3 class="heading"><span class="title">The Second Fundamental Theorem of Calculus.</span></h3>
+<div class="para" id="FTC-2-2"> If <span class="process-math">\(f\)</span> is a continuous function and <span class="process-math">\(c\)</span> is any constant, then <span class="process-math">\(f\)</span> has a unique antiderivative <span class="process-math">\(A\)</span> that satisfies <span class="process-math">\(A(c) = 0\text{,}\)</span> and that antiderivative is given by the rule <span class="process-math">\(A(x) = \int_c^x f(t) \, dt\text{.}\)</span>
 </div>
 </article>
 <section class="worksheet" id="ws-act-5-2-1">
@@ -201,13 +201,13 @@ A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac
 <div class="introduction" id="act-5-2-1-1">
 <div class="para" data-evidence="true" id="act-5-2-1-1-1">Suppose that <span class="process-math">\(f\)</span> is the function given in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#F-5-2-Act1" title="Figure 5.2.2">Figure 5.2.2</a> and that <span class="process-math">\(f\)</span> is a piecewise function whose parts are either portions of lines or portions of circles, as pictured.
 </div>
-<figure class="figure figure-like" id="F-5-2-Act1"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Act1.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Act1-2-description">
-<div class="para" data-evidence="true" id="F-5-2-Act1-2-1-1">Two sets of adjacent coordinate axes are provided.  The left axes have <span class="process-math">\(x\)</span> ranging horizontally from <span class="process-math">\(-4\)</span> to <span class="process-math">\(4\)</span> and <span class="process-math">\(y\)</span> ranging vertically from <span class="process-math">\(-2\)</span> to <span class="process-math">\(2\text{.}\)</span>  The grid is <span class="process-math">\(1 \times 1\text{.}\)</span>  The righthand grid and axes are the same size with the same horizontal and vertical scale.
+<figure class="figure figure-like" data-evidence="true" id="F-5-2-Act1"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/e51275d27da90343786ff608.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Act1-2-description">
+<div class="para" id="F-5-2-Act1-2-1-1">Two sets of adjacent coordinate axes are provided.  The left axes have <span class="process-math">\(x\)</span> ranging horizontally from <span class="process-math">\(-4\)</span> to <span class="process-math">\(4\)</span> and <span class="process-math">\(y\)</span> ranging vertically from <span class="process-math">\(-2\)</span> to <span class="process-math">\(2\text{.}\)</span>  The grid is <span class="process-math">\(1 \times 1\text{.}\)</span>  The righthand grid and axes are the same size with the same horizontal and vertical scale.
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Act1-2-1-2">On the left axes, the graph of <span class="process-math">\(y = f(x)\)</span> is provided (which is the same function considered in <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#act-5-1-1" title="Activity 5.1.2">Activity 5.1.2</a>).  This piecewise linear function is <span class="process-math">\(0\)</span> for <span class="process-math">\(x \lt 0\)</span> and <span class="process-math">\(x \gt 7\text{.}\)</span>  On the interval <span class="process-math">\(0 \lt x \lt 1\text{,}\)</span> <span class="process-math">\(f(x) = x\text{.}\)</span>  On the interval <span class="process-math">\(1 \lt x \lt 2\text{,}\)</span> <span class="process-math">\(f(x)\)</span> is a quarter circle that connects points <span class="process-math">\((1,1)\)</span> and <span class="process-math">\((2,0)\text{.}\)</span>  On the interval <span class="process-math">\(3 \lt x \lt 4\text{,}\)</span> <span class="process-math">\(f(x) = -1\text{.}\)</span> On the interval <span class="process-math">\(4 \lt x \lt 5\text{,}\)</span> <span class="process-math">\(f(x) = x-5\text{.}\)</span> And on the interval <span class="process-math">\(5 \lt x \lt 7\text{,}\)</span> <span class="process-math">\(f(x)\)</span> is the top half of of the circle of radius <span class="process-math">\(1\)</span> centered at <span class="process-math">\((6,0)\text{.}\)</span>
+<div class="para" id="F-5-2-Act1-2-1-2">On the left axes, the graph of <span class="process-math">\(y = f(x)\)</span> is provided (which is the same function considered in <a class="xref" href="/book/active-calculus-html/sec-5-1-antid-graphs#act-5-1-1" title="Activity 5.1.2">Activity 5.1.2</a>).  This piecewise linear function is <span class="process-math">\(0\)</span> for <span class="process-math">\(x \lt 0\)</span> and <span class="process-math">\(x \gt 7\text{.}\)</span>  On the interval <span class="process-math">\(0 \lt x \lt 1\text{,}\)</span> <span class="process-math">\(f(x) = x\text{.}\)</span>  On the interval <span class="process-math">\(1 \lt x \lt 2\text{,}\)</span> <span class="process-math">\(f(x)\)</span> is a quarter circle that connects points <span class="process-math">\((1,1)\)</span> and <span class="process-math">\((2,0)\text{.}\)</span>  On the interval <span class="process-math">\(3 \lt x \lt 4\text{,}\)</span> <span class="process-math">\(f(x) = -1\text{.}\)</span> On the interval <span class="process-math">\(4 \lt x \lt 5\text{,}\)</span> <span class="process-math">\(f(x) = x-5\text{.}\)</span> And on the interval <span class="process-math">\(5 \lt x \lt 7\text{,}\)</span> <span class="process-math">\(f(x)\)</span> is the top half of of the circle of radius <span class="process-math">\(1\)</span> centered at <span class="process-math">\((6,0)\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Act1-2-1-3">At right, blank coordinate axes for plotting  <span class="process-math">\(y = A(x) = \int_2^x f(t) \, dt\text{.}\)</span>
+<div class="para" id="F-5-2-Act1-2-1-3">At right, blank coordinate axes for plotting  <span class="process-math">\(y = A(x) = \int_2^x f(t) \, dt\text{.}\)</span>
 </div>
 </div></details>
 </div>
@@ -248,15 +248,15 @@ A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Understanding Integral Functions</span>
 </h2>
-<div class="para logical" id="sec-5-2-FTC2-5-2">
-<div class="para" data-evidence="true" id="paragraph-d1d4824b6f2f005e-1">The Second FTC provides us with a way to construct an antiderivative of any continuous function. In particular, if we are given a continuous function <span class="process-math">\(g\)</span> and wish to find an antiderivative <span class="process-math">\(G\text{,}\)</span> we can now say that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-5-2-3">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-5-2">
+<div class="para">The Second FTC provides us with a way to construct an antiderivative of any continuous function. In particular, if we are given a continuous function <span class="process-math">\(g\)</span> and wish to find an antiderivative <span class="process-math">\(G\text{,}\)</span> we can now say that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-5-2-3">
 \begin{equation*}
 G(x) = \int_c^x g(t) \, dt
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-7b3c3fe6d5f8c9f9-1">provides the rule for such an antiderivative, and moreover that <span class="process-math">\(G(c) = 0\text{.}\)</span> Note especially that we know that <span class="process-math">\(G'(x) = g(x)\text{,}\)</span> or</div>
-<div class="displaymath process-math" data-evidence="true" id="E_diffint">
+<div class="para">provides the rule for such an antiderivative, and moreover that <span class="process-math">\(G(c) = 0\text{.}\)</span> Note especially that we know that <span class="process-math">\(G'(x) = g(x)\text{,}\)</span> or</div>
+<div class="displaymath process-math" id="E_diffint">
 \begin{equation}
 \frac{d}{dx} \left[ \int_c^x g(t) \, dt \right] = g(x)\text{.}\tag{5.2.2}
 \end{equation}
@@ -264,12 +264,12 @@ G(x) = \int_c^x g(t) \, dt
 </div>
 <div class="para" data-evidence="true" id="sec-5-2-FTC2-5-3">This result is useful for understanding the graph of <span class="process-math">\(G\text{.}\)</span>
 </div>
-<article class="example example-like" id="sec-5-2-FTC2-5-4"><h3 class="heading">
+<article class="example example-like" data-evidence="true" id="sec-5-2-FTC2-5-4"><h3 class="heading">
 <span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
 </h3>
 <div class="para logical" id="sec-5-2-FTC2-5-4-1-1">
-<div class="para" data-evidence="true" id="paragraph-4019e725f11b77d5-1">Investigate the behavior of the integral function</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-5-4-1-1-1">
+<div class="para">Investigate the behavior of the integral function</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-5-4-1-1-1">
 \begin{equation*}
 E(x) = \int_0^x e^{-t^2} \, dt\text{.}
 \end{equation*}
@@ -278,39 +278,39 @@ E(x) = \int_0^x e^{-t^2} \, dt\text{.}
 <div class="solutions">
 <details class="solution solution-like born-hidden-knowl" id="sec-5-2-FTC2-5-4-2"><summary class="knowl__link"><span class="type">Solution</span><span class="period heading-divison-mark heading-divison-mark__period">.</span></summary>
 <div class="solution solution-like knowl__content">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-5-4-2-1">
+<div class="para" id="sec-5-2-FTC2-5-4-2-1">
 <span class="process-math">\(E\)</span> is closely related to the well known <em class="emphasis">error function</em> <details class="ptx-footnote" id="sec-5-2-FTC2-5-4-2-1-4"><summary class="ptx-footnote__number" title="Footnote 5.2.1"><sup> 1 </sup></summary>
 <div class="ptx-footnote__contents">The error function is defined by the rule <span class="process-math">\(\erf (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt\)</span> and has the key property that <span class="process-math">\(0 \le \erf (x) \lt 1\)</span> for all <span class="process-math">\(x \ge 0\)</span> and moreover that <span class="process-math">\(\lim_{x \to \infty} \erf (x) = 1\text{.}\)</span>
 </div></details> in probability and statistics. It turns out that the function <span class="process-math">\(e^{-t^2}\)</span> does not have an elementary antiderivative.
 </div>
 <div class="para logical" id="sec-5-2-FTC2-5-4-2-2">
-<div class="para" data-evidence="true" id="paragraph-ae749004f6ce45fa-1">While we cannot evaluate <span class="process-math">\(E\)</span> exactly for any value other than <span class="process-math">\(x = 0\text{,}\)</span> we still can gain a tremendous amount of information about the function <span class="process-math">\(E\text{.}\)</span> By applying the rule in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#E_diffint" title="Equation 5.2.2">Equation (5.2.2)</a> to <span class="process-math">\(E\text{,}\)</span> it follows that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-5-4-2-2-6">
+<div class="para">While we cannot evaluate <span class="process-math">\(E\)</span> exactly for any value other than <span class="process-math">\(x = 0\text{,}\)</span> we still can gain a tremendous amount of information about the function <span class="process-math">\(E\text{.}\)</span> By applying the rule in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#E_diffint" title="Equation 5.2.2">Equation (5.2.2)</a> to <span class="process-math">\(E\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-5-4-2-2-6">
 \begin{equation*}
 E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-b74fdb5b13a51b5a-1">so we know a formula for the derivative of <span class="process-math">\(E\text{,}\)</span> and we know that <span class="process-math">\(E(0) = 0\text{.}\)</span> This information is precisely the type we were given in <a class="xref" href="/book/active-calculus-html/sec-3-3-tests#act-3-3-1" title="Activity 3.3.2">Activity 3.3.2</a>, where we were given information about the derivative of a function, but lacked a formula for the function itself.</div>
+<div class="para">so we know a formula for the derivative of <span class="process-math">\(E\text{,}\)</span> and we know that <span class="process-math">\(E(0) = 0\text{.}\)</span> This information is precisely the type we were given in <a class="xref" href="/book/active-calculus-html/sec-3-3-tests#act-3-3-1" title="Activity 3.3.2">Activity 3.3.2</a>, where we were given information about the derivative of a function, but lacked a formula for the function itself.</div>
 </div>
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-5-4-2-3">Using the first and second derivatives of <span class="process-math">\(E\text{,}\)</span> along with the fact that <span class="process-math">\(E(0) = 0\text{,}\)</span> we can determine more information about the behavior of <span class="process-math">\(E\text{.}\)</span> First, we note that for all real numbers <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(e^{-x^2} \gt 0\text{,}\)</span> and thus <span class="process-math">\(E'(x) \gt 0\)</span> for all <span class="process-math">\(x\text{.}\)</span> Thus <span class="process-math">\(E\)</span> is an always increasing function. Further, as <span class="process-math">\(x \to \infty\text{,}\)</span> <span class="process-math">\(E'(x) = e^{-x^2} \to 0\text{,}\)</span> so the slope of the function <span class="process-math">\(E\)</span> tends to zero as <span class="process-math">\(x \to \infty\)</span> (and similarly as <span class="process-math">\(x \to -\infty\)</span>). Indeed, it turns out that <span class="process-math">\(E\)</span> has horizontal asymptotes as <span class="process-math">\(x\)</span> increases or decreases without bound.
+<div class="para" id="sec-5-2-FTC2-5-4-2-3">Using the first and second derivatives of <span class="process-math">\(E\text{,}\)</span> along with the fact that <span class="process-math">\(E(0) = 0\text{,}\)</span> we can determine more information about the behavior of <span class="process-math">\(E\text{.}\)</span> First, we note that for all real numbers <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(e^{-x^2} \gt 0\text{,}\)</span> and thus <span class="process-math">\(E'(x) \gt 0\)</span> for all <span class="process-math">\(x\text{.}\)</span> Thus <span class="process-math">\(E\)</span> is an always increasing function. Further, as <span class="process-math">\(x \to \infty\text{,}\)</span> <span class="process-math">\(E'(x) = e^{-x^2} \to 0\text{,}\)</span> so the slope of the function <span class="process-math">\(E\)</span> tends to zero as <span class="process-math">\(x \to \infty\)</span> (and similarly as <span class="process-math">\(x \to -\infty\)</span>). Indeed, it turns out that <span class="process-math">\(E\)</span> has horizontal asymptotes as <span class="process-math">\(x\)</span> increases or decreases without bound.
 </div>
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-5-4-2-4">In addition, we can observe that <span class="process-math">\(E''(x) = -2xe^{-x^2}\text{,}\)</span> and that <span class="process-math">\(E''(0) = 0\text{,}\)</span> while <span class="process-math">\(E''(x) \lt 0\)</span> for <span class="process-math">\(x \gt 0\)</span> and <span class="process-math">\(E''(x) \gt 0\)</span> for <span class="process-math">\(x \lt 0\text{.}\)</span> This information tells us that <span class="process-math">\(E\)</span> is concave up for <span class="process-math">\(x\lt 0\)</span> and concave down for <span class="process-math">\(x \gt 0\)</span> with a point of inflection at <span class="process-math">\(x = 0\text{.}\)</span>
+<div class="para" id="sec-5-2-FTC2-5-4-2-4">In addition, we can observe that <span class="process-math">\(E''(x) = -2xe^{-x^2}\text{,}\)</span> and that <span class="process-math">\(E''(0) = 0\text{,}\)</span> while <span class="process-math">\(E''(x) \lt 0\)</span> for <span class="process-math">\(x \gt 0\)</span> and <span class="process-math">\(E''(x) \gt 0\)</span> for <span class="process-math">\(x \lt 0\text{.}\)</span> This information tells us that <span class="process-math">\(E\)</span> is concave up for <span class="process-math">\(x\lt 0\)</span> and concave down for <span class="process-math">\(x \gt 0\)</span> with a point of inflection at <span class="process-math">\(x = 0\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-5-4-2-5">The only thing we lack at this point is a sense of how big <span class="process-math">\(E\)</span> can get as <span class="process-math">\(x\)</span> increases. If we use a midpoint Riemann sum with 10 subintervals to estimate <span class="process-math">\(E(2)\text{,}\)</span> we see that <span class="process-math">\(E(2) \approx 0.8822\text{;}\)</span> a similar calculation to estimate <span class="process-math">\(E(3)\)</span> shows little change (<span class="process-math">\(E(3) \approx 0.8862\)</span>), so it appears that as <span class="process-math">\(x\)</span> increases without bound, <span class="process-math">\(E\)</span> approaches a value just larger than <span class="process-math">\(0.886\text{,}\)</span> which aligns with the fact that <span class="process-math">\(E\)</span> has horizontal asymptotes. Putting all of this information together (and using the symmetry of <span class="process-math">\(f(t) = e^{-t^2}\)</span>), we see the results shown in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#F-5-2-erf" title="Figure 5.2.4">Figure 5.2.4</a>.
+<div class="para" id="sec-5-2-FTC2-5-4-2-5">The only thing we lack at this point is a sense of how big <span class="process-math">\(E\)</span> can get as <span class="process-math">\(x\)</span> increases. If we use a midpoint Riemann sum with 10 subintervals to estimate <span class="process-math">\(E(2)\text{,}\)</span> we see that <span class="process-math">\(E(2) \approx 0.8822\text{;}\)</span> a similar calculation to estimate <span class="process-math">\(E(3)\)</span> shows little change (<span class="process-math">\(E(3) \approx 0.8862\)</span>), so it appears that as <span class="process-math">\(x\)</span> increases without bound, <span class="process-math">\(E\)</span> approaches a value just larger than <span class="process-math">\(0.886\text{,}\)</span> which aligns with the fact that <span class="process-math">\(E\)</span> has horizontal asymptotes. Putting all of this information together (and using the symmetry of <span class="process-math">\(f(t) = e^{-t^2}\)</span>), we see the results shown in <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#F-5-2-erf" title="Figure 5.2.4">Figure 5.2.4</a>.
 </div>
 <figure class="figure figure-like" id="F-5-2-erf"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_erf.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-erf-2-description">
-<div class="para" data-evidence="true" id="F-5-2-erf-2-1-1">There are two adjacent graphs, both shown on the horizontal interval from <span class="process-math">\(-3\)</span> to <span class="process-math">\(3\)</span> and on the vertical interval from <span class="process-math">\(-1.5\)</span> to <span class="process-math">\(1.5\text{.}\)</span>
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/560fca6fa069ac9590fba373.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-erf-2-description">
+<div class="para" id="F-5-2-erf-2-1-1">There are two adjacent graphs, both shown on the horizontal interval from <span class="process-math">\(-3\)</span> to <span class="process-math">\(3\)</span> and on the vertical interval from <span class="process-math">\(-1.5\)</span> to <span class="process-math">\(1.5\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-erf-2-1-2">At left, the graph of <span class="process-math">\(f(t) = e^{-t^2}\text{.}\)</span>  The function <span class="process-math">\(f\)</span> is always positive, tends to <span class="process-math">\(0\)</span> as <span class="process-math">\(t\)</span> increases or decreases without bound, and increases for <span class="process-math">\(t \lt 0\)</span> and decreases for <span class="process-math">\(t \gt 0\text{.}\)</span>
+<div class="para" id="F-5-2-erf-2-1-2">At left, the graph of <span class="process-math">\(f(t) = e^{-t^2}\text{.}\)</span>  The function <span class="process-math">\(f\)</span> is always positive, tends to <span class="process-math">\(0\)</span> as <span class="process-math">\(t\)</span> increases or decreases without bound, and increases for <span class="process-math">\(t \lt 0\)</span> and decreases for <span class="process-math">\(t \gt 0\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-erf-2-1-3">At right, the graph of <span class="process-math">\(E(x) = \int_0^x e^{-t^2} \ dt\text{,}\)</span> which is the unique antiderivative of <span class="process-math">\(f\)</span> that satisfies <span class="process-math">\(E(0) = 0\text{.}\)</span>  The function <span class="process-math">\(E\)</span> is always increasing, approaches a horizontal asymptote of about <span class="process-math">\(y = 0.89\)</span> as <span class="process-math">\(t\)</span> increases without bound, and approaches a horizontal asymptote of about <span class="process-math">\(y = -0.89\)</span> as <span class="process-math">\(t\)</span> decreases without bound.  The function <span class="process-math">\(E\)</span> is concave up for <span class="process-math">\(t \lt 0\)</span> and concave down for <span class="process-math">\(t \gt 0\text{.}\)</span>
+<div class="para" id="F-5-2-erf-2-1-3">At right, the graph of <span class="process-math">\(E(x) = \int_0^x e^{-t^2} \ dt\text{,}\)</span> which is the unique antiderivative of <span class="process-math">\(f\)</span> that satisfies <span class="process-math">\(E(0) = 0\text{.}\)</span>  The function <span class="process-math">\(E\)</span> is always increasing, approaches a horizontal asymptote of about <span class="process-math">\(y = 0.89\)</span> as <span class="process-math">\(t\)</span> increases without bound, and approaches a horizontal asymptote of about <span class="process-math">\(y = -0.89\)</span> as <span class="process-math">\(t\)</span> decreases without bound.  The function <span class="process-math">\(E\)</span> is concave up for <span class="process-math">\(t \lt 0\)</span> and concave down for <span class="process-math">\(t \gt 0\text{.}\)</span>
 </div>
 </div></details>
 </div>
 <figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>At left, the graph of <span class="process-math">\(f(t) = e^{-t^2}\text{.}\)</span>  At right, the integral function <span class="process-math">\(E(x) = \int_0^x e^{-t^2} \ dt\text{,}\)</span> which is the unique antiderivative of <span class="process-math">\(f\)</span> that satisfies <span class="process-math">\(E(0) = 0\text{.}\)</span></figcaption>
 </figure>
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-5-4-2-7">Because <span class="process-math">\(E\)</span> is the antiderivative of <span class="process-math">\(f(t) = e^{-t^2}\)</span> that satisfies <span class="process-math">\(E(0) = 0\text{,}\)</span> values on the graph of <span class="process-math">\(y = E(x)\)</span> represent the net signed area of the region bounded by <span class="process-math">\(f(t) = e^{-t^2}\)</span> from 0 up to <span class="process-math">\(x\text{.}\)</span> We see that the value of <span class="process-math">\(E\)</span> increases rapidly near zero but then levels off as <span class="process-math">\(x\)</span> increases, since there is less and less additional accumulated area bounded by <span class="process-math">\(f(t) = e^{-t^2}\)</span> as <span class="process-math">\(x\)</span> increases.
+<div class="para" id="sec-5-2-FTC2-5-4-2-7">Because <span class="process-math">\(E\)</span> is the antiderivative of <span class="process-math">\(f(t) = e^{-t^2}\)</span> that satisfies <span class="process-math">\(E(0) = 0\text{,}\)</span> values on the graph of <span class="process-math">\(y = E(x)\)</span> represent the net signed area of the region bounded by <span class="process-math">\(f(t) = e^{-t^2}\)</span> from 0 up to <span class="process-math">\(x\text{.}\)</span> We see that the value of <span class="process-math">\(E\)</span> increases rapidly near zero but then levels off as <span class="process-math">\(x\)</span> increases, since there is less and less additional accumulated area bounded by <span class="process-math">\(f(t) = e^{-t^2}\)</span> as <span class="process-math">\(x\)</span> increases.
 </div>
 </div></details>
 </div>
@@ -349,8 +349,8 @@ E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}\text{,}
 <div class="para" data-evidence="true" id="act-5-2-2-task-3-1-1">Use a Riemann sum calculator with midpoints and 10 subintervals to calculate approximate values of <span class="process-math">\(F(x)\)</span> in the table shown below.
 </div>
 <div class="para" data-evidence="true" id="act-5-2-2-task-3-1-2">Note that <span class="process-math">\(F(0)=\int_0^0 f(t) \, dt = 0\text{.}\)</span>
-</div> <div class="tabular-box natural-width"><table class="tabular">
-<tr class="header-horizontal" data-evidence="true" id="paragraph-1ea64aa7e331a5ca-1">
+</div> <div class="tabular-box natural-width"><table class="tabular" data-evidence="true" id="paragraph-27c33cd7cee11b38-1">
+<tr class="header-horizontal">
 <th class="c m b2 r2 l1 t1 lines" scope="col"><span class="process-math">\(x\)</span></th>
 <th class="c m b2 r1 l0 t1 lines" scope="col"><span class="process-math">\(-10\)</span></th>
 <th class="c m b2 r1 l0 t1 lines" scope="col"><span class="process-math">\(-5\)</span></th>
@@ -358,7 +358,7 @@ E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}\text{,}
 <th class="c m b2 r1 l0 t1 lines" scope="col"><span class="process-math">\(5\)</span></th>
 <th class="c m b2 r1 l0 t1 lines" scope="col"><span class="process-math">\(10\)</span></th>
 </tr>
-<tr data-evidence="true" id="paragraph-7df06e67bbead603-1">
+<tr>
 <td class="c m b1 r2 l1 t0 lines"><span class="process-math">\(F(x)\)</span></td>
 <td class="c m b1 r1 l0 t0 lines"><span class="fillin underline"></span></td>
 <td class="c m b1 r1 l0 t0 lines"><span class="fillin underline"></span></td>
@@ -372,7 +372,7 @@ E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}\text{,}
 <article class="task exercise-like" id="act-5-2-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
 <div class="para" data-evidence="true" id="act-5-2-2-task-4-1-1">Use your work above to sketch an accurate graph of <span class="process-math">\(y = F(x)\)</span> on the axes provided.
 </div> <div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/prefigure/prefigure-act-5-2-Act2.svg"/><details class="image-description"><summary title="details"></summary><div id="act-5-2-2-task-4-1-2-description">
+<img alt="described in detail following the image" class="contained" data-evidence="true" id="paragraph-20fce51b32592827-1" loading="lazy" src="/book-assets/active-calculus-html/c3cf5968eb9bace70faac8f2.svg"/><details class="image-description"><summary title="details"></summary><div id="act-5-2-2-task-4-1-2-description">
 <div class="para" data-evidence="true" id="act-5-2-2-task-4-1-2-2-1">Blank coordinate axes for plotting <span class="process-math">\(y = F(x)\text{.}\)</span>  The <span class="process-math">\(x\)</span> values range horizontally from <span class="process-math">\(-10.5\)</span> to <span class="process-math">\(-10.5\text{,}\)</span> and the <span class="process-math">\(y\)</span> values range vertically from <span class="process-math">\(-5.5\)</span> to <span class="process-math">\(-5.5\text{.}\)</span>  Each grid box is <span class="process-math">\(2 \times 1\text{.}\)</span>
 </div>
 </div></details>
@@ -391,23 +391,23 @@ E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2}\text{,}
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Differentiating an Integral Function</span>
 </h2>
-<div class="para logical" id="sec-5-2-FTC2-6-2">
-<div class="para" data-evidence="true" id="paragraph-bcd0d396d62a9574-1">We have seen that the Second FTC enables us to construct an antiderivative <span class="process-math">\(F\)</span> for any continuous function <span class="process-math">\(f\)</span> as the integral function <span class="process-math">\(F(x) = \int_c^x f(t) \, dt\text{.}\)</span> If we have a function of the form <span class="process-math">\(F(x) = \int_c^x f(t) \, dt\text{,}\)</span> then we know that <span class="process-math">\(F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)\text{.}\)</span> This shows that integral functions, while perhaps having the most complicated formulas of any functions we have encountered, are nonetheless particularly simple to differentiate. For instance, if</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-6-2-6">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-6-2">
+<div class="para">We have seen that the Second FTC enables us to construct an antiderivative <span class="process-math">\(F\)</span> for any continuous function <span class="process-math">\(f\)</span> as the integral function <span class="process-math">\(F(x) = \int_c^x f(t) \, dt\text{.}\)</span> If we have a function of the form <span class="process-math">\(F(x) = \int_c^x f(t) \, dt\text{,}\)</span> then we know that <span class="process-math">\(F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)\text{.}\)</span> This shows that integral functions, while perhaps having the most complicated formulas of any functions we have encountered, are nonetheless particularly simple to differentiate. For instance, if</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-6-2-6">
 \begin{equation*}
 F(x) = \int_{\pi}^x \sin(t^2) \, dt\text{,}
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-76119c6b9fa71965-1">then by the Second FTC, we know immediately that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-6-2-7">
+<div class="para">then by the Second FTC, we know immediately that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-6-2-7">
 \begin{equation*}
 F'(x) = \sin(x^2)\text{.}
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="sec-5-2-FTC2-6-3">
-<div class="para" data-evidence="true" id="paragraph-cdb7b4360fae47ae-1">In general, we know by the Second FTC that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-6-3-1">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-6-3">
+<div class="para">In general, we know by the Second FTC that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-6-3-1">
 \begin{equation*}
 \frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x)\text{.}
 \end{equation*}
@@ -415,17 +415,17 @@ F'(x) = \sin(x^2)\text{.}
 </div>
 <div class="para" data-evidence="true" id="sec-5-2-FTC2-6-4">This equation says that “the derivative of the integral function whose integrand is <span class="process-math">\(f\text{,}\)</span> is <span class="process-math">\(f\text{.}\)</span>” We see that if we first integrate the function <span class="process-math">\(f\)</span> from <span class="process-math">\(t = a\)</span> to <span class="process-math">\(t = x\text{,}\)</span> and then differentiate with respect to <span class="process-math">\(x\text{,}\)</span> these two processes “undo” each other.
 </div>
-<div class="para logical" id="sec-5-2-FTC2-6-5">
-<div class="para" data-evidence="true" id="paragraph-58e6dac5af3ba7a2-1">What happens if we differentiate a function <span class="process-math">\(f(t)\)</span> and then integrate the result from <span class="process-math">\(t = a\)</span> to <span class="process-math">\(t = x\text{?}\)</span> That is, what can we say about the quantity</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-6-5-4">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-6-5">
+<div class="para">What happens if we differentiate a function <span class="process-math">\(f(t)\)</span> and then integrate the result from <span class="process-math">\(t = a\)</span> to <span class="process-math">\(t = x\text{?}\)</span> That is, what can we say about the quantity</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-6-5-4">
 \begin{equation*}
 \int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt?
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="sec-5-2-FTC2-6-6">
-<div class="para" data-evidence="true" id="paragraph-7641b1f74a47479d-1">We note that <span class="process-math">\(f(t)\)</span> is an antiderivative of <span class="process-math">\(\frac{d}{dt} \left[ f(t) \right]\)</span> and apply the First FTC. We see that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-6-6-3">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-6-6">
+<div class="para">We note that <span class="process-math">\(f(t)\)</span> is an antiderivative of <span class="process-math">\(\frac{d}{dt} \left[ f(t) \right]\)</span> and apply the First FTC. We see that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-6-6-3">
 \begin{align*}
 \int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt \amp=  f(t) \bigg\vert_a^x\\
 \amp=  f(x) - f(a)\text{.}
@@ -484,26 +484,26 @@ F'(x) = \sin(x^2)\text{.}
 <h2 class="heading hide-type">
 <span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
 </h2>
-<div class="para logical" id="sec-5-2-FTC2-7-2">
+<div class="para logical" data-evidence="true" id="sec-5-2-FTC2-7-2">
 <ul class="disc" id="sec-5-2-FTC2-7-2-1">
 <li id="sec-5-2-FTC2-7-2-1-1">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-7-2-1-1-1">For a continuous function <span class="process-math">\(f\text{,}\)</span> the integral function <span class="process-math">\(A(x) = \int_1^x f(t) \, dt\)</span> defines an antiderivative of <span class="process-math">\(f\text{.}\)</span>
+<div class="para" id="sec-5-2-FTC2-7-2-1-1-1">For a continuous function <span class="process-math">\(f\text{,}\)</span> the integral function <span class="process-math">\(A(x) = \int_1^x f(t) \, dt\)</span> defines an antiderivative of <span class="process-math">\(f\text{.}\)</span>
 </div>
 </li>
 <li id="sec-5-2-FTC2-7-2-1-2">
-<div class="para" data-evidence="true" id="sec-5-2-FTC2-7-2-1-2-1">The Second Fundamental Theorem of Calculus is the formal, more general statement of the preceding fact: if <span class="process-math">\(f\)</span> is a continuous function and <span class="process-math">\(c\)</span> is any constant, then <span class="process-math">\(A(x) = \int_c^x f(t) \, dt\)</span> is the unique antiderivative of <span class="process-math">\(f\)</span> that satisfies <span class="process-math">\(A(c) = 0\text{.}\)</span>
+<div class="para" id="sec-5-2-FTC2-7-2-1-2-1">The Second Fundamental Theorem of Calculus is the formal, more general statement of the preceding fact: if <span class="process-math">\(f\)</span> is a continuous function and <span class="process-math">\(c\)</span> is any constant, then <span class="process-math">\(A(x) = \int_c^x f(t) \, dt\)</span> is the unique antiderivative of <span class="process-math">\(f\)</span> that satisfies <span class="process-math">\(A(c) = 0\text{.}\)</span>
 </div>
 </li>
 <li id="sec-5-2-FTC2-7-2-1-3">
 <div class="para logical" id="sec-5-2-FTC2-7-2-1-3-1">
-<div class="para" data-evidence="true" id="paragraph-8474d92d7e697605-1">Together, the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-7-2-1-3-1-1">
+<div class="para">Together, the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-7-2-1-3-1-1">
 \begin{equation*}
 \int_c^x \frac{d}{dt} \left[ f(t) \right] \, dt = f(x) - f(c)
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-6201111b83a0cb5b-1">and</div>
-<div class="displaymath process-math" data-evidence="true" id="sec-5-2-FTC2-7-2-1-3-1-2">
+<div class="para">and</div>
+<div class="displaymath process-math" id="sec-5-2-FTC2-7-2-1-3-1-2">
 \begin{equation*}
 \frac{d}{dx} \left[ \int_c^x f(t) \, dt \right] = f(x)\text{.}
 \end{equation*}
@@ -522,7 +522,7 @@ F'(x) = \sin(x^2)\text{.}
 <div class="problem-buttons"></div>
 <div class="problem-contents">
 <div class="para" data-evidence="true" id="extracted-Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__5_The_Integral__5-_4_The_Fundamental_Theorem_of_Calculus_Part_II__5-_4-_35-1-1-1">Let <span class="process-math">\(A(x) = \int_0^{x} f(t) \,dt\text{,}\)</span> with <span class="process-math">\(f(x)\)</span> as in figure.
-</div> <div class="image-box"><img class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__5_The_Integral__5-_4_The_Fundamental_Theorem_of_Calculus_Part_II__5-_4-_35-image-1.png"/></div>
+</div> <div class="image-box"><img class="contained" loading="lazy" src="/book-assets/active-calculus-html/d5acbdf1fb6c23cc92ca502b.png"/></div>
 <div class="para" data-evidence="true" id="extracted-Library__WHFreeman__Rogawski_Calculus_Early_Transcendentals_Second_Edition__5_The_Integral__5-_4_The_Fundamental_Theorem_of_Calculus_Part_II__5-_4-_35-1-1-3">
 <span class="process-math">\(A(x)\)</span> has a local minimum on <span class="process-math">\((0,6)\)</span> at <span class="process-math">\(x=\)</span> <span class="fillin underline"></span>
 </div>
@@ -552,7 +552,7 @@ F'(x) = \sin(x^2)\text{.}
 <div class="problem-buttons"></div>
 <div class="problem-contents">
 <div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap6Sec4__Q21-1-1-1">Let <span class="process-math">\(g(x)=\int_{2}^{x}\, f(t)\,dt\text{,}\)</span> where <span class="process-math">\(f(t)\)</span> is given in the figure below.
-</div> <div class="image-box"><img class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/generated/webwork/images/Library__Michigan__Chap6Sec4__Q21-image-1.png"/></div>
+</div> <div class="image-box"><img class="contained" loading="lazy" src="/book-assets/active-calculus-html/c71f02dc59b2b44ea899be08.png"/></div>
 <div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap6Sec4__Q21-1-1-3">
 <em class="emphasis">(Click on the graph for a larger version.)</em>
 </div>
@@ -585,14 +585,14 @@ F'(x) = \sin(x^2)\text{.}
 <div class="exercise-wrapper" id="csafranski__5-_2HW_prob4-ww-inner">
 <div class="problem-buttons"></div>
 <div class="problem-contents">
-<div class="para logical" id="extracted-csafranski__5-_2HW_prob4-1-1-1">
-<div class="para" data-evidence="true" id="paragraph-6956de4b81fed65e-1">Find the interval on which the curve</div>
-<div class="displaymath process-math" data-evidence="true" id="extracted-csafranski__5-_2HW_prob4-1-1-1-1">
+<div class="para logical" data-evidence="true" id="extracted-csafranski__5-_2HW_prob4-1-1-1">
+<div class="para">Find the interval on which the curve</div>
+<div class="displaymath process-math" id="extracted-csafranski__5-_2HW_prob4-1-1-1-1">
 \begin{equation*}
 y = \int_1^{x} \frac{1}{3 + t + 2 t^2}\, dt
 \end{equation*}
 </div>
-<div class="para" data-evidence="true" id="paragraph-f6398ab8677c6d33-1">is concave upward.</div>
+<div class="para">is concave upward.</div>
 </div>
 <div class="para" data-evidence="true" id="extracted-csafranski__5-_2HW_prob4-1-1-2">Interval =  <span class="fillin underline"></span>
 </div>
@@ -600,39 +600,39 @@ y = \int_1^{x} \frac{1}{3 + t + 2 t^2}\, dt
 </div>
 </article>
 <article class="exercise exercise-like" id="ez-5-2-5"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
-<div class="para logical" id="ez-5-2-5-1-1">
-<div class="para" data-evidence="true" id="paragraph-64a26ff81e35c78e-1">The tide removes sand from the beach at a small ocean park at a rate modeled by the function</div>
-<div class="displaymath process-math" data-evidence="true" id="ez-5-2-5-1-1-1">
+<div class="para logical" data-evidence="true" id="ez-5-2-5-1-1">
+<div class="para">The tide removes sand from the beach at a small ocean park at a rate modeled by the function</div>
+<div class="displaymath process-math" id="ez-5-2-5-1-1-1">
 \begin{equation*}
 R(t) = 2 + 5\sin \left( \frac{4\pi t}{25} \right)
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="ez-5-2-5-1-2">
-<div class="para" data-evidence="true" id="paragraph-d0f146a8fdde84ae-1">A pumping station adds sand to the beach at rate modeled by the function</div>
-<div class="displaymath process-math" data-evidence="true" id="ez-5-2-5-1-2-1">
+<div class="para logical" data-evidence="true" id="ez-5-2-5-1-2">
+<div class="para">A pumping station adds sand to the beach at rate modeled by the function</div>
+<div class="displaymath process-math" id="ez-5-2-5-1-2-1">
 \begin{equation*}
 S(t) = \frac{15t}{1+3t}
 \end{equation*}
 </div>
 </div>
-<div class="para logical" id="ez-5-2-5-1-3">
-<div class="para" data-evidence="true" id="paragraph-3165efbebf94f904-1">Both <span class="process-math">\(R(t)\)</span> and <span class="process-math">\(S(t)\)</span> are measured in cubic yards of sand per hour, <span class="process-math">\(t\)</span> is measured in hours, and the valid times are <span class="process-math">\(0 \le t \le 6\text{.}\)</span> At time <span class="process-math">\(t = 0\text{,}\)</span> the beach holds 2500 cubic yards of sand.</div>
+<div class="para logical" data-evidence="true" id="ez-5-2-5-1-3">
+<div class="para">Both <span class="process-math">\(R(t)\)</span> and <span class="process-math">\(S(t)\)</span> are measured in cubic yards of sand per hour, <span class="process-math">\(t\)</span> is measured in hours, and the valid times are <span class="process-math">\(0 \le t \le 6\text{.}\)</span> At time <span class="process-math">\(t = 0\text{,}\)</span> the beach holds 2500 cubic yards of sand.</div>
 <ol class="lower-alpha" id="ez-5-2-5-1-3-6">
 <li id="ez-5-2-5-1-3-6-1">
-<div class="para" data-evidence="true" id="ez-5-2-5-1-3-6-1-1">What definite integral measures how much sand the tide will remove during the time period <span class="process-math">\(0 \le t \le 6\text{?}\)</span> Why?
+<div class="para" id="ez-5-2-5-1-3-6-1-1">What definite integral measures how much sand the tide will remove during the time period <span class="process-math">\(0 \le t \le 6\text{?}\)</span> Why?
 </div>
 </li>
 <li id="ez-5-2-5-1-3-6-2">
-<div class="para" data-evidence="true" id="ez-5-2-5-1-3-6-2-1">Write an expression for <span class="process-math">\(Y(x)\text{,}\)</span> the total number of cubic yards of sand on the beach at time <span class="process-math">\(x\text{.}\)</span> Carefully explain your thinking and reasoning.
+<div class="para" id="ez-5-2-5-1-3-6-2-1">Write an expression for <span class="process-math">\(Y(x)\text{,}\)</span> the total number of cubic yards of sand on the beach at time <span class="process-math">\(x\text{.}\)</span> Carefully explain your thinking and reasoning.
 </div>
 </li>
 <li id="ez-5-2-5-1-3-6-3">
-<div class="para" data-evidence="true" id="ez-5-2-5-1-3-6-3-1">At what instantaneous rate is the total number of cubic yards of sand on the beach at time <span class="process-math">\(t = 4\)</span> changing?
+<div class="para" id="ez-5-2-5-1-3-6-3-1">At what instantaneous rate is the total number of cubic yards of sand on the beach at time <span class="process-math">\(t = 4\)</span> changing?
 </div>
 </li>
 <li id="ez-5-2-5-1-3-6-4">
-<div class="para" data-evidence="true" id="ez-5-2-5-1-3-6-4-1">Over the time interval <span class="process-math">\(0 \le t \le 6\text{,}\)</span> at approximately what time <span class="process-math">\(t\)</span> is the amount of sand on the beach least? What is the corresponding approximate minimum value? Explain and justify your answers fully.
+<div class="para" id="ez-5-2-5-1-3-6-4-1">Over the time interval <span class="process-math">\(0 \le t \le 6\text{,}\)</span> at approximately what time <span class="process-math">\(t\)</span> is the amount of sand on the beach least? What is the corresponding approximate minimum value? Explain and justify your answers fully.
 </div>
 </li>
 </ol>
@@ -643,13 +643,13 @@ S(t) = \frac{15t}{1+3t}
 </div>
 <div class="para" data-evidence="true" id="ez-5-2-6-1-2">Sketch a carefully labeled graph of <span class="process-math">\(F\)</span> on the axes provided, and include a written analysis of how you know where <span class="process-math">\(F\)</span> is zero, increasing, decreasing, concave up, and concave down.
 </div>
-<figure class="figure figure-like" id="F-5-2-Ez1"><div class="image-box">
-<img alt="described in detail following the image" class="contained" loading="lazy" src="https://mattboelkins.github.io/active-calculus-single-mbx/html2e/external/images/5_2_Ez1.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Ez1-2-description">
-<div class="para" data-evidence="true" id="F-5-2-Ez1-2-1-1">There are two adjacent graphs, both shown on the horizontal interval from <span class="process-math">\(-1.5\)</span> to <span class="process-math">\(7\text{.}\)</span>  The vertical scale on the left axes is  <span class="process-math">\(-4.5\)</span> to <span class="process-math">\(6.5\text{.}\)</span>  The vertical scale on the right axes is  <span class="process-math">\(-11\)</span> to <span class="process-math">\(16\text{.}\)</span>
+<figure class="figure figure-like" data-evidence="true" id="F-5-2-Ez1"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/1fb1647a1e91bc31c48c9d71.svg"/><details class="image-description"><summary title="details"></summary><div id="F-5-2-Ez1-2-description">
+<div class="para" id="F-5-2-Ez1-2-1-1">There are two adjacent graphs, both shown on the horizontal interval from <span class="process-math">\(-1.5\)</span> to <span class="process-math">\(7\text{.}\)</span>  The vertical scale on the left axes is  <span class="process-math">\(-4.5\)</span> to <span class="process-math">\(6.5\text{.}\)</span>  The vertical scale on the right axes is  <span class="process-math">\(-11\)</span> to <span class="process-math">\(16\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Ez1-2-1-2">At left, the graph of <span class="process-math">\(y = g(t)\)</span> is given.  The function <span class="process-math">\(y = g(t)\)</span> is a degree <span class="process-math">\(5\)</span> polynomial that has zeros at <span class="process-math">\(x = -1, 0.5, 4, 5, 6.5\text{;}\)</span> the function is negative on the interval <span class="process-math">\(-1 \lt x \lt 0.5\)</span> and changes sign at each of its zeros.  In addition, each of the four finite regions that <span class="process-math">\(g(t)\)</span> bounds with the <span class="process-math">\(t\)</span>-axis are shaded and labeled from left to right: <span class="process-math">\(A_1\text{,}\)</span> <span class="process-math">\(A_2\text{,}\)</span> <span class="process-math">\(A_3\text{,}\)</span> and <span class="process-math">\(A_4\text{.}\)</span>  For example, <span class="process-math">\(A_2\)</span> is the region between the second pair of adjacent zeros, from <span class="process-math">\(x = 0.5\)</span> to <span class="process-math">\(x = 4\text{.}\)</span>
+<div class="para" id="F-5-2-Ez1-2-1-2">At left, the graph of <span class="process-math">\(y = g(t)\)</span> is given.  The function <span class="process-math">\(y = g(t)\)</span> is a degree <span class="process-math">\(5\)</span> polynomial that has zeros at <span class="process-math">\(x = -1, 0.5, 4, 5, 6.5\text{;}\)</span> the function is negative on the interval <span class="process-math">\(-1 \lt x \lt 0.5\)</span> and changes sign at each of its zeros.  In addition, each of the four finite regions that <span class="process-math">\(g(t)\)</span> bounds with the <span class="process-math">\(t\)</span>-axis are shaded and labeled from left to right: <span class="process-math">\(A_1\text{,}\)</span> <span class="process-math">\(A_2\text{,}\)</span> <span class="process-math">\(A_3\text{,}\)</span> and <span class="process-math">\(A_4\text{.}\)</span>  For example, <span class="process-math">\(A_2\)</span> is the region between the second pair of adjacent zeros, from <span class="process-math">\(x = 0.5\)</span> to <span class="process-math">\(x = 4\text{.}\)</span>
 </div>
-<div class="para" data-evidence="true" id="F-5-2-Ez1-2-1-3">At right, blank axes for plotting <span class="process-math">\(F(x) = \int_{2}^x g(t) \, dt\text{.}\)</span>
+<div class="para" id="F-5-2-Ez1-2-1-3">At right, blank axes for plotting <span class="process-math">\(F(x) = \int_{2}^x g(t) \, dt\text{.}\)</span>
 </div>
 </div></details>
 </div>
@@ -659,8 +659,8 @@ S(t) = \frac{15t}{1+3t}
 <article class="exercise exercise-like" id="ez-5-2-7"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
 <div class="para" data-evidence="true" id="ez-5-2-7-1-1">When an aircraft attempts to climb as rapidly as possible, its climb rate (in feet per minute) decreases as altitude increases, because the air is less dense at higher altitudes. <a class="xref" href="/book/active-calculus-html/sec-5-2-FTC2#T-5-2-ez-airplane" title="Table 5.2.6: Data for the climbing aircraft.">Table 5.2.6</a> provides performance data for a certain single engine aircraft, giving its climb rate at various altitudes, where <span class="process-math">\(c(h)\)</span> denotes the climb rate of the airplane at an altitude <span class="process-math">\(h\text{.}\)</span>
 </div>
-<figure class="table table-like" id="T-5-2-ez-airplane"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Data for the climbing aircraft.</figcaption><div class="tabular-box natural-width"><table class="tabular">
-<tr data-evidence="true" id="paragraph-816d6d2788c11f36-1">
+<figure class="table table-like" id="T-5-2-ez-airplane"><figcaption><span class="type">Table</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">5.2.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>Data for the climbing aircraft.</figcaption><div class="tabular-box natural-width"><table class="tabular" data-evidence="true" id="paragraph-18c26a8ff5ed0399-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines">
 <span class="process-math">\(h\)</span> (feet)</td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(0\)</span></td>
@@ -670,7 +670,7 @@ S(t) = \frac{15t}{1+3t}
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(4000\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(5000\)</span></td>
 </tr>
-<tr data-evidence="true" id="paragraph-fcf29c05abef70a4-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines">
 <span class="process-math">\(c\)</span> (ft/min)</td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(925\)</span></td>
@@ -688,7 +688,7 @@ S(t) = \frac{15t}{1+3t}
 <td class="l m b1 r0 l0 t0 lines"></td>
 <td class="l m b1 r0 l0 t0 lines"></td>
 </tr>
-<tr data-evidence="true" id="paragraph-8a4e8c1f56865fe9-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines">
 <span class="process-math">\(h\)</span> (feet)</td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(6000\)</span></td>
@@ -697,7 +697,7 @@ S(t) = \frac{15t}{1+3t}
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(9000\)</span></td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(10{,}000\)</span></td>
 </tr>
-<tr data-evidence="true" id="paragraph-7ca9fa1a3efd84a7-1">
+<tr>
 <td class="l m b1 r0 l0 t0 lines">
 <span class="process-math">\(c\)</span> (ft/min)</td>
 <td class="l m b1 r0 l0 t0 lines"><span class="process-math">\(635\)</span></td>
@@ -708,27 +708,27 @@ S(t) = \frac{15t}{1+3t}
 </tr>
 </table></div>
 </figure>
-<div class="para logical" id="ez-5-2-7-1-3">
-<div class="para" data-evidence="true" id="paragraph-50cf4d0c45b8084a-1">Let a new function <span class="process-math">\(m\text{,}\)</span> that also depends on <span class="process-math">\(h\text{,}\)</span> (say <span class="process-math">\(y = m(h)\)</span>) measure the number of minutes required for a plane at altitude <span class="process-math">\(h\)</span> to climb the next foot of altitude.</div>
+<div class="para logical" data-evidence="true" id="ez-5-2-7-1-3">
+<div class="para">Let a new function <span class="process-math">\(m\text{,}\)</span> that also depends on <span class="process-math">\(h\text{,}\)</span> (say <span class="process-math">\(y = m(h)\)</span>) measure the number of minutes required for a plane at altitude <span class="process-math">\(h\)</span> to climb the next foot of altitude.</div>
 <ol class="lower-alpha" id="ez-5-2-7-1-3-5">
 <li id="ez-5-2-7-1-3-5-1">
-<div class="para" data-evidence="true" id="ez-5-2-7-1-3-5-1-1">Determine a similar table of values for <span class="process-math">\(m(h)\)</span> and explain how it is related to the table above. Be sure to discuss the units on <span class="process-math">\(m\text{.}\)</span>
+<div class="para" id="ez-5-2-7-1-3-5-1-1">Determine a similar table of values for <span class="process-math">\(m(h)\)</span> and explain how it is related to the table above. Be sure to discuss the units on <span class="process-math">\(m\text{.}\)</span>
 </div>
 </li>
 <li id="ez-5-2-7-1-3-5-2">
-<div class="para" data-evidence="true" id="ez-5-2-7-1-3-5-2-1">Give a careful interpretation of a function whose derivative is <span class="process-math">\(m(h)\text{.}\)</span> Describe what the input is and what the output is. Also, explain in plain English what the function tells us.
+<div class="para" id="ez-5-2-7-1-3-5-2-1">Give a careful interpretation of a function whose derivative is <span class="process-math">\(m(h)\text{.}\)</span> Describe what the input is and what the output is. Also, explain in plain English what the function tells us.
 </div>
 </li>
 <li id="ez-5-2-7-1-3-5-3">
-<div class="para" data-evidence="true" id="ez-5-2-7-1-3-5-3-1">Determine a definite integral whose value tells us exactly the number of minutes required for the airplane to ascend to 10,000 feet of altitude. Clearly explain why the value of this integral has the required meaning.
+<div class="para" id="ez-5-2-7-1-3-5-3-1">Determine a definite integral whose value tells us exactly the number of minutes required for the airplane to ascend to 10,000 feet of altitude. Clearly explain why the value of this integral has the required meaning.
 </div>
 </li>
 <li id="ez-5-2-7-1-3-5-4">
-<div class="para" data-evidence="true" id="ez-5-2-7-1-3-5-4-1">Determine a formula for a function <span class="process-math">\(M(h)\)</span> whose value tells us the exact number of minutes required for the airplane to ascend to <span class="process-math">\(h\)</span> feet of altitude.
+<div class="para" id="ez-5-2-7-1-3-5-4-1">Determine a formula for a function <span class="process-math">\(M(h)\)</span> whose value tells us the exact number of minutes required for the airplane to ascend to <span class="process-math">\(h\)</span> feet of altitude.
 </div>
 </li>
 <li id="ez-5-2-7-1-3-5-5">
-<div class="para" data-evidence="true" id="ez-5-2-7-1-3-5-5-1">Estimate the values of <span class="process-math">\(M(6000)\)</span> and <span class="process-math">\(M(10000)\)</span> as accurately as you can. Include units on your results.
+<div class="para" id="ez-5-2-7-1-3-5-5-1">Estimate the values of <span class="process-math">\(M(6000)\)</span> and <span class="process-math">\(M(10000)\)</span> as accurately as you can. Include units on your results.
 </div>
 </li>
 </ol>

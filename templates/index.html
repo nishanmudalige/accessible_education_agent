@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
-{% block scripts %}<script src="{{ url_for('static',filename='app.js',v='web-on-demand-1') }}" defer></script>{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static',filename='vendor/marked/lib/marked.umd.js') }}" defer></script>
+<script src="{{ url_for('static',filename='vendor/dompurify/dist/purify.min.js') }}" defer></script>
+<script src="{{ url_for('static',filename='mathjax-config.js',v='safe-math-1') }}" defer></script>
+<script src="{{ url_for('static',filename='vendor/mathjax/es5/tex-chtml-full.js') }}" defer></script>
+<script src="{{ url_for('static',filename='rich-text.js',v='safe-math-1') }}" defer></script>
+<script src="{{ url_for('static',filename='app.js',v='safe-math-1') }}" defer></script>
+{% endblock %}
 {% block content %}
 <main id="main" class="workspace">
 <aside class="library-panel panel">

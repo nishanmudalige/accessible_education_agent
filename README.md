@@ -434,3 +434,17 @@ Read-aloud uses the visitor's browser Speech Synthesis API, not OpenAI TTS. Some
 | `docs/VALIDATION.md` | Checks performed and limits of this delivery |
 
 This package is prepared for you to upload/deploy. It has not created a GitHub repository or Render service in your account. No API key was supplied to this build environment, so live OpenAI calls must be verified using your key before presenting it.
+
+
+### Production collection and benchmark-only PDF
+
+`content/manifest.json` contains the four production textbooks. The Active Calculus PDF is intentionally absent from the website and production index. `content/manifest.benchmark.json` extends that collection with `active-calculus-pdf`; `benchmark/run.py` uses it automatically. No environment variable is needed for this separation.
+
+Offline index comparison (no model calls):
+
+```sh
+python benchmark/run.py --offline-only --book active-calculus-pdf --index-book active-calculus-pdf --cold-runs 3
+python benchmark/run.py --offline-only --book active-calculus-html --index-book active-calculus-html --cold-runs 3
+```
+
+Runtime HTML parsing uses `beautifulsoup4` in `requirements.txt`. Markdown (Marked), HTML sanitization (DOMPurify), and accessible formula rendering (MathJax with assistive MathML and safe TeX) are vendored under `static/vendor`; Render needs no npm build. For JavaScript tests, install the locked development dependencies with `npm ci`, then run `npm run test:ui`. These Node dependencies are not used by the deployed application.

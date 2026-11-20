@@ -41,13 +41,26 @@ def tokens(text):
 def expand(query):
     return ' '.join(v for k, v in GLOSSARY.items() if k in query.lower())
 
+def manifest_documents(manifest, seen=None):
+    manifest=manifest.resolve()
+    seen=set() if seen is None else seen
+    if manifest in seen: raise ValueError('Cyclic manifest inheritance')
+    seen.add(manifest)
+    data=json.loads(manifest.read_text(encoding='utf-8'))
+    inherited=[]
+    if data.get('extends'):
+        parent=(manifest.parent/data['extends']).resolve()
+        if not parent.is_relative_to(manifest.parent): raise ValueError('Unsafe inherited manifest path')
+        inherited=manifest_documents(parent,seen)
+    return inherited+data['documents']
+
 class LibraryIndex:
     def __init__(self, manifest: Path, doc_id=None):
         self.root = manifest.parent.resolve()
         self.docs, self.pages, self.passages = {}, {}, []
         self.bags = []
         self.postings = defaultdict(list)
-        entries = json.loads(manifest.read_text(encoding='utf-8'))['documents']
+        entries = manifest_documents(manifest)
         if doc_id:
             entries=[entry for entry in entries if entry['id']==doc_id]
             if not entries: raise ValueError('Unknown document for indexing')

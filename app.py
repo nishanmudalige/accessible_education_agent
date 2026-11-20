@@ -24,16 +24,16 @@ from reader_backend import page_png, page_data, resolution
 from timing import request_timing, stage, plan_quality
 from planning import is_english
 
-@lru_cache(maxsize=1)
-def library():
-    return LibraryIndex(BASE / 'content' / 'manifest.json')
+@lru_cache(maxsize=2)
+def library(manifest=None):
+    return LibraryIndex(manifest or BASE / 'content' / 'manifest.json')
 
 def reader_url(p):
     if p.get('format')=='html':
         return f"/book/{p['doc']}/{p['chapter']}?"+urlencode({'hl':p['id']})
     return '/reader?' + urlencode({'doc':p['doc'],'page':p['page'],'ids':p['id']})
 
-def create_app(config=None):
+def create_app(config=None, index_provider=None):
     app = Flask(__name__)
     app.config.update(SECRET_KEY=os.getenv('SECRET_KEY') or secrets.token_hex(32),
         MAX_CONTENT_LENGTH=48000,
@@ -46,6 +46,9 @@ def create_app(config=None):
         BENCHMARK_PLAN_QUALITY=False)
     if config:
         app.config.update(config)
+    def get_library():
+        return index_provider() if index_provider is not None else library()
+
     rate = defaultdict(deque)
     rate_lock = threading.Lock()
     web_tokens = URLSafeTimedSerializer(app.config['SECRET_KEY'], salt='related-web-search')
@@ -107,29 +110,40 @@ def create_app(config=None):
 
     @app.get('/health')
     def health():
-        index=library()
+        index=get_library()
         return jsonify(status='ok',documents=len(index.docs),pages=len(index.pages))
 
     @app.get('/')
     def home():
-        return render_template('index.html',docs=library().public_docs(),
+        return render_template('index.html',docs=get_library().public_docs(),
             answer_model=ai.ASTRA, search_model=ai.SOL,
             web_search_default=app.config['WEB_SEARCH_DEFAULT'])
 
+    @app.get('/book-assets/<doc_id>/<filename>')
+    def html_image(doc_id,filename):
+        doc=get_library().docs.get(doc_id)
+        if not doc or doc.get('format')!='html' or not re.fullmatch(r'[a-f0-9]{24}\.(?:svg|png|jpg|jpeg|gif|webp|avif)',filename):
+            abort(404)
+        path=doc['path'].parent/'assets'/filename
+        if not path.is_file(): abort(404)
+        response=send_file(path,conditional=True)
+        response.headers['Content-Security-Policy']="sandbox; default-src 'none'; style-src 'unsafe-inline'; img-src data:"
+        return response
+
     @app.get('/book/<doc_id>/<chapter_id>')
     def html_chapter(doc_id,chapter_id):
-        doc=library().docs.get(doc_id)
+        doc=get_library().docs.get(doc_id)
         if not doc or doc.get('format')!='html': abort(404)
         chapter=next((c for c in doc['chapters'] if c['id']==chapter_id),None)
         if chapter is None: abort(404)
         content=(doc['path'].parent/chapter['file']).read_text(encoding='utf-8')
         response=app.make_response(render_template('book.html',doc=doc,chapter=chapter,content=content))
-        response.headers['Content-Security-Policy']="default-src 'self'; img-src 'self' data: https:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+        response.headers['Content-Security-Policy']="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
         return response
 
     @app.get('/reader')
     def reader():
-        index=library()
+        index=get_library()
         doc_id=request.args.get('doc',next(iter(index.docs)))
         if doc_id not in index.docs: abort(404)
         if index.docs[doc_id].get('format')=='html':
@@ -144,13 +158,13 @@ def create_app(config=None):
 
     @app.get('/pdf/<doc_id>')
     def pdf(doc_id):
-        doc=library().docs.get(doc_id)
+        doc=get_library().docs.get(doc_id)
         if not doc or doc.get('format','pdf')!='pdf': abort(404)
         return send_file(doc['path'],mimetype='application/pdf',conditional=True)
 
     @app.get('/page-image/<doc_id>/<int:number>')
     def image(doc_id,number):
-        index=library()
+        index=get_library()
         if (doc_id,number) not in index.pages or index.docs[doc_id].get('format','pdf')!='pdf': abort(404)
         try:scale=resolution(request.args.get('scale','2.5'))
         except ValueError:abort(400)
@@ -159,7 +173,7 @@ def create_app(config=None):
 
     @app.get('/api/reader/<doc_id>/<int:number>')
     def reader_page(doc_id,number):
-        index=library()
+        index=get_library()
         if (doc_id,number) not in index.pages:abort(404)
         ids=request.args.get('ids','').split(',')[:20]
         return jsonify(page_data(index,doc_id,number,ids,request.args.get('q','')[:200]))
@@ -168,11 +182,11 @@ def create_app(config=None):
     def local_search():
         q=request.args.get('q','')[:1500]
         doc_id=request.args.get('doc') or None
-        if doc_id and doc_id not in library().docs: abort(404)
+        if doc_id and doc_id not in get_library().docs: abort(404)
         results=[]
-        for p in library().search(q,doc_id,12):
-            results.append({**p,'title':library().docs[p['doc']]['title'],
-                'language':library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)})
+        for p in get_library().search(q,doc_id,12):
+            results.append({**p,'title':get_library().docs[p['doc']]['title'],
+                'language':get_library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)})
         return jsonify(results=results)
 
     def body():
@@ -198,12 +212,12 @@ def create_app(config=None):
         language=data.get('language','auto')
         if language not in ('auto','en-CA','fr-CA'): return jsonify(error='Invalid language.'),400
         doc_id=data.get('doc') or None
-        if doc_id and doc_id not in library().docs: return jsonify(error='Unknown document.'),400
+        if doc_id and doc_id not in get_library().docs: return jsonify(error='Unknown document.'),400
         raw_history=data.get('history',[])
         if not isinstance(raw_history,list): raw_history=[]
         history=[{'role':h['role'],'content':h['content'][:2500]} for h in raw_history[-6:]
                  if isinstance(h,dict) and h.get('role') in ('user','assistant') and isinstance(h.get('content'),str)]
-        docs=[d for d in library().public_docs() if not doc_id or d['id']==doc_id]
+        docs=[d for d in get_library().public_docs() if not doc_id or d['id']==doc_id]
         skip_plan=app.config['SKIP_PLAN'] and language in ('auto','en-CA') and not raw_history and is_english(question)
         def outside(lang):
             return jsonify(category='out_of_scope',language=lang,book_answer='',evidence=[],results=[],
@@ -221,15 +235,15 @@ def create_app(config=None):
                 return outside(lang)
             query=question if skip_plan else question+' '+search_plan['query_en']+' '+search_plan['query_fr']
             with stage('retrieve'):
-                hits=library().search(query,doc_id,10)
+                hits=get_library().search(query,doc_id,10)
             # Explicit page requests are bound to a single chosen document, not guessed across books.
             top_score=hits[0]['score'] if hits else 0.0
             explicit_page=False
             match=re.search(r'\b(?:pdf\s*)?(?:page|p\.)\s*(\d{1,4})\b',question,re.I)
             if match and len(docs)==1 and docs[0].get('format','pdf')=='pdf':
                 page=int(match.group(1))
-                if (docs[0]['id'],page) in library().pages:
-                    hits=library().page(docs[0]['id'],page)
+                if (docs[0]['id'],page) in get_library().pages:
+                    hits=get_library().page(docs[0]['id'],page)
                     explicit_page=True
             if skip_plan and not explicit_page and top_score < app.config['SKIP_PLAN_MIN_SCORE']:
                 search_plan['related']=False
@@ -252,8 +266,8 @@ def create_app(config=None):
             text,evidence=ai.validate_answer(result,offered)
             notice='' if text else ('Je ne peux pas confirmer la réponse à partir des passages trouvés. Cela ne signifie pas que le livre ne traite pas du sujet.' if lang=='fr-CA' else 'I could not verify an answer from the retrieved passages. This does not establish that the book omits the topic.')
             def present(p):
-                return {**{k:v for k,v in p.items() if k!='rects'},'title':library().docs[p['doc']]['title'],
-                    'language':library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
+                return {**{k:v for k,v in p.items() if k!='rects'},'title':get_library().docs[p['doc']]['title'],
+                    'language':get_library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
             web=None
             if data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
                 try:
@@ -284,7 +298,7 @@ def create_app(config=None):
             return jsonify(error='Invalid web search request. Ask the question again.'),403
         if not hmac.compare_digest(saved['binding'],web_binding()):
             return jsonify(error='This web search belongs to another session. Ask the question again.'),403
-        docs=[library().docs.get(doc) for doc in saved['docs']]
+        docs=[get_library().docs.get(doc) for doc in saved['docs']]
         if not docs or any(d is None for d in docs):
             return jsonify(error='The document collection changed. Ask the question again.'),400
         def operation():

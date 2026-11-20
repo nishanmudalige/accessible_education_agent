@@ -11,3 +11,4 @@ __pycache__/
 *.zip
 artifacts/
 content/*/raw/
+node_modules/

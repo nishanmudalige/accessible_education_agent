@@ -1,0 +1,6 @@
+{
+  "name": "accessedu-ui-tests",
+  "private": true,
+  "scripts": {"test:ui": "node tests/web_ui.cjs && node tests/rich_text.cjs && node tests/book_ui.cjs"},
+  "devDependencies": {"jsdom": "31.0.1"}
+}
