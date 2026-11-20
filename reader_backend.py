@@ -3,16 +3,22 @@ from functools import lru_cache
 import math
 import re
 import threading
+import time
+from timing import emit
 import fitz
 from retrieval import expand, tokens
 
 PDF_LOCK=threading.RLock()
 
 @lru_cache(maxsize=10)
-def page_png(path, number, scale):
-    with PDF_LOCK, fitz.open(path) as pdf:
-        page=pdf[number-1]
-        return page.get_pixmap(matrix=fitz.Matrix(scale,scale),colorspace=fitz.csRGB,alpha=False).tobytes('png')
+def page_png(path, number, scale, book=None):
+    started = time.perf_counter()
+    try:
+        with PDF_LOCK, fitz.open(path) as pdf:
+            page=pdf[number-1]
+            return page.get_pixmap(matrix=fitz.Matrix(scale,scale),colorspace=fitz.csRGB,alpha=False).tobytes('png')
+    finally:
+        emit(event='png_render', book=book or path, page=number, scale=scale, seconds=time.perf_counter()-started)
 
 def resolution(value):
     try: scale=float(value)

@@ -1,0 +1,50 @@
+[
+  {
+    "book": "active-calculus-pdf",
+    "question": "What is a derivative?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 2
+  },
+  {
+    "book": "active-calculus-pdf",
+    "question": "How do I find the area under a curve?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 2
+  },
+  {
+    "book": "active-calculus-pdf",
+    "question": "What does the chain rule say?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 2
+  },
+  {
+    "book": "active-calculus-pdf",
+    "question": "Qu’est-ce qu’une dérivée ?",
+    "question_language": "fr",
+    "reply_language": "fr",
+    "web": false,
+    "repeats": 2
+  },
+  {
+    "book": "active-calculus-pdf",
+    "question": "Qu’est-ce que la règle de dérivation en chaîne ?",
+    "question_language": "fr",
+    "reply_language": "fr",
+    "web": false,
+    "repeats": 2
+  },
+  {
+    "book": "active-calculus-pdf",
+    "question": "What is the weather today?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 2
+  }
+]

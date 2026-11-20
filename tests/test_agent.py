@@ -11,7 +11,7 @@ from retrieval import LibraryIndex
 
 @pytest.fixture
 def client():
-    app=module.create_app({'TESTING':True,'SECRET_KEY':'test-secret','APP_PASSWORD':'test-password','RATE_LIMIT':100})
+    app=module.create_app({'TESTING':True,'SECRET_KEY':'test-secret','APP_PASSWORD':'test-password','RATE_LIMIT':100,'SKIP_PLAN':False})
     c=app.test_client()
     with c.session_transaction() as s:s['authenticated']=True;s['csrf']='test-csrf'
     return c
@@ -21,7 +21,7 @@ def post(c,path,data):return c.post(path,json=data,headers={'X-CSRF-Token':'test
 def fake_ai(monkeypatch,related=True,supported=True,bad_key=False):
     calls=[]
     monkeypatch.setattr(ai,'plan',lambda *args:dict(related=related,language='fr-CA',query_en='confidence interval',query_fr='intervalle de confiance',reason=''))
-    def answer(q,lang,hits,history):
+    def answer(q,lang,hits,history,docs):
         calls.append(hits)
         return {'supported':supported,'answer':'Un intervalle de confiance. [S999]' if bad_key else 'Un intervalle de confiance. [S1]', 'evidence':['S999' if bad_key else 'S1']}
     monkeypatch.setattr(ai,'answer',answer)
@@ -102,7 +102,7 @@ def test_external_failure_preserves_book(client,monkeypatch):
     fake_ai(monkeypatch)
     def fail(*args):raise RuntimeError('private provider details')
     monkeypatch.setattr(ai,'web_search',fail)
-    r=post(client,'/api/ask',{'question':'confidence interval'}).json
+    r=post(client,'/api/ask',{'question':'confidence interval','web':True}).json
     assert r['book_answer'] and r['web']['error'] and 'private' not in str(r)
 
 def test_translation_language_and_output(client,monkeypatch):
@@ -134,6 +134,21 @@ def test_responses_contract_and_exact_model_names(monkeypatch):
     assert calls[0]['model']=='gpt-6.1-sol'
     assert calls[0]['store'] is False and calls[0]['text']['format']['strict']
     assert calls[0]['reasoning']['effort']=='low'
+
+def test_plan_sends_only_needed_document_metadata(monkeypatch):
+    calls=[]
+    class Responses:
+        def create(self, **kwargs):
+            calls.append(kwargs)
+            return NS(status='completed', output_text='{"related":true,"language":"en-CA","query_en":"derivative","query_fr":"dérivée"}')
+    monkeypatch.setattr(ai, 'client', lambda: NS(responses=Responses()))
+    doc = {'id':'book', 'title':'Calculus', 'subject':'calculus', 'language':'en-CA',
+           'toc':[{'title':'Chapter 1'}], 'page_count':593, 'authors':'Author'}
+    ai.plan('derivative', 'en-CA', [doc], [])
+    assert json.loads(calls[0]['input'])['subjects'] == [
+        {'id':'book', 'title':'Calculus', 'subject':'calculus', 'language':'en-CA'}]
+    schema = calls[0]['text']['format']['schema']
+    assert 'reason' not in schema['properties'] and 'reason' not in schema['required']
 
 def test_web_requires_real_search_and_safe_citations(monkeypatch):
     response=NS(status='completed',output=[NS(type='message',content=[NS(type='output_text',text='Invented answer',annotations=[])])])

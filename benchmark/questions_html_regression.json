@@ -1,0 +1,26 @@
+[
+  {
+    "book": "active-calculus-html",
+    "question": "How do I use the product rule?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 1
+  },
+  {
+    "book": "writing-for-success-html",
+    "question": "What is a sentence fragment, and how do I fix one?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 1
+  },
+  {
+    "book": "liberte1-html",
+    "question": "How do I conjugate the verb être in the present tense?",
+    "question_language": "en",
+    "reply_language": "en",
+    "web": false,
+    "repeats": 1
+  }
+]

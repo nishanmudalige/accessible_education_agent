@@ -10,3 +10,5 @@ __pycache__/
 *.log
 *.zip
 artifacts/
+content/*/raw/
+node_modules/

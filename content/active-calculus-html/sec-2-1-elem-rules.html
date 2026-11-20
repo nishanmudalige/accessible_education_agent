@@ -1,0 +1,653 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-2-1-elem-rules">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Elementary derivative rules</span>
+</h1>
+<article class="objectives goal-like" id="sec-2-1-elem-rules-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-2-1-elem-rules-2-1">
+<li data-evidence="true" id="sec-2-1-elem-rules-2-1-1">
+<div class="para" id="sec-2-1-elem-rules-2-1-1-1">What are alternate notations for the derivative?
+</div>
+</li>
+<li data-evidence="true" id="sec-2-1-elem-rules-2-1-2">
+<div class="para" id="sec-2-1-elem-rules-2-1-2-1">How can we use the algebraic structure of a function <span class="process-math">\(f(x)\)</span> to compute a formula for <span class="process-math">\(f'(x)\text{?}\)</span>
+</div>
+</li>
+<li data-evidence="true" id="sec-2-1-elem-rules-2-1-3">
+<div class="para" id="sec-2-1-elem-rules-2-1-3-1">What is the derivative of a power function of the form <span class="process-math">\(f(x) = x^n\text{?}\)</span> What is the derivative of an exponential function of form <span class="process-math">\(f(x) = a^x\text{?}\)</span>
+</div>
+</li>
+<li data-evidence="true" id="sec-2-1-elem-rules-2-1-4">
+<div class="para" id="sec-2-1-elem-rules-2-1-4-1">If we know the derivative of <span class="process-math">\(y = f(x)\text{,}\)</span> what is the derivative of <span class="process-math">\(y = k f(x)\text{,}\)</span> where <span class="process-math">\(k\)</span> is a constant?
+</div>
+</li>
+<li data-evidence="true" id="sec-2-1-elem-rules-2-1-5">
+<div class="para" id="sec-2-1-elem-rules-2-1-5-1">If we know the derivatives of <span class="process-math">\(y = f(x)\)</span> and <span class="process-math">\(y = g(x)\text{,}\)</span> how do we compute the derivative of <span class="process-math">\(y = f(x) + g(x)\text{?}\)</span>
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-2-1-elem-rules-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-3-2">
+<div class="para">In <a class="internal" href="/book/active-calculus-html/C-1" title="Chapter 1: Understanding the Derivative">Chapter 1</a>, we developed the concept of the derivative of a function. We now know that the derivative <span class="process-math">\(f'\)</span> of a function <span class="process-math">\(f\)</span> measures the instantaneous rate of change of <span class="process-math">\(f\)</span> with respect to <span class="process-math">\(x\text{.}\)</span> The derivative also tells us the slope of the tangent line to <span class="process-math">\(y=f(x)\)</span> at any given value of <span class="process-math">\(x\text{.}\)</span> So far, we have focused on interpreting the derivative graphically or, in the context of a physical setting, as a meaningful rate of change. To calculate the value of the derivative at a specific point, we have relied on the limit definition of the derivative,</div>
+<div class="displaymath process-math" id="sec-2-1-elem-rules-3-2-8">
+\begin{equation*}
+f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-3-3">In this chapter, we investigate how the limit definition of the derivative leads to interesting patterns and rules that enable us to find a formula for <span class="process-math">\(f'(x)\)</span> quickly, <em class="emphasis">without</em> using the limit definition directly. For example, we would like to apply shortcuts to differentiate a function such as <span class="process-math">\(g(x) = 4x^7 - \sin(x) + 3e^x\)</span> simply by observation.
+</div>
+<section class="worksheet" id="ws-PA-2-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-2-1"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-2-1-1">
+<div class="para" data-evidence="true" id="PA-2-1-1-1">Functions of the form <span class="process-math">\(f(x) = x^n\text{,}\)</span> where <span class="process-math">\(n = 1, 2, 3, \ldots\text{,}\)</span> are often called power functions. The first two questions below revisit work we did earlier in <a class="internal" href="/book/active-calculus-html/C-1" title="Chapter 1: Understanding the Derivative">Chapter 1</a>, and the following questions extend those ideas to higher powers of <span class="process-math">\(x\text{.}\)</span>
+</div>
+</div>
+<article class="task exercise-like" id="PA-2-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-1-task-0-1-1">Use the limit definition of the derivative to find <span class="process-math">\(f'(x)\)</span> for <span class="process-math">\(f(x) = x^2\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-1-task-1-1-1">Use the limit definition of the derivative to find <span class="process-math">\(f'(x)\)</span> for <span class="process-math">\(f(x) = x^3\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-1-task-2-1-1">Use the limit definition of the derivative to find <span class="process-math">\(f'(x)\)</span> for <span class="process-math">\(f(x) = x^4\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="PA-2-1-task-2-1-2">(<em class="alert">Hint</em>: <span class="process-math">\((a+b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\text{.}\)</span> Apply this rule to <span class="process-math">\((x+h)^4\)</span> within the limit definition.)
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-1-task-3-1-1">Based on your work in (a), (b), and (c), what do you conjecture is the derivative of <span class="process-math">\(f(x) = x^5\text{?}\)</span> Of <span class="process-math">\(f(x) = x^{13}\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-1-task-4-1-1">Conjecture a formula for the derivative of <span class="process-math">\(f(x) = x^n\)</span> that holds for any positive integer <span class="process-math">\(n\text{.}\)</span> That is, given <span class="process-math">\(f(x) = x^n\)</span> where <span class="process-math">\(n\)</span> is a positive integer, what do you think is the formula for <span class="process-math">\(f'(x)\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-1-elem-rules-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Some Key Notation</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-4-2">
+<div class="para">In addition to our usual <span class="process-math">\(f'\)</span> notation, there are other ways to denote the derivative of a function, as well as the instruction to take the derivative. If we are thinking about the relationship between <span class="process-math">\(y\)</span> and <span class="process-math">\(x\text{,}\)</span> we sometimes denote the derivative of <span class="process-math">\(y\)</span> with respect to <span class="process-math">\(x\)</span> by the symbol</div>
+<div class="displaymath process-math" id="sec-2-1-elem-rules-4-2-6">
+\begin{equation*}
+\frac{dy}{dx}
+\end{equation*}
+</div>
+<div class="para">which we read “dee-y dee-x.” For example, if <span class="process-math">\(y = x^2\text{,}\)</span> we’ll write that the derivative is <span class="process-math">\(\frac{dy}{dx} = 2x\text{.}\)</span> This notation comes from the fact that the derivative is related to the slope of a line, and slope is measured by <span class="process-math">\(\frac{\Delta y}{\Delta x}\text{.}\)</span> Note that while we read <span class="process-math">\(\frac{\Delta y}{\Delta x}\)</span> as “change in <span class="process-math">\(y\)</span> over change in <span class="process-math">\(x\text{,}\)</span>” we view <span class="process-math">\(\frac{dy}{dx}\)</span> as a single symbol, not a quotient of two quantities.</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-4-3">
+<div class="para">We use a variant of this notation as the instruction to take the derivative. In particular,</div>
+<div class="displaymath process-math" id="sec-2-1-elem-rules-4-3-1">
+\begin{equation*}
+\frac{d}{dx}\left[ \Box \right]
+\end{equation*}
+</div>
+<div class="para">means “take the derivative of the quantity in <span class="process-math">\(\Box\)</span> with respect to <span class="process-math">\(x\text{.}\)</span>” For example, we may write <span class="process-math">\(\frac{d}{dx}[x^2] = 2x\text{.}\)</span>
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-4-4">It is important to note that the independent variable can be different from <span class="process-math">\(x\text{.}\)</span> If we have <span class="process-math">\(f(z) = z^2\text{,}\)</span> we then write <span class="process-math">\(f'(z) = 2z\text{.}\)</span> Similarly, if <span class="process-math">\(y = t^2\text{,}\)</span> we say <span class="process-math">\(\frac{dy}{dt} = 2t\text{.}\)</span> And it is also true that <span class="process-math">\(\frac{d}{dq}[q^2] = 2q\text{.}\)</span> This notation may also be used for second derivatives: <span class="process-math">\(f''(z) = \frac{d}{dz}\left[\frac{df}{dz}\right] = \frac{d^2 f}{dz^2}\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-4-5">In what follows, we’ll build a repertoire of functions for which we can quickly compute the derivative.
+</div>
+</section>
+<section class="subsection" id="subsec-const-power-exp-rules">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Constant, Power, and Exponential Functions</span>
+</h2>
+<div class="para" data-evidence="true" id="subsec-const-power-exp-rules-2">So far, we know the derivative formula for two important classes of functions: constant functions and power functions. If <span class="process-math">\(f(x) = c\)</span> is a constant function, its graph is a horizontal line with slope zero at every point. Thus, <span class="process-math">\(\frac{d}{dx}[c] = 0\text{.}\)</span> We summarize this with the following rule.
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="const-fxns"><h3 class="heading"><span class="title">The derivative of a constant function.</span></h3>
+<div class="para" id="const-fxns-2"> For any real number <span class="process-math">\(c\text{,}\)</span> if <span class="process-math">\(f(x) = c\text{,}\)</span> then <span class="process-math">\(f'(x) = 0\text{.}\)</span>
+</div>
+</article>
+<article class="example example-like" data-evidence="true" id="subsec-const-power-exp-rules-4"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-const-power-exp-rules-4-1-1">If <span class="process-math">\(f(x) = 7\text{,}\)</span> then <span class="process-math">\(f'(x) = 0\text{.}\)</span> Similarly, <span class="process-math">\(\frac{d}{dx} [\sqrt{3}] = 0\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="subsec-const-power-exp-rules-5">In your work in <a class="xref" href="/book/active-calculus-html/sec-2-1-elem-rules#PA-2-1" title="Preview Activity 2.1.1">Preview Activity 2.1.1</a>, you conjectured that for any positive integer <span class="process-math">\(n\text{,}\)</span> if <span class="process-math">\(f(x) = x^n\text{,}\)</span> then <span class="process-math">\(f'(x) = nx^{n-1}\text{.}\)</span> This rule can be formally proved for any positive integer <span class="process-math">\(n\text{,}\)</span> and even for any nonzero real number (positive or negative).
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="power-fxns"><h3 class="heading"><span class="title">The derivative of a power function.</span></h3>
+<div class="para" id="power-fxns-2"> For any nonzero real number <span class="process-math">\(n\text{,}\)</span> if <span class="process-math">\(f(x) = x^n\text{,}\)</span> then <span class="process-math">\(f'(x) = nx^{n-1}\text{.}\)</span>
+</div>
+</article>
+<article class="example example-like" data-evidence="true" id="subsec-const-power-exp-rules-7"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="subsec-const-power-exp-rules-7-1-1">Using the rule for power functions, we can compute the following derivatives. If <span class="process-math">\(g(z) = z^{-3}\text{,}\)</span> then <span class="process-math">\(g'(z) = -3z^{-4}\text{.}\)</span> Similarly, if <span class="process-math">\(h(t) = t^{7/5}\text{,}\)</span> then <span class="process-math">\(\frac{dh}{dt} = \frac{7}{5}t^{2/5}\text{,}\)</span> and <span class="process-math">\(\frac{d}{dq} [q^{\pi}] = \pi q^{\pi - 1}\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="subsec-const-power-exp-rules-8">It will be helpful to have a derivative formula for one more type of basic function. For now, we simply state this rule without explanation or justification; we explore why this rule is true in one of the exercises and we will encounter graphical reasoning for why the rule is plausible in <a class="xref" href="/book/active-calculus-html/sec-2-2-sin-cos#PA-2-2" title="Preview Activity 2.2.1">Preview Activity 2.2.1</a>.
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="exp-fxns"><h3 class="heading"><span class="title">The derivative of an exponential function.</span></h3>
+<div class="para" id="exp-fxns-2"> For any positive real number <span class="process-math">\(a\text{,}\)</span> if <span class="process-math">\(f(x) = a^x\text{,}\)</span> then <span class="process-math">\(f'(x) = a^x \ln(a)\text{.}\)</span>
+</div>
+</article>
+<article class="example example-like" data-evidence="true" id="subsec-const-power-exp-rules-10"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" id="subsec-const-power-exp-rules-10-1-1">
+<div class="para">If <span class="process-math">\(f(x) = 2^x\text{,}\)</span> then <span class="process-math">\(f'(x) = 2^x \ln(2)\text{.}\)</span> Similarly, for <span class="process-math">\(p(t) = 10^t\text{,}\)</span> <span class="process-math">\(p'(t) = 10^t \ln(10)\text{.}\)</span> It is especially important to note that when <span class="process-math">\(a = e\text{,}\)</span> where <span class="process-math">\(e\)</span> is the base of the natural logarithm function, we have that</div>
+<div class="displaymath process-math" id="subsec-const-power-exp-rules-10-1-1-7">
+\begin{equation*}
+\frac{d}{dx} [e^x] = e^x \ln(e) = e^x
+\end{equation*}
+</div>
+<div class="para">since <span class="process-math">\(\ln(e) = 1\text{.}\)</span> This is an extremely important property of the function <span class="process-math">\(e^x\text{:}\)</span> its derivative function is itself!</div>
+</div>
+</article>
+<div class="para" data-evidence="true" id="subsec-const-power-exp-rules-11">Note carefully the distinction between power functions and exponential functions: in power functions, the variable is in the base, as in <span class="process-math">\(x^2\text{,}\)</span> while in exponential functions, the variable is in the power, as in <span class="process-math">\(2^x\text{.}\)</span> As we can see from the rules, this makes a big difference in the form of the derivative.
+</div>
+<section class="worksheet" id="ws-act-2-1-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-1-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-1-1-1">
+<div class="para" data-evidence="true" id="act-2-1-1-1-1">Use the rules for constant, power, and exponential functions to determine the derivative of each of the following functions. For each, state your answer using full and proper notation, labeling the derivative with its name. For example, if you are given a function <span class="process-math">\(h(z)\text{,}\)</span> you should use notation such as “<span class="process-math">\(h'(z) =\)</span>” or “<span class="process-math">\(\frac{dh}{dz} =\)</span>” as part of your response.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-1-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-0-1-1">
+<span class="process-math">\(f(t) = \pi\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-1-1-1">
+<span class="process-math">\(g(z) = 7^z\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-2-1-1">
+<span class="process-math">\(h(w) = w^{3/4}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-3-1-1">
+<span class="process-math">\(p(x) = 3^{1/2}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-4-1-1">
+<span class="process-math">\(r(t) = (\sqrt{2})^t\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-5-1-1">
+<span class="process-math">\(s(q) = q^{-1}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-1-task-6"><h5 class="heading"><span class="codenumber">(g)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-1-task-6-1-1">
+<span class="process-math">\(m(t) = \frac{1}{t^3}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-1-elem-rules-6">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Constant Multiples and Sums of Functions</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-6-2">
+<div class="para">Next we will learn how to compute the derivative of a function constructed as an algebraic combination of basic functions. For instance, we’d like to be able to take the derivative of a polynomial function such as</div>
+<div class="displaymath process-math" id="sec-2-1-elem-rules-6-2-1">
+\begin{equation*}
+p(t) = 3t^5 - 7t^4 + t^2 - 9\text{,}
+\end{equation*}
+</div>
+<div class="para">which is a sum of constant multiples of powers of <span class="process-math">\(t\text{.}\)</span> To that end, we develop two new rules: the Constant Multiple Rule and the Sum Rule.</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-6-3">How is the derivative of <span class="process-math">\(y = kf(x)\)</span> related to the derivative of <span class="process-math">\(y = f(x)\text{?}\)</span> Recall that when we multiply a function by a constant <span class="process-math">\(k\text{,}\)</span> we vertically stretch the graph by a factor of <span class="process-math">\(|k|\)</span> (and reflect the graph across <span class="process-math">\(y = 0\)</span> if <span class="process-math">\(k \lt 0\)</span>). This vertical stretch affects the slope of the graph, so the slope of the function <span class="process-math">\(y = kf(x)\)</span> is <span class="process-math">\(k\)</span> times as steep as the slope of <span class="process-math">\(y = f(x)\text{.}\)</span> Thus, when we multiply a function by a factor of <span class="process-math">\(k\text{,}\)</span> we change the value of its derivative by a factor of <span class="process-math">\(k\)</span> as well.<details class="ptx-footnote" id="sec-2-1-elem-rules-6-3-12"><summary class="ptx-footnote__number" title="Footnote 2.1.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents">The Constant Multiple Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.
+</div></details>
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="const-mult-rule"><h3 class="heading"><span class="title">The Constant Multiple Rule.</span></h3>
+<div class="para" id="const-mult-rule-2"> For any real number <span class="process-math">\(k\text{,}\)</span> if <span class="process-math">\(f(x)\)</span> is a differentiable function with derivative <span class="process-math">\(f'(x)\text{,}\)</span> then <span class="process-math">\(\frac{d}{dx}[k f(x)] = k f'(x)\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-6-5">In words, this rule says that “the derivative of a constant times a function is the constant times the derivative of the function.”
+</div>
+<article class="example example-like" data-evidence="true" id="sec-2-1-elem-rules-6-6"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="sec-2-1-elem-rules-6-6-1-1">If <span class="process-math">\(g(t) = 3 \cdot 5^t\text{,}\)</span> we have <span class="process-math">\(g'(t) = 3 \cdot 5^t \ln(5)\text{.}\)</span> Similarly, <span class="process-math">\(\frac{d}{dz} [5z^{-2}] = 5 (-2z^{-3})\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-6-7">Next we examine a sum of two functions. If we have <span class="process-math">\(y = f(x)\)</span> and <span class="process-math">\(y = g(x)\text{,}\)</span> we can compute a new function <span class="process-math">\(y = (f+g)(x)\)</span> by adding the outputs of the two functions: <span class="process-math">\((f+g)(x) = f(x) + g(x)\text{.}\)</span> Not only is the value of the new function the sum of the values of the two known functions, but the slope of the new function is the sum of the slopes of the known functions. Therefore<details class="ptx-footnote" id="sec-2-1-elem-rules-6-7-5"><summary class="ptx-footnote__number" title="Footnote 2.1.2"><sup> 2 </sup></summary>
+<div class="ptx-footnote__contents">Like the Constant Multiple Rule, the Sum Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.
+</div></details>, we arrive at the following Sum Rule for derivatives:
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="sum-rule"><h3 class="heading"><span class="title">The Sum Rule.</span></h3>
+<div class="para" id="sum-rule-2"> If <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> are differentiable functions with derivatives <span class="process-math">\(f'(x)\)</span> and <span class="process-math">\(g'(x)\)</span> respectively, then <span class="process-math">\(\frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-6-9">In words, the Sum Rule tells us that “the derivative of a sum is the sum of the derivatives.” It also tells us that a sum of two differentiable functions is also differentiable. Furthermore, because we can view the difference function <span class="process-math">\(y = (f-g)(x) = f(x) - g(x)\)</span> as <span class="process-math">\(y = f(x) + (-1 \cdot g(x))\text{,}\)</span> the Sum Rule and Constant Multiple Rules together tell us that <span class="process-math">\(\frac{d}{dx}[f(x) + (-1 \cdot g(x))] = f'(x) - g'(x)\text{,}\)</span> or that “the derivative of a difference is the difference of the derivatives.” We can now compute derivatives of sums and differences of elementary functions.
+</div>
+<article class="example example-like" data-evidence="true" id="sec-2-1-elem-rules-6-10"><h3 class="heading">
+<span class="type">Example</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.5</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para" id="sec-2-1-elem-rules-6-10-1-1">Using the sum rule, <span class="process-math">\(\frac{d}{dw} (2^w + w^2) = 2^w \ln(2) + 2w\text{.}\)</span> Using both the sum and constant multiple rules, if <span class="process-math">\(h(q) = 3q^6 - 4q^{-3}\text{,}\)</span> then <span class="process-math">\(h'(q) = 3 (6q^5) - 4(-3q^{-4}) = 18q^5 + 12q^{-4}\text{.}\)</span>
+</div>
+</article>
+<section class="worksheet" id="ws-act-2-1-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-1-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-1-2-1">
+<div class="para" data-evidence="true" id="act-2-1-2-1-1">Use only the rules for constant, power, and exponential functions, together with the Constant Multiple and Sum Rules, to compute the derivative of each function below with respect to the given independent variable. Note well that we do not yet know any rules for how to differentiate the product or quotient of functions. This means that you may have to do some algebra first on certain functions below before you can actually use existing rules to compute the desired derivative formula. For each function whose derivative you find, label the derivative with its name using proper notation such as <span class="process-math">\(f'(x)\text{,}\)</span> <span class="process-math">\(h'(z)\text{,}\)</span> <span class="process-math">\(dr/dt\text{,}\)</span> etc.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-1-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-0-1-1">
+<span class="process-math">\(f(x) = x^{5/3} - x^4 + 2^x\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-1-1-1">
+<span class="process-math">\(g(x) = 14e^x + 3x^5 - x\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-2-1-1">
+<span class="process-math">\(h(z) = \sqrt{z} + \frac{1}{z^4} + 5^z\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-3-1-1">
+<span class="process-math">\(r(t) = \sqrt{53} \, t^7 - \pi e^t + e^4\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-4-1-1">
+<span class="process-math">\(s(y) = (y^2 + 1)(y^2 - 1)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-5-1-1">
+<span class="process-math">\(q(x) = \frac{x^3 - x + 2}{x}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-2-task-6"><h5 class="heading"><span class="codenumber">(g)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-2-task-6-1-1">
+<span class="process-math">\(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<div class="para" data-evidence="true" id="sec-2-1-elem-rules-6-12">In the same way that we have shortcut rules to help us find derivatives, we introduce some language that is simpler and shorter. Often, rather than say “take the derivative of <span class="process-math">\(f\text{,}\)</span>” we’ll instead say simply “differentiate <span class="process-math">\(f\text{.}\)</span>” Similarly, if the derivative exists at a point, we say “<span class="process-math">\(f\)</span> is differentiable at that point,” or that <span class="process-math">\(f\)</span> can be differentiated.
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-6-13">
+<div class="para">As we work with the algebraic structure of functions, it is important to develop a big picture view of what we are doing. Here, we make several general observations based on the rules we have so far.</div>
+<ul class="disc" id="sec-2-1-elem-rules-6-13-1">
+<li id="sec-2-1-elem-rules-6-13-1-1">
+<div class="para" id="p-derived-sec-2-1-elem-rules-6-13-1-1">The derivative of any polynomial function will be another polynomial function, and that the degree of the derivative is one less than the degree of the original function. For instance, if <span class="process-math">\(p(t) = 7t^5 - 4t^3 + 8t\text{,}\)</span> <span class="process-math">\(p\)</span> is a degree 5 polynomial, and its derivative, <span class="process-math">\(p'(t) = 35t^4 - 12t^2 + 8\text{,}\)</span> is a degree 4 polynomial.</div>
+</li>
+<li id="sec-2-1-elem-rules-6-13-1-2">
+<div class="para" id="p-derived-sec-2-1-elem-rules-6-13-1-2">The derivative of any exponential function is another exponential function: for example, if <span class="process-math">\(g(z) = 7 \cdot 2^z\text{,}\)</span> then <span class="process-math">\(g'(z) = 7 \cdot 2^z \ln(2)\text{,}\)</span> which is also exponential.</div>
+</li>
+<li id="sec-2-1-elem-rules-6-13-1-3">
+<div class="para" id="p-derived-sec-2-1-elem-rules-6-13-1-3">We should not lose sight of the fact that all of the meaning of the derivative that we developed in <a class="internal" href="/book/active-calculus-html/C-1" title="Chapter 1: Understanding the Derivative">Chapter 1</a> still holds. The derivative measures the instantaneous rate of change of the original function, as well as the slope of the tangent line at any selected point on its graph.</div>
+</li>
+</ul>
+</div>
+<section class="worksheet" id="ws-act-2-1-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-1-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-1-3-1">
+<div class="para" data-evidence="true" id="act-2-1-3-1-1">Each of the following questions asks you to use derivatives to answer key questions about functions. Be sure to think carefully about each question and to use proper notation in your responses.
+</div>
+<div class="para" id="act-2-1-3-1-2"></div>
+</div>
+<article class="task exercise-like" id="act-2-1-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-3-task-0-1-1">Find the slope of the tangent line to <span class="process-math">\(h(z) = \sqrt{z} + \frac{1}{z}\)</span> at the point where <span class="process-math">\(z = 4\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-3-task-1-1-1">A population of cells is growing in such a way that its total number in millions is given by the function <span class="process-math">\(P(t) = 2(1.37)^t + 32\text{,}\)</span> where <span class="process-math">\(t\)</span> is measured in days.
+</div>
+<div class="para logical" data-evidence="true" id="act-2-1-3-task-1-1-2">
+<ol class="lower-roman" id="act-2-1-3-task-1-1-2-1">
+<li id="act-2-1-3-task-1-1-2-1-1">
+<div class="para" id="act-2-1-3-task-1-1-2-1-1-1">Determine the instantaneous rate at which the population is growing on day 4, and include units on your answer.
+</div>
+</li>
+<li id="act-2-1-3-task-1-1-2-1-2">
+<div class="para" id="act-2-1-3-task-1-1-2-1-2-1">Is the population growing at an increasing rate or growing at a decreasing rate on day 4? Explain.
+</div>
+</li>
+</ol>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-3-task-2-1-1">Find an equation for the tangent line to the curve <span class="process-math">\(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\)</span> at the point where <span class="process-math">\(a=-1\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-1-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-1-3-task-3-1-1">What is the difference between being asked to find the <em class="emphasis">slope</em> of the tangent line (asked in (a)) and the <em class="emphasis">equation</em> of the tangent line (asked in (c))?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-1-elem-rules-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-1-elem-rules-7-2">
+<ul class="disc" id="sec-2-1-elem-rules-7-2-1">
+<li id="sec-2-1-elem-rules-7-2-1-1">
+<div class="para" id="sec-2-1-elem-rules-7-2-1-1-1">Given a differentiable function <span class="process-math">\(y = f(x)\text{,}\)</span> we can express the derivative of <span class="process-math">\(f\)</span> in several different notations: <span class="process-math">\(f'(x)\text{,}\)</span> <span class="process-math">\(\frac{df}{dx}\text{,}\)</span> <span class="process-math">\(\frac{dy}{dx}\text{,}\)</span> and <span class="process-math">\(\frac{d}{dx}[f(x)]\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-1-elem-rules-7-2-1-2">
+<div class="para" id="sec-2-1-elem-rules-7-2-1-2-1">The limit definition of the derivative leads to patterns among certain families of functions that enable us to compute derivative formulas without resorting directly to the limit definition. For example, if <span class="process-math">\(f\)</span> is a power function of the form <span class="process-math">\(f(x) = x^n\text{,}\)</span> then <span class="process-math">\(f'(x) = nx^{n-1}\)</span> for any real number <span class="process-math">\(n\)</span> other than 0.
+</div>
+</li>
+<li id="sec-2-1-elem-rules-7-2-1-3">
+<div class="para" id="sec-2-1-elem-rules-7-2-1-3-1">We have stated a rule for derivatives of exponential functions in the same spirit as the rule for power functions: for any positive real number <span class="process-math">\(a\text{,}\)</span> if <span class="process-math">\(f(x) = a^x\text{,}\)</span> then <span class="process-math">\(f'(x) = a^x \ln(a)\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-1-elem-rules-7-2-1-4">
+<div class="para logical" id="sec-2-1-elem-rules-7-2-1-4-1">
+<div class="para">If we are given a constant multiple of a function whose derivative we know, or a sum of functions whose derivatives we know, the Constant Multiple and Sum Rules make it straightforward to compute the derivative of the overall function. More formally, if <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(g(x)\)</span> are differentiable with derivatives <span class="process-math">\(f'(x)\)</span> and <span class="process-math">\(g'(x)\)</span> and <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are constants, then</div>
+<div class="displaymath process-math" id="sec-2-1-elem-rules-7-2-1-4-1-7">
+\begin{equation*}
+\frac{d}{dx} \left[af(x) + bg(x)\right] = af'(x) + bg'(x)\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-2-1">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec1__Q15_pg"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec1__Q15_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q15_pg-1-1-1">Find the derivative of
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q15_pg-1-1-2">
+<span class="process-math">\(y = \root 9 \of{x}\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q15_pg-1-1-3">
+<span class="process-math">\({dy\over dx} =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec1__Q59_pg"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec1__Q59_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q59_pg-1-1-1">If <span class="process-math">\(f(x) = x^3 + 6 x^2 - 36 x + 24\text{,}\)</span> find analytically all values of <span class="process-math">\(x\)</span> for which <span class="process-math">\(f'(x) = 0\text{.}\)</span>  (Enter your answer as a comma separated list of numbers, e.g., -1,0,2)
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q59_pg-1-1-2">
+<span class="process-math">\(x =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec1__Q35_pg"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec1__Q35_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q35_pg-1-1-1">Find the derivative of <span class="process-math">\(\displaystyle f(t) = \frac{t^{3}+t^{4}-1}{t^{5}}\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q35_pg-1-1-2">
+<span class="process-math">\(f'(t) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec1__Q53_pg"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec1__Q53_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q53_pg-1-1-1">Find an equation for the line tangent to the graph of <span class="process-math">\(f\)</span> at <span class="process-math">\((3,68)\text{,}\)</span> where <span class="process-math">\(f\)</span> is given by <span class="process-math">\(f(x)= 3x^{3}-3x^{2}+14\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec1__Q53_pg-1-1-2">
+<span class="process-math">\(y =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec2__Q39_pg"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec2__Q39_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q39_pg-1-1-1">
+<div class="para">Certain pieces of antique furniture increased very rapidly in price in the 1970s and 1980s.  For example, the value of a particular rocking chair is well approximated by</div>
+<div class="displaymath process-math" id="extracted-Library__Michigan__Chap3Sec2__Q39_pg-1-1-1-1">
+\begin{equation*}
+V = 90 (1.55)^t,
+\end{equation*}
+</div>
+<div class="para">where  <span class="process-math">\(V\)</span>  is in dollars and  <span class="process-math">\(t\)</span> is the number of years since 1975.  Find the rate, in dollars per year, at which the price is increasing.</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q39_pg-1-1-2">rate = <span class="fillin underline"></span> dollars/yr
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec2__Q01_pg"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec2__Q01_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q01_pg-1-1-1">Find the derivative of <span class="process-math">\(f(x)=9 e^x+x^{3}\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q01_pg-1-1-2">
+<span class="process-math">\(f'(x) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec2__Q25_pg"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec2__Q25_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q25_pg-1-1-1">Find the derivative of the function <span class="process-math">\(y(x) = m^x + x^m\text{.}\)</span> Assume that <span class="process-math">\(m\)</span> is a positive constant.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec2__Q25_pg-1-1-2">
+<span class="process-math">\(y'(x) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-1-8"><h3 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-1-8-1-1">
+<div class="para">Let <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> be differentiable functions for which the following information is known: <span class="process-math">\(f(2) = 5\text{,}\)</span> <span class="process-math">\(g(2) = -3\text{,}\)</span> <span class="process-math">\(f'(2) = -1/2\text{,}\)</span> <span class="process-math">\(g'(2) = 2\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-1-8-1-1-7">
+<li id="ez-2-1-8-1-1-7-1">
+<div class="para" id="ez-2-1-8-1-1-7-1-1">Let <span class="process-math">\(h\)</span> be the new function defined by the rule <span class="process-math">\(h(x) = 3f(x) - 4g(x)\text{.}\)</span> Determine <span class="process-math">\(h(2)\)</span> and <span class="process-math">\(h'(2)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-1-8-1-1-7-2">
+<div class="para" id="ez-2-1-8-1-1-7-2-1">Find an equation for the tangent line to <span class="process-math">\(y = h(x)\)</span> at the point <span class="process-math">\((2,h(2))\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-1-8-1-1-7-3">
+<div class="para" id="ez-2-1-8-1-1-7-3-1">Let <span class="process-math">\(p\)</span> be the function defined by the rule <span class="process-math">\(p(x) = -2f(x) + \frac{1}{2}g(x)\text{.}\)</span> Is <span class="process-math">\(p\)</span> increasing, decreasing, or neither at <span class="process-math">\(a = 2\text{?}\)</span> Why?
+</div>
+</li>
+<li id="ez-2-1-8-1-1-7-4">
+<div class="para" id="ez-2-1-8-1-1-7-4-1">Estimate the value of <span class="process-math">\(p(2.03)\)</span> by using the local linearization of <span class="process-math">\(p\)</span> at the point <span class="process-math">\((2,p(2))\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-1-9"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" data-evidence="true" id="ez-2-1-9-1-1">Let functions <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> be the piecewise linear functions given by their respective graphs in <a class="xref" href="/book/active-calculus-html/sec-2-1-elem-rules#F-2-1-Ez3" title="Figure 2.1.6">Figure 2.1.6</a>. Use the graphs to answer the following questions.
+</div>
+<figure class="figure figure-like" data-evidence="true" id="F-2-1-Ez3"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/17a084bc66c3b8b25a420336.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-1-Ez3-2-description">
+<div class="para" id="F-2-1-Ez3-2-1-1">Two piecewise linear functions <span class="process-math">\(p\)</span> and <span class="process-math">\(q\)</span> are shown on the same set of axes with <span class="process-math">\(x\)</span> and <span class="process-math">\(y\)</span> each ranging from <span class="process-math">\(-3.5\)</span> to <span class="process-math">\(3.5\text{.}\)</span>  The graph of <span class="process-math">\(p\)</span> consists of straight lines that connect the points <span class="process-math">\((-3,3)\)</span> and <span class="process-math">\((-1,1)\text{;}\)</span> <span class="process-math">\((-1,1)\)</span> and <span class="process-math">\((1,0)\text{;}\)</span> and <span class="process-math">\((1,0)\)</span> and <span class="process-math">\((2.5,3)\text{.}\)</span> The graph of <span class="process-math">\(q\)</span> consists of straight lines that connect the points <span class="process-math">\((-2.5,-2.5)\)</span> and <span class="process-math">\((-1,2)\text{;}\)</span> <span class="process-math">\((-1,2)\)</span> and <span class="process-math">\((1,2)\text{;}\)</span> and <span class="process-math">\((1,2)\)</span> and <span class="process-math">\((3,0)\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.1.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The graphs of <span class="process-math">\(p\)</span> (in blue) and <span class="process-math">\(q\)</span> (in green).</figcaption>
+</figure>
+<div class="para logical" data-evidence="true" id="ez-2-1-9-1-3">
+<ol class="lower-alpha" id="ez-2-1-9-1-3-1">
+<li id="ez-2-1-9-1-3-1-1">
+<div class="para" id="ez-2-1-9-1-3-1-1-1">At what values of <span class="process-math">\(x\)</span> is <span class="process-math">\(p\)</span> not differentiable? At what values of <span class="process-math">\(x\)</span> is <span class="process-math">\(q\)</span> not differentiable? Why?
+</div>
+</li>
+<li id="ez-2-1-9-1-3-1-2">
+<div class="para" id="ez-2-1-9-1-3-1-2-1">Let <span class="process-math">\(r(x) = p(x) + 2q(x)\text{.}\)</span> At what values of <span class="process-math">\(x\)</span> is <span class="process-math">\(r\)</span> not differentiable? Why?
+</div>
+</li>
+<li id="ez-2-1-9-1-3-1-3">
+<div class="para" id="ez-2-1-9-1-3-1-3-1">Determine <span class="process-math">\(r'(-2)\)</span> and <span class="process-math">\(r'(0)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-1-9-1-3-1-4">
+<div class="para" id="ez-2-1-9-1-3-1-4-1">Find an equation for the tangent line to <span class="process-math">\(y = r(x)\)</span> at the point <span class="process-math">\((2,r(2))\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-1-10"><h3 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-1-10-1-1">
+<div class="para">Consider the functions <span class="process-math">\(r(t) = t^t\)</span> and <span class="process-math">\(s(t) = \arccos(t)\text{,}\)</span> for which you are given the facts that <span class="process-math">\(r'(t) = t^t(\ln(t) + 1)\)</span> and <span class="process-math">\(s'(t) = -\frac{1}{\sqrt{1-t^2}}\text{.}\)</span> Do not be concerned with where these derivative formulas come from. We restrict our interest in both functions to the domain <span class="process-math">\(0 \lt t \lt 1\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-1-10-1-1-6">
+<li id="ez-2-1-10-1-1-6-1">
+<div class="para" id="ez-2-1-10-1-1-6-1-1">Let <span class="process-math">\(w(t) = 3t^t - 2\arccos(t)\text{.}\)</span> Determine <span class="process-math">\(w'(t)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-1-10-1-1-6-2">
+<div class="para" id="ez-2-1-10-1-1-6-2-1">Find an equation for the tangent line to <span class="process-math">\(y = w(t)\)</span> at the point <span class="process-math">\((\frac{1}{2}, w(\frac{1}{2}))\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-1-10-1-1-6-3">
+<div class="para" id="ez-2-1-10-1-1-6-3-1">Let <span class="process-math">\(v(t) = t^t + \arccos(t)\text{.}\)</span> Is <span class="process-math">\(v\)</span> increasing or decreasing at the instant <span class="process-math">\(t = \frac{1}{2}\text{?}\)</span> Why?
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-1-11"><h3 class="heading"><span class="codenumber">11<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-1-11-1-1">
+<div class="para">Let <span class="process-math">\(f(x) = a^x\text{.}\)</span> The goal of this problem is to explore how the value of <span class="process-math">\(a\)</span> affects the derivative of <span class="process-math">\(f(x)\text{,}\)</span> without assuming we know the rule for <span class="process-math">\(\frac{d}{dx}[a^x]\)</span> that we have stated and used in earlier work in this section.</div>
+<ol class="lower-alpha" id="ez-2-1-11-1-1-5">
+<li id="ez-2-1-11-1-1-5-1">
+<div class="para logical" id="ez-2-1-11-1-1-5-1-1">
+<div class="para">Use the limit definition of the derivative to show that</div>
+<div class="displaymath process-math" id="ez-2-1-11-1-1-5-1-1-1">
+\begin{equation*}
+f'(x) = \lim_{h \to 0} \frac{a^x \cdot a^h - a^x}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-1-11-1-1-5-2">
+<div class="para logical" id="ez-2-1-11-1-1-5-2-1">
+<div class="para">Explain why it is also true that</div>
+<div class="displaymath process-math" id="ez-2-1-11-1-1-5-2-1-1">
+\begin{equation*}
+f'(x) = a^x \cdot \lim_{h \to 0} \frac{a^h - 1}{h}\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-1-11-1-1-5-3">
+<div class="para logical" id="ez-2-1-11-1-1-5-3-1">
+<div class="para">Use computing technology and small values of <span class="process-math">\(h\)</span> to estimate the value of</div>
+<div class="displaymath process-math" id="ez-2-1-11-1-1-5-3-1-2">
+\begin{equation*}
+L = \lim_{h \to 0} \frac{a^h - 1}{h}
+\end{equation*}
+</div>
+<div class="para">when <span class="process-math">\(a = 2\text{.}\)</span> Do likewise when <span class="process-math">\(a = 3\text{.}\)</span>
+</div>
+</div>
+</li>
+<li id="ez-2-1-11-1-1-5-4">
+<div class="para logical" id="ez-2-1-11-1-1-5-4-1">
+<div class="para">Note that it would be ideal if the value of the limit <span class="process-math">\(L\)</span> was <span class="process-math">\(1\text{,}\)</span> for then <span class="process-math">\(f\)</span> would be a particularly special function: its derivative would be simply <span class="process-math">\(a^x\text{,}\)</span> which would mean that its derivative is itself. By experimenting with different values of <span class="process-math">\(a\)</span> between <span class="process-math">\(2\)</span> and <span class="process-math">\(3\text{,}\)</span> try to find a value for <span class="process-math">\(a\)</span> for which</div>
+<div class="displaymath process-math" id="ez-2-1-11-1-1-5-4-1-9">
+\begin{equation*}
+L = \lim_{h \to 0} \frac{a^h - 1}{h} = 1\text{.}
+\end{equation*}
+</div>
+</div>
+</li>
+<li id="ez-2-1-11-1-1-5-5">
+<div class="para" id="ez-2-1-11-1-1-5-5-1">Compute <span class="process-math">\(\ln(2)\)</span> and <span class="process-math">\(\ln(3)\text{.}\)</span> What does your work in (b) and (c) suggest is true about <span class="process-math">\(\frac{d}{dx}[2^x]\)</span> and <span class="process-math">\(\frac{d}{dx}[3^x]\text{?}\)</span>
+</div>
+</li>
+<li id="ez-2-1-11-1-1-5-6">
+<div class="para" id="ez-2-1-11-1-1-5-6-1">How do your investigations in (d) lead to a particularly important fact about the function <span class="process-math">\(f(x) = e^x\text{?}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>

@@ -1,0 +1,774 @@
+<div class="ptx-content" id="ptx-content"><div class="hidden-content process-math" id="latex-macros"><span class="process-math">\(\newcommand{\dollar}{\$}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\arctanh}{arctanh}
+              \DeclareMathOperator{\arcsec}{arcsec}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\)</span></div>
+<section class="section" id="sec-2-6-inverse">
+<h1 class="heading hide-type">
+<span class="type">Section</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Derivatives of inverse functions</span>
+</h1>
+<article class="objectives goal-like" id="sec-2-6-inverse-2"><h2 class="heading"><span class="type">Motivating Questions</span></h2>
+<ul class="disc" id="sec-2-6-inverse-2-1">
+<li data-evidence="true" id="sec-2-6-inverse-2-1-1">
+<div class="para" id="sec-2-6-inverse-2-1-1-1">What is the derivative of the natural logarithm function?
+</div>
+</li>
+<li data-evidence="true" id="sec-2-6-inverse-2-1-2">
+<div class="para" id="sec-2-6-inverse-2-1-2-1">What are the derivatives of the inverse trigonometric functions <span class="process-math">\(\arcsin(x)\)</span> and <span class="process-math">\(\arctan(x)\text{?}\)</span>
+</div>
+</li>
+<li data-evidence="true" id="sec-2-6-inverse-2-1-3">
+<div class="para" id="sec-2-6-inverse-2-1-3-1">If <span class="process-math">\(g\)</span> is the inverse of a differentiable function <span class="process-math">\(f\text{,}\)</span> how is <span class="process-math">\(g'\)</span> computed in terms of <span class="process-math">\(f\text{,}\)</span> <span class="process-math">\(f'\text{,}\)</span> and <span class="process-math">\(g\text{?}\)</span>
+</div>
+</li>
+</ul>
+</article>
+<section class="subsection" id="sec-2-6-inverse-3">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.1</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Introduction</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-3-2">Much of mathematics relies on the notion of function. Indeed, throughout our study of calculus, we are investigating the behavior of functions, with particular emphasis on how fast the output of the function changes in response to changes in the input. Because each function represents a process, a natural question to ask is whether or not the particular process can be reversed. That is, if we know the output that results from the function, can we determine the input that led to it? And if we know how fast a particular process is changing, can we determine how fast the inverse process is changing?
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-3-3">One of the most important functions in all of mathematics is the natural exponential function <span class="process-math">\(f(x) = e^x\text{,}\)</span> along with its inverse, the natural logarithm <span class="process-math">\(g(x) = \ln(x)\text{.}\)</span> One of our goals in this section is to learn how to differentiate the logarithm function. First, we review some of the basic concepts surrounding functions and their inverses.
+</div>
+<section class="worksheet" id="ws-PA-2-6">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="exploration project-like" id="PA-2-6"><h4 class="heading">
+<span class="type">Preview Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="PA-2-6-1">
+<div class="para" data-evidence="true" id="PA-2-6-1-1">The equation <span class="process-math">\(y = \frac{5}{9}(x-32)\)</span> relates a temperature given in <span class="process-math">\(x\)</span> degrees Fahrenheit to the corresponding temperature <span class="process-math">\(y\)</span> measured in degrees Celsius.
+</div>
+</div>
+<article class="task exercise-like" id="PA-2-6-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-6-task-0-1-1">Solve the equation <span class="process-math">\(y = \frac{5}{9}(x-32)\)</span> for <span class="process-math">\(x\)</span> to write <span class="process-math">\(x\)</span> (Fahrenheit temperature) in terms of <span class="process-math">\(y\)</span> (Celsius temperature).
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-6-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-6-task-1-1-1">Let <span class="process-math">\(C(x) = \frac{5}{9}(x-32)\)</span> be the function that takes a Fahrenheit temperature as input and produces the Celsius temperature as output. In addition, let <span class="process-math">\(F(y)\)</span> be the function that converts a temperature given in <span class="process-math">\(y\)</span> degrees Celsius to the temperature <span class="process-math">\(F(y)\)</span> measured in degrees Fahrenheit. Use your work in (a) to write a formula for <span class="process-math">\(F(y)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-6-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-6-task-2-1-1">Next consider the new function defined by <span class="process-math">\(p(x) = F(C(x))\text{.}\)</span> Use the formulas for <span class="process-math">\(F\)</span> and <span class="process-math">\(C\)</span> to determine an expression for <span class="process-math">\(p(x)\)</span> and simplify this expression as much as possible. What do you observe?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-6-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-6-task-3-1-1">Now, let <span class="process-math">\(r(y) = C(F(y))\text{.}\)</span> Use the formulas for <span class="process-math">\(F\)</span> and <span class="process-math">\(C\)</span> to determine an expression for <span class="process-math">\(r(y)\)</span> and simplify this expression as much as possible. What do you observe?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="PA-2-6-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="PA-2-6-task-4-1-1">What is the value of <span class="process-math">\(C'(x)\text{?}\)</span> of <span class="process-math">\(F'(y)\text{?}\)</span> How do these values appear to be related?
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-6-inverse-4">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.2</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Basic facts about inverse functions</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-4-2">A <em class="emphasis">function</em> <span class="process-math">\(f : A \to B\)</span> is a rule that associates each element in the set <span class="process-math">\(A\)</span> to one and only one element in the set <span class="process-math">\(B\text{.}\)</span> We call <span class="process-math">\(A\)</span> the <em class="emphasis">domain</em>  of <span class="process-math">\(f\)</span> and <span class="process-math">\(B\)</span> the <em class="emphasis">codomain</em>  of <span class="process-math">\(f\text{.}\)</span> If there exists a function <span class="process-math">\(g : B \to A\)</span> such that <span class="process-math">\(g(f(a)) = a\)</span> for every possible choice of <span class="process-math">\(a\)</span> in the set <span class="process-math">\(A\)</span> and <span class="process-math">\(f(g(b)) = b\)</span> for every <span class="process-math">\(b\)</span> in the set <span class="process-math">\(B\text{,}\)</span> then we say that <span class="process-math">\(g\)</span> is the <em class="emphasis">inverse</em> of <span class="process-math">\(f\text{.}\)</span>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-4-3">
+<div class="para">We often use the notation <span class="process-math">\(f^{-1}\)</span> (read “<span class="process-math">\(f\)</span>-inverse”) to denote the inverse of <span class="process-math">\(f\text{.}\)</span> The inverse function undoes the work of <span class="process-math">\(f\text{.}\)</span> Indeed, if <span class="process-math">\(y = f(x)\text{,}\)</span> then</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-4-3-6">
+\begin{equation*}
+f^{-1}(y) = f^{-1}(f(x)) = x\text{.}
+\end{equation*}
+</div>
+<div class="para">Thus, the equations <span class="process-math">\(y = f(x)\)</span> and <span class="process-math">\(x = f^{-1}(y)\)</span> say the same thing. The only difference between the two equations is one of perspective — one is solved for <span class="process-math">\(x\text{,}\)</span> while the other is solved for <span class="process-math">\(y\text{.}\)</span>
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-4-4">Here we briefly remind ourselves of some key facts about inverse functions.
+</div>
+<article class="note remark-like" id="sec-2-6-inverse-4-5"><h3 class="heading">
+<span class="type">Note</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.1</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h3>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-4-5-1">
+<div class="para">For a function <span class="process-math">\(f : A \to B\text{,}\)</span>
+</div>
+<ul class="disc" id="sec-2-6-inverse-4-5-1-2">
+<li id="sec-2-6-inverse-4-5-1-2-1">
+<div class="para" id="sec-2-6-inverse-4-5-1-2-1-1">
+<span class="process-math">\(f\)</span> has an inverse if and only if <span class="process-math">\(f\)</span> is one-to-one <details class="ptx-footnote" id="sec-2-6-inverse-4-5-1-2-1-1-4"><summary class="ptx-footnote__number" title="Footnote 2.6.1"><sup> 1 </sup></summary>
+<div class="ptx-footnote__contents">A function <span class="process-math">\(f\)</span> is <em class="emphasis">one-to-one</em> provided that no two distinct inputs lead to the same output.  A one-to-one function is sometimes called an <em class="emphasis">injection</em>.
+</div></details> and onto <details class="ptx-footnote" id="sec-2-6-inverse-4-5-1-2-1-1-6"><summary class="ptx-footnote__number" title="Footnote 2.6.2"><sup> 2 </sup></summary>
+<div class="ptx-footnote__contents">A function <span class="process-math">\(f\)</span> is <em class="emphasis">onto</em> provided that every possible element of the codomain can be realized as an output of the function for some choice of input from the domain. An onto function is sometimes called a <em class="emphasis">surjection</em>.
+</div></details>;
+</div>
+</li>
+<li id="sec-2-6-inverse-4-5-1-2-2">
+<div class="para" id="sec-2-6-inverse-4-5-1-2-2-1">provided <span class="process-math">\(f^{-1}\)</span> exists, the domain of <span class="process-math">\(f^{-1}\)</span> is the codomain of <span class="process-math">\(f\text{,}\)</span> and the codomain of <span class="process-math">\(f^{-1}\)</span> is the domain of <span class="process-math">\(f\text{;}\)</span>
+</div>
+</li>
+<li id="sec-2-6-inverse-4-5-1-2-3">
+<div class="para" id="sec-2-6-inverse-4-5-1-2-3-1">
+<span class="process-math">\(f^{-1}(f(x)) = x\)</span> for every <span class="process-math">\(x\)</span> in the domain of <span class="process-math">\(f\)</span> and <span class="process-math">\(f(f^{-1}(y)) = y\)</span> for every <span class="process-math">\(y\)</span> in the codomain of <span class="process-math">\(f\text{;}\)</span>
+</div>
+</li>
+<li id="sec-2-6-inverse-4-5-1-2-4">
+<div class="para" id="sec-2-6-inverse-4-5-1-2-4-1">
+<span class="process-math">\(y = f(x)\)</span> if and only if <span class="process-math">\(x = f^{-1}(y)\text{.}\)</span>
+</div>
+</li>
+</ul>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-4-6">The last fact reveals a special relationship between the graphs of <span class="process-math">\(f\)</span> and <span class="process-math">\(f^{-1}\text{.}\)</span> If a point <span class="process-math">\((x,y)\)</span> that lies on the graph of <span class="process-math">\(y = f(x)\text{,}\)</span> then it is also true that <span class="process-math">\(x = f^{-1}(y)\text{,}\)</span> which means that the point <span class="process-math">\((y,x)\)</span> lies on the graph of <span class="process-math">\(f^{-1}\)</span> (provided we view <span class="process-math">\(f^{-1}\)</span> as a function of the same independent variable, <span class="process-math">\(x\)</span>). This shows us that the graphs of <span class="process-math">\(f\)</span> and <span class="process-math">\(f^{-1}\)</span> are the reflections of each other across the line <span class="process-math">\(y = x\text{,}\)</span> because this reflection is precisely the geometric action that swaps the coordinates in an ordered pair. In <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-Inverse-Plot" title="Figure 2.6.2">Figure 2.6.2</a>, we see this illustrated by the function <span class="process-math">\(y = f(x) = 2^x\)</span> and its inverse, with the points <span class="process-math">\((-1,\frac{1}{2})\)</span> and <span class="process-math">\((\frac{1}{2},-1)\)</span> highlighting the reflection of the curves across <span class="process-math">\(y = x\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-4-7">To close our review of important facts about inverses, we recall that the natural exponential function <span class="process-math">\(y = f(x) = e^x\)</span> has an inverse function, namely the natural logarithm, <span class="process-math">\(x = f^{-1}(y) = \ln(y)\text{.}\)</span> Thus, writing <span class="process-math">\(y = e^x\)</span> is interchangeable with <span class="process-math">\(x = \ln(y)\text{,}\)</span> plus <span class="process-math">\(\ln(e^x) = x\)</span> for every real number <span class="process-math">\(x\)</span> and <span class="process-math">\(e^{\ln(y)} = y\)</span> for every positive real number <span class="process-math">\(y\text{.}\)</span>
+</div>
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-Inverse-Plot"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/d8a1585b7e839863b073ec25.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-Inverse-Plot-2-description">
+<div class="para" id="F-2-6-Inverse-Plot-2-1-1">In the window <span class="process-math">\([-4,4] \times [-4,4]\text{,}\)</span> a plot of the function <span class="process-math">\(f(x) = 2^x\text{,}\)</span> the line <span class="process-math">\(y = x\text{,}\)</span> and the reflection of <span class="process-math">\(y = 2^x\)</span> across the line <span class="process-math">\(y = x\text{,}\)</span> which results in the third function’s graph, that of <span class="process-math">\(y = f^{-1}(x)\text{.}\)</span>  The points <span class="process-math">\((-1,\frac{1}{2})\)</span> and <span class="process-math">\((\frac{1}{2},-1)\)</span> are also plotted, with <span class="process-math">\((-1,\frac{1}{2})\)</span> on the graph of <span class="process-math">\(y = 2^x\)</span> and the other on the graph of its inverse function.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>A graph of a function <span class="process-math">\(y = f(x)\)</span> along with its inverse, <span class="process-math">\(y = f^{-1}(x)\text{.}\)</span></figcaption>
+</figure>
+</section>
+<section class="subsection" id="sec-2-6-inverse-5">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.3</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The derivative of the natural logarithm function</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-5-2">
+<div class="para">In what follows, we find a formula for the derivative of <span class="process-math">\(g(x) = \ln(x)\text{.}\)</span> To do so, we take advantage of the fact that we know the derivative of the natural exponential function, the inverse of <span class="process-math">\(g\text{.}\)</span> In particular, we know that writing <span class="process-math">\(g(x) = \ln(x)\)</span> is equivalent to writing <span class="process-math">\(e^{g(x)} = x\text{.}\)</span> Now we differentiate both sides of this equation and observe that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-5-2-5">
+\begin{equation*}
+\frac{d}{dx}\left[e^{g(x)}\right] = \frac{d}{dx}[x]\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-5-3">
+<div class="para">The righthand side is simply <span class="process-math">\(1\text{;}\)</span> by applying the chain rule to the left side, we find that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-5-3-2">
+\begin{equation*}
+e^{g(x)} g'(x) = 1\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-5-4">
+<div class="para">Next we solve for <span class="process-math">\(g'(x)\text{,}\)</span> to get</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-5-4-2">
+\begin{equation*}
+g'(x) = \frac{1}{e^{g(x)}}\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-5-5">
+<div class="para">Finally, we recall that <span class="process-math">\(g(x) = \ln(x)\text{,}\)</span> so <span class="process-math">\(e^{g(x)} = e^{\ln(x)} = x\text{,}\)</span> and thus</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-5-5-3">
+\begin{equation*}
+g'(x) = \frac{1}{x}\text{.}
+\end{equation*}
+</div>
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="natural-log"><h3 class="heading"><span class="title">The derivative of the natural logarithm.</span></h3>
+<div class="para" id="natural-log-2"> For all positive real numbers <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\text{.}\)</span>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-7">This rule for the natural logarithm function now joins our list of basic derivative rules. Note that this rule applies only to positive values of <span class="process-math">\(x\text{,}\)</span> as these are the only values for which <span class="process-math">\(\ln(x)\)</span> is defined.
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-8">Also notice that for the first time in our work, differentiating a basic function of a particular type has led to a function of a very different nature: the derivative of the natural logarithm is not another logarithm, nor even an exponential function, but rather a rational one.
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-9">Derivatives of logarithms may now be computed in concert with all of the rules known to date. For instance, if <span class="process-math">\(f(t) = \ln(t^2 + 1)\text{,}\)</span> then by the chain rule, <span class="process-math">\(f'(t) = \frac{1}{t^2 + 1} \cdot 2t\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-10">There are interesting connections between the graphs of <span class="process-math">\(f(x) = e^x\)</span> and <span class="process-math">\(f^{-1}(x) = \ln(x)\text{.}\)</span>
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel sbspanel--middle middle">
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-11-1">In <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-Log-Exp" title="Figure 2.6.3">Figure 2.6.3</a>, we are reminded that since the natural exponential function has the property that its derivative is itself, the slope of the tangent to <span class="process-math">\(y = e^x\)</span> is equal to the height of the curve at that point. For instance, at the point <span class="process-math">\(A = (\ln(0.5), 0.5)\text{,}\)</span> the slope of the tangent line is <span class="process-math">\(m_A = 0.5\text{,}\)</span> and at <span class="process-math">\(B = (\ln(5), 5)\text{,}\)</span> the tangent line’s slope is <span class="process-math">\(m_B = 5\text{.}\)</span> At the corresponding points <span class="process-math">\(A'\)</span> and <span class="process-math">\(B'\)</span> on the graph of the natural logarithm function (which come from reflecting <span class="process-math">\(A\)</span> and <span class="process-math">\(B\)</span> across the line <span class="process-math">\(y = x\)</span>), we know that the slope of the tangent line is the reciprocal of the <span class="process-math">\(x\)</span>-coordinate of the point (since <span class="process-math">\(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\)</span>).  Thus, at <span class="process-math">\(A' = (0.5, \ln(0.5))\text{,}\)</span> we have <span class="process-math">\(m_{A'} = \frac{1}{0.5} = 2\text{,}\)</span> and at <span class="process-math">\(B' = (5, \ln(5))\text{,}\)</span> <span class="process-math">\(m_{B'} = \frac{1}{5}\text{.}\)</span>
+</div>
+</div>
+<div class="sbspanel sbspanel--middle middle">
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-Log-Exp"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/39480dd208fc3a4aa3999f93.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-Log-Exp-2-description">
+<div class="para" id="F-2-6-Log-Exp-2-1-1">In the window <span class="process-math">\([-4.5,9] \times [-4.5,9]\text{,}\)</span> a plot of the function <span class="process-math">\(y = e^x\text{,}\)</span> the line <span class="process-math">\(y = x\text{,}\)</span> and the reflection of <span class="process-math">\(y = e^x\)</span> across the line <span class="process-math">\(y = x\text{,}\)</span> which results in the third function’s graph, that of <span class="process-math">\(y = \ln(x)\text{.}\)</span>  The points <span class="process-math">\(A = (\ln(0.5), 0.5)\)</span> and <span class="process-math">\(B = (\ln(5), 5)\)</span> are also plotted on <span class="process-math">\(y = e^x\)</span> along with corresponding small segments of the tangent lines at each point; the reflections of these points, <span class="process-math">\(A' = (0.5, \ln(0.5))\)</span> and <span class="process-math">\(B' = (5, \ln(5))\text{,}\)</span> lie on the graph of <span class="process-math">\(y = \ln(x)\text{,}\)</span> and the corresponding tangent line segments at these points are also shown.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>A graph of the function <span class="process-math">\(y = e^x\)</span> along with its inverse, <span class="process-math">\(y = \ln(x)\text{,}\)</span> where both functions are viewed using the input variable <span class="process-math">\(x\text{.}\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-5-12">In particular, we observe that <span class="process-math">\(m_{A'} = \frac{1}{m_A}\)</span> and <span class="process-math">\(m_{B'} = \frac{1}{m_B}\text{.}\)</span> This is not a coincidence, but in fact holds for any function <span class="process-math">\(y = f(x)\)</span> that has an inverse, due to the reflection across <span class="process-math">\(y = x\text{.}\)</span> Reflection changes the roles of <span class="process-math">\(x\)</span> and <span class="process-math">\(y\text{,}\)</span> thus reversing the rise and run, so the slope of the inverse function at the reflected point is the reciprocal of the slope of the original function.
+</div>
+<section class="worksheet" id="ws-act-2-6-1">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-6-1"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.2</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-6-1-1">
+<div class="para" data-evidence="true" id="act-2-6-1-1-1">For each function given below, find its derivative.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-6-1-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-1-task-0-1-1">
+<span class="process-math">\(h(x) = x^2\ln(x)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-1-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-1-task-1-1-1">
+<span class="process-math">\(p(t) = \frac{\ln(t)}{e^t + 1}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-1-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-1-task-2-1-1">
+<span class="process-math">\(s(y) = \ln(\cos(y) + 2)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-1-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-1-task-3-1-1">
+<span class="process-math">\(z(x) = \tan(\ln(x))\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-1-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-1-task-4-1-1">
+<span class="process-math">\(m(z) = \ln(\ln(z))\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-6-inverse-6">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.4</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Inverse trigonometric functions and their derivatives</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-6-2">Trigonometric functions are periodic, so they fail to be one-to-one, and thus do not have inverse functions. However, we can restrict the domain of each trigonometric function so that it is one-to-one on that domain.
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel sbspanel--middle middle">
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-3-1">
+<div class="para">For instance, consider the sine function on the domain <span class="process-math">\([-\frac{\pi}{2}, \frac{\pi}{2}]\text{.}\)</span> Because no output of the sine function is repeated on this interval, the function is one-to-one and thus has an inverse. Thus, the function <span class="process-math">\(f(x) = \sin(x)\)</span> with <span class="process-math">\([-\frac{\pi}{2}, \frac{\pi}{2}]\)</span> and codomain <span class="process-math">\([-1,1]\)</span> has an inverse function <span class="process-math">\(f^{-1}\)</span> such that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-3-1-6">
+\begin{equation*}
+f^{-1} : [-1,1] \to [-\frac{\pi}{2}, \frac{\pi}{2}]\text{,}
+\end{equation*}
+</div>
+<div class="para">as we see in <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-arcsine" title="Figure 2.6.4">Figure 2.6.4</a>.  We call <span class="process-math">\(f^{-1}\)</span> the <em class="emphasis">arcsine</em>  (or inverse sine) function and write <span class="process-math">\(f^{-1}(y) = \arcsin(y)\text{.}\)</span> “The arcsine of <span class="process-math">\(y\)</span>” means “the angle whose sine is <span class="process-math">\(y\text{.}\)</span>”  It is especially important to remember that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-3-1-14">
+\begin{equation*}
+y = \sin(x) \ \ \text{and}  \ \ x = \arcsin(y)
+\end{equation*}
+</div>
+<div class="para">say the same thing.</div>
+</div>
+</div>
+<div class="sbspanel sbspanel--middle middle">
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-arcsine"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/832a9836f32fbf13795b9156.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-arcsine-2-description">
+<div class="para" id="F-2-6-arcsine-2-1-1">In the window <span class="process-math">\([-\frac{3\pi}{4}, \frac{3\pi}{4}] \times [-\frac{3\pi}{4}, \frac{3\pi}{4}]\text{,}\)</span> a plot of the function <span class="process-math">\(y = f(x) = \sin(x)\)</span> restricted to the domain <span class="process-math">\([-\frac{\pi}{2}, \frac{\pi}{2}]\text{,}\)</span> the line <span class="process-math">\(y = x\text{,}\)</span> and the reflection of <span class="process-math">\(y = \sin(x)\)</span> across the line <span class="process-math">\(y = x\text{,}\)</span> which results in the third function’s graph, that of <span class="process-math">\(y = f^{-1}(x) = \arcsin(x)\text{.}\)</span>  The point <span class="process-math">\((\frac{\pi}{2}, 1)\)</span> is plotted on <span class="process-math">\(y = \sin(x)\text{;}\)</span> the reflection of this point, <span class="process-math">\((1,\frac{\pi}{2})\text{,}\)</span> lies on the graph of <span class="process-math">\(y = \arcsin(x)\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>A graph of <span class="process-math">\(f(x) = \sin(x)\)</span> (in blue), restricted to the domain <span class="process-math">\([-\frac{\pi}{2}, \frac{\pi}{2}]\text{,}\)</span> along with its inverse, <span class="process-math">\(f^{-1}(x) = \arcsin(x)\)</span> (in magenta).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-6-4">For example, <span class="process-math">\(\arcsin(\frac{1}{2}) = \frac{\pi}{6}\)</span> means that <span class="process-math">\(\frac{\pi}{6}\)</span> is the angle whose sine is <span class="process-math">\(\frac{1}{2}\text{,}\)</span> which is equivalent to writing <span class="process-math">\(\sin(\frac{\pi}{6}) = \frac{1}{2}\text{.}\)</span>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-5">
+<div class="para">Next, we determine the derivative of the arcsine function. Letting <span class="process-math">\(h(x) = \arcsin(x)\text{,}\)</span> our goal is to find <span class="process-math">\(h'(x)\text{.}\)</span> Since <span class="process-math">\(h(x)\)</span> is the angle whose sine is <span class="process-math">\(x\text{,}\)</span> it is equivalent to write</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-5-5">
+\begin{equation*}
+\sin(h(x)) = x\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-6">
+<div class="para">Differentiating both sides of the previous equation, we have</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-6-1">
+\begin{equation*}
+\frac{d}{dx}[\sin(h(x))] = \frac{d}{dx}[x]\text{.}
+\end{equation*}
+</div>
+<div class="para">The righthand side is simply <span class="process-math">\(1\text{,}\)</span> and by applying the chain rule applied to the left side,</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-6-3">
+\begin{equation*}
+\cos(h(x)) h'(x) = 1\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-7">
+<div class="para">Solving for <span class="process-math">\(h'(x)\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="eq-2-6-arcsin-der">
+\begin{equation}
+h'(x) = \frac{1}{\cos(h(x))}\text{.}\tag{2.6.1}
+\end{equation}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-6-8">Finally, we recall that <span class="process-math">\(h(x) = \arcsin(x)\text{,}\)</span> so the denominator of <span class="process-math">\(h'(x)\)</span> is the function <span class="process-math">\(\cos(\arcsin(x))\text{,}\)</span> or in other words, “the cosine of the angle whose sine is <span class="process-math">\(x\text{.}\)</span>” A bit of right triangle trigonometry allows us to simplify this expression considerably.
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel sbspanel--middle middle">
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-9-1">
+<div class="para">Let’s say that <span class="process-math">\(\theta = \arcsin(x)\text{,}\)</span> so that <span class="process-math">\(\theta\)</span> is the angle whose sine is <span class="process-math">\(x\text{.}\)</span> We can picture <span class="process-math">\(\theta\)</span> as an angle in a right triangle with hypotenuse <span class="process-math">\(1\)</span> and a vertical leg of length <span class="process-math">\(x\text{,}\)</span> as shown in <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-cosarcsin" title="Figure 2.6.5">Figure 2.6.5</a>. The horizontal leg must be <span class="process-math">\(\sqrt{1-x^2}\text{,}\)</span> by the Pythagorean Theorem. Now, because <span class="process-math">\(\theta = \arcsin(x)\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-9-1-10">
+\begin{align*}
+\cos(\arcsin(x)) \amp=  \cos(\theta)\\
+\amp= \sqrt{1-x^2}
+\end{align*}
+</div>
+<div class="para">with the last equality holding from the relationships in the right triangle in <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-cosarcsin" title="Figure 2.6.5">Figure 2.6.5</a>.</div>
+</div>
+</div>
+<div class="sbspanel sbspanel--middle middle">
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-cosarcsin"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/7897dd8a89f00ab81f2e162a.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-cosarcsin-2-description">
+<div class="para" id="F-2-6-cosarcsin-2-1-1">A right triangle with a hypotenuse of length <span class="process-math">\(1\text{,}\)</span> a vertical leg of length <span class="process-math">\(x\text{,}\)</span> and a horizontal leg of length <span class="process-math">\(\sqrt{1-x^2}\text{.}\)</span>  The angle <span class="process-math">\(\theta\)</span> lies opposite the vertical leg.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>The right triangle that corresponds to <span class="process-math">\(\theta = \arcsin(x)\text{.}\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-6-10">
+<div class="para">Substituting this most recent expression for <span class="process-math">\(\cos(\arcsin(x))\)</span> into <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#eq-2-6-arcsin-der" title="Equation 2.6.1">Equation (2.6.1)</a>, we have now shown that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-6-10-3">
+\begin{equation*}
+h'(x) = \frac{1}{\cos(\arcsin(x))} = \frac{1}{\sqrt{1-x^2}}\text{.}
+\end{equation*}
+</div>
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="inverse-sine"><h3 class="heading"><span class="title">The derivative of the arcsine function.</span></h3>
+<div class="para logical" id="inverse-sine-2">
+<div class="para"> For all real numbers <span class="process-math">\(x\)</span> such that <span class="process-math">\(-1 \lt  x \lt  1\text{,}\)</span>
+</div>
+<div class="displaymath process-math" id="inverse-sine-2-4">
+\begin{equation*}
+\frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<section class="worksheet" id="ws-act-2-6-2">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-6-2"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.3</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-6-2-1">
+<div class="para" data-evidence="true" id="act-2-6-2-1-1">The following prompts in this activity will lead you to develop the derivative of the inverse tangent function.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-6-2-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-0-1-1">Let <span class="process-math">\(r(x) = \arctan(x)\text{.}\)</span> Use the relationship between the arctangent and tangent functions to rewrite this equation using only the tangent function.
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-2-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-1-1-1">Differentiate both sides of the equation you found in (a). Solve the resulting equation for <span class="process-math">\(r'(x)\text{,}\)</span> writing <span class="process-math">\(r'(x)\)</span> as simply as possible in terms of a trigonometric function evaluated at <span class="process-math">\(r(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-2-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-2-1-1">Recall that <span class="process-math">\(r(x) = \arctan(x)\text{.}\)</span> Update your expression for <span class="process-math">\(r'(x)\)</span> so that it only involves trigonometric functions and the independent variable <span class="process-math">\(x\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-2-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-3-1-1">Introduce a right triangle with angle <span class="process-math">\(\theta\)</span> so that <span class="process-math">\(\theta = \arctan(x)\text{.}\)</span> What are the three sides of the triangle?
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-2-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-4-1-1">In terms of only <span class="process-math">\(x\)</span> and <span class="process-math">\(1\text{,}\)</span> what is the value of <span class="process-math">\(\cos(\arctan(x))\text{?}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-2-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-2-task-5-1-1">Use the results of your work above to find an expression involving only <span class="process-math">\(1\)</span> and <span class="process-math">\(x\)</span> for <span class="process-math">\(r'(x)\text{.}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-6-13">While derivatives for other inverse trigonometric functions can be established similarly, for now we limit ourselves to the arcsine and arctangent functions.
+</div>
+<section class="worksheet" id="ws-act-2-6-3">
+<h3 class="heading hide-type">
+<span class="type"> </span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber"></span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title"> </span>
+</h3>
+<article class="activity project-like" id="act-2-6-3"><h4 class="heading">
+<span class="type">Activity</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.4</span><span class="period heading-divison-mark heading-divison-mark__period">.</span>
+</h4>
+<div class="introduction" id="act-2-6-3-1">
+<div class="para" data-evidence="true" id="act-2-6-3-1-1">Determine the derivative of each of the following functions.
+</div>
+</div>
+<article class="task exercise-like" id="act-2-6-3-task-0"><h5 class="heading"><span class="codenumber">(a)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-0-1-1">
+<span class="process-math">\(\displaystyle f(x) = x^3 \arctan(x) + e^x \ln(x)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-3-task-1"><h5 class="heading"><span class="codenumber">(b)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-1-1-1">
+<span class="process-math">\(\displaystyle p(t) = 2^{t\arcsin(t)}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-3-task-2"><h5 class="heading"><span class="codenumber">(c)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-2-1-1">
+<span class="process-math">\(\displaystyle h(z) = (\arcsin(5z) + \arctan(4-z))^{27}\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-3-task-3"><h5 class="heading"><span class="codenumber">(d)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-3-1-1">
+<span class="process-math">\(\displaystyle s(y) = \cot(\arctan(y))\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-3-task-4"><h5 class="heading"><span class="codenumber">(e)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-4-1-1">
+<span class="process-math">\(\displaystyle m(v) = \ln(\sin^2(v)+1)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+<article class="task exercise-like" id="act-2-6-3-task-5"><h5 class="heading"><span class="codenumber">(f)</span></h5>
+<div class="para" data-evidence="true" id="act-2-6-3-task-5-1-1">
+<span class="process-math">\(\displaystyle g(w) = \arctan\left( \frac{\ln(w)}{1+w^2} \right)\)</span>
+</div>
+<div class="workspace"></div>
+</article>
+</article>
+</section>
+</section>
+<section class="subsection" id="sec-2-6-inverse-7">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.5</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">The link between the derivative of a function and the derivative of its inverse</span>
+</h2>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-7-2">In <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-Log-Exp" title="Figure 2.6.3">Figure 2.6.3</a>, we saw an interesting relationship between the slopes of tangent lines to the natural exponential and natural logarithm functions at points reflected across the line <span class="process-math">\(y = x\text{.}\)</span> In particular, we observed that at the point <span class="process-math">\((\ln(2), 2)\)</span> on the graph of <span class="process-math">\(f(x) = e^x\text{,}\)</span> the slope of the tangent line is <span class="process-math">\(f'(\ln(2)) = 2\text{,}\)</span> while at the corresponding point <span class="process-math">\((2, \ln(2))\)</span> on the graph of <span class="process-math">\(f^{-1}(x) = \ln(x)\text{,}\)</span> the slope of the tangent line is <span class="process-math">\((f^{-1})'(2) = \frac{1}{2}\text{,}\)</span> which is the reciprocal of <span class="process-math">\(f'(\ln(2))\text{.}\)</span>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-7-3">
+<div class="para">That the two corresponding tangent lines have reciprocal slopes is not a coincidence. If <span class="process-math">\(f\)</span> and <span class="process-math">\(g\)</span> are differentiable inverse functions, then <span class="process-math">\(y = f(x)\)</span> if and only if <span class="process-math">\(x = g(y)\text{,}\)</span> so <span class="process-math">\(f(g(x)) = x\)</span> for every <span class="process-math">\(x\)</span> in the domain of <span class="process-math">\(f^{-1}\text{.}\)</span> Differentiating both sides of this equation, we have</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-7-3-8">
+\begin{equation*}
+\frac{d}{dx} [f(g(x))] = \frac{d}{dx} [x]\text{,}
+\end{equation*}
+</div>
+<div class="para">and by the chain rule,</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-7-3-9">
+\begin{equation*}
+f'(g(x)) g'(x) = 1\text{.}
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-7-4">Solving for <span class="process-math">\(g'(x)\text{,}\)</span> we have <span class="process-math">\(g'(x) = \frac{1}{f'(g(x))}\text{.}\)</span> Here we see that the slope of the tangent line to the inverse function <span class="process-math">\(g\)</span> at the point <span class="process-math">\((x,g(x))\)</span> is precisely the reciprocal of the slope of the tangent line to the original function <span class="process-math">\(f\)</span> at the point <span class="process-math">\((g(x),f(g(x))) = (g(x),x)\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-7-5">To see this more clearly, consider the graph of the function <span class="process-math">\(y = f(x)\)</span> shown in <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-Gen-Inv" title="Figure 2.6.6">Figure 2.6.6</a>, along with its inverse <span class="process-math">\(y = g(x)\text{.}\)</span> Given a point <span class="process-math">\((a,b)\)</span> that lies on the graph of <span class="process-math">\(f\text{,}\)</span> we know that <span class="process-math">\((b,a)\)</span> lies on the graph of <span class="process-math">\(g\text{;}\)</span> because <span class="process-math">\(f(a) = b\)</span> and <span class="process-math">\(g(b) = a\text{.}\)</span>
+</div>
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-Gen-Inv"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/7c8fb9d1ddae9d14a470191a.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-Gen-Inv-2-description">
+<div class="para" id="F-2-6-Gen-Inv-2-1-1">A more general plot of an always-increasing function <span class="process-math">\(y = f(x)\)</span> along with its inverse, <span class="process-math">\(y = g(x) = f^{-1}(x)\text{,}\)</span> and the line <span class="process-math">\(y = x\text{.}\)</span>  An arbitrary point <span class="process-math">\((a,b)\)</span> is plotted on <span class="process-math">\(y = f(x)\)</span> along with a portion of the tangent line there; the reflection of the point, <span class="process-math">\((b,a)\text{,}\)</span> on <span class="process-math">\(y = g(x) = f^{-1}(x)\)</span> is also shown along with a portion of the corresponding tangent line.
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>A graph of function <span class="process-math">\(y = f(x)\)</span> along with its inverse, <span class="process-math">\(y = g(x) = f^{-1}(x)\text{.}\)</span>  Observe that the slopes of the two tangent lines are reciprocals of one another.</figcaption>
+</figure>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-7-7">
+<div class="para">Now, applying the rule that <span class="process-math">\(g'(x) = 1/f'(g(x))\)</span> to the value <span class="process-math">\(x = b\text{,}\)</span> we have</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-7-7-3">
+\begin{equation*}
+g'(b) = \frac{1}{f'(g(b))} = \frac{1}{f'(a)}\text{,}
+\end{equation*}
+</div>
+<div class="para">which is precisely what we see in the figure: the slope of the tangent line to <span class="process-math">\(g\)</span> at <span class="process-math">\((b,a)\)</span> is the reciprocal of the slope of the tangent line to <span class="process-math">\(f\)</span> at <span class="process-math">\((a,b)\text{,}\)</span> since these two lines are reflections of one another across the line <span class="process-math">\(y = x\text{.}\)</span>
+</div>
+</div>
+<article class="assemblage assemblage-like" data-evidence="true" id="inverse-function"><h3 class="heading"><span class="title">The derivative of the inverse function.</span></h3>
+<div class="para logical" id="inverse-function-2">
+<div class="para"> Suppose that <span class="process-math">\(f\)</span> is a differentiable function with inverse <span class="process-math">\(g\)</span> and that <span class="process-math">\((a,b)\)</span> is a point that lies on the graph of <span class="process-math">\(f\)</span> at which <span class="process-math">\(f'(a) \ne 0\text{.}\)</span> Then</div>
+<div class="displaymath process-math" id="inverse-function-2-7">
+\begin{equation*}
+g'(b) = \frac{1}{f'(a)}\text{.}
+\end{equation*}
+</div>
+</div>
+</article>
+<div class="para" data-evidence="true" id="sec-2-6-inverse-7-9">More generally, for any <span class="process-math">\(x\)</span> in the domain of <span class="process-math">\(g'\text{,}\)</span> we have <span class="process-math">\(g'(x) = 1/f'(g(x))\text{.}\)</span>
+</div>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-7-10">
+<div class="para">The rules we derived for <span class="process-math">\(\ln(x)\text{,}\)</span> <span class="process-math">\(\arcsin(x)\text{,}\)</span> and <span class="process-math">\(\arctan(x)\)</span> are all examples of this general property of the derivative of an inverse function. For instance, with <span class="process-math">\(g(x) = \ln(x)\)</span> and <span class="process-math">\(f(x) = e^x\text{,}\)</span> it follows that</div>
+<div class="displaymath process-math" id="sec-2-6-inverse-7-10-6">
+\begin{equation*}
+g'(x) = \frac{1}{f'(g(x))} = \frac{1}{e^{\ln(x)}} = \frac{1}{x}\text{.}
+\end{equation*}
+</div>
+</div>
+</section>
+<section class="subsection" id="sec-2-6-inverse-8">
+<h2 class="heading hide-type">
+<span class="type">Subsection</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.6</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Summary</span>
+</h2>
+<div class="para logical" data-evidence="true" id="sec-2-6-inverse-8-2">
+<ul class="disc" id="sec-2-6-inverse-8-2-1">
+<li id="sec-2-6-inverse-8-2-1-1">
+<div class="para" id="sec-2-6-inverse-8-2-1-1-1">For all positive real numbers <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-6-inverse-8-2-1-2">
+<div class="para" id="sec-2-6-inverse-8-2-1-2-1">For all real numbers <span class="process-math">\(x\)</span> such that <span class="process-math">\(-1 \lt x \lt 1\text{,}\)</span> <span class="process-math">\(\frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}\text{.}\)</span> In addition, for all real numbers <span class="process-math">\(x\text{,}\)</span> <span class="process-math">\(\frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}\text{.}\)</span>
+</div>
+</li>
+<li id="sec-2-6-inverse-8-2-1-3">
+<div class="para" id="sec-2-6-inverse-8-2-1-3-1">If <span class="process-math">\(g\)</span> is the inverse of a differentiable function <span class="process-math">\(f\text{,}\)</span> then for any point <span class="process-math">\(x\)</span> in the domain of <span class="process-math">\(g'\text{,}\)</span> <span class="process-math">\(g'(x) = \frac{1}{f'(g(x))}\text{.}\)</span>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section class="exercises" id="ez-2-6">
+<h2 class="heading hide-type">
+<span class="type">Exercises</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.7</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="title">Exercises</span>
+</h2>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec6__Q51_pg"><h3 class="heading"><span class="codenumber">1<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec6__Q51_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-1">Let <span class="process-math">\((x_0, y_0) = (1, 3)\)</span> and <span class="process-math">\((x_1, y_1) = (1.5, 3.3)\text{.}\)</span> Use the following graph of the function <span class="process-math">\(f\)</span> to find the indicated derivatives.
+</div> <div class="image-box">
+<img alt="Graph of a function and its tangent line at a point." class="contained" data-evidence="true" id="paragraph-dfa04993abbee0c0-1" loading="lazy" src="/book-assets/active-calculus-html/2de2e4e1f50465908ae48613.png"/><details class="image-description"><summary title="details"></summary><div id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-2-description">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-2-2-1">graph of a function passing through the point <span class="process-math">\((x_0,y_0)\)</span> and the line tangent to the function at <span class="process-math">\((x_0,y_0)\)</span> which also passes through the point <span class="process-math">\((x_1,y_1)\)</span>
+</div>
+</div></details>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-3">If <span class="process-math">\(h(x)=(f(x))^{3}\text{,}\)</span> then
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-4">
+<span class="process-math">\(h'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-5">If <span class="process-math">\(g(x)=f^{-1}(x)\text{,}\)</span> then
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q51_pg-1-1-6">
+<span class="process-math">\(g'(3) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Michigan__Chap3Sec6__Q01_pg"><h3 class="heading"><span class="codenumber">2<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Michigan__Chap3Sec6__Q01_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q01_pg-1-1-1">Find the derivative of the function <span class="process-math">\(f(t)\text{,}\)</span> below.
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q01_pg-1-1-2">
+<span class="process-math">\(f(t)=\ln(t^{3}+7)\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Michigan__Chap3Sec6__Q01_pg-1-1-3">
+<span class="process-math">\(f'(t) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="csafranski__2_6HW_prob3_pg"><h3 class="heading"><span class="codenumber">3<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="csafranski__2_6HW_prob3_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" data-evidence="true" id="extracted-csafranski__2_6HW_prob3_pg-1-1-1">
+<div class="para">Let</div>
+<div class="displaymath process-math" id="extracted-csafranski__2_6HW_prob3_pg-1-1-1-1">
+\begin{equation*}
+f(x) = 4\sin^{-1}\mathopen{}\left(x^{3}\right)
+\end{equation*}
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_6HW_prob3_pg-1-1-2">
+<span class="process-math">\(f'( x ) =\)</span> <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-csafranski__2_6HW_prob3_pg-1-1-3">NOTE:  The webwork system will accept <span class="process-math">\(\arcsin(x)\)</span> or <span class="process-math">\(\sin^{-1}(x)\)</span>  as the inverse of <span class="process-math">\(\sin (x)\text{.}\)</span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Rochester__setDerivatives6InverseTrig__sc3_6_26_pg"><h3 class="heading"><span class="codenumber">4<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Rochester__setDerivatives6InverseTrig__sc3_6_26_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives6InverseTrig__sc3_6_26_pg-1-1-1">If <span class="process-math">\(f(x) = 5 x^{2}\arctan(2 x^{3})\text{,}\)</span> find <span class="process-math">\(f' ( x ).\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives6InverseTrig__sc3_6_26_pg-1-1-2">
+<span class="process-math">\(f' (x)\)</span> = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__Rochester__setDerivatives1__osu_dr_1_11_pg"><h3 class="heading"><span class="codenumber">5<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__Rochester__setDerivatives1__osu_dr_1_11_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-1">For each of the given functions <span class="process-math">\(f(x)\text{,}\)</span> find the derivative <span class="process-math">\(\left(f^{-1}\right)'(c)\)</span> at the given point <span class="process-math">\(c\text{,}\)</span> first finding <span class="process-math">\(a=f^{-1}(c)\text{.}\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-2">a) <span class="process-math">\(f(x)= 5 x + 9 x^{17}\text{;}\)</span> <span class="process-math">\(c = -14\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-3">
+<span class="process-math">\(a\)</span> =  <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-4">
+<span class="process-math">\(\left(f^{-1}\right)'(c)\)</span> = <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-5">b) <span class="process-math">\(f(x)= x^2 - 11 x + 45\)</span> on the interval <span class="process-math">\([5.5,\infty)\text{;}\)</span> <span class="process-math">\(c = 17\)</span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-6">
+<span class="process-math">\(a\)</span> =  <span class="fillin underline"></span>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__Rochester__setDerivatives1__osu_dr_1_11_pg-1-1-7">
+<span class="process-math">\(\left(f^{-1}\right)'(c)\)</span> = <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="Library__UCSB__Stewart5_3_6__Stewart5_3_6_68_pg"><h3 class="heading"><span class="codenumber">6<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="exercise-wrapper" id="Library__UCSB__Stewart5_3_6__Stewart5_3_6_68_pg-ww-inner">
+<div class="problem-buttons"></div>
+<div class="problem-contents">
+<div class="para logical" data-evidence="true" id="extracted-Library__UCSB__Stewart5_3_6__Stewart5_3_6_68_pg-1-1-1">
+<div class="para">Given that <span class="process-math">\(f(x)=2x+\cos(x)\)</span> is one-to-one, use the formula</div>
+<div class="displaymath process-math" id="extracted-Library__UCSB__Stewart5_3_6__Stewart5_3_6_68_pg-1-1-1-2">
+\begin{equation*}
+\displaystyle (f^{-1})'(x)=\frac{1}{f'(f^{-1}(x))}
+\end{equation*}
+</div>
+<div class="para">to find <span class="process-math">\((f^{-1})'(1)\text{.}\)</span>
+</div>
+</div>
+<div class="para" data-evidence="true" id="extracted-Library__UCSB__Stewart5_3_6__Stewart5_3_6_68_pg-1-1-2">
+<span class="process-math">\((f^{-1})'(1) =\)</span> <span class="fillin underline"></span>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-6-Ez4"><h3 class="heading"><span class="codenumber">7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para" data-evidence="true" id="ez-2-6-Ez4-1-1">Consider the graph of <span class="process-math">\(y = f(x)\)</span> provided in <a class="xref" href="/book/active-calculus-html/sec-2-6-inverse#F-2-6-Ez4" title="Figure 2.6.7">Figure 2.6.7</a> and use it to answer the following questions.
+</div>
+<div class="sidebyside">
+<div class="sbsrow">
+<div class="sbspanel sbspanel--middle middle">
+<div class="para logical" data-evidence="true" id="ez-2-6-Ez4-1-2-1">
+<ol class="lower-alpha" id="ez-2-6-Ez4-1-2-1-1">
+<li id="ez-2-6-Ez4-1-2-1-1-1">
+<div class="para" id="ez-2-6-Ez4-1-2-1-1-1-1">Use the provided graph to estimate the value of <span class="process-math">\(f'(1)\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-6-Ez4-1-2-1-1-2">
+<div class="para" id="ez-2-6-Ez4-1-2-1-1-2-1">Sketch an approximate graph of <span class="process-math">\(y = f^{-1}(x)\text{.}\)</span> Label at least three distinct points on the graph that correspond to three points on the graph of <span class="process-math">\(f\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-6-Ez4-1-2-1-1-3">
+<div class="para" id="ez-2-6-Ez4-1-2-1-1-3-1">Based on your work in (a), what is the value of <span class="process-math">\((f^{-1})'(-1)\text{?}\)</span> Why?
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sbspanel sbspanel--middle middle">
+<figure class="figure figure-like" data-evidence="true" id="F-2-6-Ez4"><div class="image-box">
+<img alt="described in detail following the image" class="contained" loading="lazy" src="/book-assets/active-calculus-html/6281bbee492906244b027b5f.svg"/><details class="image-description"><summary title="details"></summary><div id="F-2-6-Ez4-2-description">
+<div class="para" id="F-2-6-Ez4-2-1-1">The graph of a function <span class="process-math">\(y = f(x)\)</span> that is always increasing, concave up for <span class="process-math">\(x \lt 1 \text{,}\)</span> concave down for <span class="process-math">\(x \gt 1 \text{,}\)</span> and passes through the point <span class="process-math">\((1,-1)\text{.}\)</span>  The plot is given on the interval <span class="process-math">\(-4 \lt x \lt 4\)</span> along with the line <span class="process-math">\(y = x\text{;}\)</span> the graph of <span class="process-math">\(y = f(x)\)</span> lies almost entirely below the line, crossing close to the point <span class="process-math">\((-4,-4)\text{.}\)</span>
+</div>
+</div></details>
+</div>
+<figcaption><span class="type">Figure</span><span class="space heading-divison-mark heading-divison-mark__space"> </span><span class="codenumber">2.6.7<span class="period heading-divison-mark heading-divison-mark__period">.</span></span><span class="space heading-divison-mark heading-divison-mark__space"> </span>A function <span class="process-math">\(y = f(x)\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-6-8"><h3 class="heading"><span class="codenumber">8<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-6-8-1-1">
+<div class="para">Determine the derivative of each of the following functions. Use proper notation and clearly identify the derivative rules you use.</div>
+<ol class="lower-alpha" id="ez-2-6-8-1-1-1">
+<li id="ez-2-6-8-1-1-1-1">
+<div class="para" id="ez-2-6-8-1-1-1-1-1">
+<span class="process-math">\(\displaystyle f(x) = \ln(2\arctan(x) + 3\arcsin(x) + 5)\)</span>
+</div>
+</li>
+<li id="ez-2-6-8-1-1-1-2">
+<div class="para" id="ez-2-6-8-1-1-1-2-1">
+<span class="process-math">\(\displaystyle r(z) = \arctan(\ln(\arcsin(z)))\)</span>
+</div>
+</li>
+<li id="ez-2-6-8-1-1-1-3">
+<div class="para" id="ez-2-6-8-1-1-1-3-1">
+<span class="process-math">\(\displaystyle q(t) = \arctan^2(3t) \arcsin^4(7t)\)</span>
+</div>
+</li>
+<li id="ez-2-6-8-1-1-1-4">
+<div class="para" id="ez-2-6-8-1-1-1-4-1">
+<span class="process-math">\(\displaystyle g(v) = \ln\left( \frac{\arctan(v)}{\arcsin(v) + v^2} \right)\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-6-9"><h3 class="heading"><span class="codenumber">9<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-6-9-1-1">
+<div class="para">Let <span class="process-math">\(f(x) = \frac{1}{4}x^3 + 4\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-6-9-1-1-2">
+<li id="ez-2-6-9-1-1-2-1">
+<div class="para" id="ez-2-6-9-1-1-2-1-1">Sketch a graph of <span class="process-math">\(y = f(x)\)</span> and explain why <span class="process-math">\(f\)</span> is an invertible function.
+</div>
+</li>
+<li id="ez-2-6-9-1-1-2-2">
+<div class="para" id="ez-2-6-9-1-1-2-2-1">Let <span class="process-math">\(g\)</span> be the inverse of <span class="process-math">\(f\)</span> and determine a formula for <span class="process-math">\(g\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-6-9-1-1-2-3">
+<div class="para" id="ez-2-6-9-1-1-2-3-1">Compute <span class="process-math">\(f'(x)\text{,}\)</span> <span class="process-math">\(g'(x)\text{,}\)</span> <span class="process-math">\(f'(2)\text{,}\)</span> and <span class="process-math">\(g'(6)\text{.}\)</span> What is the special relationship between <span class="process-math">\(f'(2)\)</span> and <span class="process-math">\(g'(6)\text{?}\)</span> Why?
+</div>
+</li>
+</ol>
+</div>
+</article>
+<article class="exercise exercise-like" id="ez-2-6-10"><h3 class="heading"><span class="codenumber">10<span class="period heading-divison-mark heading-divison-mark__period">.</span></span></h3>
+<div class="para logical" data-evidence="true" id="ez-2-6-10-1-1">
+<div class="para">Let <span class="process-math">\(h(x) = x + \sin(x)\text{.}\)</span>
+</div>
+<ol class="lower-alpha" id="ez-2-6-10-1-1-2">
+<li id="ez-2-6-10-1-1-2-1">
+<div class="para" id="ez-2-6-10-1-1-2-1-1">Sketch a graph of <span class="process-math">\(y = h(x)\)</span> and explain why <span class="process-math">\(h\)</span> must be invertible.
+</div>
+</li>
+<li id="ez-2-6-10-1-1-2-2">
+<div class="para" id="ez-2-6-10-1-1-2-2-1">Explain why it does not appear to be algebraically possible to determine a formula for <span class="process-math">\(h^{-1}\text{.}\)</span>
+</div>
+</li>
+<li id="ez-2-6-10-1-1-2-3">
+<div class="para" id="ez-2-6-10-1-1-2-3-1">Observe that the point <span class="process-math">\((\frac{\pi}{2}, \frac{\pi}{2} + 1)\)</span> lies on the graph of <span class="process-math">\(y = h(x)\text{.}\)</span> Determine the value of <span class="process-math">\((h^{-1})'(\frac{\pi}{2} + 1)\text{.}\)</span>
+</div>
+</li>
+</ol>
+</div>
+</article>
+</section>
+</section>
+</div>

@@ -3,3 +3,4 @@ gunicorn==27.0.1
 openai==3.55.0
 PyMuPDF==1.26.7
 python-dotenv==1.2.4
+beautifulsoup4==4.14.3

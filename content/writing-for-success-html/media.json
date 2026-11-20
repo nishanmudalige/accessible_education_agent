@@ -1,0 +1,533 @@
+{
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/image1.jpeg": {
+    "status": "unavailable",
+    "local_url": "/book-assets/writing-for-success-html/4ea087685882966cdff614f7.svg",
+    "alt": "image",
+    "errors": [
+      "HTTPError: HTTP Error 404: Not Found"
+    ]
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/mind-mapping-e1437516362274.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9ee774a3e02a191318c815f0.png",
+    "provenance": "archive:OEBPS/assets/mind-mapping-e1437516362274.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/charting-e1437516422130.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/fa2943528aad2e31ba9a3dee.png",
+    "provenance": "archive:OEBPS/assets/charting-e1437516422130.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/cornell-e1437516504158.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ca7a360b1746cf7613dd372d.png",
+    "provenance": "archive:OEBPS/assets/cornell-e1437516504158.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/schedule-e1437516720725.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/e989e20042b2c95be4d02e38.png",
+    "provenance": "archive:OEBPS/assets/schedule-e1437516720725.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/image15.jpeg": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/78ed06758fb615a76a081abc.jpg",
+    "provenance": "archive:OEBPS/assets/image15.jpeg"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/clause-e1437584342845.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/f0426badb733f9fa053cfb7e.png",
+    "provenance": "archive:OEBPS/assets/clause-e1437584342845.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/image21.jpeg": {
+    "status": "unavailable",
+    "local_url": "/book-assets/writing-for-success-html/d24c82627cb0ffc8cf9ca96e.svg",
+    "alt": "Malik (underlined) is the project manager for this project. He (underlined) will give us our assignments.",
+    "errors": [
+      "HTTPError: HTTP Error 404: Not Found"
+    ]
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/sentence2-e1437584409997.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1b20be82877e88345f25a5e4.png",
+    "provenance": "archive:OEBPS/assets/sentence2-e1437584409997.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/sentence3-e1437584455685.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/e352467fc49ed56e63e50b9f.png",
+    "provenance": "archive:OEBPS/assets/sentence3-e1437584455685.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/sentence4-e1437584511219.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1ea864d3a0170dc159c34e0b.png",
+    "provenance": "archive:OEBPS/assets/sentence4-e1437584511219.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/sentence5-e1437584556941.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/f01ced2b6462e0df9de488af.png",
+    "provenance": "archive:OEBPS/assets/sentence5-e1437584556941.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/sentence6-e1437584622487.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/de4d7f35459d35e0f25993f3.png",
+    "provenance": "archive:OEBPS/assets/sentence6-e1437584622487.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/actionverbs-e1437585667215.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1a9c0c17a8112cd22ce72cb2.png",
+    "provenance": "archive:OEBPS/assets/actionverbs-e1437585667215.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/linking-verbs-e1437585744240.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/82f5b23ff9533d06cbbdf5e9.png",
+    "provenance": "archive:OEBPS/assets/linking-verbs-e1437585744240.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/eitherverb-e1437585833409.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/f224a47be57190e35e6e5e66.png",
+    "provenance": "archive:OEBPS/assets/eitherverb-e1437585833409.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/helpingverbs-e1437585913332.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/b3f3701d8f046f5ad99bcdcc.png",
+    "provenance": "archive:OEBPS/assets/helpingverbs-e1437585913332.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/subject-to-verb.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c514a3ae61d0e046a5262320.png",
+    "provenance": "archive:OEBPS/assets/subject-to-verb.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/subject-to-link-to-noun.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/b694a65e3aa9b35471699a9c.png",
+    "provenance": "archive:OEBPS/assets/subject-to-link-to-noun.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/subject-to-verb-to-adjective.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/56bc5eefd30e5df2f68dbb56.png",
+    "provenance": "archive:OEBPS/assets/subject-to-verb-to-adjective.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/subject-to-verb-to-adverb.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/8581467e6e59689c9e40f76b.png",
+    "provenance": "archive:OEBPS/assets/subject-to-verb-to-adverb.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/subject-verb-direct-object.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/45f4bb90ce199766bf5166a2.png",
+    "provenance": "archive:OEBPS/assets/subject-verb-direct-object.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/indirect-object.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c9bfa83916d83a8ef85a3548.png",
+    "provenance": "archive:OEBPS/assets/indirect-object.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/editing-fragments-e1437588482642.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/8e8fec954fe38ad0efd5eb3b.png",
+    "provenance": "archive:OEBPS/assets/editing-fragments-e1437588482642.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/example-A-e1437588625844.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/6499ae0cdde69b25090d7ce7.png",
+    "provenance": "archive:OEBPS/assets/example-A-e1437588625844.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/exampl-b-e1437588730431.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/7e42c76958dd1f53b6d0c519.png",
+    "provenance": "archive:OEBPS/assets/exampl-b-e1437588730431.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/editing-fragments2-e1437588869832.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/759c32ca9011e7d7cf69ad78.png",
+    "provenance": "archive:OEBPS/assets/editing-fragments2-e1437588869832.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/dependent-clause-e1437588991481.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/5d4804b9a0fe16def56fa9bf.png",
+    "provenance": "archive:OEBPS/assets/dependent-clause-e1437588991481.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/clause3-e1437589071853.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c83e53bd38d98fd20936ecfe.png",
+    "provenance": "archive:OEBPS/assets/clause3-e1437589071853.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/gerund-e1437594210736.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/3acd26884eb71756b2f045e9.png",
+    "provenance": "archive:OEBPS/assets/gerund-e1437594210736.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/editing-e1437594317295.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ce16d7f7f04dfffdd61d560c.png",
+    "provenance": "archive:OEBPS/assets/editing-e1437594317295.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/report-information-e1437594973510.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/0275fc49e2246d4c09d5472f.png",
+    "provenance": "archive:OEBPS/assets/report-information-e1437594973510.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/article-2-e1437595030200.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/eca551c393cab16c95ba0449.png",
+    "provenance": "archive:OEBPS/assets/article-2-e1437595030200.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/summary4-e1437598797657.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/68ad665748aa8d5ea3ce5635.png",
+    "provenance": "archive:OEBPS/assets/summary4-e1437598797657.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/paragraph-structure-e1437600115426.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/b391072e74a9bd948999a2fe.png",
+    "provenance": "archive:OEBPS/assets/paragraph-structure-e1437600115426.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/organize-by-subject-658x1024.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/656142ca16f550d741786e01.png",
+    "provenance": "archive:OEBPS/assets/organize-by-subject-658x1024.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/purpose-audience-tone.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/aabcb6d7c4b01237f32cc600.png",
+    "provenance": "archive:OEBPS/assets/purpose-audience-tone.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/analysis-e1437760022165.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/a0032ab40d6608e681077811.png",
+    "provenance": "archive:OEBPS/assets/analysis-e1437760022165.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/synthesis-e1437760484651.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1220994d454d9ed23d10bae0.png",
+    "provenance": "archive:OEBPS/assets/synthesis-e1437760484651.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/on-the-job-e1437761167443.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ea300920a2eb4a717b10251f.png",
+    "provenance": "archive:OEBPS/assets/on-the-job-e1437761167443.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/07/image118-e1439226891226.jpeg": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/92376bef979b3c046f26a389.jpg",
+    "provenance": "archive:OEBPS/assets/image118-e1439226891226.jpeg"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/05/image42100-e1439227307894.jpeg": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c2412538ba0f19f568026421.jpg",
+    "provenance": "archive:OEBPS/assets/image42100-e1439227307894.jpeg"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/mass-media-134x300.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/43cee4d449d649c610f96a20.png",
+    "provenance": "archive:OEBPS/assets/mass-media-134x300.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/idea-map-e1439227720569.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/b938a92769cc518e2a42d60f.png",
+    "provenance": "archive:OEBPS/assets/idea-map-e1439227720569.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/useful-search-engine-results-e1439227774139.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/694e539585eb1ec5d8814d5c.png",
+    "provenance": "archive:OEBPS/assets/useful-search-engine-results-e1439227774139.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/cleanwrite-282x300.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/bfb38fa0aabc5392baf3fe66.png",
+    "provenance": "archive:OEBPS/assets/cleanwrite-282x300.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/cleanwrite2-286x300.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/3f55d69be55c4ca7bb152a6f.png",
+    "provenance": "archive:OEBPS/assets/cleanwrite2-286x300.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/cleanwrite3-e1439227888370.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c17c0d53bc88bf3927742c4b.png",
+    "provenance": "archive:OEBPS/assets/cleanwrite3-e1439227888370.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/ch6_1-e1439228646965.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/dc92b85a3633525a734fb0a7.png",
+    "provenance": "archive:OEBPS/assets/ch6_1-e1439228646965.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_2-e1439228700989.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/4b0f621a2b86dc4ea5af7ac7.png",
+    "provenance": "archive:OEBPS/assets/chap6_2-e1439228700989.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_3-e1439228981764.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/f2b38944c7cb89ab4c5d8dd5.png",
+    "provenance": "archive:OEBPS/assets/chap6_3-e1439228981764.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_4-e1439229182221.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c56e4f7629768c81e533fbce.png",
+    "provenance": "archive:OEBPS/assets/chap6_4-e1439229182221.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_5-300x265.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/e8d24ad9eb76cb25af9568af.png",
+    "provenance": "archive:OEBPS/assets/chap6_5-300x265.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_6-e1439229685480.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ab348d7640544132ae1e99ea.png",
+    "provenance": "archive:OEBPS/assets/chap6_6-e1439229685480.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_7-e1439230628575.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1d59503545dbf2ff92e96ff7.png",
+    "provenance": "archive:OEBPS/assets/chap6_7-e1439230628575.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_8-e1439230811285.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/d431b81f0b621f9205cf9406.png",
+    "provenance": "archive:OEBPS/assets/chap6_8-e1439230811285.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_9-e1439230866971.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9780803325a8e7176a19f0a2.png",
+    "provenance": "archive:OEBPS/assets/chap6_9-e1439230866971.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_10-e1439231068691.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/68775a85bb4dac7d63294af2.png",
+    "provenance": "archive:OEBPS/assets/chap6_10-e1439231068691.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_11-e1439231086492.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/6ec67db45359927bfe381b59.png",
+    "provenance": "archive:OEBPS/assets/chap6_11-e1439231086492.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_12-e1439231529670.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9f2226c859dce05a62813a94.png",
+    "provenance": "archive:OEBPS/assets/chap6_12-e1439231529670.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_13-e1439231566423.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/a5a47b89e531790bb4fae2dc.png",
+    "provenance": "archive:OEBPS/assets/chap6_13-e1439231566423.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_14-e1439231837668.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/7a4c26da7196ee90a98be7a1.png",
+    "provenance": "archive:OEBPS/assets/chap6_14-e1439231837668.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_15-e1439231859217.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/2d6672e9839770fd2182b3cb.png",
+    "provenance": "archive:OEBPS/assets/chap6_15-e1439231859217.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap6_16-e1439234929369.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1beda073ee5ae09d59ad6e43.png",
+    "provenance": "archive:OEBPS/assets/chap6_16-e1439234929369.png"
+  },
+  "https://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap8_1-300x300.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/13111adf8434d7c43bdffd67.png",
+    "provenance": "archive:OEBPS/assets/chap8_1-300x300.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap8_2-e1439235642382.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/1d0cafe1ac0a0673d068d5a8.png",
+    "provenance": "archive:OEBPS/assets/chap8_2-e1439235642382.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_1-e1439236389143.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/e303e13622b07d39380bed00.png",
+    "provenance": "archive:OEBPS/assets/chap9_1-e1439236389143.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_2-e1439236442486.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/905ffa9d56bec05508a6fb3d.png",
+    "provenance": "archive:OEBPS/assets/chap9_2-e1439236442486.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_3-e1439236481590.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ec3c79883055e8e20daf0c8e.png",
+    "provenance": "archive:OEBPS/assets/chap9_3-e1439236481590.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_4-e1439236535502.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/b97c2ac5d04604bc73493a8d.png",
+    "provenance": "archive:OEBPS/assets/chap9_4-e1439236535502.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_5-e1439236578460.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/3804605cc6ab1833731bd4b9.png",
+    "provenance": "archive:OEBPS/assets/chap9_5-e1439236578460.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_6-e1439236664155.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/07290c7eff359d734df8ce6f.png",
+    "provenance": "archive:OEBPS/assets/chap9_6-e1439236664155.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_8-e1439236741702.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9535bc6bb78f76cc869eb320.png",
+    "provenance": "archive:OEBPS/assets/chap9_8-e1439236741702.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_9-e1439236793899.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/066d92d9f86a28c7c0d5b50f.png",
+    "provenance": "archive:OEBPS/assets/chap9_9-e1439236793899.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_10-e1439236881168.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/aa1a75851706889d3578b98f.png",
+    "provenance": "archive:OEBPS/assets/chap9_10-e1439236881168.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_11-e1439236929119.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/81cdc7452326bd149e0496f9.png",
+    "provenance": "archive:OEBPS/assets/chap9_11-e1439236929119.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_12-e1439237007503.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/770e8ee1516e1252c4e69b4a.png",
+    "provenance": "archive:OEBPS/assets/chap9_12-e1439237007503.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_13-e1439237105267.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/a715896c7848ab770bc8a76f.png",
+    "provenance": "archive:OEBPS/assets/chap9_13-e1439237105267.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_14-e1439237171466.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/58ee811e112bc29ef60c912c.png",
+    "provenance": "archive:OEBPS/assets/chap9_14-e1439237171466.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_15-e1439237222994.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/132e4f8bf8687b81f5ccb08e.png",
+    "provenance": "archive:OEBPS/assets/chap9_15-e1439237222994.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_16-e1439237297616.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/887670adab3c144b8ecd7a7f.png",
+    "provenance": "archive:OEBPS/assets/chap9_16-e1439237297616.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_18-e1439237403814.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/a475cfcacf352f742c69341f.png",
+    "provenance": "archive:OEBPS/assets/chap9_18-e1439237403814.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_19-e1439237492790.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/cb2c3d57d52368f68d03ca43.png",
+    "provenance": "archive:OEBPS/assets/chap9_19-e1439237492790.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_20-e1439237576466.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/5c74f9af6dbeb5a89912d24f.png",
+    "provenance": "archive:OEBPS/assets/chap9_20-e1439237576466.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap9_21-e1439237600727.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/fe2af917464d9225645bba74.png",
+    "provenance": "archive:OEBPS/assets/chap9_21-e1439237600727.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap11_1-e1439237940734.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9d0ad19f41d4ed78c4c67cbb.png",
+    "provenance": "archive:OEBPS/assets/chap11_1-e1439237940734.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap11_2-e1439238072680.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/adf28d12d92b25e37508bf41.png",
+    "provenance": "archive:OEBPS/assets/chap11_2-e1439238072680.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap11_5-e1439238119369.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ef6849c0c84a332b0b7b454c.png",
+    "provenance": "archive:OEBPS/assets/chap11_5-e1439238119369.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap11_3-e1439238167915.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/3f0ad17f694e4c5522d68c9c.png",
+    "provenance": "archive:OEBPS/assets/chap11_3-e1439238167915.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap11_4-e1439238346401.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/634ba5b7e4695cbd477cff1c.png",
+    "provenance": "archive:OEBPS/assets/chap11_4-e1439238346401.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_1-e1439238438666.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/bfcc0e8551880cfb8b77c137.png",
+    "provenance": "archive:OEBPS/assets/chap12_1-e1439238438666.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_2-e1439239771531.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/49c2a1f2a8e5fbcea5a7937f.png",
+    "provenance": "archive:OEBPS/assets/chap12_2-e1439239771531.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_3-e1439239791318.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/3427153c0be861fb472afc6b.png",
+    "provenance": "archive:OEBPS/assets/chap12_3-e1439239791318.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_4-e1439239808630.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/744717c84a541516b4abafd4.png",
+    "provenance": "archive:OEBPS/assets/chap12_4-e1439239808630.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_5-e1439239832411.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/d1d4785383391e464811f91b.png",
+    "provenance": "archive:OEBPS/assets/chap12_5-e1439239832411.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_6-e1439239859859.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/f0ad089e68130ed83834fe5c.png",
+    "provenance": "archive:OEBPS/assets/chap12_6-e1439239859859.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_7-e1439239887288.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/ebb0666b58b13664e4fd5a20.png",
+    "provenance": "archive:OEBPS/assets/chap12_7-e1439239887288.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_8-e1439239903732.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/5c80401dae0b853a31fbe3d5.png",
+    "provenance": "archive:OEBPS/assets/chap12_8-e1439239903732.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_9-e1439239933210.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/74a93c978311424085133a6e.png",
+    "provenance": "archive:OEBPS/assets/chap12_9-e1439239933210.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_10-e1439239946862.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/8eb175f96ead99e4872b82f2.png",
+    "provenance": "archive:OEBPS/assets/chap12_10-e1439239946862.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_11-e1439239959345.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/9545440e5c6455a0d5d6d075.png",
+    "provenance": "archive:OEBPS/assets/chap12_11-e1439239959345.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_12-e1439240079818.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/c13b41cbccb301bb286b6408.png",
+    "provenance": "archive:OEBPS/assets/chap12_12-e1439240079818.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_13-e1439240095545.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/8ca6d9158632b07b74e0c5cf.png",
+    "provenance": "archive:OEBPS/assets/chap12_13-e1439240095545.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_14-e1439240109858.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/da2349e3bac016709f4697d5.png",
+    "provenance": "archive:OEBPS/assets/chap12_14-e1439240109858.png"
+  },
+  "http://opentextbc.ca/writingforsuccess/wp-content/uploads/sites/107/2015/08/chap12_15-e1439240121490.png": {
+    "status": "ok",
+    "local_url": "/book-assets/writing-for-success-html/5785ebaa440f8adfb619a718.png",
+    "provenance": "archive:OEBPS/assets/chap12_15-e1439240121490.png"
+  }
+}

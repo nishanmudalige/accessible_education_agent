@@ -25,7 +25,7 @@ def main():
         if args.smoke:
             plan=ai.plan('What is a sample mean?','en-CA',[{'subject':'introductory statistics'}],[])
             assert plan['related'] and plan['language']=='en-CA'
-            answer=ai.answer('What is a sample mean?','en-CA',[{'key':'S1','doc':'test','page':1,'id':'p0','text':'The sample mean is the sum of the observations divided by the sample size.'}],[])
+            answer=ai.answer('What is a sample mean?','en-CA',[{'key':'S1','doc':'test','page':1,'id':'p0','text':'The sample mean is the sum of the observations divided by the sample size.'}],[],[{'id':'test','title':'Statistics test','subject':'introductory statistics','language':'en-CA'}])
             assert ai.validate_answer(answer,[{'key':'S1'}])[0]
             print('Astra structured textbook answer: OK')
             translated=ai.translation('A sample mean estimates a population mean.','fr-CA')
