@@ -25,7 +25,7 @@
   function label(node,en,fr){node.dataset.en=en;node.dataset.fr=fr;node.textContent=A.tr(en,fr);return node;}
   function actionBar(root,lang){
     const bar=el('div','answer-actions'),read=label(el('button'),'Read aloud','Lire à voix haute');read.type='button';
-    read.onclick=()=>A.speak(root.sourceText||root.textContent,lang,root);
+    read.onclick=()=>A.speak(root,lang);
     const fr=el('button','','→ Français canadien'),en=el('button','','→ English');fr.type=en.type='button';
     fr.onclick=()=>A.translate(root.sourceText||root.textContent,'fr-CA');en.onclick=()=>A.translate(root.sourceText||root.textContent,'en-CA');bar.append(read,fr,en);return bar;
   }
@@ -38,7 +38,7 @@
       const re=terms.length?new RegExp('('+terms.join('|')+')','ig'):null;
       if(re){let at=0;for(const m of r.text.matchAll(re)){text.append(document.createTextNode(r.text.slice(at,m.index)));text.append(el('mark','query-match',m[0]));at=m.index+m[0].length;}text.append(document.createTextNode(r.text.slice(at)));}else text.textContent=r.text;
       if(supported.has(r.key))text.classList.add('supported-result');
-      const btn=label(el('button'),'Read passage','Lire le passage');btn.type='button';btn.onclick=()=>A.speak(text.textContent,text.lang,text);
+      const btn=label(el('button'),'Read passage','Lire le passage');btn.type='button';btn.onclick=()=>A.speak(text,text.lang);
       card.append(heading,text,btn);details.append(card);
     }
     return details;

@@ -33,3 +33,10 @@ html[data-theme="dark"] .speech-close {border-color:#506d7f}
 
 /* The player opens on demand, leaving the reading surface unobstructed. */
 body{padding-bottom:28px}.speech-player{border-radius:12px;max-height:72vh;overflow:auto}.speech-control{font-family:system-ui,sans-serif}.speech-head{flex-wrap:wrap}.speech-head strong{margin-right:auto}.speech-close{min-height:32px;min-width:32px}.speech-preview{max-height:62px;white-space:normal}.speech-options select{min-width:0}.speech-options #speech-voice{max-width:290px}.speech-progress{line-height:1.3}.speech-notice{margin-bottom:0}.speech-launch{background:#002a5c;color:white}.speech-launch:hover{background:#075e78}.selection-tools{bottom:18px;z-index:910;max-width:calc(100vw - 20px)}.speech-player #speech-timeline{display:block;width:100%;height:5px;accent-color:var(--accent);margin:12px 0 0}.speech-player .speech-head>strong{color:var(--blue)}dialog .speech-player{position:sticky;right:auto;bottom:0;width:100%;margin-top:18px;box-shadow:none}::highlight(speech){background:#ffd487;color:#171717}mark.speaking{background:#ffd487;color:#171717}.speech-control:focus-visible{outline:3px solid var(--accent);outline-offset:3px}@media(max-width:580px){.speech-player{bottom:12px;max-height:70vh}.speech-detected{max-width:210px;font-size:11px}.speech-options #speech-voice{max-width:100%}.speech-progress{font-size:12px}.speech-control{min-height:38px;min-width:38px}.selection-tools{max-width:calc(100vw - 20px)}body{padding-bottom:25px}}
+
+/* CHTML glyphs are painted by MathJax, outside the native text selection. */
+.chapter-content ::selection, .rich-text ::selection,
+mjx-container.selection-math {
+  background-color: Highlight;
+  color: HighlightText;
+}

@@ -5,6 +5,7 @@
 <script src="{{ url_for('static',filename='mathjax-config.js',v='safe-math-1') }}" defer></script>
 <script src="{{ url_for('static',filename='vendor/mathjax/es5/tex-chtml-full.js') }}" defer></script>
 <script src="{{ url_for('static',filename='rich-text.js',v='safe-math-1') }}" defer></script>
+<script src="{{ url_for('static',filename='dictation.js') }}" defer></script>
 <script src="{{ url_for('static',filename='app.js',v='safe-math-1') }}" defer></script>
 {% endblock %}
 {% block content %}
@@ -27,6 +28,14 @@
 <div id="conversation" aria-label="Conversation"></div>
 <section class="composer panel"><div class="section-heading"><span class="muted" data-en="Try a question" data-fr="Essayez une question">Try a question</span><button id="shuffle" type="button" data-en="More examples ↻" data-fr="Autres exemples ↻">More examples ↻</button></div><div id="examples" class="examples"></div>
 <form id="ask-form"><label for="question" class="sr-only" data-en="Your question" data-fr="Votre question">Your question</label><textarea id="question" rows="3" maxlength="3000" required placeholder="Ask about the book / Posez une question sur le livre…"></textarea>
+<div id="dictation" hidden>
+  <button type="button" id="dictate" aria-label="Dictate question" aria-pressed="false"><span aria-hidden="true">🎙</span> <span id="dictate-label">Dictate</span></button>
+  <div role="group" aria-label="Dictation language" id="dictation-languages">
+    <button type="button" data-lang="en-US" aria-label="Dictate in English" aria-pressed="true">EN</button>
+    <button type="button" data-lang="fr-CA" aria-label="Dictate in Canadian French" aria-pressed="false">FR</button>
+  </div>
+  <span id="dictation-status" role="status" aria-live="polite" aria-atomic="true"></span>
+</div>
 <div class="composer-options"><label><span data-en="Reply language" data-fr="Langue de réponse">Reply language</span> <select id="reply-language"><option value="auto">Automatic / Automatique</option><option value="en-CA">English</option><option value="fr-CA">Français canadien</option></select></label><label class="check"><input id="web" type="checkbox"{% if web_search_default %} checked{% endif %}><span data-en="Find related web resources" data-fr="Trouver des ressources Web connexes">Find related web resources</span></label></div>
 <div class="composer-actions"><button id="local-search" type="button" data-en="Search book only" data-fr="Chercher dans le livre">Search book only</button><button id="ask" type="submit" class="primary" data-en="Ask AccessÉdu →" data-fr="Questionner AccessÉdu →">Ask AccessÉdu →</button></div></form>
 <p id="status" role="status" aria-live="polite" class="muted"></p></section>
