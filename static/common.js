@@ -25,11 +25,11 @@
   let selection={text:'',root:null,lang:'en-CA'};
   function currentSelection(){
     const s=window.getSelection(); if(!s || !s.rangeCount || s.isCollapsed)return;
-    const text=s.toString().trim();if(!text)return;
+    const text=s.toString().trim();
     let node=s.anchorNode.nodeType===1?s.anchorNode:s.anchorNode.parentElement;
     if(node.closest('#selection-tools,#speech-player,textarea,input,select,header,footer'))return;
     const root=node.closest('[data-speech-lang],.prose,.source-block,.result-text,#page-text')||node;
-    selection={text,root,lang:root.closest('[lang]')?.lang||ui};
+    selection={text,root,range:s.getRangeAt(0).cloneRange(),lang:root.closest('[lang]')?.lang||ui};
     const tools=$('selection-tools'); tools.hidden=false;
     const rect=s.getRangeAt(0).getBoundingClientRect?.();
     if(rect){tools.style.left=Math.max(10,Math.min(innerWidth-330,rect.left))+'px';tools.style.top=Math.max(10,Math.min(innerHeight-70,rect.bottom+8))+'px';tools.style.right='auto';tools.style.bottom='auto';}
@@ -71,9 +71,15 @@
   }
   $('translate-fr').onclick=()=>translate(selection.text,'fr-CA');$('translate-en').onclick=()=>translate(selection.text,'en-CA');
 
-  const speak=(text,lang,root)=>window.AccessSpeech?.readText(text,lang,root);
-  $('read-selection').onclick=()=>speak(selection.text,selection.lang,selection.root);
-  $('read-translation').onclick=()=>speak($('translation-text').textContent,$('translation-text').lang,$('translation-text'));
+  let speechRequest=0;
+  async function speak(source,lang,root=source){
+    const request=++speechRequest;
+    const {text,hasMedia}=await window.AccessSpeechText(source,lang);
+    if(request!==speechRequest)return;
+    window.AccessSpeech?.readText(text,lang,root,hasMedia);
+  }
+  $('read-selection').onclick=()=>speak(selection.range,selection.lang,selection.root);
+  $('read-translation').onclick=()=>speak($('translation-text'),$('translation-text').lang);
   async function copy(value,status){
     try{await navigator.clipboard.writeText(value);status('Link or text copied.','Lien ou texte copié.');}
     catch{status('Copy unavailable. Select the text or address manually.','Copie indisponible. Sélectionnez le texte ou l’adresse manuellement.');}

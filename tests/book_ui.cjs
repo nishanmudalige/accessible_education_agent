@@ -14,6 +14,7 @@ async function run(found,fr=false){
   w.requestAnimationFrame=fn=>fn();
   $("translation-dialog").showModal=function(){this.open=true;};
   w.MathJax={startup:{promise:Promise.resolve()}};
+  w.eval(read('static/speech-text.js'));
   w.eval(read('static/common.js'));
   w.eval(read('static/book.js'));
   w.dispatchEvent(new w.Event('load'));
@@ -30,10 +31,10 @@ async function run(found,fr=false){
     assert.ok(d.querySelector('.chapter-content.hide-citation .cited-passage'));
     const spoken=[];
     w.AccessSpeech={readText:(...args)=>spoken.push(args)};
-    highlights.click();assert.equal(spoken[0][0],'A passage.');
+    highlights.click();await new Promise(resolve=>setImmediate(resolve));assert.equal(spoken[0][0],'A passage.');
     toggle.click();assert.equal(toggle.getAttribute('aria-pressed'),'true');
     $('long').textContent='word '.repeat(3000).trim();
-    $('read-page').click();assert.equal(spoken[1][0],'A passage.\n\n'+$('long').textContent);
+    $('read-page').click();await new Promise(resolve=>setImmediate(resolve));assert.equal(spoken[1][0],'A passage.\n\n'+$('long').textContent);
     let copied;w.navigator.clipboard={writeText:async value=>{copied=value;}};
     $('reader-copy').click();assert.equal(copied,w.location.href);
 

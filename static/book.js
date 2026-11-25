@@ -11,7 +11,7 @@
   const readHighlights=$('reader-read-highlights');
   toggle.disabled=true;
 
-  function paragraphs(root){
+  function translationParagraphs(root){
     // Keep paragraph boundaries even when the imported HTML is on a single line.
     const formulas=new Map();
     for(const item of window.MathJax?.startup?.document?.getMathItemsWithin(root)||[]){
@@ -54,7 +54,7 @@
     return batches;
   }
 
-  function read(root){actions.speak(paragraphs(root).join('\n\n'),status.dataset.sourceLang,root);}
+  function read(root){actions.speak(root,status.dataset.sourceLang);}
   toggle.onclick=()=>{
     const visible=toggle.getAttribute('aria-pressed')!=='true';
     chapter.classList.toggle('hide-citation',!visible);
@@ -66,7 +66,7 @@
   readHighlights.onclick=()=>read(target);
   $('read-page').onclick=()=>read(chapter);
   $('translate-page').onclick=()=>{
-    const batches=translationBatches(paragraphs(chapter));
+    const batches=translationBatches(translationParagraphs(chapter));
     if(batches.length)actions.translate(batches,french?'en-CA':'fr-CA');
   };
   $('reader-copy').onclick=()=>actions.copy(location.href,(en,fr)=>{status.textContent=actions.tr(en,fr);});

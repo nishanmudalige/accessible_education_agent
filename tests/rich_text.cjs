@@ -57,6 +57,7 @@ async function realMath(){
   assert.ok(dom.window.document.querySelector('mjx-assistive-mml math'),'Assistive MathML is present');
   assert.equal(dom.window.document.querySelectorAll('a[href^="javascript:"]').length,0);
   assert.equal(dom.window.MathJax.config.options.safeOptions.allow.URLs,'none');
+  await require('./rendered_speech.cjs')(dom.window);
   assert.equal(errors.length,0,errors.join('\n'));
   dom.window.close();
 }

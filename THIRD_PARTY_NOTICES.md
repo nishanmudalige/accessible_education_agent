@@ -32,7 +32,7 @@ Local adaptation removes site navigation and scripts, adds paragraph anchors, an
 
 ## MathJax 3.2.2
 
-Local formula rendering bundle and fonts from the official MathJax npm package, under Apache License 2.0. License: `static/vendor/mathjax/LICENSE`. https://www.mathjax.org/
+Local formula rendering bundle, fonts, and Speech Rule Engine component with its base, English, and French mathmaps from the official MathJax npm package, under Apache License 2.0. License: `static/vendor/mathjax/LICENSE`. https://www.mathjax.org/
 
 ## Writing for Success — 1st Canadian Edition (HTML)
 
