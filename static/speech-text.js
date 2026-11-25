@@ -4,6 +4,26 @@
   const texCommand=/\\(?:begin|end|text|lim|frac|sqrt|sum|int|to)(?![a-zA-Z])/;
   let engineQueue=Promise.resolve();
 
+  // Visible CHTML glyphs need not contribute any characters to Selection.toString().
+  // Include the complete expression even when a boundary falls inside a glyph.
+  function mathSelection(input){
+    const range=input.cloneRange();
+    if(range.collapsed)return {range,formulas:new Set()};
+    const element=node=>node.nodeType===1?node:node.parentElement;
+    const first=element(range.startContainer)?.closest('mjx-container');
+    const last=element(range.endContainer)?.closest('mjx-container');
+    if(first)range.setStartBefore(first);
+    if(last)range.setEndAfter(last);
+    const root=element(range.commonAncestorContainer);
+    const formulas=new Set();
+    if(!range.collapsed && root){
+      for(const formula of root.querySelectorAll('mjx-container')){
+        if(range.intersectsNode(formula))formulas.add(formula);
+      }
+    }
+    return {range,formulas};
+  }
+
   async function speechText(source,language){
     const locale=language?.startsWith('fr')?'fr':'en';
     const fallback=locale==='fr'?'formule':'formula';
@@ -12,7 +32,8 @@
       await window.MathJax?.startup?.promise;
       await window.AccessRichText?.whenReady();
     } catch { /* Unrendered math uses the same spoken fallback. */ }
-    const range=source instanceof Range?source:null;
+    const selected=source instanceof Range?mathSelection(source):null;
+    const range=selected?.range;
     const parts=[];
     let hasMedia=false;
     function visit(node){
@@ -27,7 +48,7 @@
       }
       if(node.nodeType!==Node.ELEMENT_NODE)return;
       if(node.matches('script,style,[hidden],#latex-macros,mjx-assistive-mml,[aria-hidden="true"]:not(mjx-container)'))return;
-      if(node.matches('mjx-container')){
+      if(selected?selected.formulas.has(node):node.matches('mjx-container')){
         hasMedia=true;parts.push(node);
         return;
       }
@@ -76,4 +97,5 @@
     return {text,hasMedia};
   }
   window.AccessSpeechText=speechText;
+  window.AccessSpeechText.mathSelection=mathSelection;
 })();

@@ -23,19 +23,31 @@
   }
 
   let selection={text:'',root:null,lang:'en-CA'};
+  let selectedFormulas=new Set();
+  function markSelection(formulas){
+    for(const el of selectedFormulas)if(!formulas.has(el))el.classList.remove('selection-math');
+    for(const el of formulas)if(!selectedFormulas.has(el))el.classList.add('selection-math');
+    selectedFormulas=formulas;
+  }
   function currentSelection(){
-    const s=window.getSelection(); if(!s || !s.rangeCount || s.isCollapsed)return;
+    const s=window.getSelection(); if(!s || !s.rangeCount || s.isCollapsed){
+      markSelection(new Set());selection.range=null;$('selection-tools').hidden=true;return;
+    }
     const text=s.toString().trim();
     let node=s.anchorNode.nodeType===1?s.anchorNode:s.anchorNode.parentElement;
-    if(node.closest('#selection-tools,#speech-player,textarea,input,select,header,footer'))return;
-    const root=node.closest('[data-speech-lang],.prose,.source-block,.result-text,#page-text')||node;
-    selection={text,root,range:s.getRangeAt(0).cloneRange(),lang:root.closest('[lang]')?.lang||ui};
+    if(node.closest('#selection-tools,#speech-player,textarea,input,select,header,footer')){
+      markSelection(new Set());selection.range=null;$('selection-tools').hidden=true;return;
+    }
+    const {range,formulas}=window.AccessSpeechText.mathSelection(s.getRangeAt(0));
+    markSelection(formulas);
+    const root=node.closest('[data-speech-lang],.prose,.source-block,.result-text,#page-text,.chapter-content')||node;
+    selection={text,root,range,lang:root.closest('[lang]')?.lang||ui};
     const tools=$('selection-tools'); tools.hidden=false;
     const rect=s.getRangeAt(0).getBoundingClientRect?.();
     if(rect){tools.style.left=Math.max(10,Math.min(innerWidth-330,rect.left))+'px';tools.style.top=Math.max(10,Math.min(innerHeight-70,rect.bottom+8))+'px';tools.style.right='auto';tools.style.bottom='auto';}
 
   }
-  document.addEventListener('selectionchange',()=>{clearTimeout(window._selectionTimer);window._selectionTimer=setTimeout(currentSelection,100);});
+  document.addEventListener('selectionchange',currentSelection);
   document.addEventListener('pointerdown',event=>{if(!event.target.closest('#selection-tools,#speech-player'))$('selection-tools').hidden=true;});
   $('selection-tools').addEventListener('pointerdown',event=>event.preventDefault());
   window.addEventListener('scroll',()=>$('selection-tools').hidden=true,true);
@@ -78,7 +90,10 @@
     if(request!==speechRequest)return;
     window.AccessSpeech?.readText(text,lang,root,hasMedia);
   }
-  $('read-selection').onclick=()=>speak(selection.range,selection.lang,selection.root);
+  $('read-selection').onclick=()=>{
+    if(!window.getSelection()?.isCollapsed)currentSelection();
+    if(selection.range)speak(selection.range,selection.lang,selection.root);
+  };
   $('read-translation').onclick=()=>speak($('translation-text'),$('translation-text').lang);
   async function copy(value,status){
     try{await navigator.clipboard.writeText(value);status('Link or text copied.','Lien ou texte copié.');}

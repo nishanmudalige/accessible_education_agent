@@ -13,7 +13,8 @@ module.exports=async function renderedSpeech(w){
   d.body.innerHTML=base.replace('{% block content %}{% endblock %}',actions+
     '<p id="citation-status" data-source-lang="en-CA"></p><article lang="en-CA" class="chapter-content"></article>');
   const chapter=d.querySelector('.chapter-content');
-  chapter.append(definition,image);
+  const caption=fragment('content/active-calculus-html/sec-1-3-derivative-pt.html','#F-1-3-SecToTan figcaption');
+  chapter.append(definition,image,caption);
   w.history.replaceState(null,'','?hl='+definition.id);
   await w.MathJax.typesetPromise([chapter]);
   const formula=definition.querySelector('.displaymath mjx-container');
@@ -48,6 +49,29 @@ module.exports=async function renderedSpeech(w){
   w.getSelection().removeAllRanges();w.getSelection().addRange(range);
   d.dispatchEvent(new w.Event('selectionchange'));await new Promise(r=>setTimeout(r,120));
   assert.equal(await play(()=>$('read-selection').click()),limit);
+  function select(range){
+    w.getSelection().removeAllRanges();w.getSelection().addRange(range);
+    d.dispatchEvent(new w.Event('selectionchange'));
+  }
+  const inline=caption.querySelectorAll('mjx-container');
+  const before=inline[3].parentElement.previousSibling, after=inline[4].parentElement.nextSibling;
+  range.setStart(before,before.textContent.lastIndexOf('to '));
+  range.setEnd(after,after.length);select(range);
+  assert.deepEqual([...d.querySelectorAll('.selection-math')],[inline[3],inline[4]]);
+  assert.equal(await play(()=>$('read-selection').click()),
+    'to f at left parenthesis a comma f left parenthesis a right parenthesis right parenthesis is given by');
+  range.setStart(inline[3].querySelector('mjx-c'),0);range.setEnd(inline[4].querySelector('mjx-c'),0);select(range);
+  assert.equal(await play(()=>$('read-selection').click()),
+    'f at left parenthesis a comma f left parenthesis a right parenthesis right parenthesis');
+  range.selectNodeContents(definition);select(range);
+  const definitionText=await play(()=>$('read-selection').click());
+  assert.ok(definitionText.includes(limit));
+  w.getSelection().removeAllRanges();d.dispatchEvent(new w.Event('selectionchange'));
+  assert.equal(d.querySelector('.selection-math'),null);
+  const pdf=d.createElement('div');pdf.id='page-text';pdf.lang='en-CA';
+  pdf.innerHTML='<p class="source-block">First paragraph.</p><p class="source-block">Second paragraph.</p>';
+  d.body.append(pdf);range.setStart(pdf.firstChild.firstChild,6);range.setEnd(pdf.lastChild.firstChild,6);select(range);
+  assert.equal(await play(()=>$('read-selection').click()),'paragraph. Second');
   const sample=d.createElement('p');
   sample.innerHTML='before<img alt=""><img><img alt="chat"><mjx-container></mjx-container>after';
   assert.equal((await w.AccessSpeechText(sample,'fr')).text,'before Image sans description Image : chat formule after');
