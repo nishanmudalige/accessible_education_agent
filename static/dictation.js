@@ -9,21 +9,25 @@
   const languages = byId('dictation-languages');
   const tr = window.AccessEdu.tr;
   const key = 'accessedu-dictation-language';
+  const permissionMessage = [
+    'Microphone access denied. Allow it in the browser address bar, then reload the page.',
+    'Accès au microphone refusé. Autorisez-le dans la barre d’adresse du navigateur, puis rechargez la page.'
+  ];
   let language = 'en-US';
   try {
     if (localStorage.getItem(key) === 'fr-CA') language = 'fr-CA';
   } catch {}
   let active = null;
-  let remaining = 30;
+  let remaining = null;
   let timer;
   let message = ['', ''];
 
   function render() {
-    mic.setAttribute('aria-pressed', String(Boolean(active)));
+    mic.setAttribute('aria-pressed', String(remaining !== null));
     mic.setAttribute('aria-label', tr('Dictate question', 'Dicter la question'));
-    byId('dictate-label').textContent = active
+    byId('dictate-label').textContent = remaining !== null
       ? tr('Stop', 'Arrêter') + ' · ' + remaining + ' s'
-      : tr('Dictate', 'Dicter');
+      : active ? tr('Cancel', 'Annuler') : tr('Dictate', 'Dicter');
     languages.setAttribute('aria-label', tr('Dictation language', 'Langue de dictée'));
     for (const button of languages.querySelectorAll('button')) {
       button.setAttribute('aria-pressed', String(button.dataset.lang === language));
@@ -36,6 +40,7 @@
 
   function finish(en = 'Dictation stopped.', fr = 'Dictée arrêtée.') {
     clearInterval(timer);
+    remaining = null;
     active = null;
     message = [en, fr];
     render();
@@ -76,32 +81,50 @@
       };
       recognition.onend = () => { if (active === recognition) finish(); };
       recognition.onerror = event => {
+        console.log('SpeechRecognition error:', event.error);
         if (active !== recognition) return;
-        if (['not-allowed', 'service-not-allowed'].includes(event.error)) {
-          finish('Microphone permission denied.', 'Accès au microphone refusé.');
-        } else {
-          finish('Dictation failed. Please try again.', 'Échec de la dictée. Veuillez réessayer.');
+        switch (event.error) {
+          case 'not-allowed':
+          case 'service-not-allowed':
+            finish(...permissionMessage);
+            break;
+          case 'network':
+            finish('Speech recognition service unreachable. Chrome needs a connection to Google servers.',
+              'Service de reconnaissance vocale inaccessible. Chrome doit pouvoir joindre les serveurs de Google.');
+            break;
+          case 'no-speech':
+            finish('No speech was heard.', 'Aucune parole détectée.');
+            break;
+          case 'audio-capture':
+            finish('No microphone found.', 'Aucun microphone détecté.');
+            break;
+          default:
+            finish('Dictation error: ' + event.error, 'Erreur de dictée : ' + event.error);
         }
       };
       recognition.onstart = () => {
         if (active !== recognition || stopping) return;
+        remaining = 30;
         message = ['Recording.', 'Enregistrement en cours.'];
         render();
+        const deadline = Date.now() + 30000;
+        timer = setInterval(() => {
+          remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+          byId('dictate-label').textContent = tr('Stop', 'Arrêter') + ' · ' + remaining + ' s';
+          if (!remaining) stop();
+        }, 250);
       };
-      recognition.start();
-      remaining = 30;
       message = ['Starting microphone…', 'Activation du microphone…'];
       render();
-      const deadline = Date.now() + 30000;
-      timer = setInterval(() => {
-        remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
-        byId('dictate-label').textContent = tr('Stop', 'Arrêter') + ' · ' + remaining + ' s';
-        if (!remaining) stop();
-      }, 250);
-      mic.onclick = () => active ? stop() : start();
+      mic.onclick = () => {
+        if (!active) start();
+        else if (remaining === null) cancel();
+        else stop();
+      };
+      recognition.start();
     } catch (error) {
       if (error.name === 'NotAllowedError' || error.name === 'SecurityError') {
-        finish('Microphone permission denied.', 'Accès au microphone refusé.');
+        finish(...permissionMessage);
       } else {
         finish('Could not start dictation.', 'Impossible de démarrer la dictée.');
       }
