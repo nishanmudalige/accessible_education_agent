@@ -15,3 +15,6 @@ body{font-family:var(--reading-font,system-ui,sans-serif);line-height:var(--read
 .reader-chapter.active::before{display:none}html[data-theme=dark] .reader-page-actions button:not(.speech-launch):not(.primary),.reader-page-actions button:not(.speech-launch):not(.primary){background:var(--paper);color:var(--ink);border-color:var(--control-line)}html[data-theme=dark] .speech-options label{color:var(--muted)}
 h1,h2,h3,.brand>span,.setting-label,.display-presets strong{overflow-wrap:anywhere}.reader-workspace,.reader-canvas,.reader-tools,.chat-panel,.composer-options>label{min-width:0}.reader-tools button,.display-tools button,.speech-options label,.speech-options select{white-space:normal}.source-preview .badge{white-space:normal}html[data-reader-mode=text] .reader-scroller{height:auto;max-height:none}
 .type-shortcuts button{min-width:44px}html[data-targets=large] .speech-control{min-width:52px;min-height:52px}html[data-targets=large] .type-shortcuts button{min-width:52px}html[data-contrast=high] dialog::backdrop{backdrop-filter:none}
+
+#dictation:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.5rem}
+#dictation button[aria-pressed="true"]{background:var(--action-bg);color:var(--action-ink);font-weight:700;text-decoration:underline}
