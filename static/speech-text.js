@@ -4,6 +4,12 @@
   const texCommand=/\\(?:begin|end|text|lim|frac|sqrt|sum|int|to)(?![a-zA-Z])/;
   let engineQueue=Promise.resolve();
 
+  function spokenFormula(words,locale){
+    if(locale==='fr')return words.trim().replace(/(?:^|\s+)(?:virgule|point)$/i,'');
+    return words.trim().replace(/(?:^|\s+)(?:comma|period|full stop)$/i,'')
+      .replace(/(^|\s)[aA](?=\s|$)/g,'$1ay');
+  }
+
   // Visible CHTML glyphs need not contribute any characters to Selection.toString().
   // Include the complete expression even when a boundary falls inside a glyph.
   function mathSelection(input){
@@ -87,7 +93,7 @@
           const math=part.querySelector('mjx-assistive-mml math');
           let words;
           try { if(math && sre && !math.querySelector('merror'))words=sre.toSpeech(new XMLSerializer().serializeToString(math)); } catch {}
-          parts[index]=' '+(words && !texCommand.test(words)?words:fallback)+' ';
+          parts[index]=' '+(words && !texCommand.test(words)?spokenFormula(words,locale):fallback)+' ';
         }
       });
       await engineQueue;

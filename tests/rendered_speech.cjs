@@ -41,7 +41,7 @@ module.exports=async function renderedSpeech(w){
     return text;
   }
 
-  const limit='limit Underscript x right arrow a Endscripts f left parenthesis x right parenthesis equals upper L';
+  const limit='limit Underscript x right arrow ay Endscripts f left parenthesis x right parenthesis equals upper L';
   assert.ok((await play(()=>$('reader-read-highlights').click())).includes(limit));
   assert.equal(formula.querySelector('mjx-assistive-mml').outerHTML,assistive);
   assert.ok((await play(()=>$('read-page').click())).includes('Image: '+image.alt));
@@ -59,13 +59,23 @@ module.exports=async function renderedSpeech(w){
   range.setEnd(after,after.length);select(range);
   assert.deepEqual([...d.querySelectorAll('.selection-math')],[inline[3],inline[4]]);
   assert.equal(await play(()=>$('read-selection').click()),
-    'to f at left parenthesis a comma f left parenthesis a right parenthesis right parenthesis is given by');
+    'to f at left parenthesis ay comma f left parenthesis ay right parenthesis right parenthesis is given by');
   range.setStart(inline[3].querySelector('mjx-c'),0);range.setEnd(inline[4].querySelector('mjx-c'),0);select(range);
   assert.equal(await play(()=>$('read-selection').click()),
-    'f at left parenthesis a comma f left parenthesis a right parenthesis right parenthesis');
+    'f at left parenthesis ay comma f left parenthesis ay right parenthesis right parenthesis');
   range.selectNodeContents(definition);select(range);
   const definitionText=await play(()=>$('read-selection').click());
   assert.ok(definitionText.includes(limit));
+  assert.ok(definitionText.includes('Given a function f a fixed input x equals ay and a real number upper L'));
+  assert.match(definitionText,/as x approaches ay\s*, and write/);
+  const example=d.createElement('p');
+  example.textContent=String.raw`A value in a range: \( [0.5,1] \) and \( A\text{.} \)`;
+  chapter.append(example);await w.MathJax.typesetPromise([example]);
+  const english=(await w.AccessSpeechText(example,'en')).text;
+  assert.match(english,/^A value in a range: .*comma.* and upper ay$/i);
+  const frenchFormula=(await w.AccessSpeechText(example.lastElementChild,'fr')).text;
+  assert.match(frenchFormula,/A majuscule/i);
+  assert.doesNotMatch(frenchFormula,/\bay\b|point$/i);
   w.getSelection().removeAllRanges();d.dispatchEvent(new w.Event('selectionchange'));
   assert.equal(d.querySelector('.selection-math'),null);
   const pdf=d.createElement('div');pdf.id='page-text';pdf.lang='en-CA';
