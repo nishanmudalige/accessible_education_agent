@@ -77,8 +77,7 @@
  $('read-page').onclick=()=>{if(pageData)A.speak(text.textContent,sourceLang,text);};
  $('reader-read-highlights').onclick=()=>{if(pageData?.passage_texts?.length)A.speak(pageData.passage_texts.join('\n\n'),sourceLang,text);};
  $('translate-page').onclick=()=>{if(pageData)A.translate(pageData.text,sourceLang.startsWith('fr')?'en-CA':'fr-CA');};
- async function copy(value){try{await navigator.clipboard.writeText(value);status('Link or text copied.','Lien ou texte copié.');}catch{status('Copy unavailable. Select the text or address manually.','Copie indisponible. Sélectionnez le texte ou l’adresse manuellement.');}}
- $('reader-copy').onclick=()=>copy(location.origin+pageUrl(currentPage));$('reader-copy-text').onclick=()=>{if(pageData)copy(pageData.text);};
+ $('reader-copy').onclick=()=>A.copy(location.origin+pageUrl(currentPage),status);$('reader-copy-text').onclick=()=>{if(pageData)A.copy(pageData.text,status);};
  let searchGeneration=0;
  $('reader-search-form').onsubmit=async e=>{
   e.preventDefault();const q=$('reader-search').value.trim();if(q.length<2)return;const token=++searchGeneration;activeQuery=q;

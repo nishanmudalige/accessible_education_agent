@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block scripts %}
+<link rel="stylesheet" href="{{ url_for('static',filename='reader.css',v='accessibility-3') }}">
 <script src="{{ url_for('static',filename='mathjax-config.js',v='safe-math-1') }}" defer></script>
 <script src="{{ url_for('static',filename='vendor/mathjax/es5/tex-chtml-full.js') }}" defer></script>
 <script src="{{ url_for('static',filename='book.js') }}" defer></script>
@@ -13,6 +14,7 @@
 <p data-en="Local reading copy: navigation removed and paragraph links added. Images are stored locally; unavailable originals are explicitly marked. Interactive activities open at the source. Original third-party exceptions still apply." data-fr="Copie locale : navigation retirée et liens de paragraphes ajoutés. Les images sont stockées localement ; les originaux indisponibles sont signalés. Les activités interactives se consultent à la source. Les exceptions relatives au contenu tiers s’appliquent toujours.">Local reading copy: navigation removed and paragraph links added. Images are stored locally; unavailable originals are explicitly marked. Interactive activities open at the source. Original third-party exceptions still apply.</p>
 </header>
 <details class="book-contents"><summary data-en="Chapters" data-fr="Chapitres">Chapters</summary><nav aria-label="Chapters"><ol>{% for c in doc.toc %}<li><a href="{{ c.url }}"{% if c.chapter==chapter.id %} aria-current="page"{% endif %}>{{ c.title }}</a></li>{% endfor %}</ol></nav></details>
+{% include '_reader_page_actions.html' %}
 <p id="citation-status" role="status" aria-live="polite" data-source-lang="{{ doc.language }}"></p>
 <article class="chapter-content" aria-live="off" aria-label="{{ chapter.title }}">{{ content|safe }}</article>
 </main>
