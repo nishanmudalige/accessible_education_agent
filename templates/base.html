@@ -8,6 +8,7 @@
   <script src="{{ url_for('static',filename='display-init.js',v='accessibility-3') }}"></script>
   <link rel="icon" href="{{ url_for('static',filename='icon.svg') }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ url_for('static',filename='style.css',v='accessibility-3') }}">
+  <script src="{{ url_for('static',filename='speech-text.js') }}" defer></script>
   <script src="{{ url_for('static',filename='common.js',v='accessibility-3') }}" defer></script>
   <script src="{{ url_for('static',filename='accessibility.js',v='accessibility-3') }}" defer></script>
   <link rel="stylesheet" href="{{ url_for('static',filename='speech.css',v='accessibility-3') }}">
@@ -47,6 +48,6 @@
 <dialog id="translation-dialog" aria-labelledby="translation-title">
 <div class="section-heading"><h2 id="translation-title" data-en="Passage translation" data-fr="Traduction du passage">Passage translation</h2><button id="close-translation" type="button" data-en="Close" data-fr="Fermer">Close</button></div>
 <p class="muted" data-en="Unofficial AI translation. Check equations and technical terms against the original." data-fr="Traduction automatique non officielle. Vérifiez les équations et les termes techniques avec l’original.">Unofficial AI translation. Check equations and technical terms against the original.</p>
-<div id="translation-text" class="prose" tabindex="0"></div><button id="read-translation" type="button" data-en="Read translation" data-fr="Lire la traduction">Read translation</button><p id="translation-note" class="muted"></p>
+<div id="translation-text" class="prose" tabindex="0"></div><button id="read-translation" type="button" data-en="Read translation" data-fr="Lire la traduction">Read translation</button><p id="translation-note" class="muted" role="status"></p>
 </dialog>
 </body></html>

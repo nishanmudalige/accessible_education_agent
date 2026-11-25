@@ -4,6 +4,7 @@
  const $=id=>document.getElementById(id),A=window.AccessEdu,panel=$('speech-player'),synth=window.speechSynthesis;
  const supported=Boolean(synth&&window.SpeechSynthesisUtterance);
  const buttons={play:$('speech-play'),pause:$('speech-pause'),back:$('speech-back'),next:$('speech-next'),restart:$('speech-restart'),stop:$('speech-stop')};
+ let sourceLanguage=null;
  let voices=[],queue=[],index=0,token=0,playing=false,paused=false,finished=false,root=null,language='en-CA',marks=[];
  const pref=(key,fallback)=>{try{return localStorage.getItem('accessedu-'+key)||fallback;}catch{return fallback;}};
  const save=(key,value)=>{try{localStorage.setItem('accessedu-'+key,value);}catch{}};
@@ -19,7 +20,7 @@
   const range=document.createRange();range.setStart(chosen[0].node,start-chosen[0].start);range.setEnd(chosen.at(-1).node,end-chosen.at(-1).start);
   const ids=[...new Set(chosen.map(n=>n.node.parentElement.closest('[data-passage]')?.dataset.passage).filter(Boolean))];
   if(window.CSS?.highlights&&window.Highlight)CSS.highlights.set('speech',new Highlight(range));
-  else for(const n of [...chosen].reverse()){const begin=Math.max(0,start-n.start),length=Math.min(n.end,end)-Math.max(n.start,start),part=n.node.splitText(begin);part.splitText(length);const mark=document.createElement('mark');mark.className='speaking';part.replaceWith(mark);mark.append(part);marks.push(mark);}
+  else for(const n of [...chosen].reverse()){if(n.node.parentElement.closest('mjx-container'))continue;const begin=Math.max(0,start-n.start),length=Math.min(n.end,end)-Math.max(n.start,start),part=n.node.splitText(begin);part.splitText(length);const mark=document.createElement('mark');mark.className='speaking';part.replaceWith(mark);mark.append(part);marks.push(mark);}
   document.dispatchEvent(new CustomEvent('accessedu:speech',{detail:{root,ids,text:segment.text,index,language}}));
  }
  function state(){
@@ -47,15 +48,16 @@
   if(paused){synth.resume();paused=false;playing=true;state();return;}
   if(finished||index>=queue.length){index=0;finished=false;}
   const id=++token;synth.cancel();playing=true;paused=false;
-  const segment=queue[index],utterance=new SpeechSynthesisUtterance(segment.text),lang=detect(segment.text,language),voice=voiceFor(lang);
+  const segment=queue[index],utterance=new SpeechSynthesisUtterance(segment.text),lang=sourceLanguage||detect(segment.text,language),voice=voiceFor(lang);
   utterance.lang=lang;if(voice)utterance.voice=voice;utterance.rate=Number($('speech-rate').value)||1;utterance.pitch=1;
   highlight(segment);voiceNotice();state();
   utterance.onend=()=>{if(id!==token)return;if(index+1<queue.length){index++;playing=false;play();}else{playing=false;paused=false;finished=true;clearHighlight();state();}};
   utterance.onerror=event=>{if(id!==token||['canceled','interrupted'].includes(event.error))return;playing=false;paused=false;clearHighlight();$('speech-notice').textContent=A.tr('Playback failed. Try a different voice.','La lecture a échoué. Essayez une autre voix.');state();};
   try{synth.speak(utterance);}catch{playing=false;$('speech-notice').textContent=A.tr('The browser could not start speech.','Le navigateur n’a pas pu démarrer la lecture.');state();}
  }
- function readText(input,fallback='en-CA',host=null){
-  const raw=String(input||'').trim();show();halt(true);queue=[];root=host;language=detect(raw,fallback);
+ function readText(input,fallback='en-CA',host=null,fixedLanguage=false){
+  sourceLanguage=fixedLanguage?fallback:null;
+  const raw=String(input||'').trim();show();halt(true);queue=[];root=host;language=sourceLanguage||detect(raw,fallback);
   if(!raw){$('speech-notice').textContent=A.tr('No text is available on this page.','Aucun texte n’est disponible sur cette page.');return;}
   let sentences;try{sentences=[...new Intl.Segmenter(language,{granularity:'sentence'}).segment(raw)].map(x=>x.segment.trim());}catch{sentences=raw.split(/(?<=[.!?])\s+|\n+/);}
   queue=[];const full=root?.textContent||'';let cursor=0;

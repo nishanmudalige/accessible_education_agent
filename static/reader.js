@@ -74,11 +74,10 @@
  $('reader-document')?.addEventListener('change',e=>{location.href='/reader?'+new URLSearchParams({doc:e.target.value,page:1});});
  $('reader-highlight-toggle').onclick=()=>{highlightEnabled=!highlightEnabled;save('reader-highlights',highlightEnabled?'on':'off');updateHighlights();};
  $('reader-text-toggle').onclick=()=>{const mode=frame.hidden?'page':'text';if(window.AccessDisplayPrefs)window.AccessDisplayPrefs.set({readerMode:mode});else applyReaderMode({readerMode:mode});};
- $('read-page').onclick=()=>{if(pageData)A.speak(text.textContent,sourceLang,text);};
- $('reader-read-highlights').onclick=()=>{if(pageData?.passage_texts?.length)A.speak(pageData.passage_texts.join('\n\n'),sourceLang,text);};
+ $('read-page').onclick=()=>{if(pageData)A.speak(text,sourceLang);};
+ $('reader-read-highlights').onclick=()=>{if(pageData?.passage_texts?.length)A.speak([...text.querySelectorAll('.source-block.evidence')],sourceLang,text);};
  $('translate-page').onclick=()=>{if(pageData)A.translate(pageData.text,sourceLang.startsWith('fr')?'en-CA':'fr-CA');};
- async function copy(value){try{await navigator.clipboard.writeText(value);status('Link or text copied.','Lien ou texte copié.');}catch{status('Copy unavailable. Select the text or address manually.','Copie indisponible. Sélectionnez le texte ou l’adresse manuellement.');}}
- $('reader-copy').onclick=()=>copy(location.origin+pageUrl(currentPage));$('reader-copy-text').onclick=()=>{if(pageData)copy(pageData.text);};
+ $('reader-copy').onclick=()=>A.copy(location.origin+pageUrl(currentPage),status);$('reader-copy-text').onclick=()=>{if(pageData)A.copy(pageData.text,status);};
  let searchGeneration=0;
  $('reader-search-form').onsubmit=async e=>{
   e.preventDefault();const q=$('reader-search').value.trim();if(q.length<2)return;const token=++searchGeneration;activeQuery=q;
@@ -90,7 +89,7 @@
     const card=document.createElement('article');card.className='reader-result';const link=document.createElement('a');link.href=r.url;link.textContent=A.tr('Page ','Page ')+r.page;
     const snippet=document.createElement('p');snippet.lang=r.language||sourceLang;snippet.dataset.speechLang=snippet.lang;snippet.textContent=r.text;
     const actions=document.createElement('div');actions.className='result-actions';
-    const read=document.createElement('button');read.type='button';read.textContent=A.tr('▶ Read','▶ Lire');read.onclick=()=>A.speak(r.text,snippet.lang,snippet);
+    const read=document.createElement('button');read.type='button';read.textContent=A.tr('▶ Read','▶ Lire');read.onclick=()=>A.speak(snippet,snippet.lang);
     const translate=document.createElement('button');translate.type='button';translate.textContent=snippet.lang.startsWith('fr')?'→ English':'→ Français';translate.onclick=()=>A.translate(r.text,snippet.lang.startsWith('fr')?'en-CA':'fr-CA');
     link.onclick=event=>{if(event.ctrlKey||event.metaKey||event.shiftKey)return;event.preventDefault();evidenceByPage.set(r.page,[r.id]);go(r.page);if(innerWidth<=740)setSidebar(false);};
     actions.append(read,translate);card.append(link,snippet,actions);$('reader-results-list').append(card);
