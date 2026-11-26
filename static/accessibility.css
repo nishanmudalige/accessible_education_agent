@@ -36,3 +36,8 @@ html[data-contrast=high] #sample-toggle{background:var(--paper)}
 #library-toggle{background:var(--wash);color:var(--ink);border:2px solid var(--ink);max-width:100%;margin-bottom:.5rem;overflow-wrap:anywhere}
 #library-toggle[aria-expanded="false"]{background:var(--paper)}
 @media(max-width:850px){.library-column{display:contents}#library-toggle{order:-1;align-self:flex-start;margin-bottom:0}html[data-workspace=simple] #library-toggle{margin-bottom:.5rem}}
+
+/* Compact the initial gap; conversation turns retain their existing spacing. */
+.chat-panel:has(>#conversation:empty)>.intro{padding-bottom:3px}
+.chat-panel:has(>#conversation:empty)>.intro>p:last-child{margin-bottom:calc(var(--paragraph-space,1em) / 4)}
+#conversation:empty+.composer{margin-top:5.5px}

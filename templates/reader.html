@@ -27,3 +27,7 @@
 <p class="reader-help" data-en="Use + / − to zoom. Outlined highlights mark supporting passages or search matches. Show page text to select, translate or listen to individual words. ← → change pages." data-fr="Utilisez + / − pour agrandir. Les contours indiquent les preuves ou les résultats de recherche. Affichez le texte pour sélectionner, traduire ou écouter un passage. ← → changent de page.">Use + / − to zoom. Outlined highlights mark supporting passages or search matches. Show page text to select, translate or listen to individual words. ← → change pages.</p>
 </section></div></main>
 {% endblock %}
+
+{% block source_attribution %}{% if doc_id == "openintro-statistics-4e" %}
+<br><a href="https://www.openintro.org/book/os/" target="_blank" rel="noopener">OpenIntro Statistics 4e</a> — David Diez, Mine Çetinkaya-Rundel &amp; Christopher D Barr · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>. <span data-en="No author or publisher endorsement." data-fr="Sans approbation des auteurs ou de l’éditeur.">No author or publisher endorsement.</span>
+{% endif %}{% endblock %}
