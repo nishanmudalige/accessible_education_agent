@@ -44,9 +44,13 @@
     return details;
   }
   function evidenceText(text,evidence){return window.AccessRichText.render(text,{evidence});}
-  function figureSection(figures){
+  function figureSection(figures,failed,language){
     const section=el('section','answer-figures');
     section.append(label(el('h3'),'Figures','Figures'));
+    if(failed){
+      const notice=el('p','muted',language==='fr-CA'?"Le graphique n'a pas pu être généré.":'The graph could not be generated.');
+      notice.lang=language;section.append(notice);
+    }
     for(const item of figures){
       const figure=el('figure'),image=el('img'),caption=el('figcaption'),link=el('a');
       image.src=item.local_url;image.alt=item.alt;
@@ -72,15 +76,17 @@
   }
   function render(block,data){
     const answer=el('article','answer panel');
+    const figures=(data.book_answer && data.figures?.length) || data.plot_failed?figureSection(data.figures||[],data.plot_failed,data.language):null;
     if(data.book_answer || data.category==='generated'){
       answer.append(data.category==='generated'?label(el('span','badge neutral generated-example'),'Generated example','Exemple généré'):label(el('span','badge book'),'From the source','Tiré de la source'));
       const text=evidenceText(data.book_answer||data.notice,data.evidence);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text);
-      const figures=data.figures?.length?figureSection(data.figures):null;
       if(figures)answer.append(figures);
       answer.append(actionBar(text,data.language,figures));
     }else{
       answer.append(label(el('span',`badge ${data.category==='out_of_scope'?'outside':'related'}`),data.category==='out_of_scope'?'Outside the subjects':'Related · not verified in source',data.category==='out_of_scope'?'Hors des sujets':'Connexe · non confirmé dans la source'));
-      const text=el('div','prose',data.notice);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text,actionBar(text,data.language));
+      const text=el('div','prose',data.notice);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text);
+      if(figures)answer.append(figures);
+      answer.append(actionBar(text,data.language,figures));
     }
     if(data.web || data.web_token){
       const section=el('section','web-section');

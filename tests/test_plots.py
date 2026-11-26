@@ -41,3 +41,47 @@ def test_named_pdf_figure_links_to_verified_caption(monkeypatch):
                        json={'question':'Show me Figure 1.8','doc':'openintro-statistics-4e'}).json
     assert result['figures']==[] and 'page 16' in result['book_answer']
     assert 'page=16' in result['evidence'][0]['url']
+
+
+def test_exponential_family_reproduction_and_legend():
+    from plots import curve
+    import numpy as np
+    xs=np.array([-1.,0.,1.])
+    spec=function('2**x')
+    spec['expr']=['2**x','3**x','(1/2)**x','(1/3)**x']
+    for source,base in zip(spec['expr']+['0.5**x','exp(x)'],[2,3,.5,1/3,.5,np.e]):
+        _,ys=curve(source,xs)
+        np.testing.assert_allclose(ys,base**xs)
+    plot=generated_plot(spec,'en-CA')
+    svg=base64.b64decode(plot['local_url'].split(',')[1]).decode()
+    assert 'id="legend_1"' in svg
+    for label in ['2^x','3^x','(1/2)^x','(1/3)^x']:
+        assert 'y = '+label in svg
+
+
+@pytest.mark.parametrize('expr,mask',[
+    ('ln(x)',[True,True,False]),('log(x)',[True,True,False]),
+    ('sqrt(x)',[True,False,False]),('exp(log(x))',[True,True,False])])
+def test_only_real_domain_is_plotted(expr,mask):
+    from plots import curve
+    import numpy as np
+    _,ys=curve(expr,np.array([-1.,0.,1.]))
+    assert np.ma.getmaskarray(ys).tolist()==mask
+    assert generated_plot(function(expr),'fr-CA')
+
+
+def test_plot_failure_logs_and_preserves_answer(monkeypatch,caplog):
+    import plots
+    monkeypatch.setattr(plots.log,"propagate",True)
+    import app as module
+    monkeypatch.setattr(module.ai,'plan',lambda *args:dict(related=True,language='fr-CA',intent='generate',query_en='logarithm',query_fr='logarithme'))
+    spec=function('(-2)**x')
+    monkeypatch.setattr(module.ai,'generate',lambda *args:dict(supported=True,answer='Exemple. [S1]',evidence=['S1'],plot=spec))
+    client=module.create_app({'TESTING':True,'SECRET_KEY':'demo'}).test_client()
+    with client.session_transaction() as session:
+        session['csrf']='demo'
+    result=client.post('/api/ask',headers={'X-CSRF-Token':'demo'},
+                       json={'question':'Tracez une courbe.','doc':'active-calculus-html'}).json
+    assert result['book_answer']=='Exemple. [S1]' and result['figures']==[] and result['plot_failed']
+    logs=caplog.text
+    assert '(-2)**x' in logs and 'positive constant base' in logs

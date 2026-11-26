@@ -24,7 +24,7 @@ from reader_backend import page_png, page_data, resolution
 from timing import request_timing, stage, plan_quality
 from plots import generated_plot
 from originality import check_example
-from planning import is_english, local_intent
+from planning import is_english, local_intent, requests_plot
 
 ASSET_FILENAME=r'[a-f0-9]{24}\.(?:svg|png|jpg|jpeg|gif|webp|avif)'
 
@@ -346,10 +346,16 @@ def create_app(config=None, index_provider=None):
                 return {**{k:v for k,v in p.items() if k!='rects'},'title':get_library().docs[p['doc']]['title'],
                     'language':get_library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
             figures=[] if generating else answer_figures(result.get('figure_ids', []), evidence)
-            if text and not figures and (generating or not figure_ref):
-                plot=generated_plot(result.get('plot'),lang)
+            plot_failed=False
+            if not figures and (generating or not figure_ref):
+                spec=result.get('plot')
+                plot=generated_plot(spec,lang) if text else None
                 if plot:
                     figures.append(plot)
+                elif spec is not None or requests_plot(question):
+                    plot_failed=True
+                    if spec is None:
+                        logging.warning("Plot requested but no specification returned; plot=null")
             web=None
             if not generating and data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
                 try:
@@ -361,7 +367,7 @@ def create_app(config=None, index_provider=None):
             return jsonify(category='generated' if generating else ('book' if text else 'related_outside'),intent=intent,language=lang,
                 book_answer=text or '',notice=notice,evidence=[present(p) for p in evidence],
                 results=[present(p) for p in offered],web=web,
-                figures=figures,
+                figures=figures,plot_failed=plot_failed,
                 web_token=web_tokens.dumps({'query':search_plan['query_en'], 'language':lang,
                     'docs':[d['id'] for d in docs], 'binding':web_binding()}))
         with request_timing(doc_id) as timing:

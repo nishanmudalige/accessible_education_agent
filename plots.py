@@ -2,12 +2,19 @@
 import ast
 import base64
 import io
+import json
+import logging
 import math
 import re
 import threading
 
 # One small figure at a time across the Gunicorn worker's threads.
 _render_lock = threading.Lock()
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
+log.addHandler(logging.StreamHandler())
+log.propagate = False
+line_styles = ['-', '--', '-.', ':', (0, (5, 2, 1, 2)), (0, (3, 2, 1, 2, 1, 2))]
 
 
 def number(value):
@@ -36,8 +43,8 @@ def curve(source, xs):
         raise ValueError('Expression too complex')
     x = sp.Symbol('x', real=True)
     functions = {'sin': (sp.sin, np.sin), 'cos': (sp.cos, np.cos),
-                 'exp': (sp.exp, np.exp), 'log': (sp.log, np.log),
-                 'sqrt': (sp.sqrt, np.sqrt), 'abs': (sp.Abs, np.abs)}
+                 'exp': (sp.exp, np.exp), 'log': (sp.log, np.ma.log), 'ln': (sp.log, np.ma.log),
+                 'sqrt': (sp.sqrt, np.ma.sqrt), 'abs': (sp.Abs, np.abs)}
 
     def visit(node):
         if isinstance(node, ast.Constant):
@@ -52,6 +59,8 @@ def curve(source, xs):
                 return sp.Mul(-1, expr, evaluate=False), -values
             return expr, values
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and len(node.args)==1 and not node.keywords:
+            if node.func.id not in functions:
+                raise ValueError(f'Unsupported function {node.func.id!r}')
             symbolic, numeric = functions[node.func.id]
             expr, values = visit(node.args[0])
             return symbolic(expr, evaluate=False), numeric(values)
@@ -66,13 +75,19 @@ def curve(source, xs):
                 return sp.Mul(a,b,evaluate=False), np.multiply(av,bv)
             if isinstance(node.op, ast.Div):
                 return sp.Mul(a,sp.Pow(b,-1,evaluate=False),evaluate=False), np.divide(av,bv)
-            if isinstance(node.op, ast.Pow) and np.isscalar(bv) and np.isfinite(bv) and abs(bv)<=12:
+            if isinstance(node.op, ast.Pow):
+                constant_power = np.isscalar(bv) and np.isfinite(bv) and abs(bv)<=12
+                exponential = (isinstance(node.right, ast.Name) and node.right.id=='x'
+                               and np.isscalar(av) and np.isfinite(av) and av>0)
+                if not (constant_power or exponential):
+                    raise ValueError('Power requires a small constant exponent or a positive constant base raised to x')
                 return sp.Pow(a,b,evaluate=False), np.power(av,bv)
         raise ValueError('Unsupported expression')
 
     with np.errstate(all='ignore'):
         expr, ys = visit(root)
-    ys = np.broadcast_to(ys, xs.shape)
+    if np.ndim(ys)==0:
+        ys = np.ma.repeat(ys, xs.size)
     return expr, np.ma.masked_invalid(ys)
 
 
@@ -100,13 +115,13 @@ def _draw(spec, lang):
         lo, hi = pair(spec['x_range'], ordered=True)
         xs = np.linspace(lo, hi, 501)
         exprs = spec['expr']
-        if not isinstance(exprs,list) or not 1<=len(exprs)<=3:
-            raise ValueError('Expected one to three curves')
+        if not isinstance(exprs,list) or not 1<=len(exprs)<=len(line_styles):
+            raise ValueError('Expected one to six curves')
         labels=[]
-        for source, style in zip(exprs, ['-', '--', '-.']):
+        for source, style in zip(exprs, line_styles):
             expr, ys = curve(source, xs)
             if ys.count()<2:
-                raise ValueError('No real curve in interval')
+                raise ValueError(f'Fewer than two real, finite samples for {source!r} in [{lo}, {hi}]')
             label=re.sub(r'\*\*2(?![.\d])','²',source.strip()).replace('**','^').replace('*','×')
             if fr:
                 label=re.sub(r'(?<=\d)\.(?=\d)',',',label)
@@ -157,11 +172,15 @@ def _draw(spec, lang):
 
 
 def generated_plot(spec, lang):
-    if not isinstance(spec,dict):
+    if spec is None:
         return None
+    log.info('Model plot=%s', json.dumps(spec, ensure_ascii=True))
     try:
+        if not isinstance(spec,dict):
+            raise ValueError('Expected a plot object')
         with _render_lock:
             return _draw(spec,lang)
-    except Exception:
+    except Exception as error:
+        log.warning("Plot generation failed: %s: %s; plot=%s", type(error).__name__, str(error), json.dumps(spec, ensure_ascii=True))
         # Optional illustration errors must never discard a supported answer.
         return None

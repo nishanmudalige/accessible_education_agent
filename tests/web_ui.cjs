@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {JSDOM}=require('jsdom');
 const flush=()=>new Promise(resolve=>setImmediate(resolve));
-async function scenario(auto,fail=false,category='book'){
+async function scenario(auto,fail=false,category='book',plotFailureLang=null){
   const dom=new JSDOM('<div id="examples"></div><button id="shuffle"></button><select id="reply-language"><option value="auto">auto</option></select><form id="ask-form"><textarea id="question"></textarea><input id="doc"><input type="checkbox" id="web"><button id="ask"></button><button id="local-search"></button></form><div id="conversation"></div><p id="status"></p>',{url:'https://app.test',runScripts:'outside-only'});
   const window=dom.window,document=window.document,$=id=>document.getElementById(id);
   window.HTMLElement.prototype.scrollIntoView=function(){};
@@ -12,13 +12,18 @@ async function scenario(auto,fail=false,category='book'){
   let spoken;
   window.AccessEdu={speak(source,lang){spoken=window.AccessSpeechText(source,lang);},tr:en=>en,localize(){},post:async(path,data)=>{
     calls.push([path,data]);
-    if(path==='/api/ask')return {category,intent:category==='generated'?'generate':'lookup',book_answer:['generated','book'].includes(category)?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:auto?[{kind:"generated",local_url:"data:image/svg+xml;base64,PHN2Zy8+",alt:figure.alt}]:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
+    if(path==='/api/ask')return {category,intent:category==='generated'?'generate':'lookup',book_answer:['generated','book'].includes(category)?'Textbook answer.':'',notice:'Not verified',language:plotFailureLang||'en-CA',plot_failed:!!plotFailureLang,evidence:[],results:[],figures:plotFailureLang?[]:auto?[{kind:"generated",local_url:"data:image/svg+xml;base64,PHN2Zy8+",alt:figure.alt}]:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
     if(failed){failed=false;throw Error('Search failed. Try again.');}
     return {web:{verified:true,text:'### External answer.\n\n- One item\n- Another item',citations:[]}};
   }};
   window.MathJax={startup:{promise:Promise.resolve()},typesetPromise:async()=>{}};
   for(const path of ['static/vendor/marked/lib/marked.umd.js','static/vendor/dompurify/dist/purify.min.js','static/rich-text.js','static/speech-text.js','static/app.js'])window.eval(fs.readFileSync(path,'utf8'));
   await $('ask-form').onsubmit({preventDefault(){}});await flush();
+  if(plotFailureLang){
+    assert.equal(document.querySelector('.answer-figures p').textContent,plotFailureLang==='fr-CA'?"Le graphique n'a pas pu être généré.":'The graph could not be generated.');
+    assert.equal(document.querySelector('.answer-figures img'),null);
+    dom.window.close();return;
+  }
   if(category==='generated'){
     const badge=document.querySelector('.answer > .badge');
     assert.equal(badge.textContent,'Generated example');
@@ -54,4 +59,4 @@ async function scenario(auto,fail=false,category='book'){
   else assert.equal(button.className,'primary');
   dom.window.close();
 }
-(async()=>{await scenario(false,true);await scenario(true);await scenario(true,false,'generated');await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{await scenario(false,false,'book','en-CA');await scenario(false,false,'generated','fr-CA');await scenario(false,true);await scenario(true);await scenario(true,false,'generated');await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});

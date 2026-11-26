@@ -12,8 +12,12 @@ def is_english(question):
     return bool(words & ENGLISH) and not bool(words & FRENCH)
 
 
+def requests_plot(question):
+    return bool(re.search(r"(?:^|\b(?:and|et|please|you|vous|veuillez)\s+)(?:plot|graph|draw|tracez|tracer|trace|traces|tracé)\b",question,re.I))
+
+
 def local_intent(question):
     pattern=(r'\b(?:generate|create|invent|compose|gén[èé]re[rz]?|crée[rz]?|invente[rz]?)\b'
              r'|\b(?:give me|make|write|design)\s+(?:an? |me an? )?(?:new |practice )?(?:example|problem|exercise|function|dataset)\b'
              r'|\b(?:donne[- ]moi|donnez[- ]moi)\s+(?:un|une)\s+(?:exemple|exercice|fonction)\b')
-    return 'generate' if re.search(pattern,question,re.I) else 'lookup'
+    return 'generate' if requests_plot(question) or re.search(pattern,question,re.I) else 'lookup'
