@@ -25,7 +25,7 @@
   function label(node,en,fr){node.dataset.en=en;node.dataset.fr=fr;node.textContent=A.tr(en,fr);return node;}
   function actionBar(root,lang,figures){
     const bar=el('div','answer-actions'),read=label(el('button'),'Read aloud','Lire à voix haute');read.type='button';
-    read.onclick=()=>A.speak(figures?[root,figures]:root,lang,root);
+    read.onclick=()=>A.speak(figures?[root,...figures.querySelectorAll('img')]:root,lang,root);
     const fr=el('button','','→ Français canadien'),en=el('button','','→ English');fr.type=en.type='button';
     fr.onclick=()=>A.translate(root.sourceText||root.textContent,'fr-CA');en.onclick=()=>A.translate(root.sourceText||root.textContent,'en-CA');bar.append(read,fr,en);return bar;
   }
@@ -50,6 +50,13 @@
     for(const item of figures){
       const figure=el('figure'),image=el('img'),caption=el('figcaption'),link=el('a');
       image.src=item.local_url;image.alt=item.alt;
+      if(item.kind==='generated'){
+        const details=el('details');
+        details.append(label(el('summary'),'Image description','Description de l’image'),el('p','',item.alt));
+        caption.append(label(el('span','badge neutral'),'Generated plot','Graphique généré'),details);
+        figure.append(image,caption);section.append(figure);
+        continue;
+      }
       link.href=item.url;link.target='_blank';link.rel='noopener';
       const citation=link.cloneNode(false);citation.textContent='['+item.key+']';
       link.append(image);

@@ -22,6 +22,7 @@ import ai_service as ai  # Load model overrides after .env.
 from retrieval import LibraryIndex
 from reader_backend import page_png, page_data, resolution
 from timing import request_timing, stage, plan_quality
+from plots import generated_plot
 from planning import is_english
 
 ASSET_FILENAME=r'[a-f0-9]{24}\.(?:svg|png|jpg|jpeg|gif|webp|avif)'
@@ -72,8 +73,11 @@ def create_app(config=None, index_provider=None):
         BENCHMARK_PLAN_QUALITY=False)
     if config:
         app.config.update(config)
+    index_lock=threading.Lock()
     def get_library():
-        return index_provider() if index_provider is not None else library()
+        # Concurrent cold requests share the same cached full-text index.
+        with index_lock:
+            return index_provider() if index_provider is not None else library()
 
     rate = defaultdict(deque)
     rate_lock = threading.Lock()
@@ -260,6 +264,9 @@ def create_app(config=None, index_provider=None):
                     plan_quality(search_plan, [], plan_skipped=False)
                 return outside(lang)
             query=question if skip_plan else question+' '+search_plan['query_en']+' '+search_plan['query_fr']
+            if re.search(r'confidence interval|intervalle de confiance', query, re.I) and re.search(
+                    r'\b(mean|meaning|interpret|interpréter|signifie)\b', question, re.I):
+                query+=' confident many samples intervals contain parameter repeated sampling coverage'
             with stage('retrieve'):
                 hits=get_library().search(query,doc_id,10)
             # Explicit page requests are bound to a single chosen document, not guessed across books.
@@ -271,11 +278,31 @@ def create_app(config=None, index_provider=None):
                 if (docs[0]['id'],page) in get_library().pages:
                     hits=get_library().page(docs[0]['id'],page)
                     explicit_page=True
+            figure_ref=re.search(r'\bfig(?:ure)?\.?\s*(\d+(?:\.\d+)+)\b',question,re.I)
+            if figure_ref:
+                caption=re.compile(r'\bFigure\s+'+re.escape(figure_ref[1])+r'\s*:', re.I)
+                for document in docs:
+                    if document.get('format','pdf')!='pdf':
+                        continue
+                    match=next((p for (book,_),blocks in get_library().pages.items() if book==document['id']
+                                for p in blocks if caption.search(p['text'])),None)
+                    if match:
+                        p={**match,'key':'S1'}
+                        msg=(f"Consultez la figure {figure_ref[1]} à la page {p['page']} dans le lecteur PDF [S1]."
+                             if lang=='fr-CA' else f"View Figure {figure_ref[1]} on page {p['page']} in the PDF reader [S1].")
+                        item={k:v for k,v in p.items() if k!='rects'}
+                        item.update(title=document['title'],url=reader_url(p))
+                        return jsonify(category='book',language=lang,book_answer=msg,evidence=[item],results=[],figures=[],web=None)
             if skip_plan and not explicit_page and top_score < app.config['SKIP_PLAN_MIN_SCORE']:
                 search_plan['related']=False
                 if app.config['BENCHMARK_PLAN_QUALITY']:
                     plan_quality(search_plan, hits, plan_skipped=True, top_score=top_score, scope_source='bm25_gate')
                 return outside(lang)
+            if hits and not explicit_page and any(d.get('format')=='html' for d in docs):
+                # Reserve a small supplemental budget for original artwork that prose hits can crowd out.
+                found={(p['doc'],p['page'],p['id']) for p in hits}
+                originals=get_library().search(question+' '+search_plan['query_en'],doc_id,3,figures_only=True)
+                hits=hits+[p for p in originals if (p['doc'],p['page'],p['id']) not in found]
             offered=[{**p,'key':f'S{i+1}'} for i,p in enumerate(hits)]
             payload=[{k:p[k] for k in ('key','doc','page','id','text')} for p in offered]
             for fragment, passage in zip(payload, offered):
@@ -297,6 +324,11 @@ def create_app(config=None, index_provider=None):
             def present(p):
                 return {**{k:v for k,v in p.items() if k!='rects'},'title':get_library().docs[p['doc']]['title'],
                     'language':get_library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
+            figures=answer_figures(result.get('figure_ids', []), evidence)
+            if text and not figures and not figure_ref:
+                plot=generated_plot(result.get('plot'),lang)
+                if plot:
+                    figures.append(plot)
             web=None
             if data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
                 try:
@@ -308,7 +340,7 @@ def create_app(config=None, index_provider=None):
             return jsonify(category='book' if text else 'related_outside',language=lang,
                 book_answer=text or '',notice=notice,evidence=[present(p) for p in evidence],
                 results=[present(p) for p in offered],web=web,
-                figures=answer_figures(result.get('figure_ids', []), evidence),
+                figures=figures,
                 web_token=web_tokens.dumps({'query':search_plan['query_en'], 'language':lang,
                     'docs':[d['id'] for d in docs], 'binding':web_binding()}))
         with request_timing(doc_id) as timing:

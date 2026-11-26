@@ -12,7 +12,7 @@ async function scenario(auto,fail=false,category='book'){
   let spoken;
   window.AccessEdu={speak(source,lang){spoken=window.AccessSpeechText(source,lang);},tr:en=>en,localize(){},post:async(path,data)=>{
     calls.push([path,data]);
-    if(path==='/api/ask')return {category,book_answer:category==='book'?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
+    if(path==='/api/ask')return {category,book_answer:category==='book'?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:auto?[{kind:"generated",local_url:"data:image/svg+xml;base64,PHN2Zy8+",alt:figure.alt}]:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
     if(failed){failed=false;throw Error('Search failed. Try again.');}
     return {web:{verified:true,text:'### External answer.\n\n- One item\n- Another item',citations:[]}};
   }};
@@ -22,9 +22,14 @@ async function scenario(auto,fail=false,category='book'){
   if(category==='book'){
     const img=document.querySelector('.answer-figures figure img');
     assert.equal(img.alt,figure.alt);
-    assert.equal(img.getAttribute('src'),figure.local_url);
-    assert.equal(img.parentElement.getAttribute('href'),figure.url);
-    assert.equal(document.querySelector('figcaption a').textContent,'[S2]');
+    if(auto){
+      assert.equal(document.querySelector('figcaption details p').textContent,figure.alt);
+      assert.equal(document.querySelector('figcaption .badge').textContent,'Generated plot');
+    }else{
+      assert.equal(img.getAttribute('src'),figure.local_url);
+      assert.equal(img.parentElement.getAttribute('href'),figure.url);
+      assert.equal(document.querySelector('figcaption a').textContent,'[S2]');
+    }
     document.querySelector('.answer-actions button').click();
     assert.match((await spoken).text,/Textbook answer[\s\S]*Image: A tangent at point P/);
   }else assert.equal(document.querySelector('.answer-figures'),null);
