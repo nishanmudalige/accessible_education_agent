@@ -153,6 +153,13 @@
     }
     $('status').textContent=value?A.tr('Searching sources and preparing a response…','Recherche des sources et préparation d’une réponse…'):'';
   }
+  $('question').addEventListener('keydown',event=>{
+    if(event.key!=='Enter'||event.shiftKey||event.isComposing||event.keyCode===229)return;
+    event.preventDefault();
+    if(!busy && !event.repeat && event.currentTarget.value.trim()){
+      $('ask-form').requestSubmit($('ask'));
+    }
+  });
   $('ask-form').onsubmit=async e=>{
     e.preventDefault();if(busy)return;const q=$('question').value.trim();if(!q)return;
     const block=message(q),autoWeb=$('web').checked;setBusy(true);

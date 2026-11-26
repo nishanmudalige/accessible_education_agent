@@ -62,7 +62,18 @@ async function scenario(auto,fail=false,category='book',plotFailureLang=null){
   }};
   window.MathJax={startup:{promise:Promise.resolve()},typesetPromise:async()=>{}};
   for(const path of ['static/vendor/marked/lib/marked.umd.js','static/vendor/dompurify/dist/purify.min.js','static/rich-text.js','static/speech-text.js','static/app.js'])window.eval(fs.readFileSync(path,'utf8'));
-  await $('ask-form').onsubmit({preventDefault(){}});await flush();
+  function enter(options={}){
+    const event=new window.KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true,...options});
+    $('question').dispatchEvent(event);
+    return event.defaultPrevented;
+  }
+  for(const options of [{shiftKey:true},{isComposing:true},{keyCode:229}])assert.equal(enter(options),false);
+  const q=$('question').value;
+  $('question').value='   ';assert.equal(enter(),true);assert.equal(calls.length,0);
+  $('question').value=q;
+  assert.equal(enter(),true);assert.equal(enter(),true);
+  assert.equal(calls.filter(([path])=>path==='/api/ask').length,1);
+  await flush();
   if(plotFailureLang){
     assert.equal(document.querySelector('.answer-figures p').textContent,plotFailureLang==='fr-CA'?"Le graphique n'a pas pu être généré.":'The graph could not be generated.');
     assert.equal(document.querySelector('.answer-figures img'),null);
