@@ -85,3 +85,64 @@ def test_plot_failure_logs_and_preserves_answer(monkeypatch,caplog):
     assert result['book_answer']=='Exemple. [S1]' and result['figures']==[] and result['plot_failed']
     logs=caplog.text
     assert '(-2)**x' in logs and 'positive constant base' in logs
+
+
+@pytest.mark.parametrize('mode,cuts,intervals',[
+    ('left',[-1.96],[(-5,-1.96)]),('right',[2],[(2,5)]),
+    ('middle',[-1.96,1.96],[(-1.96,1.96)]),
+    ('two_tails',[-2.1,2.1],[(-5,-2.1),(2.1,5)])])
+def test_density_shading_and_critical_lines(mode,cuts,intervals):
+    import math
+    from matplotlib.figure import Figure
+    import numpy as np
+    from plots import distribution
+    ax=Figure().subplots()
+    alt=distribution(ax,dict(type='distribution',family='t',df=5,critical=cuts,
+                             shade=mode,compare_normal=True),False,str)
+    lines=ax.lines
+    center=np.argmin(abs(lines[0].get_xdata()))
+    expected=math.gamma(3)/(math.sqrt(5*math.pi)*math.gamma(2.5))
+    assert lines[0].get_ydata()[center]==pytest.approx(expected)
+    assert lines[1].get_ydata()[center]==pytest.approx(1/math.sqrt(2*math.pi))
+    assert [line.get_xdata()[0] for line in lines[2:]]==cuts
+    assert len(ax.collections)==len(intervals) and 'heavier tails' in alt
+    for shaded,(lo,hi) in zip(ax.collections,intervals):
+        xs=shaded.get_paths()[0].vertices[:,0]
+        if lo in cuts: assert xs.min()==pytest.approx(lo)
+        if hi in cuts: assert xs.max()==pytest.approx(hi)
+
+
+@pytest.mark.parametrize('highlight',[[],[3],[2,5]])
+def test_binomial_bars_and_highlights(highlight):
+    from matplotlib.figure import Figure
+    from plots import binomial
+    ax=Figure().subplots()
+    binomial(ax,dict(n=10,p=.3,highlight=highlight,family='binomial'),True,str)
+    assert sum(bar.get_height() for bar in ax.patches)==pytest.approx(1)
+    assert ax.patches[3].get_height()==pytest.approx(.266827932)
+    selected=[k for k,bar in enumerate(ax.patches) if bar.get_hatch()]
+    assert selected==(list(range(highlight[0],highlight[-1]+1)) if highlight else [])
+
+
+@pytest.mark.parametrize('kind,f,a,b,h,slope',[
+    ('tangent','x**3',1,None,None,3),('secant','x**2',1,3,None,4),
+    ('secant','x**2',3,None,-2,4)])
+def test_computed_line(kind,f,a,b,h,slope):
+    import numpy as np
+    from matplotlib.figure import Figure
+    from plots import calculus
+    ax=Figure().subplots()
+    calculus(ax,dict(type=kind,f=f,a=a,b=b,h=h,x_range=[-1,4]),False,str)
+    xs,ys=ax.lines[1].get_data()
+    ya=a**(3 if kind=='tangent' else 2)
+    np.testing.assert_allclose(ys,ya+slope*(xs-a))
+    assert len(ax.collections)==(1 if kind=='tangent' else 2)
+
+
+def test_area_shades_exact_requested_interval():
+    from matplotlib.figure import Figure
+    from plots import calculus
+    ax=Figure().subplots()
+    alt=calculus(ax,dict(type='area',f='x**2',a=0,b=2,x_range=[-1,3]),True,str)
+    xs=ax.collections[0].get_paths()[0].vertices[:,0]
+    assert xs.min()==0 and xs.max()==2 and 'Aire ombrée' in alt

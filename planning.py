@@ -13,7 +13,7 @@ def is_english(question):
 
 
 def requests_plot(question):
-    return bool(re.search(r"(?:^|\b(?:and|et|please|you|vous|veuillez)\s+)(?:plot|graph|draw|tracez|tracer|trace|traces|tracé)\b",question,re.I))
+    return bool(re.search(r"(?:^|\b(?:and|et|please|you|vous|veuillez)\s+)(?:plot|graph|draw|shade|ombrer|ombrez|tracez|tracer|trace|traces|tracé)\b",question,re.I))
 
 
 def local_intent(question):

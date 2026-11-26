@@ -91,6 +91,167 @@ def curve(source, xs):
     return expr, np.ma.masked_invalid(ys)
 
 
+def distribution(ax, spec, fr, fmt):
+    import numpy as np
+
+    legacy = spec['type']=='normal'
+    family = 'normal' if legacy else spec['family']
+    if family=='normal':
+        mean=number(spec['mean']) if spec.get('mean') is not None else 0
+        sd=number(spec['sd']) if spec.get('sd') is not None else 1
+        if sd<1e-8:
+            raise ValueError('Invalid standard deviation')
+        def density(x):
+            return np.exp(-0.5*((x-mean)/sd)**2)/(sd*math.sqrt(2*math.pi))
+        alt=(f'Courbe normale de moyenne {fmt(mean)} et d’écart-type {fmt(sd)}.' if fr else
+             f'Normal density curve with mean {fmt(mean)} and standard deviation {fmt(sd)}.')
+        name='Normale' if fr else 'Normal'
+    elif family=='t':
+        df=number(spec['df'])
+        if df<=0:
+            raise ValueError('Degrees of freedom must be positive')
+        mean,sd=0,1
+        factor=math.exp(math.lgamma((df+1)/2)-math.lgamma(df/2)-0.5*math.log(df*math.pi))
+        def density(x):
+            return factor*np.exp(-(df+1)/2*np.log1p(x*x/df))
+        name=f't ({fmt(df)} ddl)' if fr else f't ({fmt(df)} df)'
+        alt=(f'Loi de Student à {fmt(df)} degrés de liberté.' if fr else
+             f'Student t density with {fmt(df)} degrees of freedom.')
+    else:
+        raise ValueError('Unknown distribution')
+
+    mode=('middle' if spec.get('shade') else 'none') if legacy else spec['shade']
+    cuts=[number(c) for c in ((spec.get('shade') or []) if legacy else spec['critical'])]
+    if len(cuts)!={'none':0,'left':1,'right':1,'two_tails':2,'middle':2}.get(mode):
+        raise ValueError('Wrong number of critical values')
+    if len(cuts)==2 and cuts[1]<=cuts[0]:
+        raise ValueError('Cutoffs must be increasing')
+    lo=min([mean-4*sd]+[c-sd for c in cuts])
+    hi=max([mean+4*sd]+[c+sd for c in cuts])
+    if spec.get('compare_normal'):
+        lo,hi=min(lo,-4),max(hi,4)
+    xs=np.linspace(lo,hi,701)
+    ax.plot(xs,density(xs),label=name,color='#174777',linewidth=2)
+    if spec.get('compare_normal'):
+        ax.plot(xs,np.exp(-xs*xs/2)/math.sqrt(2*math.pi),'--',color='#952f17',
+                label='Normale standard' if fr else 'Standard normal')
+        ax.legend()
+        alt+=(' La courbe en tirets représente la normale standard.' if fr else
+              ' The dashed curve shows the standard normal.')
+        if family=='t':
+            alt+=(' La loi de Student a des queues plus épaisses.' if fr else
+                  ' The t distribution has heavier tails.')
+    ax.set(xlabel='x',ylabel='Densité' if fr else 'Density',ylim=(0,None))
+    intervals=[]
+    if mode in ('left','two_tails'):
+        intervals.append((lo,cuts[0]))
+        alt+=f' Queue gauche ombrée sous {fmt(cuts[0])}.' if fr else f' Left tail shaded below {fmt(cuts[0])}.'
+    if mode in ('right','two_tails'):
+        intervals.append((cuts[-1],hi))
+        alt+=f' Queue droite ombrée au-delà de {fmt(cuts[-1])}.' if fr else f' Right tail shaded above {fmt(cuts[-1])}.'
+    if mode=='middle':
+        intervals.append(cuts)
+        a,b=map(fmt,cuts)
+        alt+=f' Aire ombrée entre {a} et {b}.' if fr else f' Area shaded from {a} to {b}.'
+    for a,b in intervals:
+        region=np.linspace(a,b,301)
+        ax.fill_between(region,0,density(region),color='#8ebbd2',hatch='//',edgecolor='#426577')
+    for cutoff in cuts:
+        ax.axvline(cutoff,color='#762b17',linestyle=':')
+        ax.annotate(fmt(cutoff),(cutoff,0.94),xycoords=('data','axes fraction'),ha='center',
+                    bbox={'facecolor':'white','edgecolor':'none','pad':1})
+    return alt
+
+
+def binomial(ax,spec,fr,fmt):
+    n,p=spec['n'],number(spec['p'])
+    if spec['family']!='binomial' or type(n)!=int or not 0<=n<=500 or not 0<=p<=1:
+        raise ValueError('Invalid binomial parameters')
+    highlight=spec['highlight']
+    if len(highlight)>2 or any(type(k) not in (int,float) or not number(k).is_integer() or not 0<=k<=n for k in highlight):
+        raise ValueError('Invalid highlighted outcomes')
+    if highlight and highlight[0]>highlight[-1]:
+        raise ValueError('Unordered highlighted outcomes')
+    xs=range(n+1)
+    probs=[math.comb(n,k)*p**k*(1-p)**(n-k) for k in xs]
+    bars=ax.bar(xs,probs,color='#36688d')
+    alt=(f'Loi binomiale avec n = {n} et p = {fmt(p)}.' if fr else
+         f'Binomial probability distribution with n = {n} and p = {fmt(p)}.')
+    ax.set(xlabel='k',ylabel='Probabilité' if fr else 'Probability',ylim=(0,None))
+    if highlight:
+        a,b=int(highlight[0]),int(highlight[-1])
+        for k in range(a,b+1):
+            bars[k].set(facecolor='#e5b271',edgecolor='#4d3521',hatch='//')
+        span=str(a) if a==b else f'{a}–{b}'
+        alt+=f' En surbrillance : {span}.' if fr else f' Highlighted outcomes: {span}.'
+    return alt
+
+
+def calculus(ax,spec,fr,fmt):
+    import numpy as np
+    import sympy as sp
+
+    kind=spec['type']
+    a=number(spec['a'])
+    lo,hi=pair(spec['x_range'],ordered=True)
+    xs=np.linspace(lo,hi,501)
+    f=spec['f']
+    expr,ys=curve(f,xs)
+    if ys.count()<2 or not lo<=a<=hi:
+        raise ValueError('Invalid function interval')
+    ax.plot(xs,ys,label='y = '+f.replace('**','^'),linewidth=2)
+    ax.set(xlabel='x',ylabel='y',xlim=(lo,hi))
+    alt=('Courbe de ' if fr else 'Graph of ')+f.replace('**','^')+'.'
+    if kind=='area':
+        b=number(spec['b'])
+        if not a<b<=hi:
+            raise ValueError('Invalid shading interval')
+        region=np.linspace(a,b,401)
+        _,values=curve(f,region)
+        if values.count()<2:
+            raise ValueError('No real area on interval')
+        ax.fill_between(region,0,values,color='#8ebbd2',hatch='//',edgecolor='#426577')
+        ax.axhline(0,color='#333',linewidth=1)
+        return alt+(f' Aire ombrée entre la courbe et l’axe des x de {fmt(a)} à {fmt(b)}.' if fr else
+                    f' Area shaded between the curve and the x-axis from {fmt(a)} to {fmt(b)}.')
+
+    points=[a]
+    if kind=='secant':
+        b=number(spec['b']) if spec.get('b') is not None else a+number(spec['h'])
+        if not lo<=b<=hi or b==a:
+            raise ValueError('Invalid second point')
+        points.append(b)
+    _,values=curve(f,np.array(points,dtype=float))
+    if values.count()!=len(points):
+        raise ValueError('Point outside real domain')
+    if kind=='tangent':
+        x=sp.Symbol('x',real=True)
+        slope=float(sp.diff(expr,x).subs(x,a))
+        # At a cusp the symbolic sign convention can give a spurious finite derivative.
+        if expr.has(sp.Abs):
+            delta=1e-6*max(1,abs(a))
+            _,near=curve(f,np.array([a-delta,a+delta]))
+            if near.count()!=2 or not np.isclose((values[0]-near[0])/delta,(near[1]-values[0])/delta,rtol=1e-4,atol=1e-4):
+                raise ValueError('No unique tangent at this point')
+        label='Tangente' if fr else 'Tangent'
+    else:
+        slope=(values[1]-values[0])/(b-a)
+        label='Sécante' if fr else 'Secant'
+    if not math.isfinite(slope):
+        raise ValueError('Non-finite slope')
+    ax.plot(xs,values[0]+slope*(xs-a),'--',color='#983a24',label=label)
+    coords=[]
+    for px,py in zip(points,values):
+        coord=f'({fmt(px)} ; {fmt(py)})' if fr else f'({fmt(px)}, {fmt(py)})'
+        coords.append(coord)
+        ax.scatter(px,py,color='#712813',zorder=3)
+        ax.annotate(coord,(px,py),xytext=(4,5),textcoords='offset points')
+    ax.legend()
+    joined=(' et ' if fr else ' and ').join(coords)
+    return alt+(f' {label} de pente {fmt(slope)} passant par {joined}.' if fr else
+                f' {label} with slope {fmt(slope)} through {joined}.')
+
+
 def _draw(spec, lang):
     import numpy as np
     from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -143,26 +304,12 @@ def _draw(spec, lang):
                 raise ValueError('Point outside plot')
             ax.scatter(px,py,color='#982b18',zorder=3)
             alt+= (f' Point marqué ({fmt(px)} ; {fmt(py)}).' if fr else f' Marked point ({fmt(px)}, {fmt(py)}).')
-    elif spec['type']=='normal':
-        mean,sd=number(spec['mean']),number(spec['sd'])
-        if sd<1e-8:
-            raise ValueError('Invalid standard deviation')
-        lo,hi=mean-4*sd,mean+4*sd
-        shade=spec.get('shade')
-        if shade is not None:
-            a,b=pair(shade, ordered=True)
-            lo,hi=min(a,lo),max(b,hi)
-        xs=np.linspace(lo,hi,501)
-        def density(x):
-            return np.exp(-0.5*((x-mean)/sd)**2)/(sd*math.sqrt(2*math.pi))
-        ax.plot(xs,density(xs),color='#174777',linewidth=2)
-        ax.set(xlabel='x',ylabel='Densité' if fr else 'Density',ylim=(0,None))
-        alt=(f'Courbe normale de moyenne {fmt(mean)} et d’écart-type {fmt(sd)}.' if fr else
-             f'Normal density curve with mean {fmt(mean)} and standard deviation {fmt(sd)}.')
-        if shade is not None:
-            region=np.linspace(a,b,301)
-            ax.fill_between(region,0,density(region),color='#8ebbd2',hatch='//',edgecolor='#426577')
-            alt+=(f' Aire ombrée entre {fmt(a)} et {fmt(b)}.' if fr else f' Area shaded from {fmt(a)} to {fmt(b)}.')
+    elif spec['type'] in ('distribution','normal'):
+        alt=distribution(ax,spec,fr,fmt)
+    elif spec['type']=='discrete':
+        alt=binomial(ax,spec,fr,fmt)
+    elif spec['type'] in ('tangent','secant','area'):
+        alt=calculus(ax,spec,fr,fmt)
     else:
         raise ValueError('Unknown plot type')
     output=io.BytesIO()
