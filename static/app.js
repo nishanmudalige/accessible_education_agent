@@ -2,23 +2,37 @@
 (() => {
   const $=id=>document.getElementById(id),A=window.AccessEdu;
   const history=[];
-  const samples=[
-    'What does a 95% confidence interval mean?',
-    'Quelle est la différence entre un paramètre et une statistique?',
-    'Why does random sampling matter?',
-    'Comment interpréter une valeur p?',
-    'Explain the conditions for a binomial model.',
-    'Comment interpréter les résidus d’une régression?',
-    'What is the difference between association and causation?',
-    'Expliquez la loi de Poisson avec un exemple du livre.'
-  ];
-  let offset=0;
-  function examples(){
-    $('examples').replaceChildren();
-    for(let i=0;i<4;i++){const text=samples[(offset+i)%samples.length],b=document.createElement('button');b.type='button';b.textContent=text;b.onclick=()=>{$('question').value=text;$('question').focus();};$('examples').append(b);}
-    offset=(offset+4)%samples.length;
+  const picker=$('sample-picker');
+  if(picker){
+    const toggle=$('sample-toggle'),list=$('sample-list'),question=$('question');
+    const items=Array.from(list.querySelectorAll('button'));
+    function show(open){
+      list.hidden=!open;
+      toggle.setAttribute('aria-expanded',String(open));
+      if(open)items[0].focus();
+    }
+    toggle.onclick=()=>show(list.hidden);
+    picker.addEventListener('keydown',event=>{
+      if(event.key==='Escape' && !list.hidden){
+        event.preventDefault();show(false);toggle.focus();
+      }else if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+        event.preventDefault();
+        const step=event.key==='ArrowDown'?1:-1;
+        if(list.hidden){show(true);if(step===-1)items.at(-1).focus();return;}
+        const index=items.indexOf(document.activeElement);
+        items[(index+step+items.length)%items.length].focus();
+      }
+    });
+    list.onclick=event=>{
+      const item=event.target.closest('button');
+      if(!item)return;
+      question.value=item.textContent;
+      question.dispatchEvent(new Event('input',{bubbles:true}));
+      show(false);question.focus();
+    };
+    picker.addEventListener('focusout',event=>{if(!picker.contains(event.relatedTarget))show(false);});
+    document.addEventListener('pointerdown',event=>{if(!picker.contains(event.target))show(false);});
   }
-  examples();$('shuffle').onclick=examples;
   try{$('reply-language').value=localStorage.getItem('accessedu-reply')||'auto';}catch{}
   $('reply-language').onchange=()=>{try{localStorage.setItem('accessedu-reply',$('reply-language').value);}catch{}};
   function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;}
@@ -126,7 +140,7 @@
   }
   let busy=false;
   function setBusy(value){
-    busy=value;$('ask').disabled=value;$('local-search').disabled=value;
+    busy=value;$('ask').disabled=value;
     $('ask').setAttribute('aria-busy',String(value));$('conversation').setAttribute('aria-busy',String(value));
     document.querySelectorAll('.thinking-bubble').forEach(node=>node.remove());
     if(value){
@@ -148,12 +162,5 @@
       $('status').textContent=A.tr('Response ready.','Réponse prête.');
     }catch(err){const p=el('p','error',err.message);p.setAttribute('role','alert');block.append(p);}
     finally{setBusy(false);$('status').textContent=A.tr('Request finished. Check the response above.','Demande terminée. Consultez la réponse ci-dessus.');block.scrollIntoView({block:'start',behavior:window.AccessDisplayPrefs?.get().reduceMotion?'auto':'smooth'});}
-  };
-  $('local-search').onclick=async()=>{
-    const q=$('question').value.trim();if(!q||busy)return;const block=message(q);setBusy(true);
-    try{const response=await fetch('/api/search?'+new URLSearchParams({q,doc:$('doc').value}));const data=await response.json();if(!response.ok)throw Error(data.error||'Search failed');
-      const panel=el('article','panel answer');panel.append(label(el('span','badge neutral'),'Local search · relevance not yet verified','Recherche locale · pertinence non encore vérifiée'));
-      if(data.results.length){const cards=resultCards(data.results,q);cards.open=true;panel.append(cards);}else panel.append(label(el('p'),'No matching passages. Try different terms or use Ask for bilingual query expansion.','Aucun passage trouvé. Essayez d’autres termes ou utilisez Questionner pour une recherche bilingue enrichie.'));block.append(panel);
-    }catch(err){block.append(el('p','error',err.message));}finally{setBusy(false);block.scrollIntoView({block:'start',behavior:window.AccessDisplayPrefs?.get().reduceMotion?'auto':'smooth'});}
   };
 })();

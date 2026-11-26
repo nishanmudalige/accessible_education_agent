@@ -20,3 +20,14 @@ h1,h2,h3,.brand>span,.setting-label,.display-presets strong{overflow-wrap:anywhe
 #dictation button[aria-pressed="true"]{background:var(--action-bg);color:var(--action-ink);font-weight:700;text-decoration:underline}
 
 @media(max-width:580px){.composer-controls .composer-options{grid-template-columns:fit-content(58%) minmax(0,1fr);row-gap:.2rem}.composer-options label[for="reply-language"]{grid-column:1/-1}}
+
+.question-actions{grid-area:1/2;display:flex;align-items:start;justify-content:flex-end;flex-wrap:wrap;gap:.4rem;position:relative;min-width:0}
+.question-actions button{white-space:normal;overflow-wrap:anywhere}
+.question-actions>button,#sample-toggle{font-size:.87rem;min-height:max(48px,var(--target-size));font-weight:650}
+#sample-toggle{background:var(--wash);color:var(--ink)}
+html[data-contrast=high] #sample-toggle{background:var(--paper)}
+#sample-list{position:absolute;z-index:5;top:100%;right:0;width:min(24rem,calc(100vw - 4rem));max-height:48vh;overflow:auto;background:var(--paper);color:var(--ink);border:2px solid var(--control-line);border-radius:.5rem;padding:.65rem}
+#sample-list h3{margin:.35rem 0}
+#sample-list ul{margin:0;padding:0;list-style:none}
+#sample-list button{width:100%;text-align:start;margin:.1rem 0}
+@media(max-width:580px){.question-actions>*{flex:1 1 9rem;min-width:0}#sample-toggle,#sample-list{width:100%}}

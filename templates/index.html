@@ -26,7 +26,7 @@
 <section class="chat-panel">
 <div class="intro"><p class="eyebrow" data-en="AN ACCESSIBLE PATH TO UNDERSTANDING" data-fr="UN CHEMIN ACCESSIBLE VERS LA COMPRÉHENSION">AN ACCESSIBLE PATH TO UNDERSTANDING</p><h1 data-en="Ask. Read. Understand." data-fr="Questionnez. Lisez. Comprenez.">Ask. Read. Understand.</h1><p data-en="Explore the textbook in English or Canadian French, with evidence you can follow." data-fr="Explorez le manuel en anglais ou en français canadien, avec des références que vous pouvez suivre.">Explore the textbook in English or Canadian French, with evidence you can follow.</p></div>
 <div id="conversation" aria-label="Conversation"></div>
-<section class="composer panel"><div class="section-heading"><span class="muted" data-en="Try a question" data-fr="Essayez une question">Try a question</span><button id="shuffle" type="button" data-en="More examples ↻" data-fr="Autres exemples ↻">More examples ↻</button></div><div id="examples" class="examples"></div>
+<section class="composer panel">
 <form id="ask-form"><label for="question" class="sr-only" data-en="Your question" data-fr="Votre question">Your question</label><textarea id="question" rows="3" maxlength="3000" required placeholder="Ask about the book / Posez une question sur le livre…"></textarea>
 <div class="composer-controls">
 <div id="dictation" hidden>
@@ -37,8 +37,27 @@
   </div>
   <span id="dictation-status" role="status" aria-live="polite" aria-atomic="true"></span>
 </div>
+<div class="question-actions">
+<div id="sample-picker">
+<button id="sample-toggle" type="button" aria-controls="sample-list" aria-expanded="false" data-en="Sample questions" data-fr="Exemples de questions">Sample questions</button>
+<div id="sample-list" hidden>
+<section lang="en" aria-labelledby="samples-en"><h3 id="samples-en">English</h3><ul>
+<li><button type="button">What does a 95% confidence interval mean?</button></li>
+<li><button type="button">What is the definition of a limit?</button></li>
+<li><button type="button">What is a secant line?</button></li>
+<li><button type="button">Generate a quadratic function and plot it.</button></li>
+<li><button type="button">Shade the p-value for a two-sided test with z = 2.1.</button></li>
+<li><button type="button">What is a thesis statement?</button></li>
+</ul></section>
+<section lang="fr-CA" aria-labelledby="samples-fr-CA"><h3 id="samples-fr-CA">Français</h3><ul>
+<li><button type="button">Qu'est-ce qu'une droite sécante ?</button></li>
+<li><button type="button">Quelle est la différence entre un paramètre et une statistique ?</button></li>
+<li><button type="button">Tracez une série de courbes exponentielles sur un même graphique.</button></li>
+<li><button type="button">Comment conjugue-t-on le verbe être au présent ?</button></li>
+</ul></section>
+</div></div>
   <button id="ask" type="submit" class="primary" data-en="Ask AccessÉdu →" data-fr="Questionner AccessÉdu →">Ask AccessÉdu →</button>
-  <button id="local-search" type="button" data-en="Search book only" data-fr="Chercher dans le livre">Search book only</button>
+</div>
 <div class="composer-options"><label for="reply-language" data-en="Reply language" data-fr="Langue de réponse">Reply language</label> <select id="reply-language"><option value="auto">Automatic / Automatique</option><option value="en-CA">English</option><option value="fr-CA">Français canadien</option></select><label class="check"><input id="web" type="checkbox"{% if web_search_default %} checked{% endif %}><span data-en="Find related web resources" data-fr="Trouver des ressources Web connexes">Find related web resources</span></label></div>
 </div>
 </form>

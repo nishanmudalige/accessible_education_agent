@@ -2,8 +2,52 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {JSDOM}=require('jsdom');
 const flush=()=>new Promise(resolve=>setImmediate(resolve));
+function checkDictation(){
+  const template=fs.readFileSync('templates/index.html','utf8');
+  const form=template.match(/<form id="ask-form">[\s\S]*?<\/form>/)[0];
+  const dom=new JSDOM(form,{url:'https://app.test',runScripts:'outside-only'});
+  const {window}=dom,doc=window.document;
+  window.AccessEdu={tr:en=>en};
+  let recognition;
+  window.SpeechRecognition=class {
+    start(){recognition=this;this.onstart();}
+    stop(){this.onend();}
+  };
+  window.eval(fs.readFileSync('static/dictation.js','utf8'));
+  assert.equal(doc.getElementById('dictation').hidden,false);
+  for(const lang of ['fr-CA','en-US']){
+    doc.querySelector('[data-lang="'+lang+'"]').click();
+    doc.getElementById('dictate').click();
+    assert.equal(recognition.lang,lang);
+    recognition.onresult({results:[[{transcript:'test'}]]});
+    assert.ok(doc.getElementById('question').value.endsWith('test'));
+    doc.getElementById('dictate').click();
+  }
+  window.close();
+}
+function checkSampleQuestions(){
+  const form=fs.readFileSync('templates/index.html','utf8').match(/<form id="ask-form">[\s\S]*?<\/form>/)[0];
+  const dom=new JSDOM(form,{url:'https://app.test',runScripts:'outside-only'});
+  const {window}=dom,doc=window.document;
+  window.AccessEdu={tr:en=>en,post(){assert.fail('Choosing a sample submitted the form');}};
+  window.eval(fs.readFileSync('static/app.js','utf8'));
+  const toggle=doc.getElementById('sample-toggle'),list=doc.getElementById('sample-list');
+  const items=[...list.querySelectorAll('button')],question=doc.getElementById('question');
+  function key(name){doc.activeElement.dispatchEvent(new window.KeyboardEvent('keydown',{key:name,bubbles:true}));}
+  assert.deepEqual([...list.querySelectorAll('section')].map(s=>s.querySelectorAll('button').length),[6,4]);
+  assert.equal(toggle.dataset.fr,'Exemples de questions');
+  toggle.click();assert.equal(toggle.getAttribute('aria-expanded'),'true');
+  assert.equal(doc.activeElement,items[0]);
+  key('ArrowUp');assert.equal(doc.activeElement,items.at(-1));
+  key('ArrowDown');assert.equal(doc.activeElement,items[0]);
+  key('Escape');assert.equal(doc.activeElement,toggle);assert.ok(list.hidden);
+  toggle.click();items[6].click();
+  assert.equal(question.value,"Qu'est-ce qu'une droite sécante ?");
+  assert.equal(doc.activeElement,question);assert.equal(toggle.getAttribute('aria-expanded'),'false');
+  dom.window.close();
+}
 async function scenario(auto,fail=false,category='book',plotFailureLang=null){
-  const dom=new JSDOM('<div id="examples"></div><button id="shuffle"></button><select id="reply-language"><option value="auto">auto</option></select><form id="ask-form"><textarea id="question"></textarea><input id="doc"><input type="checkbox" id="web"><button id="ask"></button><button id="local-search"></button></form><div id="conversation"></div><p id="status"></p>',{url:'https://app.test',runScripts:'outside-only'});
+  const dom=new JSDOM('<select id="reply-language"><option value="auto">auto</option></select><form id="ask-form"><textarea id="question"></textarea><input id="doc"><input type="checkbox" id="web"><button id="ask"></button><button id="local-search"></button></form><div id="conversation"></div><p id="status"></p>',{url:'https://app.test',runScripts:'outside-only'});
   const window=dom.window,document=window.document,$=id=>document.getElementById(id);
   window.HTMLElement.prototype.scrollIntoView=function(){};
   $('question').value='What is a derivative?';$('web').checked=auto;$('doc').value='active-calculus-html';
@@ -59,4 +103,4 @@ async function scenario(auto,fail=false,category='book',plotFailureLang=null){
   else assert.equal(button.className,'primary');
   dom.window.close();
 }
-(async()=>{await scenario(false,false,'book','en-CA');await scenario(false,false,'generated','fr-CA');await scenario(false,true);await scenario(true);await scenario(true,false,'generated');await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{checkDictation();checkSampleQuestions();await scenario(false,false,'book','en-CA');await scenario(false,false,'generated','fr-CA');await scenario(false,true);await scenario(true);await scenario(true,false,'generated');await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});
