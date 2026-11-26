@@ -35,3 +35,5 @@
 }
 
 .rich-text{white-space:normal}.rich-text h1,.rich-text h2,.rich-text h3{font-size:1.15em;margin:1em 0 .5em}.rich-text pre{overflow:auto;background:var(--wash);padding:12px}.rich-text table{display:block;max-width:100%;overflow:auto;border-collapse:collapse}.rich-text td,.rich-text th{border:1px solid var(--line);padding:8px}.rich-text mjx-container[display=true]{max-width:100%;overflow-x:auto;overflow-y:hidden}
+
+.answer-figures figure{margin:1rem 0}.answer-figures img{display:block;max-width:100%;height:auto}.answer-figures figcaption{margin-top:.4rem}

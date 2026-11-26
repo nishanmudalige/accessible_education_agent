@@ -8,15 +8,26 @@ async function scenario(auto,fail=false,category='book'){
   window.HTMLElement.prototype.scrollIntoView=function(){};
   $('question').value='What is a derivative?';$('web').checked=auto;$('doc').value='active-calculus-html';
   const calls=[];let failed=fail;
-  window.AccessEdu={tr:en=>en,localize(){},post:async(path,data)=>{
+  const figure={key:'S2',url:'/book/demo/chapter?hl=diagram',local_url:'/book-assets/demo/diagram.svg',alt:'A tangent at point P'};
+  let spoken;
+  window.AccessEdu={speak(source,lang){spoken=window.AccessSpeechText(source,lang);},tr:en=>en,localize(){},post:async(path,data)=>{
     calls.push([path,data]);
-    if(path==='/api/ask')return {category,book_answer:category==='book'?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
+    if(path==='/api/ask')return {category,book_answer:category==='book'?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
     if(failed){failed=false;throw Error('Search failed. Try again.');}
     return {web:{verified:true,text:'### External answer.\n\n- One item\n- Another item',citations:[]}};
   }};
   window.MathJax={startup:{promise:Promise.resolve()},typesetPromise:async()=>{}};
-  for(const path of ['static/vendor/marked/lib/marked.umd.js','static/vendor/dompurify/dist/purify.min.js','static/rich-text.js','static/app.js'])window.eval(fs.readFileSync(path,'utf8'));
+  for(const path of ['static/vendor/marked/lib/marked.umd.js','static/vendor/dompurify/dist/purify.min.js','static/rich-text.js','static/speech-text.js','static/app.js'])window.eval(fs.readFileSync(path,'utf8'));
   await $('ask-form').onsubmit({preventDefault(){}});await flush();
+  if(category==='book'){
+    const img=document.querySelector('.answer-figures figure img');
+    assert.equal(img.alt,figure.alt);
+    assert.equal(img.getAttribute('src'),figure.local_url);
+    assert.equal(img.parentElement.getAttribute('href'),figure.url);
+    assert.equal(document.querySelector('figcaption a').textContent,'[S2]');
+    document.querySelector('.answer-actions button').click();
+    assert.match((await spoken).text,/Textbook answer[\s\S]*Image: A tangent at point P/);
+  }else assert.equal(document.querySelector('.answer-figures'),null);
   assert.equal(calls[0][1].web,false);
   const button=[...document.querySelectorAll('button')].find(n=>n.dataset.en==='Search the web');
   if(category==='out_of_scope'){assert.equal(button,undefined);assert.equal(calls.length,1);dom.window.close();return;}

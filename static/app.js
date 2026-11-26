@@ -23,9 +23,9 @@
   $('reply-language').onchange=()=>{try{localStorage.setItem('accessedu-reply',$('reply-language').value);}catch{}};
   function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text)n.textContent=text;return n;}
   function label(node,en,fr){node.dataset.en=en;node.dataset.fr=fr;node.textContent=A.tr(en,fr);return node;}
-  function actionBar(root,lang){
+  function actionBar(root,lang,figures){
     const bar=el('div','answer-actions'),read=label(el('button'),'Read aloud','Lire à voix haute');read.type='button';
-    read.onclick=()=>A.speak(root,lang);
+    read.onclick=()=>A.speak(figures?[root,figures]:root,lang,root);
     const fr=el('button','','→ Français canadien'),en=el('button','','→ English');fr.type=en.type='button';
     fr.onclick=()=>A.translate(root.sourceText||root.textContent,'fr-CA');en.onclick=()=>A.translate(root.sourceText||root.textContent,'en-CA');bar.append(read,fr,en);return bar;
   }
@@ -44,6 +44,21 @@
     return details;
   }
   function evidenceText(text,evidence){return window.AccessRichText.render(text,{evidence});}
+  function figureSection(figures){
+    const section=el('section','answer-figures');
+    section.append(label(el('h3'),'Figures','Figures'));
+    for(const item of figures){
+      const figure=el('figure'),image=el('img'),caption=el('figcaption'),link=el('a');
+      image.src=item.local_url;image.alt=item.alt;
+      link.href=item.url;link.target='_blank';link.rel='noopener';
+      const citation=link.cloneNode(false);citation.textContent='['+item.key+']';
+      link.append(image);
+      if(!item.alt)link.setAttribute('aria-label',citation.textContent);
+      caption.append(label(el('span','badge book'),'From the source','Tiré de la source'),' ',citation);
+      figure.append(link,caption);section.append(figure);
+    }
+    return section;
+  }
   function webText(web){return window.AccessRichText.render(web.text,{citations:web.citations});}
   function message(question){
     const block=el('section','turn'),q=el('p','user-question',question);block.append(q);$('conversation').append(block);return block;
@@ -52,7 +67,10 @@
     const answer=el('article','answer panel');
     if(data.book_answer){
       answer.append(label(el('span','badge book'),'From the source','Tiré de la source'));
-      const text=evidenceText(data.book_answer,data.evidence);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text,actionBar(text,data.language));
+      const text=evidenceText(data.book_answer,data.evidence);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text);
+      const figures=data.figures?.length?figureSection(data.figures):null;
+      if(figures)answer.append(figures);
+      answer.append(actionBar(text,data.language,figures));
     }else{
       answer.append(label(el('span',`badge ${data.category==='out_of_scope'?'outside':'related'}`),data.category==='out_of_scope'?'Outside the subjects':'Related · not verified in source',data.category==='out_of_scope'?'Hors des sujets':'Connexe · non confirmé dans la source'));
       const text=el('div','prose',data.notice);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text,actionBar(text,data.language));
