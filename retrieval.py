@@ -116,7 +116,7 @@ class LibraryIndex:
     def public_docs(self):
         return [{k:v for k,v in d.items() if k not in ('path','chapters')} for d in self.docs.values()]
 
-    def search(self, query, doc_id=None, limit=10):
+    def search(self, query, doc_id=None, limit=10, *, figures_only=False):
         scores = defaultdict(float)
         words = set(tokens(query + ' ' + expand(query)))
         for word in words:
@@ -130,6 +130,8 @@ class LibraryIndex:
         result, seen = [], Counter()
         for i in sorted(scores, key=scores.get, reverse=True):
             p = self.passages[i]
+            if figures_only and not any(im.get('available') for im in p.get('images', ())):
+                continue
             if seen[(p['doc'],p['page'])] >= 3:
                 continue
             result.append({**p,'score':round(scores[i],3)})

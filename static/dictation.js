@@ -141,8 +141,6 @@
     render();
   });
   question.addEventListener('input', cancel);
-  byId('examples').addEventListener('click', cancel);
-  byId('local-search').addEventListener('click', cancel, true);
   byId('ask-form').addEventListener('submit', cancel, true);
   window.addEventListener('pagehide', cancel);
   document.addEventListener('languagechange', render);

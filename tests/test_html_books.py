@@ -125,3 +125,16 @@ def test_html_citation_focus_and_disclosure_script():
     node=shutil.which('node')
     if not node: pytest.skip('Node.js needed for citation UI fixture')
     subprocess.run([node,'tests/book_ui.cjs'],cwd=ROOT,check=True)
+
+
+def test_answer_figures_only_returns_distinct_cited_available_html_assets():
+    def passage(number, available=True, fmt='html'):
+        image={'available':available,'alt':f'Diagram {number}',
+               'local_url':f'/book-assets/book/{number:024x}.svg'}
+        return dict(doc='book', chapter='chapter', id=f'p{number}', key=f'S{number}',
+                    format=fmt, images=[image, image])
+    evidence=[passage(1,False), passage(2,fmt='pdf'), passage(3), passage(4), passage(5)]
+    figures=module.answer_figures(['S6','S2','S1','S3','S3','S4','S5'],evidence)
+    assert [f['key'] for f in figures]==['S3','S4']
+    assert figures[0]==dict(key='S3',alt='Diagram 3',local_url='/book-assets/book/'+f'{3:024x}.svg',
+                            url='/book/book/chapter?hl=p3')
