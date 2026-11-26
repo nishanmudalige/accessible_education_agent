@@ -12,13 +12,20 @@ async function scenario(auto,fail=false,category='book'){
   let spoken;
   window.AccessEdu={speak(source,lang){spoken=window.AccessSpeechText(source,lang);},tr:en=>en,localize(){},post:async(path,data)=>{
     calls.push([path,data]);
-    if(path==='/api/ask')return {category,book_answer:category==='book'?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:auto?[{kind:"generated",local_url:"data:image/svg+xml;base64,PHN2Zy8+",alt:figure.alt}]:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
+    if(path==='/api/ask')return {category,intent:category==='generated'?'generate':'lookup',book_answer:['generated','book'].includes(category)?'Textbook answer.':'',notice:'Not verified',language:'en-CA',evidence:[],results:[],figures:auto?[{kind:"generated",local_url:"data:image/svg+xml;base64,PHN2Zy8+",alt:figure.alt}]:[figure],web:null,web_token:category==='out_of_scope'?undefined:'signed'};
     if(failed){failed=false;throw Error('Search failed. Try again.');}
     return {web:{verified:true,text:'### External answer.\n\n- One item\n- Another item',citations:[]}};
   }};
   window.MathJax={startup:{promise:Promise.resolve()},typesetPromise:async()=>{}};
   for(const path of ['static/vendor/marked/lib/marked.umd.js','static/vendor/dompurify/dist/purify.min.js','static/rich-text.js','static/speech-text.js','static/app.js'])window.eval(fs.readFileSync(path,'utf8'));
   await $('ask-form').onsubmit({preventDefault(){}});await flush();
+  if(category==='generated'){
+    const badge=document.querySelector('.answer > .badge');
+    assert.equal(badge.textContent,'Generated example');
+    assert.equal(badge.dataset.fr,'Exemple généré');
+    assert.equal(calls.length,1);
+    dom.window.close();return;
+  }
   if(category==='book'){
     const img=document.querySelector('.answer-figures figure img');
     assert.equal(img.alt,figure.alt);
@@ -47,4 +54,4 @@ async function scenario(auto,fail=false,category='book'){
   else assert.equal(button.className,'primary');
   dom.window.close();
 }
-(async()=>{await scenario(false,true);await scenario(true);await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{await scenario(false,true);await scenario(true);await scenario(true,false,'generated');await scenario(false,false,'related_outside');await scenario(false,false,'out_of_scope');console.log('Web UI interactions, Markdown and sanitization passed');})().catch(e=>{console.error(e);process.exitCode=1;});

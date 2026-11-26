@@ -72,9 +72,9 @@
   }
   function render(block,data){
     const answer=el('article','answer panel');
-    if(data.book_answer){
-      answer.append(label(el('span','badge book'),'From the source','Tiré de la source'));
-      const text=evidenceText(data.book_answer,data.evidence);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text);
+    if(data.book_answer || data.category==='generated'){
+      answer.append(data.category==='generated'?label(el('span','badge neutral generated-example'),'Generated example','Exemple généré'):label(el('span','badge book'),'From the source','Tiré de la source'));
+      const text=evidenceText(data.book_answer||data.notice,data.evidence);text.lang=data.language;text.dataset.speechLang=data.language;answer.append(text);
       const figures=data.figures?.length?figureSection(data.figures):null;
       if(figures)answer.append(figures);
       answer.append(actionBar(text,data.language,figures));
@@ -113,7 +113,7 @@
         finally{button.disabled=false;section.setAttribute('aria-busy','false');}
       };
       if(data.web)show(data.web);
-      else if(data.autoWeb)button.click();
+      else if(data.autoWeb && data.intent!=='generate')button.click();
     }
     if(data.results?.length)answer.append(resultCards(data.results,data.question||'',new Set(data.evidence.map(e=>e.key))));block.append(answer);A.localize(block);
     for(const root of answer.querySelectorAll('.rich-text'))window.AccessRichText.typeset(root);

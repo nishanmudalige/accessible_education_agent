@@ -23,7 +23,8 @@ from retrieval import LibraryIndex
 from reader_backend import page_png, page_data, resolution
 from timing import request_timing, stage, plan_quality
 from plots import generated_plot
-from planning import is_english
+from originality import check_example
+from planning import is_english, local_intent
 
 ASSET_FILENAME=r'[a-f0-9]{24}\.(?:svg|png|jpg|jpeg|gif|webp|avif)'
 
@@ -250,14 +251,16 @@ def create_app(config=None, index_provider=None):
         docs=[d for d in get_library().public_docs() if not doc_id or d['id']==doc_id]
         skip_plan=app.config['SKIP_PLAN'] and language in ('auto','en-CA') and not raw_history and is_english(question)
         def outside(lang):
-            return jsonify(category='out_of_scope',language=lang,book_answer='',evidence=[],figures=[],results=[],
+            return jsonify(category='out_of_scope',intent='lookup',language=lang,book_answer='',evidence=[],figures=[],results=[],
                 notice=('Cette demande ne concerne pas les sujets des documents sélectionnés. Essayez une question liée à ces sujets.' if lang=='fr-CA' else 'This request is outside the subjects of the selected documents. Try a question related to those subjects.'),web=None)
         def operation():
             if skip_plan:
-                search_plan={'related':None,'language':'en-CA','query_en':question,'query_fr':''}
+                search_plan={'intent':local_intent(question),'related':None,'language':'en-CA','query_en':question,'query_fr':''}
             else:
                 with stage('plan'):
                     search_plan=ai.plan(question,language,docs,history)
+            intent=search_plan.get('intent','lookup')
+            generating=intent=='generate'
             lang=language if language!='auto' else search_plan['language']
             if not skip_plan and not search_plan['related']:
                 if app.config['BENCHMARK_PLAN_QUALITY']:
@@ -279,7 +282,7 @@ def create_app(config=None, index_provider=None):
                     hits=get_library().page(docs[0]['id'],page)
                     explicit_page=True
             figure_ref=re.search(r'\bfig(?:ure)?\.?\s*(\d+(?:\.\d+)+)\b',question,re.I)
-            if figure_ref:
+            if figure_ref and not generating:
                 caption=re.compile(r'\bFigure\s+'+re.escape(figure_ref[1])+r'\s*:', re.I)
                 for document in docs:
                     if document.get('format','pdf')!='pdf':
@@ -292,8 +295,8 @@ def create_app(config=None, index_provider=None):
                              if lang=='fr-CA' else f"View Figure {figure_ref[1]} on page {p['page']} in the PDF reader [S1].")
                         item={k:v for k,v in p.items() if k!='rects'}
                         item.update(title=document['title'],url=reader_url(p))
-                        return jsonify(category='book',language=lang,book_answer=msg,evidence=[item],results=[],figures=[],web=None)
-            if skip_plan and not explicit_page and top_score < app.config['SKIP_PLAN_MIN_SCORE']:
+                        return jsonify(category='book',intent=intent,language=lang,book_answer=msg,evidence=[item],results=[],figures=[],web=None)
+            if skip_plan and not generating and not explicit_page and top_score < app.config['SKIP_PLAN_MIN_SCORE']:
                 search_plan['related']=False
                 if app.config['BENCHMARK_PLAN_QUALITY']:
                     plan_quality(search_plan, hits, plan_skipped=True, top_score=top_score, scope_source='bm25_gate')
@@ -311,7 +314,8 @@ def create_app(config=None, index_provider=None):
             result={}
             if payload:
                 with stage('answer'):
-                    result=ai.answer(question,lang,payload,history,docs)
+                    respond=ai.generate if generating else ai.answer
+                    result=respond(question,lang,payload,history,docs)
             if skip_plan:
                 search_plan['related']=result.get('related')
             if app.config['BENCHMARK_PLAN_QUALITY']:
@@ -320,24 +324,41 @@ def create_app(config=None, index_provider=None):
             if result.get('related') is False:
                 return outside(lang)
             text,evidence=ai.validate_answer(result,offered)
+            check_requested=result.get('check_text') or re.search(
+                r"not (?:in|found|present)|absent|ne (?:figure|se trouve)|pas dans",question,re.I)
+            if generating and text and check_requested:
+                candidate=result.get('check_text')
+                if not candidate and (result.get('plot') or {}).get('type')=='function':
+                    candidate=next(iter(result['plot']['expr']),None)
+                matched,report=check_example(get_library(),candidate,text,lang)
+                if matched:
+                    retry=ai.generate(question,lang,payload,history,docs,previous=candidate)
+                    revised,refs=ai.validate_answer(retry,offered)
+                    if revised and retry.get('check_text'):
+                        result,text,evidence=retry,revised,refs
+                        _,report=check_example(get_library(),result['check_text'],text,lang)
+                text+='\n\n'+report
             notice='' if text else ('Je ne peux pas confirmer la réponse à partir des passages trouvés. Cela ne signifie pas que le livre ne traite pas du sujet.' if lang=='fr-CA' else 'I could not verify an answer from the retrieved passages. This does not establish that the book omits the topic.')
+            if generating and not text:
+                notice=('Les passages trouvés ne fournissent pas de règle suffisante pour construire cet exemple.'
+                        if lang=='fr-CA' else 'The retrieved passages did not provide a sufficient rule to construct this example.')
             def present(p):
                 return {**{k:v for k,v in p.items() if k!='rects'},'title':get_library().docs[p['doc']]['title'],
                     'language':get_library().docs[p['doc']].get('language','en-CA'),'url':reader_url(p)}
-            figures=answer_figures(result.get('figure_ids', []), evidence)
-            if text and not figures and not figure_ref:
+            figures=[] if generating else answer_figures(result.get('figure_ids', []), evidence)
+            if text and not figures and (generating or not figure_ref):
                 plot=generated_plot(result.get('plot'),lang)
                 if plot:
                     figures.append(plot)
             web=None
-            if data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
+            if not generating and data.get('web',app.config['WEB_SEARCH_DEFAULT']) is True:
                 try:
                     with stage('web'):
                         web=ai.web_search(search_plan['query_en'],lang,'; '.join(d['subject'] for d in docs))
                 except Exception as e:
                     logging.warning('External search unavailable: %s',type(e).__name__)
                     web={'text':'','citations':[],'verified':False,'error':True}
-            return jsonify(category='book' if text else 'related_outside',language=lang,
+            return jsonify(category='generated' if generating else ('book' if text else 'related_outside'),intent=intent,language=lang,
                 book_answer=text or '',notice=notice,evidence=[present(p) for p in evidence],
                 results=[present(p) for p in offered],web=web,
                 figures=figures,

@@ -156,3 +156,12 @@ def test_benchmark_switch(setup,monkeypatch,capsys,setting,expected):
     assert bench.main()==0
     assert [c[0] for c in calls]==expected
     assert 'requests: 1' in capsys.readouterr().out
+
+
+def test_fast_path_generates_with_rule_and_no_automatic_web(setup,monkeypatch):
+    _,client,calls=setup
+    monkeypatch.setattr(ai,'generate',lambda *args: dict(related=True,supported=True,
+                        answer='Try differentiating this product. [S1]', evidence=['S1']))
+    result=ask(client,question='Give me a practice problem about the product rule.',web=True).json
+    assert result['intent']=='generate' and result['category']=='generated'
+    assert result['evidence'] and result['web'] is None and not calls

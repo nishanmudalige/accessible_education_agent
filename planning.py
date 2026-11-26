@@ -1,7 +1,7 @@
 """Conservative local English detection for the optional planning fast path."""
 import re
 
-ENGLISH = set('what how why when where which who explain define describe find calculate show summarize translate page please the is are does do can could would should tell give help want need learn derivative integral calculus differentiate integrate'.split())
+ENGLISH = set('generate create invent compose what how why when where which who explain define describe find calculate show summarize translate page please the is are does do can could would should tell give help want need learn derivative integral calculus differentiate integrate'.split())
 FRENCH = set('bonjour salut merci comment pourquoi quel quelle quels quelles est sont une des dans avec pour explique expliquez definir trouvez calculer pouvez vous nous voudrais veux cherche ce cette qu que du au aux et ou le la les je il elle on dérivée dérivation'.split())
 
 def is_english(question):
@@ -10,3 +10,10 @@ def is_english(question):
         return False
     words = set(re.findall(r'[a-z]+', question.lower()))
     return bool(words & ENGLISH) and not bool(words & FRENCH)
+
+
+def local_intent(question):
+    pattern=(r'\b(?:generate|create|invent|compose|gén[èé]re[rz]?|crée[rz]?|invente[rz]?)\b'
+             r'|\b(?:give me|make|write|design)\s+(?:an? |me an? )?(?:new |practice )?(?:example|problem|exercise|function|dataset)\b'
+             r'|\b(?:donne[- ]moi|donnez[- ]moi)\s+(?:un|une)\s+(?:exemple|exercice|fonction)\b')
+    return 'generate' if re.search(pattern,question,re.I) else 'lookup'
